@@ -10,7 +10,7 @@
     "account": "Private pages of same Astro project, on-demand access gate and React components",
     "implemented_version": "0.1.0",
     "account_implementation": "Static demo pages with React, localStorage and direct entry; authentication is intentionally deferred",
-    "deployment_status": "prepared; VPS SSH connection blocked before authentication",
+    "deployment_status": "published at https://tbci.pavelml.ru/ via Apache and vps-release; each deployment requires public HTTPS verification",
     "verification": "TypeScript and build passed; 12 browser tests passed locally and in GitHub Actions"
   },
   "backend": "NestJS + PostgreSQL + Redis; modular monolith and workers",

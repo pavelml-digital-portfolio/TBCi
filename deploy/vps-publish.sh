@@ -54,7 +54,12 @@ case "$operation" in
       remote "chown $publisher_user:$publisher_user $incoming/$archive && chmod 600 $incoming/$archive"
     fi
     remote "$publisher publish $site $archive $checksum $GITHUB_SHA"
-    curl --fail --silent --show-error --location --max-redirs 5 --connect-timeout 10 --max-time 30 --output /dev/null "https://$site/"
+    # Actions verifies the exact release in a separate step, so a network failure
+    # cannot make a completed SSH publication look like an unsuccessful switch.
+    if [[ "$site" != tbci.pavelml.ru || ${VPS_DEFER_PUBLIC_CHECK:-0} != 1 ]]; then
+      curl --fail --silent --show-error --location --max-redirs 5 --connect-timeout 10 --max-time 30 \
+        --retry 4 --retry-all-errors --retry-delay 3 --retry-max-time 150 --output /dev/null "https://$site/"
+    fi
     ;;
   *) exit 2 ;;
 esac

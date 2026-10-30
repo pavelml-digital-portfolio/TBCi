@@ -17,6 +17,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
+      - run: python3 -m unittest discover -s deploy/tests -v
       - uses: actions/setup-node@v5
         with:
           node-version-file: .node-version

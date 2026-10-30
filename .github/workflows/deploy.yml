@@ -12,6 +12,9 @@ concurrency:
   group: tbci-production
   cancel-in-progress: false
 
+env:
+  RELEASE_ID: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
+
 jobs:
   verify:
     uses: ./.github/workflows/ci.yml
@@ -19,8 +22,6 @@ jobs:
     needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      RELEASE_ID: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
@@ -42,24 +43,30 @@ jobs:
         id: release
         env:
           VPS_DEPLOY_SSH_KEY: ${{ secrets.VPS_DEPLOY_SSH_KEY }}
+          VPS_DEFER_PUBLIC_CHECK: '1'
         shell: bash
         run: bash deploy/vps-publish.sh publish tbci.pavelml.ru apps/web/dist static
+  public:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
       - name: Verify public HTTPS release
         id: health
         shell: bash
-        run: |
-          set -euo pipefail
-          curl --fail --silent --show-error --retry 3 --retry-delay 3 --max-time 25 \
-            "https://tbci.pavelml.ru/deployment.json?release=$RELEASE_ID" > "$RUNNER_TEMP/tbci-deployed.json"
-          jq --exit-status --arg release "$RELEASE_ID" '.release == $release' "$RUNNER_TEMP/tbci-deployed.json"
-          curl --fail --silent --show-error --max-time 25 https://tbci.pavelml.ru/ > "$RUNNER_TEMP/tbci-public.html"
-          grep -q 'Структура рынка.' "$RUNNER_TEMP/tbci-public.html"
-          curl --fail --silent --show-error --max-time 25 https://tbci.pavelml.ru/app/ > "$RUNNER_TEMP/tbci-account.html"
-          grep -q 'astro-island' "$RUNNER_TEMP/tbci-account.html"
-          echo 'Verified landing, account shell and exact release over HTTPS.' >> "$GITHUB_STEP_SUMMARY"
+        run: python3 deploy/verify-public.py --commit "$GITHUB_SHA" --release "$RELEASE_ID"
       - name: Roll back if public checks fail
-        if: failure() && steps.release.outcome == 'success' && steps.health.outcome == 'failure'
+        if: failure() && needs.publish.result == 'success' && steps.health.outputs.rollback_required == 'true'
         env:
           VPS_DEPLOY_SSH_KEY: ${{ secrets.VPS_DEPLOY_SSH_KEY }}
         shell: bash
         run: bash deploy/vps-publish.sh rollback tbci.pavelml.ru
+      - name: Save public verification result
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: public-verification
+          path: ${{ runner.temp }}/tbci-public-verification.json
+          if-no-files-found: ignore
+          retention-days: 14
