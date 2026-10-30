@@ -23,7 +23,7 @@ npm run test:e2e
 Для браузерных тестов также нужен Python 3: он запускает локальный сервер готовой сборки. Можно использовать установленный Chromium, задав `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
 
 - [Реализованные экраны и проверка фронтенда](docs/frontend/README.md)
-- Публикация: `https://tbci.pavelml.ru`, VPS Masterhost, GitHub Secret `VPS_DEPLOY_SSH_KEY`.
+- [Публикация и состояние доступа к VPS](docs/frontend/DEPLOYMENT.md): `tbci.pavelml.ru`, Masterhost, GitHub Secret `VPS_DEPLOY_SSH_KEY`.
 
 Документация и материалы:
 

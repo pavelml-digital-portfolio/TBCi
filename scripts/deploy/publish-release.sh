@@ -12,6 +12,9 @@ test -d "$site_root" && test -w "$site_root" || {
 test ! -e "$site_root/current" || test -L "$site_root/current" || {
   echo 'current must be a symbolic link, refusing to replace an existing directory'; exit 1;
 }
+test ! -e "$site_root/previous" || test -L "$site_root/previous" || {
+  echo 'previous must be a symbolic link, refusing to replace an existing file'; exit 1;
+}
 release_path="$site_root/releases/$release_id"
 
 case "$action" in
@@ -23,6 +26,7 @@ case "$action" in
     printf '%s  %s\n' "$expected_sha" "$archive" | sha256sum --check --status
     test ! -e "$release_path" || { echo 'Release already exists'; exit 1; }
     mkdir -p "$site_root/releases"
+    chmod 755 "$site_root/releases"
     staging=$(mktemp -d "$site_root/releases/.incoming-$release_id.XXXXXX")
     trap 'rm -rf -- "$staging"; rm -f -- "$archive"' EXIT
     tar --extract --gzip --file "$archive" --directory "$staging" --no-same-owner --no-same-permissions

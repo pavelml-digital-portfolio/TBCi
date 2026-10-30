@@ -1,5 +1,5 @@
 {
-  "release": "brand-2.1_spec-1.1_landing-1",
+  "release": "brand-2.1_spec-1.1_frontend-0.1.0",
   "date": "2026-10-30",
   "brand_version": "2.1",
   "technical_spec_version": "1.1",
@@ -7,7 +7,11 @@
   "frontend": {
     "project": "Unified Astro + TypeScript",
     "public": "SSG with React islands",
-    "account": "Private pages of same Astro project, on-demand access gate and React components"
+    "account": "Private pages of same Astro project, on-demand access gate and React components",
+    "implemented_version": "0.1.0",
+    "account_implementation": "Static demo pages with React, localStorage and direct entry; authentication is intentionally deferred",
+    "deployment_status": "prepared; VPS SSH connection blocked before authentication",
+    "verification": "TypeScript and build passed; 12 browser tests passed locally and in GitHub Actions"
   },
   "backend": "NestJS + PostgreSQL + Redis; modular monolith and workers",
   "current_archive": "TBCi-current.zip",
@@ -19,9 +23,9 @@
     "specification/TBCi-Technical-Specification.pdf": "cd4d9d6472796333ca9771fd255a4cff32ede70e3d76bf0b8c1c66ccf9e1dadf",
     "specification/TBCi-Technical-Specification.docx": "3907c9b1f9802eab4acc8f4c174c27d67eee1bc72c3bed675267d7a762f30d18",
     "specification/openapi.yaml": "8d7a089763699c39329e07f67f8d2b11e5822d49b776de1c5931b2fe3c2ea72f",
-    "specification/ACCEPTANCE.csv": "9a83d34ae0fcaf2062e50ac8c8eeda22bd5859021ac8bae557188013e4a8ecd3",
-    "specification/REQUIREMENTS.csv": "a6c938d823f5b62ad623702da2ecd6eca8811a11acb894d506db8902690ffd95",
-    "specification/DECISIONS.csv": "64661a9d9fcfda0eb2b94afbc58003f7ae7485c23eb0120c06343f7d319a99e0",
+    "specification/ACCEPTANCE.csv": "93a16fce0be17baf2c0a13fb0e424dbba658f270dea388afc609025a36f5b77e",
+    "specification/REQUIREMENTS.csv": "85d5b3020598cc84a6cc97023b9e28928095d7cb17055aed413fb667f192452d",
+    "specification/DECISIONS.csv": "ec5f4fe9ab5aa0d4bfd2f2f288252a07904ad43953fdf0575b0ba37a62d79e5e",
     "design/TBCi-landing-v1.png": "af29e0c1897462006002b9e85145c6445d11768c5836785d3c8648e9c8260ce7"
   },
   "landing_mockup": "design/TBCi-landing-v1.png"
