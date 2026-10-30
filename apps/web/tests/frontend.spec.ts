@@ -334,18 +334,20 @@ test("all source screens fit 320 and 375px, account drawer works", async ({
   page,
 }) => {
   test.setTimeout(180000);
+  const overflows: string[] = [];
   for (const width of [375, 320])
     for (const [path] of refs) {
       await page.setViewportSize({ width, height: 850 });
       await open(page, path);
       await page.evaluate(() => document.fonts.ready);
-      expect(
-        await page.evaluate(
-          () => document.documentElement.scrollWidth <= innerWidth,
-        ),
-        path + " at " + width,
-      ).toBeTruthy();
+      const size = await page.evaluate(() => ({
+        scroll: document.documentElement.scrollWidth,
+        width: innerWidth,
+      }));
+      if (size.scroll > size.width)
+        overflows.push(path + " at " + width + ": " + size.scroll + "px");
     }
+  expect(overflows).toEqual([]);
   await page.getByRole("button", { name: "Toggle account navigation" }).click();
   await expect(page.locator(".account-sidebar")).toHaveClass(/open/);
   await page.getByRole("button", { name: "Close account navigation" }).click();

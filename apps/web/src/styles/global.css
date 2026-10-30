@@ -6000,3 +6000,19 @@ tbody tr:last-child td {
     font-size: 16px;
   }
 }
+@media (max-width: 540px) {
+  .account-sell .total-cost {
+    flex-basis: 100%;
+  }
+  .trade-calculation > * {
+    max-width: 100%;
+  }
+  .trade-calculation .total-cost > strong {
+    font-size: clamp(20px, 7vw, 29px);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .trade-calculation .total-balance {
+    min-width: 0;
+  }
+}
