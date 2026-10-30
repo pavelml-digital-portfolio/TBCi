@@ -32,13 +32,28 @@ else
   echo 'Missing VPS_DEPLOY_SSH_KEY. Add the prepared VPS publisher key in repository Actions secrets.' >&2
   exit 2
 fi
+transport() {
+  local phase=$1 status=0 line count=0
+  shift
+  "$@" 2> "$work/transport-error" || status=$?
+  cat "$work/transport-error" >&2
+  if (( status != 0 )); then
+    echo "::error title=VPS $phase::Transport exited with code $status."
+    while IFS= read -r line && (( count < 8 )); do
+      line=${line//'%'/'%25'};line=${line//$'\r'/'%0D'}
+      echo "::error title=VPS $phase::$line"
+      count=$((count + 1))
+    done < "$work/transport-error"
+    exit "$status"
+  fi
+}
 remote() {
-  if "$password"; then sshpass -e ssh "${options[@]}" "$login@87.242.65.97" "$@"
-  else ssh "${options[@]}" "$login@87.242.65.97" "$@"; fi
+  if "$password"; then transport "remote $operation" sshpass -e ssh "${options[@]}" "$login@87.242.65.97" "$@"
+  else transport "remote $operation" ssh "${options[@]}" "$login@87.242.65.97" "$@"; fi
 }
 upload() {
-  if "$password"; then sshpass -e scp "${options[@]}" "$1" "$login@87.242.65.97:$incoming/$2"
-  else scp "${options[@]}" "$1" "$login@87.242.65.97:$incoming/$2"; fi
+  if "$password"; then transport 'archive upload' sshpass -e scp "${options[@]}" "$1" "$login@87.242.65.97:$incoming/$2"
+  else transport 'archive upload' scp "${options[@]}" "$1" "$login@87.242.65.97:$incoming/$2"; fi
 }
 case "$operation" in
   check|rollback) remote "$publisher $operation $site" ;;
@@ -50,10 +65,12 @@ case "$operation" in
     else tar -czf "$work/$archive" --transform='s,^\.,www,' -C "$source" .; fi
     checksum=$(sha256sum "$work/$archive" | cut -d' ' -f1)
     upload "$work/$archive" "$archive"
+    echo '::notice title=VPS archive::Archive uploaded; starting the release switch.'
     if [[ "$login" == root ]]; then
       remote "chown $publisher_user:$publisher_user $incoming/$archive && chmod 600 $incoming/$archive"
     fi
     remote "$publisher publish $site $archive $checksum $GITHUB_SHA"
+    echo "::notice title=VPS release::vps-release publish completed for $GITHUB_SHA."
     # Actions verifies the exact release in a separate step, so a network failure
     # cannot make a completed SSH publication look like an unsuccessful switch.
     if [[ "$site" != tbci.pavelml.ru || ${VPS_DEFER_PUBLIC_CHECK:-0} != 1 ]]; then
