@@ -183,3 +183,15 @@ CAB-09-B04,CAB-09,visual,Next 100 / View All,source_jpg
 CAB-09-F01,CAB-09,behavior,Адрес можно скопировать; сообщение об успехе или недоступности clipboard,derived_from_visible_control
 CAB-09-F02,CAB-09,behavior,Next 100 показывает следующую страницу; View All раскрывает демонстрационный набор,derived_from_visible_control
 CAB-09-F03,CAB-09,behavior,Общие поля зависят от выбранного индекса; в прототипе адреса явно демонстрационные,derived_from_visible_control
+ENH-01,EXT-2018,extension,"Панорамирование, масштаб, перекрестие и клавиатура",explicit_user_request_after_v2.0
+ENH-02,EXT-2018,extension,Независимые ряды семи индексов 2018,explicit_user_request_after_v2.0
+ENH-03,EXT-2018,extension,"Интервалы, типы, сравнения, индикаторы",explicit_user_request_after_v2.0
+ENH-04,EXT-2018,extension,"Таблица данных, PNG/CSV, датировки UTC",explicit_user_request_after_v2.0
+ENH-05,EXT-2018,extension,32 статьи более 350 слов за 2018,explicit_user_request_after_v2.0
+ENH-06,EXT-2018,extension,"Фильтры, оглавление, сохранение, связанные статьи",explicit_user_request_after_v2.0
+ENH-07,EXT-2018,extension,48 архивных ICO и происхождение фактов,explicit_user_request_after_v2.0
+ENH-08,EXT-2018,extension,Месяцы/дни/статусы/избранное ICO,explicit_user_request_after_v2.0
+ENH-09,EXT-2018,extension,"21 локальный SVG, CC0 и SHA-256",explicit_user_request_after_v2.0
+ENH-10,EXT-2018,extension,Устойчивая сетка сумм и селектора 320–1920,explicit_user_request_after_v2.0
+ENH-11,EXT-2018,extension,Согласованные моковые показатели и активность,explicit_user_request_after_v2.0
+ENH-12,EXT-2018,extension,Заполненные профили и отдельные вкладки монет,explicit_user_request_after_v2.0

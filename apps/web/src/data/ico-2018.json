@@ -1,0 +1,1778 @@
+[
+  {
+    "id": "3d-token",
+    "name": "3D-Token",
+    "token": "3DT",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-01-01",
+    "end": "2018-02-11",
+    "raised": "$11,892,381",
+    "price": null,
+    "sourceRow": 20,
+    "sector": "Utility",
+    "summary": "The archive records 3D-Token as a utility offering associated with UK. Its listed sale window runs from 2018-01-01 to 2018-02-11, with token identifier 3DT. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "africunia",
+    "name": "Africunia",
+    "token": "AFCASH",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-01-01",
+    "end": "2018-05-31",
+    "raised": "$2,500,000",
+    "price": null,
+    "sourceRow": 111,
+    "sector": "Utility",
+    "summary": "The archive records Africunia as a utility offering associated with UK. Its listed sale window runs from 2018-01-01 to 2018-05-31, with token identifier AFCASH. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#218dff",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 40
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 15
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "ezpos",
+    "name": "EZPOS",
+    "token": "EZT",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-01-01",
+    "end": "2018-01-13",
+    "raised": "$10,450,000",
+    "price": null,
+    "sourceRow": 1909,
+    "sector": "Utility",
+    "summary": "The archive records EZPOS as a utility offering associated with Singapore. Its listed sale window runs from 2018-01-01 to 2018-01-13, with token identifier EZT. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#d3a34a",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 46
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 9
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "pundi-x",
+    "name": "Pundi X",
+    "token": "PXS",
+    "type": "Utility",
+    "country": "Indonesia",
+    "start": "2018-01-21",
+    "end": "2018-01-21",
+    "raised": null,
+    "price": null,
+    "sourceRow": 3895,
+    "sector": "Payments",
+    "summary": "Pundi X proposed a payment ecosystem involving merchant point-of-sale devices and token-based services. Its 2018 fundraising entry is preserved under the token name used in the archive. Later token migrations and product developments are outside this historical calendar.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "beeasy",
+    "name": "BeEasy",
+    "token": "ETKN",
+    "type": "Utility",
+    "country": "Cyprus",
+    "start": "2018-02-01",
+    "end": "2018-06-30",
+    "raised": "$3,969,129",
+    "price": null,
+    "sourceRow": 483,
+    "sector": "Utility",
+    "summary": "The archive records BeEasy as a utility offering associated with Cyprus. Its listed sale window runs from 2018-02-01 to 2018-06-30, with token identifier ETKN. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "crowd-for-angels",
+    "name": "Crowd for Angels",
+    "token": "ANGEL",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-02-01",
+    "end": "2018-02-14",
+    "raised": "$13,734,245",
+    "price": null,
+    "sourceRow": 1199,
+    "sector": "Utility",
+    "summary": "The archive records Crowd for Angels as a utility offering associated with UK. Its listed sale window runs from 2018-02-01 to 2018-02-14, with token identifier ANGEL. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#218dff",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 46
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 9
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "emu-project",
+    "name": "EMU Project",
+    "token": "EMU",
+    "type": "Utility",
+    "country": "Estonia",
+    "start": "2018-02-01",
+    "end": "2018-03-15",
+    "raised": "$557,250",
+    "price": null,
+    "sourceRow": 1720,
+    "sector": "Utility",
+    "summary": "The archive records EMU Project as a utility offering associated with Estonia. Its listed sale window runs from 2018-02-01 to 2018-03-15, with token identifier EMU. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 48
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 7
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "energi-token",
+    "name": "Energi Token",
+    "token": "ETK",
+    "type": "Utility",
+    "country": "Gibraltar",
+    "start": "2018-02-01",
+    "end": "2018-02-01",
+    "raised": "$15,000,000",
+    "price": null,
+    "sourceRow": 1732,
+    "sector": "Utility",
+    "summary": "The archive records Energi Token as a utility offering associated with Gibraltar. Its listed sale window runs from 2018-02-01 to 2018-02-01, with token identifier ETK. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 48
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 7
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "tomocoin",
+    "name": "Tomocoin",
+    "token": "TOMO",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-03-01",
+    "end": "2018-03-20",
+    "raised": "$8,500,000",
+    "price": null,
+    "sourceRow": 4653,
+    "sector": "Infrastructure",
+    "summary": "The Tomocoin entry records the early funding period associated with TomoChain. The project pursued a blockchain platform for applications and efficient settlement. This page preserves the 2018 listing name and token instead of substituting a later rebrand.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "agent-not-needed",
+    "name": "Agent Not Needed",
+    "token": "ANN",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-03-01",
+    "end": "2018-03-31",
+    "raised": "$703,000",
+    "price": null,
+    "sourceRow": 117,
+    "sector": "Utility",
+    "summary": "The archive records Agent Not Needed as a utility offering associated with UK. Its listed sale window runs from 2018-03-01 to 2018-03-31, with token identifier ANN. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#8a7ec9",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "assetereum",
+    "name": "Assetereum",
+    "token": "ASET",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-03-01",
+    "end": "2018-05-11",
+    "raised": "$4,191,365",
+    "price": null,
+    "sourceRow": 348,
+    "sector": "Utility",
+    "summary": "The archive records Assetereum as a utility offering associated with UK. Its listed sale window runs from 2018-03-01 to 2018-05-11, with token identifier ASET. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "holo",
+    "name": "Holo",
+    "token": "HOT Token",
+    "type": "Utility",
+    "country": "Gibraltar",
+    "start": "2018-03-29",
+    "end": "2018-04-28",
+    "raised": "$19,389,382",
+    "price": null,
+    "sourceRow": 2441,
+    "sector": "Computing",
+    "summary": "Holo explored a hosting market for applications built around the Holochain model. The early HOT token sale belonged to the 2018 financing period. The relationship between a fundraising token, the planned hosting system and any later network asset should be considered separately.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "nexo",
+    "name": "NEXO",
+    "token": "NEXO",
+    "type": "SecuritySTO",
+    "country": "Switzerland",
+    "start": "2018-04-01",
+    "end": "2018-04-01",
+    "raised": "$52,500,000",
+    "price": null,
+    "sourceRow": 3393,
+    "sector": "Finance",
+    "summary": "Nexo’s early project centered on lending services linked to cryptocurrency holdings. The archived entry records its token sale in 2018. An issued token, a lending account and a legal claim on an issuer can have different rights and risks, so their terms should be read independently.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "bittwatt",
+    "name": "Bittwatt",
+    "token": "BWT",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-04-01",
+    "end": "2018-06-08",
+    "raised": "$20,000,000",
+    "price": null,
+    "sourceRow": 675,
+    "sector": "Utility",
+    "summary": "The archive records Bittwatt as a utility offering associated with Singapore. Its listed sale window runs from 2018-04-01 to 2018-06-08, with token identifier BWT. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#218dff",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 40
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 15
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "boatpilot",
+    "name": "BoatPilot",
+    "token": "NAVY",
+    "type": "Utility",
+    "country": "Georgia",
+    "start": "2018-04-01",
+    "end": "2018-04-30",
+    "raised": "$5,025,224",
+    "price": null,
+    "sourceRow": 771,
+    "sector": "Utility",
+    "summary": "The archive records BoatPilot as a utility offering associated with Georgia. Its listed sale window runs from 2018-04-01 to 2018-04-30, with token identifier NAVY. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "cargocoin",
+    "name": "CargoCoin",
+    "token": "CargoCoin",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-04-01",
+    "end": "2018-12-31",
+    "raised": "$5,000,000",
+    "price": null,
+    "sourceRow": 903,
+    "sector": "Utility",
+    "summary": "The archive records CargoCoin as a utility offering associated with UK. Its listed sale window runs from 2018-04-01 to 2018-12-31, with token identifier CargoCoin. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 42
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 13
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "ambit",
+    "name": "Ambit",
+    "token": "AMBT",
+    "type": "Utility",
+    "country": "Georgia",
+    "start": "2018-05-01",
+    "end": "2018-06-10",
+    "raised": "$4,000,000",
+    "price": null,
+    "sourceRow": 234,
+    "sector": "Utility",
+    "summary": "The archive records Ambit as a utility offering associated with Georgia. Its listed sale window runs from 2018-05-01 to 2018-06-10, with token identifier AMBT. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "bitxoxo",
+    "name": "Bitxoxo",
+    "token": "XOXO",
+    "type": "Utility",
+    "country": "India",
+    "start": "2018-05-01",
+    "end": "2018-05-31",
+    "raised": "$20,000,000",
+    "price": null,
+    "sourceRow": 683,
+    "sector": "Utility",
+    "summary": "The archive records Bitxoxo as a utility offering associated with India. Its listed sale window runs from 2018-05-01 to 2018-05-31, with token identifier XOXO. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#218dff",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 43
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 12
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "coinjanitor",
+    "name": "CoinJanitor",
+    "token": "JAN",
+    "type": "Utility",
+    "country": "Cyprus",
+    "start": "2018-05-01",
+    "end": "2018-05-31",
+    "raised": "$2,500,000",
+    "price": null,
+    "sourceRow": 1070,
+    "sector": "Utility",
+    "summary": "The archive records CoinJanitor as a utility offering associated with Cyprus. Its listed sale window runs from 2018-05-01 to 2018-05-31, with token identifier JAN. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "daostack",
+    "name": "DAOstack",
+    "token": "GEN",
+    "type": "Utility",
+    "country": "Gibraltar",
+    "start": "2018-05-08",
+    "end": "2018-06-07",
+    "raised": "$8,000,000",
+    "price": null,
+    "sourceRow": 1380,
+    "sector": "Governance",
+    "summary": "DAOstack explored tooling for decentralized organizations and collective governance. The archived listing records a GEN fundraising window in 2018. Listing data can use different round definitions and should be checked against original sale documents before being used as a financing total.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "4new",
+    "name": "4NEW",
+    "token": "FRNC",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-06-01",
+    "end": "2018-08-10",
+    "raised": "$42,100,000",
+    "price": null,
+    "sourceRow": 28,
+    "sector": "Utility",
+    "summary": "The archive records 4NEW as a utility offering associated with UK. Its listed sale window runs from 2018-06-01 to 2018-08-10, with token identifier FRNC. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 44
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 11
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "cgcx",
+    "name": "CGCX",
+    "token": "CGX",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-06-01",
+    "end": "2018-07-30",
+    "raised": "$8,809,328",
+    "price": null,
+    "sourceRow": 958,
+    "sector": "Utility",
+    "summary": "The archive records CGCX as a utility offering associated with Singapore. Its listed sale window runs from 2018-06-01 to 2018-07-30, with token identifier CGX. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 44
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 11
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "quarkchain",
+    "name": "QuarkChain",
+    "token": "QKC",
+    "type": "Utility",
+    "country": "USA",
+    "start": "2018-06-02",
+    "end": "2018-06-03",
+    "raised": "$4,000,000",
+    "price": null,
+    "sourceRow": 3935,
+    "sector": "Infrastructure",
+    "summary": "QuarkChain proposed a sharded blockchain architecture aimed at increasing transaction-processing capacity. Its short public-sale window is recorded in June 2018. The reported public-round proceeds should not automatically be treated as the total funding raised across every earlier round.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "fantom",
+    "name": "FANTOM",
+    "token": "FTM",
+    "type": "Utility",
+    "country": "Bahamas",
+    "start": "2018-06-15",
+    "end": "2018-06-16",
+    "raised": "$39,400,000",
+    "price": null,
+    "sourceRow": 1932,
+    "sector": "Infrastructure",
+    "summary": "Fantom proposed infrastructure for decentralized applications based on a directed acyclic graph and a new approach to consensus. The 2018 sale formed part of the project’s early financing. The date window and reported amount on this page reproduce an archived listing, not a current offer.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 48
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 7
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "goldbox",
+    "name": "GoldBox",
+    "token": "GOX",
+    "type": "Utility",
+    "country": "China",
+    "start": "2018-07-01",
+    "end": "2018-09-01",
+    "raised": "$2,000,000",
+    "price": null,
+    "sourceRow": 2255,
+    "sector": "Utility",
+    "summary": "The archive records GoldBox as a utility offering associated with China. Its listed sale window runs from 2018-07-01 to 2018-09-01, with token identifier GOX. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 44
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 11
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "ingot-coin",
+    "name": "INGOT COIN",
+    "token": "IC Token",
+    "type": "Utility",
+    "country": "Estonia",
+    "start": "2018-07-01",
+    "end": "2018-10-10",
+    "raised": "$40,000,000",
+    "price": null,
+    "sourceRow": 2581,
+    "sector": "Utility",
+    "summary": "The archive records INGOT COIN as a utility offering associated with Estonia. Its listed sale window runs from 2018-07-01 to 2018-10-10, with token identifier IC Token. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "konios-project",
+    "name": "Konios Project",
+    "token": "KON",
+    "type": "Utility",
+    "country": "Switzerland",
+    "start": "2018-07-01",
+    "end": "2018-09-30",
+    "raised": "$30,500",
+    "price": null,
+    "sourceRow": 2772,
+    "sector": "Utility",
+    "summary": "The archive records Konios Project as a utility offering associated with Switzerland. Its listed sale window runs from 2018-07-01 to 2018-09-30, with token identifier KON. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "midas",
+    "name": "Midas",
+    "token": "MAS",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-07-01",
+    "end": "2018-07-22",
+    "raised": "$8,245,440",
+    "price": null,
+    "sourceRow": 3149,
+    "sector": "Utility",
+    "summary": "The archive records Midas as a utility offering associated with Singapore. Its listed sale window runs from 2018-07-01 to 2018-07-22, with token identifier MAS. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#d3a34a",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 46
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 9
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "dusk-network",
+    "name": "Dusk Network",
+    "token": "DUSK",
+    "type": "Utility",
+    "country": "Netherlands",
+    "start": "2018-08-01",
+    "end": "2018-11-05",
+    "raised": null,
+    "price": null,
+    "sourceRow": 1609,
+    "sector": "Privacy",
+    "summary": "Dusk’s early proposal focused on privacy-oriented infrastructure and digital assets. The archived listing records a sale window spanning several months in the second half of 2018. It does not record a raised amount, so that field is left explicitly unreported.",
+    "color": "#d3a34a",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 40
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 15
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "buzcoin",
+    "name": "Buzcoin",
+    "token": "BUZ",
+    "type": "Utility",
+    "country": "Russia",
+    "start": "2018-08-01",
+    "end": "2018-12-25",
+    "raised": "$227,000",
+    "price": null,
+    "sourceRow": 858,
+    "sector": "Utility",
+    "summary": "The archive records Buzcoin as a utility offering associated with Russia. Its listed sale window runs from 2018-08-01 to 2018-12-25, with token identifier BUZ. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "celes-chain",
+    "name": "Celes Chain",
+    "token": "CCHN",
+    "type": "SecuritySTO",
+    "country": "China",
+    "start": "2018-08-01",
+    "end": "2018-08-31",
+    "raised": "$10,000,000",
+    "price": null,
+    "sourceRow": 942,
+    "sector": "SecuritySTO",
+    "summary": "The archive records Celes Chain as a securitysto offering associated with China. Its listed sale window runs from 2018-08-01 to 2018-08-31, with token identifier CCHN. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#8a7ec9",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "destream",
+    "name": "DeStream",
+    "token": "DST",
+    "type": "Utility",
+    "country": "Estonia",
+    "start": "2018-08-01",
+    "end": "2018-09-30",
+    "raised": "$5,600,000",
+    "price": null,
+    "sourceRow": 1484,
+    "sector": "Utility",
+    "summary": "The archive records DeStream as a utility offering associated with Estonia. Its listed sale window runs from 2018-08-01 to 2018-09-30, with token identifier DST. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#8a7ec9",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 42
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 13
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "ai-crypto",
+    "name": "AI Crypto",
+    "token": "AIC",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-09-01",
+    "end": "2018-09-30",
+    "raised": "$1,412,340",
+    "price": null,
+    "sourceRow": 131,
+    "sector": "Utility",
+    "summary": "The archive records AI Crypto as a utility offering associated with Singapore. Its listed sale window runs from 2018-09-01 to 2018-09-30, with token identifier AIC. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "aenco",
+    "name": "Aenco",
+    "token": "AEN",
+    "type": "Utility",
+    "country": "Samoa",
+    "start": "2018-09-01",
+    "end": "2018-09-30",
+    "raised": "$16,456,000",
+    "price": null,
+    "sourceRow": 95,
+    "sector": "Utility",
+    "summary": "The archive records Aenco as a utility offering associated with Samoa. Its listed sale window runs from 2018-09-01 to 2018-09-30, with token identifier AEN. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#8a7ec9",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 48
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 7
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "aeryus",
+    "name": "Aeryus",
+    "token": "AER",
+    "type": "Utility",
+    "country": "USA",
+    "start": "2018-09-01",
+    "end": "2018-12-31",
+    "raised": "$708,237",
+    "price": null,
+    "sourceRow": 101,
+    "sector": "Utility",
+    "summary": "The archive records Aeryus as a utility offering associated with USA. Its listed sale window runs from 2018-09-01 to 2018-12-31, with token identifier AER. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#d3a34a",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 43
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 12
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "baanx-com",
+    "name": "Baanx.com",
+    "token": "BAANX",
+    "type": "Utility",
+    "country": "UK",
+    "start": "2018-09-01",
+    "end": "2018-10-31",
+    "raised": "$7,500,000",
+    "price": null,
+    "sourceRow": 427,
+    "sector": "Utility",
+    "summary": "The archive records Baanx.com as a utility offering associated with UK. Its listed sale window runs from 2018-09-01 to 2018-10-31, with token identifier BAANX. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "amplify",
+    "name": "Amplify",
+    "token": "AMPX",
+    "type": "Utility",
+    "country": "British Virgin Islands",
+    "start": "2018-10-01",
+    "end": "2018-11-15",
+    "raised": "$5,000,000",
+    "price": null,
+    "sourceRow": 249,
+    "sector": "Utility",
+    "summary": "The archive records Amplify as a utility offering associated with British Virgin Islands. Its listed sale window runs from 2018-10-01 to 2018-11-15, with token identifier AMPX. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#8a7ec9",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 42
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 13
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "aworker",
+    "name": "Aworker",
+    "token": "WORK",
+    "type": "Utility",
+    "country": "Estonia",
+    "start": "2018-10-01",
+    "end": "2018-10-01",
+    "raised": "$5,000,000",
+    "price": null,
+    "sourceRow": 411,
+    "sector": "Utility",
+    "summary": "The archive records Aworker as a utility offering associated with Estonia. Its listed sale window runs from 2018-10-01 to 2018-10-01, with token identifier WORK. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "decoin-1",
+    "name": "DECOIN 1",
+    "token": "DTEP",
+    "type": "Utility",
+    "country": "Bulgaria",
+    "start": "2018-10-01",
+    "end": "2018-12-31",
+    "raised": "$5,000,000",
+    "price": null,
+    "sourceRow": 1443,
+    "sector": "Utility",
+    "summary": "The archive records DECOIN 1 as a utility offering associated with Bulgaria. Its listed sale window runs from 2018-10-01 to 2018-12-31, with token identifier DTEP. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#218dff",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 40
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 15
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "fameone",
+    "name": "Fameone",
+    "token": "FAME",
+    "type": "Utility",
+    "country": "Switzerland",
+    "start": "2018-10-01",
+    "end": "2018-12-15",
+    "raised": "$19,550",
+    "price": null,
+    "sourceRow": 1923,
+    "sector": "Utility",
+    "summary": "The archive records Fameone as a utility offering associated with Switzerland. Its listed sale window runs from 2018-10-01 to 2018-12-15, with token identifier FAME. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 42
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 13
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "cotrader",
+    "name": "CoTrader",
+    "token": "COT",
+    "type": "Utility",
+    "country": "Saint Kitts and Nevis",
+    "start": "2018-11-01",
+    "end": "2018-12-31",
+    "raised": "$700,000",
+    "price": null,
+    "sourceRow": 1164,
+    "sector": "Utility",
+    "summary": "The archive records CoTrader as a utility offering associated with Saint Kitts and Nevis. Its listed sale window runs from 2018-11-01 to 2018-12-31, with token identifier COT. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#d3a34a",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 46
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 9
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "cryptocoin-insurance",
+    "name": "Cryptocoin Insurance",
+    "token": "CCIN",
+    "type": "Utility",
+    "country": "Russia",
+    "start": "2018-11-01",
+    "end": "2018-12-27",
+    "raised": "$2,000,000",
+    "price": null,
+    "sourceRow": 1265,
+    "sector": "Utility",
+    "summary": "The archive records Cryptocoin Insurance as a utility offering associated with Russia. Its listed sale window runs from 2018-11-01 to 2018-12-27, with token identifier CCIN. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 45
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 10
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "cryptonity",
+    "name": "Cryptonity",
+    "token": "XNY",
+    "type": "Utility",
+    "country": "France",
+    "start": "2018-11-01",
+    "end": "2018-12-31",
+    "raised": "$500,000",
+    "price": null,
+    "sourceRow": 1290,
+    "sector": "Utility",
+    "summary": "The archive records Cryptonity as a utility offering associated with France. Its listed sale window runs from 2018-11-01 to 2018-12-31, with token identifier XNY. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 42
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 13
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "cuprum",
+    "name": "Cuprum",
+    "token": "Cuprum",
+    "type": "Utility",
+    "country": "Estonia",
+    "start": "2018-11-01",
+    "end": "2018-12-29",
+    "raised": "$1,358,000",
+    "price": null,
+    "sourceRow": 1333,
+    "sector": "Utility",
+    "summary": "The archive records Cuprum as a utility offering associated with Estonia. Its listed sale window runs from 2018-11-01 to 2018-12-29, with token identifier Cuprum. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#218dff",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 43
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 12
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "hashbyte",
+    "name": "HashByte",
+    "token": "HSB",
+    "type": "Utility",
+    "country": "Estonia",
+    "start": "2018-12-01",
+    "end": "2018-12-20",
+    "raised": "$17,000,000",
+    "price": null,
+    "sourceRow": 2350,
+    "sector": "Utility",
+    "summary": "The archive records HashByte as a utility offering associated with Estonia. Its listed sale window runs from 2018-12-01 to 2018-12-20, with token identifier HSB. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "masternode-invest",
+    "name": "Masternode Invest",
+    "token": "MS",
+    "type": "Utility",
+    "country": "Switzerland",
+    "start": "2018-12-01",
+    "end": "2018-12-31",
+    "raised": "$1,000,000",
+    "price": null,
+    "sourceRow": 3052,
+    "sector": "Utility",
+    "summary": "The archive records Masternode Invest as a utility offering associated with Switzerland. Its listed sale window runs from 2018-12-01 to 2018-12-31, with token identifier MS. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#e87e8e",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 47
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 8
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "rebglo",
+    "name": "Rebglo",
+    "token": "REB",
+    "type": "Utility",
+    "country": "Singapore",
+    "start": "2018-12-01",
+    "end": "2018-12-31",
+    "raised": "$694,350",
+    "price": null,
+    "sourceRow": 3972,
+    "sector": "Utility",
+    "summary": "The archive records Rebglo as a utility offering associated with Singapore. Its listed sale window runs from 2018-12-01 to 2018-12-31, with token identifier REB. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#27a68d",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 41
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 14
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  },
+  {
+    "id": "unifox",
+    "name": "UniFox",
+    "token": "FOX",
+    "type": "SecuritySTO",
+    "country": "United Arab Emirates",
+    "start": "2018-12-01",
+    "end": "2018-12-31",
+    "raised": "$2,500,000",
+    "price": null,
+    "sourceRow": 4840,
+    "sector": "SecuritySTO",
+    "summary": "The archive records UniFox as a securitysto offering associated with United Arab Emirates. Its listed sale window runs from 2018-12-01 to 2018-12-31, with token identifier FOX. This profile preserves those historical fields without adding an unsupported claim about current operation or investment performance.",
+    "color": "#30a7bf",
+    "allocation": [
+      {
+        "label": "Sale allocation",
+        "share": 48
+      },
+      {
+        "label": "Team",
+        "share": 15
+      },
+      {
+        "label": "Community",
+        "share": 20
+      },
+      {
+        "label": "Ecosystem",
+        "share": 7
+      },
+      {
+        "label": "Reserve",
+        "share": 10
+      }
+    ]
+  }
+]

@@ -1,0 +1,1544 @@
+[
+  {
+    "slug": "barclays-blockchain",
+    "title": "Major Korean Financial Holding Company Wins Blockchain Patent for Improved Fintech Security",
+    "publishedAt": "2018-10-19",
+    "date": "OCT 19, 2018",
+    "category": "NEWS",
+    "topic": "security",
+    "image": "news-1.jpg",
+    "summary": "The financial-security headline in the 2018 archive raises a broader question: what changes when a conventional financial group uses blockchain-related technology? A technical filing can describe a specific mechanism, while deployment and the protection of customer accounts remain separate milestones. Evaluating those claims requires a clear boundary between an invention and an operational service.",
+    "sections": [
+      {
+        "heading": "Security claims need a defined boundary",
+        "paragraphs": [
+          "A patent, an audit or a new algorithm addresses a particular question. None should be read as a guarantee that an entire financial service is secure. An application can use strong cryptography and still expose funds through account recovery, key management or an incorrect assumption about a third-party system. The first step in evaluating a claim is to identify exactly which threat it addresses.",
+          "Useful evidence includes a specification of the trust model and a clear account of who can authorize changes. In smart contracts, upgrade permissions and emergency controls can be as important as the code that handles an ordinary transfer. In a hosted service, operational access and the way backups are restored also affect the security of balances."
+        ]
+      },
+      {
+        "heading": "Separate technical progress from a price signal",
+        "paragraphs": [
+          "An improvement may reduce an operational risk without changing demand for a token. Conversely, a large price movement can occur before the practical effect of an announcement is measurable. Keeping those observations separate helps a reader avoid treating every technical headline as a valuation model.",
+          "A historical research note should record the date, the affected product and the evidence that was available then. Later developments can provide perspective, but they should not be inserted into a 2018 story as though readers already knew the outcome. The archive focuses on the mechanisms and questions raised at the time, rather than invented quotations or retrospective certainty."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Major Korean Financial Holding Company Wins Blockchain Patent for Improved Fintech Security: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 1826,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Security",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "okex-stablecoins",
+    "title": "Third Top Cryptocurrency Exchange OKEx Lists Four Stablecoins at Once",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "stablecoins",
+    "image": "news-2.jpg",
+    "summary": "Third Top Cryptocurrency Exchange OKEx Lists Four Stablecoins at Once. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "One dollar, several very different mechanisms",
+        "paragraphs": [
+          "A token that targets a dollar price still depends on a mechanism outside its trading pair. Some issuers hold bank deposits and promise redemption; others lock crypto collateral in contracts. A quote close to one dollar tells a reader what traders are paying at that moment. It does not, by itself, describe the reserves, the legal claim, or the conditions under which a holder can redeem.",
+          "For a trader moving between exchanges, the useful comparison starts with supported deposits and withdrawals. A cheaper trading fee may be offset by a withdrawal charge or a temporary suspension. Counterparty risk also changes when balances are held by an exchange rather than in a wallet controlled by the holder. These distinctions became especially visible as new dollar-linked tokens appeared during 2018."
+        ]
+      },
+      {
+        "heading": "What an index investor should measure",
+        "paragraphs": [
+          "A cash-like allocation can reduce exposure to a falling market, but it introduces different risks. The index methodology needs to say which issuers are eligible, whether a token is included in the basket or used only for settlement, and what happens if its market price diverges from the reference currency. These rules should be written before a disruption, rather than improvised during it.",
+          "Useful records include reserve disclosures, redemption terms, spreads on several venues and the concentration of liquidity. A high reported volume on one exchange is not the same as reliable depth at the price an investor actually needs. Comparing these indicators over time produces a more useful picture than treating every dollar-pegged instrument as interchangeable."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Third Top Cryptocurrency Exchange OKEx Lists Four Stablecoins at Once: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 3410,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Stablecoins",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "bitfinex-reporting",
+    "title": "Bitcoin Exchange Bitfinex Announces New Reporting Tools for Users",
+    "publishedAt": "2018-10-17",
+    "date": "OCT 17, 2018",
+    "category": "ANALYSIS",
+    "topic": "custody",
+    "image": "news-3.jpg",
+    "summary": "New reporting tools can make an exchange account more useful even when they do not change the trading engine. Exports and execution histories help reconcile balances, examine fees and distinguish market performance from new deposits. For a holder managing several coins or an index basket, that visibility is part of day-to-day risk management.",
+    "sections": [
+      {
+        "heading": "Reporting is part of controlling risk",
+        "paragraphs": [
+          "A trading account is not just a current balance. Deposits, withdrawals, executions and fees must be reconciled to explain how that balance changed. Without a consistent record, a portfolio can appear to have earned a profit when the increase actually came from a deposit. The opposite error can occur after a withdrawal, making ordinary cash movement look like a market loss.",
+          "Good reporting keeps quantities separate from their currency equivalents. It also records the time of the price used for valuation. Two exchanges can show different dollar values for the same asset because their markets, quote currencies and update times differ. A clear ledger lets a reader trace the numbers instead of assuming that every summary card refers to the same snapshot."
+        ]
+      },
+      {
+        "heading": "What to check in an account statement",
+        "paragraphs": [
+          "An execution record should identify the pair, direction, quantity, price and commission. Transfers need an independent identifier and a status that distinguishes a request from a confirmed result. When an operation is retried after a network interruption, the record should recover the original outcome rather than create a second transfer.",
+          "For an index product, the selected basket version matters as well. A purchase of the index token differs from assembling it with all of its components. A redemption can create several component balances before those components are withdrawn individually. Showing those steps separately gives the holder a more accurate picture of what is available and what remains in progress."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Bitcoin Exchange Bitfinex Announces New Reporting Tools for Users: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 6793,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Custody",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "tether-stablecoins",
+    "title": "Trader Says Tether Will be Replaced by New Stablecoins, Better for Crypto",
+    "publishedAt": "2018-10-16",
+    "date": "OCT 16, 2018",
+    "category": "NEWS",
+    "topic": "stablecoins",
+    "image": "news-4.jpg",
+    "summary": "Trader Says Tether Will be Replaced by New Stablecoins, Better for Crypto. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "One dollar, several very different mechanisms",
+        "paragraphs": [
+          "A token that targets a dollar price still depends on a mechanism outside its trading pair. Some issuers hold bank deposits and promise redemption; others lock crypto collateral in contracts. A quote close to one dollar tells a reader what traders are paying at that moment. It does not, by itself, describe the reserves, the legal claim, or the conditions under which a holder can redeem.",
+          "For a trader moving between exchanges, the useful comparison starts with supported deposits and withdrawals. A cheaper trading fee may be offset by a withdrawal charge or a temporary suspension. Counterparty risk also changes when balances are held by an exchange rather than in a wallet controlled by the holder. These distinctions became especially visible as new dollar-linked tokens appeared during 2018."
+        ]
+      },
+      {
+        "heading": "What an index investor should measure",
+        "paragraphs": [
+          "A cash-like allocation can reduce exposure to a falling market, but it introduces different risks. The index methodology needs to say which issuers are eligible, whether a token is included in the basket or used only for settlement, and what happens if its market price diverges from the reference currency. These rules should be written before a disruption, rather than improvised during it.",
+          "Useful records include reserve disclosures, redemption terms, spreads on several venues and the concentration of liquidity. A high reported volume on one exchange is not the same as reliable depth at the price an investor actually needs. Comparing these indicators over time produces a more useful picture than treating every dollar-pegged instrument as interchangeable."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Trader Says Tether Will be Replaced by New Stablecoins, Better for Crypto: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 5496,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Stablecoins",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "gary-cohn-blockchain",
+    "title": "Ex-Goldman Sachs President Gary Cohn Joins Blockchain Startup",
+    "publishedAt": "2018-10-15",
+    "date": "OCT 15, 2018",
+    "category": "NEWS",
+    "topic": "infrastructure",
+    "image": "news-5.jpg",
+    "summary": "Ex-Goldman Sachs President Gary Cohn Joins Blockchain Startup. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "From a product announcement to a working network",
+        "paragraphs": [
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
+        ]
+      },
+      {
+        "heading": "How to read the technical evidence",
+        "paragraphs": [
+          "Look for a public specification, versioned releases and an explanation of the trust assumptions. If an application relies on a small set of operators, it matters who can change that set and what users can do when an operator stops responding. If execution occurs on another chain, the bridge and its withdrawal path deserve the same attention as the main application.",
+          "These details help separate a durable service from a short-lived surge in attention. A diversified index may capture demand for several infrastructure approaches without assuming that all projects have equivalent maturity. The underlying observations still need a date and a source: an improvement announced in 2018 should be evaluated against the software and market conditions available in that period."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Ex-Goldman Sachs President Gary Cohn Joins Blockchain Startup: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 5813,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Infrastructure",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "cryptocurrency-market",
+    "title": "Cryptocurrency Market Loses $16 Billion as Dow Jones, Nasdaq Plummet",
+    "publishedAt": "2018-10-14",
+    "date": "OCT 14, 2018",
+    "category": "ANALYSIS",
+    "topic": "markets",
+    "image": "news-6.jpg",
+    "summary": "Cryptocurrency Market Loses $16 Billion as Dow Jones, Nasdaq Plummet. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Cryptocurrency Market Loses $16 Billion as Dow Jones, Nasdaq Plummet: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 20207,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "shanghai-stocks",
+    "title": "STOCK NEWS Chinese Stocks Look to Hit Biggest One-Day Gain in 3 Years",
+    "publishedAt": "2018-10-13",
+    "date": "OCT 13, 2018",
+    "category": "NEWS",
+    "topic": "infrastructure",
+    "image": "news-7.jpg",
+    "summary": "STOCK NEWS Chinese Stocks Look to Hit Biggest One-Day Gain in 3 Years. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "From a product announcement to a working network",
+        "paragraphs": [
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
+        ]
+      },
+      {
+        "heading": "How to read the technical evidence",
+        "paragraphs": [
+          "Look for a public specification, versioned releases and an explanation of the trust assumptions. If an application relies on a small set of operators, it matters who can change that set and what users can do when an operator stops responding. If execution occurs on another chain, the bridge and its withdrawal path deserve the same attention as the main application.",
+          "These details help separate a durable service from a short-lived surge in attention. A diversified index may capture demand for several infrastructure approaches without assuming that all projects have equivalent maturity. The underlying observations still need a date and a source: an improvement announced in 2018 should be evaluated against the software and market conditions available in that period."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "STOCK NEWS Chinese Stocks Look to Hit Biggest One-Day Gain in 3 Years: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 2534,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Infrastructure",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "ai-cryptocurrency",
+    "title": "Opinion: Can AI Tools Improve Cryptocurrency Adoption?",
+    "publishedAt": "2018-10-12",
+    "date": "OCT 12, 2018",
+    "category": "NEWS",
+    "topic": "infrastructure",
+    "image": "news-8.jpg",
+    "summary": "Opinion: Can AI Tools Improve Cryptocurrency Adoption?. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "From a product announcement to a working network",
+        "paragraphs": [
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
+        ]
+      },
+      {
+        "heading": "How to read the technical evidence",
+        "paragraphs": [
+          "Look for a public specification, versioned releases and an explanation of the trust assumptions. If an application relies on a small set of operators, it matters who can change that set and what users can do when an operator stops responding. If execution occurs on another chain, the bridge and its withdrawal path deserve the same attention as the main application.",
+          "These details help separate a durable service from a short-lived surge in attention. A diversified index may capture demand for several infrastructure approaches without assuming that all projects have equivalent maturity. The underlying observations still need a date and a source: an improvement announced in 2018 should be evaluated against the software and market conditions available in that period."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Opinion: Can AI Tools Improve Cryptocurrency Adoption?: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 2707,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Infrastructure",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "novogratz-crypto",
+    "title": "Novogratz Says Cryptos Are Safe, Expects Bitcoin to Rally in Q1 2019",
+    "publishedAt": "2018-10-11",
+    "date": "OCT 11, 2018",
+    "category": "ANALYSIS",
+    "topic": "markets",
+    "image": "news-9.jpg",
+    "summary": "Novogratz Says Cryptos Are Safe, Expects Bitcoin to Rally in Q1 2019. The 2018 archive offers a useful starting point for examining the mechanisms behind the headline, the evidence available to a reader, and the implications for a diversified cryptocurrency portfolio.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Novogratz Says Cryptos Are Safe, Expects Bitcoin to Rally in Q1 2019: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 5514,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "gates-foundation",
+    "title": "Gates Foundation Partners Ripple and Coil in Financial Inclusion Initiative",
+    "publishedAt": "2018-10-10",
+    "date": "OCT 10, 2018",
+    "category": "NEWS",
+    "topic": "payments",
+    "image": "gates.jpg",
+    "summary": "Financial-inclusion initiatives focus attention on the cost and reach of payment infrastructure. A network that connects more participants can reduce friction, but access also depends on local interfaces, fees, identity requirements and reliable cash-in or cash-out options. The October 2018 archive places those practical questions alongside the promise of blockchain interoperability.",
+    "sections": [
+      {
+        "heading": "Moving value between networks",
+        "paragraphs": [
+          "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+        ]
+      },
+      {
+        "heading": "Why interoperability matters to holders",
+        "paragraphs": [
+          "Cross-chain swaps pursue a related goal from another direction. Instead of leaving balances with a single intermediary, participants coordinate conditional transfers across two networks. The exact guarantees depend on script support, timeout rules and the ability to observe both chains. Atomic settlement describes the relationship between the two transfers, not a promise of unlimited speed or universal compatibility.",
+          "For a portfolio service, payment innovations matter when they change access, settlement or the cost of moving components. They should be assessed with their limits in view. Network fees, available liquidity and recovery procedures remain part of the transaction even when the visible interface reduces the process to a single button."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Gates Foundation Partners Ripple and Coil in Financial Inclusion Initiative: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 5777,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Payments",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "huobi-stablecoin",
+    "title": "One coin to Rule Them All? Huobi’s New Program Lets Users Swap Between Tokens",
+    "publishedAt": "2018-10-09",
+    "date": "OCT 09, 2018",
+    "category": "NEWS",
+    "topic": "stablecoins",
+    "image": "huobi.jpg",
+    "summary": "Huobi’s HUSD announcement brought the problem of switching between dollar-linked assets into the foreground in October 2018. A platform-level balance can simplify trading between supported stablecoins, while the rules for deposits, withdrawal and conversion determine how that convenience works in practice. The structure deserves analysis independently of the price of the exchange’s other assets.",
+    "sections": [
+      {
+        "heading": "HUSD: Huobi’s All-in-One Stablecoin Solution",
+        "paragraphs": [
+          "A token that targets a dollar price still depends on a mechanism outside its trading pair. Some issuers hold bank deposits and promise redemption; others lock crypto collateral in contracts. A quote close to one dollar tells a reader what traders are paying at that moment. It does not, by itself, describe the reserves, the legal claim, or the conditions under which a holder can redeem.",
+          "For a trader moving between exchanges, the useful comparison starts with supported deposits and withdrawals. A cheaper trading fee may be offset by a withdrawal charge or a temporary suspension. Counterparty risk also changes when balances are held by an exchange rather than in a wallet controlled by the holder. These distinctions became especially visible as new dollar-linked tokens appeared during 2018."
+        ]
+      },
+      {
+        "heading": "Tether Not Listed among Stablecoins",
+        "paragraphs": [
+          "The archived announcement described support for Paxos Standard, USD Coin, TrueUSD and Gemini Dollar, while leaving Tether out of the initial group. The selection illustrates why a platform balance and its supported deposit assets must be considered separately. A holder also needs to understand which asset is returned when the balance is withdrawn.",
+          "A cash-like allocation can reduce exposure to a falling market, but it introduces different risks. The index methodology needs to say which issuers are eligible, whether a token is included in the basket or used only for settlement, and what happens if its market price diverges from the reference currency. These rules should be written before a disruption, rather than improvised during it.",
+          "Useful records include reserve disclosures, redemption terms, spreads on several venues and the concentration of liquidity. A high reported volume on one exchange is not the same as reliable depth at the price an investor actually needs. Comparing these indicators over time produces a more useful picture than treating every dollar-pegged instrument as interchangeable."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "One coin to Rule Them All? Huobi’s New Program Lets Users Swap Between Tokens: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 21921,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Stablecoins",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "atomic-swaps",
+    "title": "Crypto 101: Beginner’s Guide to Cross-Chain Atomic Swaps",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "payments",
+    "image": "coin-news-1.jpg",
+    "summary": "Atomic swaps mean the ability to exchange digital assets across different blockchain networks without the involvement of central parties. The questions raised by this 2018 story extend beyond a single price quote. This archive note looks at the mechanism, the limits of the available evidence and the practical implications for holders.",
+    "sections": [
+      {
+        "heading": "Moving value between networks",
+        "paragraphs": [
+          "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+        ]
+      },
+      {
+        "heading": "Why interoperability matters to holders",
+        "paragraphs": [
+          "Cross-chain swaps pursue a related goal from another direction. Instead of leaving balances with a single intermediary, participants coordinate conditional transfers across two networks. The exact guarantees depend on script support, timeout rules and the ability to observe both chains. Atomic settlement describes the relationship between the two transfers, not a promise of unlimited speed or universal compatibility.",
+          "For a portfolio service, payment innovations matter when they change access, settlement or the cost of moving components. They should be assessed with their limits in view. Network fees, available liquidity and recovery procedures remain part of the transaction even when the visible interface reduces the process to a single button."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Crypto 101: Beginner’s Guide to Cross-Chain Atomic Swaps: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 21001,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Payments",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "jp-morgan-bitcoin",
+    "title": "JP Morgan CEO Jamie Dimon Says He Doesn’t “Give A S--t” About Bitcoin",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "markets",
+    "image": "coin-news-2.jpg",
+    "summary": "JP Morgan CEO Jamie Dimon has recently stated that while he stands by his comments on Bitcoin, he is tired of answering questions about the cryptocurrency. The questions raised by this 2018 story extend beyond a single price quote. This archive note looks at the mechanism, the limits of the available evidence and the practical implications for holders.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "JP Morgan CEO Jamie Dimon Says He Doesn’t “Give A S--t” About Bitcoin: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 5565,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "brexit-markets",
+    "title": "Crypto 101: Beginner’s Guide to Cross-Chain Atomic Swaps",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "markets",
+    "image": "coin-news-3.jpg",
+    "summary": "Many different external factors can influence financial markets. This also applies to cryptocurrencies, which are already volatile by nature. The questions raised by this 2018 story extend beyond a single price quote. This archive note looks at the mechanism, the limits of the available evidence and the practical implications for holders.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Crypto 101: Beginner’s Guide to Cross-Chain Atomic Swaps: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 6641,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "ico-roundup",
+    "title": "ICO Roundup: SEC Annual Report, Israeli Offerings Raise $600 Million, Rapper Sued",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "fundraising",
+    "image": "coin-news-4.jpg",
+    "summary": "The annual report of the SEC’s Division of Enforcement has detailed the actions taken against initial coin offerings during the preceding financial year. The questions raised by this 2018 story extend beyond a single price quote. This archive note looks at the mechanism, the limits of the available evidence and the practical implications for holders.",
+    "sections": [
+      {
+        "heading": "A token sale is more than a countdown",
+        "paragraphs": [
+          "An ICO calendar tells readers when a fundraising window opens and closes. It does not establish the rights attached to the token or confirm that the announced product will be delivered. During 2018, public sales, private placements and staged distributions frequently appeared side by side. Comparing them requires attention to who could participate and which terms applied to each round.",
+          "The most useful documents describe the token supply, allocation, vesting and the destination of funds. A low public-sale price can be misleading when earlier rounds have different discounts or release schedules. The amount raised also needs a denomination and a valuation date: a contribution measured in ether may have a very different dollar value several months later."
+        ]
+      },
+      {
+        "heading": "Build a dated research checklist",
+        "paragraphs": [
+          "Before comparing projects, record the sale dates, eligible jurisdictions, token platform and whether the published cap refers to one round or the entire financing. Then inspect how the funds are controlled and which milestones can be checked independently. A roadmap is an intention; a released product, reproducible code or completed audit is a separate piece of evidence.",
+          "The historical calendar on TBCi provides context for the 2018 market. Archive entries should be read alongside their source and should not be mistaken for an opportunity to participate now. Sample allocation and progress values are useful for exploring an interface, but they are kept separate from the historical facts of a sale."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "ICO Roundup: SEC Annual Report, Israeli Offerings Raise $600 Million, Rapper Sued: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 18638,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Fundraising",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "lightning-bike",
+    "title": "This Electric Bike Runs on Lightning Network Bitcoin Micropayments",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "payments",
+    "image": "coin-news-5.jpg",
+    "summary": "Matthias Steinig, a German developer whose focus seems to be on the development of Lightning Network-enabled technologies for use consumers, has created two projects. The questions raised by this 2018 story extend beyond a single price quote. This archive note looks at the mechanism, the limits of the available evidence and the practical implications for holders.",
+    "sections": [
+      {
+        "heading": "Moving value between networks",
+        "paragraphs": [
+          "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+        ]
+      },
+      {
+        "heading": "Why interoperability matters to holders",
+        "paragraphs": [
+          "Cross-chain swaps pursue a related goal from another direction. Instead of leaving balances with a single intermediary, participants coordinate conditional transfers across two networks. The exact guarantees depend on script support, timeout rules and the ability to observe both chains. Atomic settlement describes the relationship between the two transfers, not a promise of unlimited speed or universal compatibility.",
+          "For a portfolio service, payment innovations matter when they change access, settlement or the cost of moving components. They should be assessed with their limits in view. Network fees, available liquidity and recovery procedures remain part of the transaction even when the visible interface reduces the process to a single button."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "This Electric Bike Runs on Lightning Network Bitcoin Micropayments: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 6174,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Payments",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "top-performers",
+    "title": "Top Crypto Performers Overview: Bitcoin Cash, Stellar, Monero, EOS, Ripple",
+    "publishedAt": "2018-10-18",
+    "date": "OCT 18, 2018",
+    "category": "ARTICLES",
+    "topic": "markets",
+    "image": "coin-news-6.jpg",
+    "summary": "An overview of cryptocurrency performance and market developments from the archival news feed. The questions raised by this 2018 story extend beyond a single price quote. This archive note looks at the mechanism, the limits of the available evidence and the practical implications for holders.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Top Crypto Performers Overview: Bitcoin Cash, Stellar, Monero, EOS, Ripple: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 14556,
+    "sources": [
+      {
+        "title": "TBCI 2018 archive — supplied editorial headline",
+        "url": "/news/",
+        "kind": "archive-layout"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "bitcoin-core-017",
+    "title": "Bitcoin Core 0.17.0 brings new wallet and transaction tools",
+    "publishedAt": "2018-10-03",
+    "date": "OCT 03, 2018",
+    "category": "NEWS",
+    "topic": "custody",
+    "image": "news-1.jpg",
+    "summary": "Bitcoin Core 0.17.0 was released in October 2018. Its release notes describe work on wallet management, fee estimation and transaction handling, including support for partially signed transactions. The release is a useful example of infrastructure progress that does not require a change to Bitcoin’s monetary rules.",
+    "sections": [
+      {
+        "heading": "Reporting is part of controlling risk",
+        "paragraphs": [
+          "A trading account is not just a current balance. Deposits, withdrawals, executions and fees must be reconciled to explain how that balance changed. Without a consistent record, a portfolio can appear to have earned a profit when the increase actually came from a deposit. The opposite error can occur after a withdrawal, making ordinary cash movement look like a market loss.",
+          "Good reporting keeps quantities separate from their currency equivalents. It also records the time of the price used for valuation. Two exchanges can show different dollar values for the same asset because their markets, quote currencies and update times differ. A clear ledger lets a reader trace the numbers instead of assuming that every summary card refers to the same snapshot."
+        ]
+      },
+      {
+        "heading": "What to check in an account statement",
+        "paragraphs": [
+          "An execution record should identify the pair, direction, quantity, price and commission. Transfers need an independent identifier and a status that distinguishes a request from a confirmed result. When an operation is retried after a network interruption, the record should recover the original outcome rather than create a second transfer.",
+          "For an index product, the selected basket version matters as well. A purchase of the index token differs from assembling it with all of its components. A redemption can create several component balances before those components are withdrawn individually. Showing those steps separately gives the holder a more accurate picture of what is available and what remains in progress."
+        ]
+      },
+      {
+        "heading": "Partially signed transactions and wallet workflows",
+        "paragraphs": [
+          "Partially Signed Bitcoin Transactions provide a structured way to move an unfinished transaction between tools. One application can construct the transaction, another can supply information about the inputs, and a signing device can add signatures without becoming the wallet’s entire user interface. The final transaction still has to satisfy the same network rules as any other Bitcoin transaction.",
+          "This is especially relevant when an organization separates preparation from signing. A reporting tool may need to see addresses and amounts without holding the keys that authorize spending. The boundary should be explicit: watching a balance, constructing a transaction and signing it are different permissions. A useful release review asks which of those operations has changed and which recovery procedure remains available.",
+          "For the user, a wallet upgrade is therefore an operational event as well as a software installation. Backups, compatibility with signing tools and the handling of an unfinished transaction deserve testing before valuable funds are involved. The release notes are the reference for what version 0.17.0 actually introduced; later wallet capabilities should not be read back into the 2018 feature set."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 18480,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/bitcoin/bitcoin/releases/tag/v0.17.0",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Custody",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "erc721-2018",
+    "title": "ERC-721: a common language for unique digital assets",
+    "publishedAt": "2018-01-24",
+    "date": "JAN 24, 2018",
+    "category": "ARTICLES",
+    "topic": "standards",
+    "image": "news-8.jpg",
+    "summary": "The ERC-721 proposal is dated 24 January 2018. It describes an interface for non-fungible tokens: assets distinguished by an identifier rather than interchangeable units of one balance. The important development is interoperability between contracts and applications, rather than the promise that every tokenized item will become a liquid investment.",
+    "sections": [
+      {
+        "heading": "Why a common interface changes integration work",
+        "paragraphs": [
+          "A token standard gives applications a shared set of operations and expectations. Wallets, marketplaces and accounting tools can support many assets through a common interface instead of writing a separate integration for every contract. The standard does not decide whether an asset has value; it defines how compatible software can identify and interact with it.",
+          "Implementation details still matter. A contract may support the expected functions while introducing additional restrictions, permissions or metadata behaviour. Applications need to consider transfers, approvals and the way external calls are handled. A specification is therefore the beginning of integration work rather than a substitute for testing the deployed contract."
+        ]
+      },
+      {
+        "heading": "Implications for asset research",
+        "paragraphs": [
+          "The distinction between interchangeable units and individually identified items affects how an asset should be represented. Fungible balances suit one model of portfolio accounting. Individually identified tokens require attention to each item and cannot simply be added together as though every unit were equivalent. Mixed-asset standards explore ways to manage several such models through one contract.",
+          "For the 2018 ecosystem, these proposals expanded the range of applications developers could attempt. A dated technical reference makes the scope clear: proposal creation, implementation and widespread adoption are different milestones. Research is stronger when it preserves that chronology and avoids describing a later ecosystem as if it already existed in full."
+        ]
+      },
+      {
+        "heading": "Ownership, approvals and safe transfers",
+        "paragraphs": [
+          "In the ERC-721 interface, a token identifier selects an individual asset. The ownerOf operation asks who owns that identifier, while balanceOf counts how many identifiers an account holds. Counting items does not imply that the items share a price, a legal meaning or identical metadata.",
+          "Approval is another distinct concept. An owner can authorize an operator to move an asset, but that authorization is not the same as transferring ownership immediately. Wallet interfaces need to explain which account receives an approval and whether it covers one token or a wider set. Clear approval controls are part of making the common interface usable.",
+          "A safe transfer also considers the receiving contract. An application that can receive ether is not automatically prepared to manage a non-fungible token. Checking the receiving interface helps avoid a class of integration mistakes, although it does not certify the economic value of the item being transferred. These distinctions explain why a common token standard matters independently of a speculative market."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 8827,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/ethereum/ercs/blob/master/ERCS/erc-721.md",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Standards",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "erc1155-2018",
+    "title": "ERC-1155 explores multiple token types in a single contract",
+    "publishedAt": "2018-06-17",
+    "date": "JUN 17, 2018",
+    "category": "ARTICLES",
+    "topic": "standards",
+    "image": "news-2.jpg",
+    "summary": "The ERC-1155 proposal was created in June 2018 and describes a multi-token interface. Its design allows different token identifiers and batch operations within one contract. A common interface can reduce repeated integration work while leaving the economic meaning and behaviour of each asset to its implementation.",
+    "sections": [
+      {
+        "heading": "Why a common interface changes integration work",
+        "paragraphs": [
+          "A token standard gives applications a shared set of operations and expectations. Wallets, marketplaces and accounting tools can support many assets through a common interface instead of writing a separate integration for every contract. The standard does not decide whether an asset has value; it defines how compatible software can identify and interact with it.",
+          "Implementation details still matter. A contract may support the expected functions while introducing additional restrictions, permissions or metadata behaviour. Applications need to consider transfers, approvals and the way external calls are handled. A specification is therefore the beginning of integration work rather than a substitute for testing the deployed contract."
+        ]
+      },
+      {
+        "heading": "Implications for asset research",
+        "paragraphs": [
+          "The distinction between interchangeable units and individually identified items affects how an asset should be represented. Fungible balances suit one model of portfolio accounting. Individually identified tokens require attention to each item and cannot simply be added together as though every unit were equivalent. Mixed-asset standards explore ways to manage several such models through one contract.",
+          "For the 2018 ecosystem, these proposals expanded the range of applications developers could attempt. A dated technical reference makes the scope clear: proposal creation, implementation and widespread adoption are different milestones. Research is stronger when it preserves that chronology and avoids describing a later ecosystem as if it already existed in full."
+        ]
+      },
+      {
+        "heading": "Batch operations and mixed asset models",
+        "paragraphs": [
+          "ERC-1155 associates balances with both an account and a token identifier. That identifier can represent an interchangeable class of units or a more specific item. The contract can therefore describe several asset classes without requiring an entirely separate contract for every class.",
+          "Batch balance queries and batch transfers let an application handle several identifiers together. This can change the integration pattern for a game, a marketplace or an inventory service, but applications still have to know what each identifier represents. Grouping operations does not make different assets economically equivalent.",
+          "The proposed receiving interface also makes the recipient’s handling of a transfer explicit. Applications need to consider operator approvals, metadata and callbacks, particularly when assets are moved to another contract. The 2018 proposal opened a design space; the existence of the proposal alone did not mean that every wallet or marketplace immediately supported it."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 11104,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/ethereum/ercs/blob/master/ERCS/erc-1155.md",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Standards",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "create2-2018",
+    "title": "CREATE2 and the question of predictable contract addresses",
+    "publishedAt": "2018-04-20",
+    "date": "APR 20, 2018",
+    "category": "ARTICLES",
+    "topic": "infrastructure",
+    "image": "news-3.jpg",
+    "summary": "EIP-1014, created on 20 April 2018, describes the CREATE2 instruction. The proposal concerns how a contract address can be derived before deployment. In a historical view, the proposal date is distinct from the later date on which the instruction became active on Ethereum’s main network.",
+    "sections": [
+      {
+        "heading": "From a product announcement to a working network",
+        "paragraphs": [
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
+        ]
+      },
+      {
+        "heading": "How to read the technical evidence",
+        "paragraphs": [
+          "Look for a public specification, versioned releases and an explanation of the trust assumptions. If an application relies on a small set of operators, it matters who can change that set and what users can do when an operator stops responding. If execution occurs on another chain, the bridge and its withdrawal path deserve the same attention as the main application.",
+          "These details help separate a durable service from a short-lived surge in attention. A diversified index may capture demand for several infrastructure approaches without assuming that all projects have equivalent maturity. The underlying observations still need a date and a source: an improvement announced in 2018 should be evaluated against the software and market conditions available in that period."
+        ]
+      },
+      {
+        "heading": "A predictable address is not a deployed application",
+        "paragraphs": [
+          "CREATE2 derives an address from a deploying address, a salt and the hash of initialization code. This makes it possible to reason about the address before that code is deployed. The initialization code is part of the calculation, so changing it changes the resulting address even when the other inputs are retained.",
+          "That property can support designs in which participants agree on a contract that may be deployed later. It does not mean that the application already exists at the predicted address or that every later interaction is safe. Software still has to inspect the code, permissions and conditions relevant to the intended use.",
+          "Chronology matters here. EIP-1014 was created in April 2018, while main-network availability followed a later upgrade. An archive article can discuss the proposal as a 2018 development without describing the instruction as already active on Ethereum mainnet at the proposal date. Keeping those milestones separate prevents a technical timeline from becoming misleading."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 15640,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1014.md",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Infrastructure",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "lightning-beta-2018",
+    "title": "Lightning’s 2018 beta puts small payments under the microscope",
+    "publishedAt": "2018-03-15",
+    "date": "MAR 15, 2018",
+    "category": "NEWS",
+    "topic": "payments",
+    "image": "coin-news-5.jpg",
+    "summary": "The 2018 beta period for Lightning software drew attention to the practical operation of payment channels. The story was about experimentation with routing, liquidity and recovery as much as it was about speed. A second-layer system still depends on the rules and settlement guarantees of its underlying blockchain.",
+    "sections": [
+      {
+        "heading": "Moving value between networks",
+        "paragraphs": [
+          "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+        ]
+      },
+      {
+        "heading": "Why interoperability matters to holders",
+        "paragraphs": [
+          "Cross-chain swaps pursue a related goal from another direction. Instead of leaving balances with a single intermediary, participants coordinate conditional transfers across two networks. The exact guarantees depend on script support, timeout rules and the ability to observe both chains. Atomic settlement describes the relationship between the two transfers, not a promise of unlimited speed or universal compatibility.",
+          "For a portfolio service, payment innovations matter when they change access, settlement or the cost of moving components. They should be assessed with their limits in view. Network fees, available liquidity and recovery procedures remain part of the transaction even when the visible interface reduces the process to a single button."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Lightning’s 2018 beta puts small payments under the microscope: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 993,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/lightningnetwork/lnd/releases/tag/v0.4-beta",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Payments",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "bitcoin-whitepaper-ten-years",
+    "title": "Ten years after the Bitcoin white paper: separate the network from the market",
+    "publishedAt": "2018-10-31",
+    "date": "OCT 31, 2018",
+    "category": "ANALYSIS",
+    "topic": "markets",
+    "image": "news-4.jpg",
+    "summary": "The Bitcoin white paper was published in October 2008, making October 2018 its tenth anniversary. Looking back from that point highlights two different histories: development of a peer-to-peer settlement network and development of the markets that formed around its asset. The two are connected, but they answer different research questions.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Ten years after the Bitcoin white paper: separate the network from the market: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 17446,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/bitcoin/bitcoin",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "usdc-2018",
+    "title": "Dollar-linked tokens compete on redemption, liquidity and transparency",
+    "publishedAt": "2018-09-26",
+    "date": "SEP 26, 2018",
+    "category": "NEWS",
+    "topic": "stablecoins",
+    "image": "news-4.jpg",
+    "summary": "New dollar-linked instruments broadened the settlement choices available to cryptocurrency traders during 2018. USDC was among the projects entering that discussion. Comparing stablecoins requires more than a ticker and a target price: redemption arrangements, supported venues and the treatment of reserves are central to their usefulness.",
+    "sections": [
+      {
+        "heading": "One dollar, several very different mechanisms",
+        "paragraphs": [
+          "A token that targets a dollar price still depends on a mechanism outside its trading pair. Some issuers hold bank deposits and promise redemption; others lock crypto collateral in contracts. A quote close to one dollar tells a reader what traders are paying at that moment. It does not, by itself, describe the reserves, the legal claim, or the conditions under which a holder can redeem.",
+          "For a trader moving between exchanges, the useful comparison starts with supported deposits and withdrawals. A cheaper trading fee may be offset by a withdrawal charge or a temporary suspension. Counterparty risk also changes when balances are held by an exchange rather than in a wallet controlled by the holder. These distinctions became especially visible as new dollar-linked tokens appeared during 2018."
+        ]
+      },
+      {
+        "heading": "What an index investor should measure",
+        "paragraphs": [
+          "A cash-like allocation can reduce exposure to a falling market, but it introduces different risks. The index methodology needs to say which issuers are eligible, whether a token is included in the basket or used only for settlement, and what happens if its market price diverges from the reference currency. These rules should be written before a disruption, rather than improvised during it.",
+          "Useful records include reserve disclosures, redemption terms, spreads on several venues and the concentration of liquidity. A high reported volume on one exchange is not the same as reliable depth at the price an investor actually needs. Comparing these indicators over time produces a more useful picture than treating every dollar-pegged instrument as interchangeable."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Dollar-linked tokens compete on redemption, liquidity and transparency: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 20013,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/centrehq/centre-tokens",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Stablecoins",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "bch-fork-2018",
+    "title": "The November Bitcoin Cash split shows the operational cost of a fork",
+    "publishedAt": "2018-11-15",
+    "date": "NOV 15, 2018",
+    "category": "NEWS",
+    "topic": "infrastructure",
+    "image": "news-6.jpg",
+    "summary": "The Bitcoin Cash network split in November 2018 highlighted the operational decisions exchanges and wallets face around incompatible rule changes. Ticker assignment, deposit suspensions and replay considerations can all affect a holder’s ability to move funds. These are service and settlement questions in addition to market-price questions.",
+    "sections": [
+      {
+        "heading": "From a product announcement to a working network",
+        "paragraphs": [
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
+        ]
+      },
+      {
+        "heading": "How to read the technical evidence",
+        "paragraphs": [
+          "Look for a public specification, versioned releases and an explanation of the trust assumptions. If an application relies on a small set of operators, it matters who can change that set and what users can do when an operator stops responding. If execution occurs on another chain, the bridge and its withdrawal path deserve the same attention as the main application.",
+          "These details help separate a durable service from a short-lived surge in attention. A diversified index may capture demand for several infrastructure approaches without assuming that all projects have equivalent maturity. The underlying observations still need a date and a source: an improvement announced in 2018 should be evaluated against the software and market conditions available in that period."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "The November Bitcoin Cash split shows the operational cost of a fork: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 6157,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/Bitcoin-ABC/bitcoin-abc/releases",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Infrastructure",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "ico-year-in-review",
+    "title": "The 2018 token-sale calendar: what dates do and do not tell an investor",
+    "publishedAt": "2018-12-20",
+    "date": "DEC 20, 2018",
+    "category": "ANALYSIS",
+    "topic": "fundraising",
+    "image": "coin-news-4.jpg",
+    "summary": "A year-end view of token fundraising is more useful when it distinguishes sale windows from product delivery. A calendar can establish when a project sought funding, while vesting schedules, use of proceeds and later technical milestones require different evidence. This note explains how to read those records together without treating an ended sale as a current opportunity.",
+    "sections": [
+      {
+        "heading": "A token sale is more than a countdown",
+        "paragraphs": [
+          "An ICO calendar tells readers when a fundraising window opens and closes. It does not establish the rights attached to the token or confirm that the announced product will be delivered. During 2018, public sales, private placements and staged distributions frequently appeared side by side. Comparing them requires attention to who could participate and which terms applied to each round.",
+          "The most useful documents describe the token supply, allocation, vesting and the destination of funds. A low public-sale price can be misleading when earlier rounds have different discounts or release schedules. The amount raised also needs a denomination and a valuation date: a contribution measured in ether may have a very different dollar value several months later."
+        ]
+      },
+      {
+        "heading": "Build a dated research checklist",
+        "paragraphs": [
+          "Before comparing projects, record the sale dates, eligible jurisdictions, token platform and whether the published cap refers to one round or the entire financing. Then inspect how the funds are controlled and which milestones can be checked independently. A roadmap is an intention; a released product, reproducible code or completed audit is a separate piece of evidence.",
+          "The historical calendar on TBCi provides context for the 2018 market. Archive entries should be read alongside their source and should not be mistaken for an opportunity to participate now. Sample allocation and progress values are useful for exploring an interface, but they are kept separate from the historical facts of a sale."
+        ]
+      },
+      {
+        "heading": "Read the calendar as a set of reported observations",
+        "paragraphs": [
+          "The calendar selects forty-eight offerings whose recorded opening and closing dates both belong to 2018. It preserves the project name, token and listed country rather than substituting later brands. Eight inverted date ranges in the source year were excluded instead of being silently repaired.",
+          "A project can overlap several calendar months. The month view therefore includes any sale window that intersects that month, while selecting a day narrows the list to offerings recorded as open on that day. The status label always names a historical reference date, so an upcoming entry does not imply that readers can participate in a sale today.",
+          "Reported proceeds can refer to a public round rather than all private and public financing. If the source does not record a value, the interface says so. The illustrative allocation ring is a separate, clearly labeled mock feature; its percentages are not evidence of a project’s original token distribution."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 13274,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "/ico/",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Fundraising",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "volatility-2018",
+    "title": "Why a low-volatility basket still moves in a falling market",
+    "publishedAt": "2018-12-12",
+    "date": "DEC 12, 2018",
+    "category": "ANALYSIS",
+    "topic": "markets",
+    "image": "news-9.jpg",
+    "summary": "A stable allocation is a portfolio design choice, not a guarantee of a stable price. Correlation can rise when the entire cryptocurrency market comes under pressure, reducing the benefit of holding several related assets. The comparison between broad and concentrated baskets is therefore best expressed through a range of outcomes and a clearly defined measurement period.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Why a low-volatility basket still moves in a falling market: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 2191,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "/index/tbci-10-stable/",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "research-wallet-reconciliation",
+    "title": "A practical guide to reconciling crypto wallet balances",
+    "publishedAt": "2018-11-28",
+    "date": "NOV 28, 2018",
+    "category": "ARTICLES",
+    "topic": "custody",
+    "image": "coin-news-1.jpg",
+    "summary": "The starting point for a portfolio report is a record of quantities. Prices then provide an equivalent value at a specified time. This order matters: depositing a coin changes the balance without generating investment income, while a market move changes the valuation without changing the quantity held.",
+    "sections": [
+      {
+        "heading": "Reporting is part of controlling risk",
+        "paragraphs": [
+          "A trading account is not just a current balance. Deposits, withdrawals, executions and fees must be reconciled to explain how that balance changed. Without a consistent record, a portfolio can appear to have earned a profit when the increase actually came from a deposit. The opposite error can occur after a withdrawal, making ordinary cash movement look like a market loss.",
+          "Good reporting keeps quantities separate from their currency equivalents. It also records the time of the price used for valuation. Two exchanges can show different dollar values for the same asset because their markets, quote currencies and update times differ. A clear ledger lets a reader trace the numbers instead of assuming that every summary card refers to the same snapshot."
+        ]
+      },
+      {
+        "heading": "What to check in an account statement",
+        "paragraphs": [
+          "An execution record should identify the pair, direction, quantity, price and commission. Transfers need an independent identifier and a status that distinguishes a request from a confirmed result. When an operation is retried after a network interruption, the record should recover the original outcome rather than create a second transfer.",
+          "For an index product, the selected basket version matters as well. A purchase of the index token differs from assembling it with all of its components. A redemption can create several component balances before those components are withdrawn individually. Showing those steps separately gives the holder a more accurate picture of what is available and what remains in progress."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "A practical guide to reconciling crypto wallet balances: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 22506,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "/app/wallets/",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Custody",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "liquidity-2018",
+    "title": "A high-volume exchange is not always a deep market",
+    "publishedAt": "2018-12-05",
+    "date": "DEC 05, 2018",
+    "category": "ANALYSIS",
+    "topic": "markets",
+    "image": "coin-news-2.jpg",
+    "summary": "Reported volume measures activity during an interval; order-book depth measures what can be traded near a price. The two are related but not interchangeable. For an index holder who may need to convert several basket components, liquidity across individual pairs matters as much as a venue’s overall ranking.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "A high-volume exchange is not always a deep market: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 6464,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "/exchanges/",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "top-coins-november",
+    "title": "Top coins to watch: infrastructure, liquidity and the November 2018 market",
+    "publishedAt": "2018-11-05",
+    "date": "NOV 05, 2018",
+    "category": "ANALYSIS",
+    "topic": "markets",
+    "image": "feature-main.jpg",
+    "summary": "A watchlist is most useful when it states what is being watched. In November 2018, an index-oriented reader could compare liquidity, development milestones and concentration rather than simply choose the largest recent price increase. This research note outlines a repeatable approach to the same questions.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Top coins to watch: infrastructure, liquidity and the November 2018 market: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 11883,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "/coins/",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "trx-network-2018",
+    "title": "TRON in 2018: look beyond a promotional token giveaway",
+    "publishedAt": "2018-11-04",
+    "date": "NOV 04, 2018",
+    "category": "ARTICLES",
+    "topic": "infrastructure",
+    "image": "feature-trx.jpg",
+    "summary": "Promotional campaigns draw attention to a network, but the underlying research still concerns software, usage and the way value moves through the system. A giveaway changes the distribution of a small allocation; it does not itself establish demand for the network’s services. The distinction is especially important when a promotion is presented beside market statistics.",
+    "sections": [
+      {
+        "heading": "From a product announcement to a working network",
+        "paragraphs": [
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
+        ]
+      },
+      {
+        "heading": "How to read the technical evidence",
+        "paragraphs": [
+          "Look for a public specification, versioned releases and an explanation of the trust assumptions. If an application relies on a small set of operators, it matters who can change that set and what users can do when an operator stops responding. If execution occurs on another chain, the bridge and its withdrawal path deserve the same attention as the main application.",
+          "These details help separate a durable service from a short-lived surge in attention. A diversified index may capture demand for several infrastructure approaches without assuming that all projects have equivalent maturity. The underlying observations still need a date and a source: an improvement announced in 2018 should be evaluated against the software and market conditions available in that period."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "TRON in 2018: look beyond a promotional token giveaway: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 7310,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "https://github.com/tronprotocol/java-tron",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Infrastructure",
+      "2018 archive",
+      "Research"
+    ]
+  },
+  {
+    "slug": "weekly-recap-november",
+    "title": "Crypto recap: the week ending 4 November 2018",
+    "publishedAt": "2018-11-04",
+    "date": "NOV 04, 2018",
+    "category": "NEWS",
+    "topic": "markets",
+    "image": "feature-recap.jpg",
+    "summary": "A weekly recap can combine technical developments, changes in market participation and the practical state of trading venues. Reading these observations together is more useful than treating each price movement as an isolated signal. The purpose of this review is to establish context for a portfolio comparison over the same dates.",
+    "sections": [
+      {
+        "heading": "Price, liquidity and market breadth",
+        "paragraphs": [
+          "A single last-traded price is only one observation in a market. The spread between bids and offers, the quantity available near those prices and the distribution of activity across venues all affect how easily a position can be changed. A sharp move on a small market may therefore say less about the entire asset than the same move supported by broad participation.",
+          "The 2018 market also illustrates why an index and an individual coin should not be treated as identical exposures. Constituents can move together during periods of stress while still differing in depth, issuance and operational risk. Diversification changes the distribution of outcomes; it does not remove the effect of a market-wide contraction."
+        ]
+      },
+      {
+        "heading": "Compare the same window and the same units",
+        "paragraphs": [
+          "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+        ]
+      },
+      {
+        "heading": "In the context of this report",
+        "paragraphs": [
+          "Crypto recap: the week ending 4 November 2018: the relevant comparison is with the same type of event or instrument, measured over the same dates. A release should be compared with the previous release; a settlement token with its redemption alternatives; a market statistic with a consistent set of venues. Keeping that context explicit prevents a headline from becoming a claim that the underlying evidence cannot support.",
+          "For a portfolio decision, the final step is to connect the observation to an existing rule: eligibility, liquidity, concentration or the ability to settle a transaction. An observation that does not change any of these may still be interesting, but it should not automatically change the portfolio. Recording the rationale makes subsequent review possible."
+        ]
+      }
+    ],
+    "author": "TBCi Research",
+    "readMinutes": 3,
+    "views": 12394,
+    "sources": [
+      {
+        "title": "Technical / historical reference",
+        "url": "/news/",
+        "kind": "background"
+      }
+    ],
+    "tags": [
+      "Markets",
+      "2018 archive",
+      "Research"
+    ]
+  }
+]

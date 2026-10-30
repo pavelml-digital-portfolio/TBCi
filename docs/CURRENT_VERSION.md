@@ -1,8 +1,10 @@
 # Актуальная поставка TBCi
 
-**Frontend v0.2.0 и ТЗ v2.0** — воспроизведение 21 макета из последнего TBCI.rar. Основной визуальный источник: 12 JPG публичного сайта и 9 JPG личного кабинета. Реестр, SHA-256 и маршруты: [SCREENS.csv](specification/SCREENS.csv).
+**Frontend v0.3.0 и ТЗ v2.1** — воспроизведение 21 макета из последнего TBCI.rar. Основной визуальный источник: 12 JPG публичного сайта и 9 JPG личного кабинета. Реестр, SHA-256 и маршруты: [SCREENS.csv](specification/SCREENS.csv).
 
-Техническое задание: [PDF](specification/TBCi-Technical-Specification.pdf), [Word](specification/TBCi-Technical-Specification.docx), [HTML](specification/TECHNICAL_SPEC.html). 184 экранных требования, 50 критериев приёмки. [Сравнение макетов и реализации](specification/REVIEW.html).
+Расширение по новому поручению: интерактивные графики, 32 статьи, календарь 48 ICO 2018, 21 SVG и адаптивные суммы/формы. [Анализ изменений](frontend/CONTENT_AUDIT.md).
+
+Техническое задание: [PDF](specification/TBCi-Technical-Specification.pdf), [Word](specification/TBCi-Technical-Specification.docx), [HTML](specification/TECHNICAL_SPEC.html). 196 требований, 62 критерия приёмки. [Сравнение макетов и реализации](specification/REVIEW.html).
 
 Единый Astro/React-проект в apps/web. Login/Register сразу открывают /app/. Операции демонстрационные, сохраняются локально; авторизация, API и реальные переводы не подключены. Развёртывание на https://tbci.pavelml.ru/ через Apache/vps-release, noindex сохранён. Идентификатор активного выпуска — deployment.json и GitHub Actions Publish TBCi.
 

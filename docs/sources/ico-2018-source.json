@@ -1,0 +1,61 @@
+{
+  "title": "Archived ICObench export",
+  "url": "https://github.com/earlvanze/ICO-Analysis-Scraper/blob/master/ICO%20Analysis%20-%20ICOBench%20Analysis.csv",
+  "raw_url": "https://raw.githubusercontent.com/earlvanze/ICO-Analysis-Scraper/master/ICO%20Analysis%20-%20ICOBench%20Analysis.csv",
+  "retrieved": "2026-10-30",
+  "sha256": "779f074a0da6e1ae4a3fcb08cce6fe68061541ba41d3e6bced006f8d05e89846",
+  "source_rows": 5331,
+  "selected": 48,
+  "rules": "Both dates within 2018; end >= start; token and country present. Four entries per starting month, favoring named examples and records with reported amounts. No invented dates, proceeds, ratings or prices.",
+  "invalid_2018_ranges_excluded": [
+    {
+      "row": 2,
+      "name": "0chain",
+      "start": "2018-02-18",
+      "end": "2018-02-16"
+    },
+    {
+      "row": 530,
+      "name": "BFToken",
+      "start": "2018-02-06",
+      "end": "2018-01-16"
+    },
+    {
+      "row": 1014,
+      "name": "ClearAid",
+      "start": "2018-11-01",
+      "end": "2018-04-16"
+    },
+    {
+      "row": 2262,
+      "name": "GoldMineCoin",
+      "start": "2018-02-15",
+      "end": "2018-01-01"
+    },
+    {
+      "row": 2404,
+      "name": "HeroesJourney",
+      "start": "2018-06-16",
+      "end": "2018-04-16"
+    },
+    {
+      "row": 3132,
+      "name": "MetaMorph.pro",
+      "start": "2018-06-28",
+      "end": "2018-06-08"
+    },
+    {
+      "row": 3283,
+      "name": "Mundus",
+      "start": "2018-02-01",
+      "end": "2018-01-25"
+    },
+    {
+      "row": 3767,
+      "name": "PlayChip",
+      "start": "2018-11-21",
+      "end": "2018-11-20"
+    }
+  ],
+  "limits": "Secondary archive, not independently confirmed sale results. Dates and raised amounts are reported by the listing. Profile text is original; allocation charts are explicitly simulated."
+}

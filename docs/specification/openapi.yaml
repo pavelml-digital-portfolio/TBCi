@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: TBCi — проект API по макетам
-  version: 2.0.0
+  version: 2.1.0
   description: Не реализован в текущем статическом демо. Только контракт ядра экранов;
     Page содержит ещё не детализированные read-модели. Провайдерские callbacks, сессии,
     deposits/withdrawals и лицензии будут специфицированы после выбора интеграций.
@@ -518,6 +518,44 @@ paths:
                 $ref: '#/components/schemas/Error'
         '401':
           description: Нет серверной сессии
+  /icos:
+    get:
+      operationId: listICOArchive
+      summary: Архив выбранных ICO 2018
+      security: []
+      responses:
+        '200':
+          description: Архивные факты и отдельно помеченные демонстрационные поля
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+      parameters:
+      - name: year
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 2018
+          default: 2018
+  /icos/{id}:
+    get:
+      operationId: icoArchiveDetail
+      summary: Архивная запись ICO и происхождение данных
+      security: []
+      responses:
+        '200':
+          description: Архивные факты и отдельно помеченные демонстрационные поля
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
 components:
   securitySchemes:
     session:

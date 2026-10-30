@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro';import Public from '../../components/Public';import projects from '../../data/ico-2018.json';
+export function getStaticPaths(){return projects.map(p=>({params:{slug:p.id}}))}
+const {slug}=Astro.params;
+---
+<Base title={`${slug} — ICO archive 2018 — TBCi`}><Public client:load page="ico" slug={slug}/></Base>

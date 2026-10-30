@@ -1,0 +1,112 @@
+{
+  "source": "https://github.com/spothq/cryptocurrency-icons",
+  "license": "CC0-1.0",
+  "retrieved": "2026-10-30",
+  "files": [
+    {
+      "symbol": "BTC",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/btc.svg",
+      "sha256": "5a8131ecdf855b12cb56080aeeeefea266976529c45b2d58c284a13b7519f4ca"
+    },
+    {
+      "symbol": "XRP",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/xrp.svg",
+      "sha256": "31fe41b6b3a4d98c9b46d7c37d60dea97fa5d9ebbd235ac5bfe23e4fd1eb8361"
+    },
+    {
+      "symbol": "ETH",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/eth.svg",
+      "sha256": "1f94df8533f61806f7b17eaf9cd28678cdba66e1d82a9ca8f9fb38d35a907e9c"
+    },
+    {
+      "symbol": "BCH",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/bch.svg",
+      "sha256": "b4067ef1f7f07fbd0edeea44fbfce80aec7cf7ca80ea3c269ad654b601073267"
+    },
+    {
+      "symbol": "EOS",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/eos.svg",
+      "sha256": "079834a15012b29d532a518e4be94d6aa2e1c78eb6174c17801f5473de60bd4f"
+    },
+    {
+      "symbol": "IOTA",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/miota.svg",
+      "sha256": "e5285b572ca6203e499601cd65cd5ebf8f2a58710fbdd1ee151da866853bcdab"
+    },
+    {
+      "symbol": "ETC",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/etc.svg",
+      "sha256": "d8e9654408cb133a902c38004281998dd1d778402c8b88998e5373f5e5a962de"
+    },
+    {
+      "symbol": "QTUM",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/qtum.svg",
+      "sha256": "70adb506de7a4a6626a46cbf35a0b93f94ee08a2eb3c3802f7182b30b343e75a"
+    },
+    {
+      "symbol": "ZIL",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/zil.svg",
+      "sha256": "78eb1dc596d228da8994a15a3856c02567e9d8d9f45cec9ad875cc1deab3d9f9"
+    },
+    {
+      "symbol": "LTC",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/ltc.svg",
+      "sha256": "21b1ffe201826ba5d027f814baab9103938898c0be374d3cc948bd119b55ce66"
+    },
+    {
+      "symbol": "NEO",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/neo.svg",
+      "sha256": "e6975772080d71e8d8a821a6d26f0f23566c0c8642b2659d202028edf7f7ee5e"
+    },
+    {
+      "symbol": "XMR",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/xmr.svg",
+      "sha256": "0ba4288b46abfe05366f1aa1c76c6b8a265af5c621dcee34eba2d2b9beeeff87"
+    },
+    {
+      "symbol": "ADA",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/ada.svg",
+      "sha256": "db824768c06f9d2e7cfe0c361da4e67eb6106b9d962f4190068b778e7314894e"
+    },
+    {
+      "symbol": "DASH",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/dash.svg",
+      "sha256": "32c0b3e26e091f76e42f16147c58f1e6247d1307ace6c09483a70dfe64f831f6"
+    },
+    {
+      "symbol": "XLM",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/xlm.svg",
+      "sha256": "65b922105452f2c5276a2da9c289ac839b8a4d1b94d716c1aa5dd5b7f06fe52e"
+    },
+    {
+      "symbol": "TRX",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/trx.svg",
+      "sha256": "5b6b648320b6e99b8e60d447271f753dc9989183e3a07f0300ee44d0743130f0"
+    },
+    {
+      "symbol": "BNB",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/bnb.svg",
+      "sha256": "ce2befc91baa544c13b63d6c02a12cfcf84702a5ec29b650e358a8b4a96c4ce8"
+    },
+    {
+      "symbol": "USDT",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/usdt.svg",
+      "sha256": "cddba428a029844888b59bae59c6400ee684b0d51dfc490a4374eef6bb63ea16"
+    },
+    {
+      "symbol": "LINK",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/link.svg",
+      "sha256": "2457990f68e333130633497d20456de38af8421aba8fdb4149900e4e051f10fa"
+    },
+    {
+      "symbol": "ZEC",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/zec.svg",
+      "sha256": "fa169a9b7a336a220cc233570e205a7a680796e856c62f835696682795ebb299"
+    },
+    {
+      "symbol": "USD",
+      "url": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/color/usd.svg",
+      "sha256": "60c951edd9bda664e2623252f1f7eb9964f9d931836c4baebb91f0321f5cb10d"
+    }
+  ]
+}

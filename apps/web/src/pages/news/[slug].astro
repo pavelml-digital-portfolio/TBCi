@@ -1,6 +1,6 @@
 ---
-import Base from "../../layouts/Base.astro";import Public from "../../components/Public";import {news,coinNews} from "../../data/demo";
-export function getStaticPaths(){return [...news,...coinNews].map(a=>({params:{slug:a.slug}}))}
+import Base from "../../layouts/Base.astro";import Public from "../../components/Public";import {news} from "../../data/demo";
+export function getStaticPaths(){return news.map(a=>({params:{slug:a.slug}}))}
 const {slug}=Astro.params;
 ---
 <Base title={`${slug} — TBCi`}><Public client:load page="article" slug={slug}/></Base>

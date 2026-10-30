@@ -1,0 +1,37 @@
+{
+  "screens": [
+    {
+      "file": "EXT-charts.jpg",
+      "title": "Свечи, объём, SMA, Bollinger и RSI · TBCi-50 Active"
+    },
+    {
+      "file": "EXT-ico-list.jpg",
+      "title": "Архив ICO 2018 · список"
+    },
+    {
+      "file": "EXT-ico-calendar.jpg",
+      "title": "Архив ICO 2018 · календарь"
+    },
+    {
+      "file": "EXT-ico-details.jpg",
+      "title": "Архивная карточка QuarkChain и источник"
+    },
+    {
+      "file": "EXT-article.jpg",
+      "title": "Развёрнутая статья 2018"
+    },
+    {
+      "file": "EXT-news.jpg",
+      "title": "Лента 32 статей"
+    },
+    {
+      "file": "EXT-sell-wide.jpg",
+      "title": "TBCi-50 Active · исправленная сводка и SVG"
+    },
+    {
+      "file": "EXT-sell-mobile.jpg",
+      "title": "Мобильная продажа и самостоятельный селектор валюты"
+    }
+  ],
+  "errors": []
+}

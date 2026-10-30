@@ -1,3 +1,5 @@
+import { IndexNotes } from "./MarketContent";
+import { profiles, marketStats, seriesFor } from "../data/market";
 import { useState } from "react";
 import {
   assets,
@@ -103,28 +105,49 @@ function TokenSummary() {
         </select>
       </div>
       <div className="summary-change">
-        <small>Change 24 hour 09:42 PM UTC</small>
+        <small>Change 24 hour · 31 Dec 2018 UTC</small>
         <div>
           <strong>{number(selected.points)}</strong>
-          <span className="positive">▲ 1.468 &nbsp; +{selected.change}%</span>
+          <span className={selected.change >= 0 ? "positive" : "negative"}>
+            {selected.change >= 0 ? "▲" : "▼"} 1.468 &nbsp;{" "}
+            {selected.change > 0 ? "+" : ""}
+            {selected.change}%
+          </span>
         </div>
       </div>
-      <Sparkline negative={selected.change < 0} />
+      <Sparkline
+        negative={selected.change < 0}
+        instrument={state.selectedIndex}
+      />
     </section>
   );
 }
 function Profits() {
+  const { state } = useDemo();
+  const history = seriesFor(state.selectedIndex);
+  const performance = marketStats(state.selectedIndex);
+  const profit = (50000 * performance.returnPct) / 100;
+  const points = Array.from(
+    { length: 12 },
+    (_, i) => history[Math.min(364, Math.round((i * 364) / 11))],
+  );
+  const low = Math.min(...points.map((b) => b.close)),
+    high = Math.max(...points.map((b) => b.close));
+  const coords = points.map((b, i) => [
+    35 + (i * 455) / 11,
+    125 - ((b.close - low) / (high - low || 1)) * 95,
+  ]);
   const [currency, setCurrency] = useState("USD");
   return (
     <div className="profit-grid">
       <section className="profit-card raised">
         <div>
           <h2>Total Profit</h2>
-          <p className="subtle">29 Oct 2018 – 16 Nov 2019</p>
+          <p className="subtle">1 Jan 2018 – 31 Dec 2018 · model return</p>
           <strong className="profit-number">
             {currency === "USD"
-              ? money(23225, 0)
-              : number(23225 / coin(currency).price) + " " + currency}
+              ? money(profit, 0)
+              : number(profit / coin(currency).price) + " " + currency}
           </strong>
           <CurrencyButtons value={currency} onChange={setCurrency} />
         </div>
@@ -150,8 +173,12 @@ function Profits() {
             />
           </svg>
           <div>
-            <strong>+2,11%</strong>
-            <small>Total profit</small>
+            <strong
+              className={performance.returnPct >= 0 ? "positive" : "negative"}
+            >
+              {number(performance.returnPct, 1)}%
+            </strong>
+            <small>2018 sample return</small>
           </div>
         </div>
       </section>
@@ -168,26 +195,24 @@ function Profits() {
             ))}
           </g>
           <path
-            d="M35 80 70 95 115 90 165 55 210 50 255 63 305 67 355 59 405 62 450 51 490 66"
+            d={coords.map((p, i) => (i ? "L" : "M") + p.join(" ")).join(" ")}
             fill="none"
             stroke="#319dff"
             strokeWidth="2"
           />
-          {[35, 70, 115, 165, 210, 255, 305, 355, 405, 450, 490].map((x, i) => (
-            <circle
-              key={x}
-              cx={x}
-              cy={[80, 95, 90, 55, 50, 63, 67, 59, 62, 51, 66][i]}
-              r="3"
-              fill="#319dff"
-            >
-              <title>{i + 1 + " Nov 2018 · " + number(24000 + i * 137)}</title>
+          {coords.map((p, i) => (
+            <circle key={i} cx={p[0]} cy={p[1]} r="3" fill="#319dff">
+              <title>
+                {new Date(points[i].time * 1000).toISOString().slice(0, 10) +
+                  " · " +
+                  number(points[i].close)}
+              </title>
             </circle>
           ))}
           <g fill="#a2a2a8" fontSize="11">
             {[35, 115, 210, 305, 405, 490].map((x, i) => (
               <text key={x} x={x - 10} y="149">
-                {i + 10}/11
+                {["Jan", "Mar", "May", "Jul", "Sep", "Dec"][i]}
               </text>
             ))}
           </g>
@@ -373,6 +398,116 @@ function WalletTable() {
     </section>
   );
 }
+function RecentActivity() {
+  const { state } = useDemo();
+  const [kind, setKind] = useState("All");
+  const samples = [
+    {
+      id: "sample-1",
+      type: "buy",
+      symbol: "TBCi",
+      amount: 12,
+      value: 473.49,
+      date: "2018-12-28T14:21:00Z",
+    },
+    {
+      id: "sample-2",
+      type: "deposit",
+      symbol: "ETH",
+      amount: 1.25,
+      value: 260.125,
+      date: "2018-12-22T09:40:00Z",
+    },
+    {
+      id: "sample-3",
+      type: "compile",
+      symbol: "TBCi",
+      amount: 8,
+      value: 315.66,
+      date: "2018-12-18T11:12:00Z",
+    },
+    {
+      id: "sample-4",
+      type: "sell",
+      symbol: "TBCi",
+      amount: 3,
+      value: 118.37,
+      date: "2018-12-14T16:33:00Z",
+    },
+    {
+      id: "sample-5",
+      type: "withdraw",
+      symbol: "BTC",
+      amount: 0.05,
+      value: 316.69,
+      date: "2018-12-10T10:07:00Z",
+    },
+  ];
+  const rows = [...state.operations, ...samples]
+    .filter((r) => kind === "All" || r.type === kind.toLowerCase())
+    .slice(0, 8);
+  return (
+    <section className="recent-activity">
+      <div className="section-row">
+        <h2>Recent activity</h2>
+        <select
+          aria-label="Activity type"
+          value={kind}
+          onChange={(e) => setKind(e.target.value)}
+        >
+          {["All", "Buy", "Sell", "Compile", "Deposit", "Withdraw"].map((v) => (
+            <option key={v}>{v}</option>
+          ))}
+        </select>
+      </div>
+      <p className="section-intro">
+        Local demo actions and illustrative 2018 activity. Archive samples do
+        not change your available balance.
+      </p>
+      <div className="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              {[
+                "Date / UTC",
+                "Operation",
+                "Amount",
+                "Equivalent",
+                "Status",
+              ].map((v) => (
+                <th key={v}>{v}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.id}>
+                <td>
+                  {new Date(r.date).toLocaleDateString("en-GB", {
+                    timeZone: "UTC",
+                  })}
+                  <small>
+                    {r.id.startsWith("sample")
+                      ? "2018 archive sample"
+                      : "Local demo operation"}
+                  </small>
+                </td>
+                <td>{r.type.charAt(0).toUpperCase() + r.type.slice(1)}</td>
+                <td>
+                  {number(r.amount)} {r.symbol}
+                </td>
+                <td>{money(r.value)}</td>
+                <td>
+                  <span className="activity-status">Completed</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
 function Wallets() {
   const { state } = useDemo();
   const [currency, setCurrency] = useState("USD");
@@ -397,7 +532,7 @@ function Wallets() {
                 ? money(total, 0)
                 : number(total / coin(currency).price) + " " + currency}
             </strong>
-            <Sparkline />
+            <Sparkline instrument={state.selectedIndex} />
           </div>
           <div className="section-row">
             <CurrencyButtons value={currency} onChange={setCurrency} />
@@ -415,7 +550,7 @@ function Wallets() {
             <strong>
               {number(state.balances.TBCi)} <small>TBCi</small>
             </strong>
-            <Sparkline />
+            <Sparkline instrument={state.selectedIndex} />
           </div>
           <div className="section-row">
             <div className="inline-actions">
@@ -435,14 +570,20 @@ function Wallets() {
       </div>
       <section className="balance-chart">
         <h2>Total available</h2>
-        <Chart height={415} />
+        <Chart height={360} instrument="portfolio" />
       </section>
       <Profits />
       <section className="composition-section">
         <h2>Total Balance Composition</h2>
-        <Composition wallet total={total} />
+        <Composition
+          wallet
+          total={total}
+          balances={state.balances}
+          indexId={state.selectedIndex}
+        />
       </section>
       <WalletTable />
+      <RecentActivity />
     </>
   );
 }
@@ -452,13 +593,15 @@ function Overview() {
     <>
       <TokenSummary />
       <section className="overview-chart">
-        <Chart multi height={451} />
+        <Chart multi height={400} instrument={state.selectedIndex} />
+        <IndexNotes id={state.selectedIndex} />
       </section>
       <Profits />
       <section className="composition-section">
         <h2>{findIndex(state.selectedIndex).name} Composition</h2>
-        <Composition />
+        <Composition indexId={state.selectedIndex} />
       </section>
+      <RecentActivity />
       <Methodology />
     </>
   );
@@ -516,7 +659,7 @@ function Choices() {
               </span>
             </div>
             <div className="choice-market">
-              <Sparkline negative={a.change < 0} />
+              <Sparkline negative={a.change < 0} instrument={a.id} />
               <div>
                 <b className="blue">{number(a.points)}</b>{" "}
                 <span className={a.change > 0 ? "positive" : "negative"}>
@@ -525,6 +668,16 @@ function Choices() {
                   {a.change}% (24h)
                 </span>
               </div>
+            </div>
+            <p className="choice-profile">{profiles[a.id]?.description}</p>
+            <div className="choice-risk">
+              <span>
+                Risk <strong>{profiles[a.id]?.risk}</strong>
+              </span>
+              <span>
+                2018 volatility{" "}
+                <strong>{number(marketStats(a.id).volatility, 1)}%</strong>
+              </span>
             </div>
             <div className="choice-actions">
               <button
@@ -610,7 +763,9 @@ function Amount({
 function Trade({ sell = false }: { sell?: boolean }) {
   const { state, trade, notify } = useDemo();
   const [payment, setPayment] = useState(sell ? "ETH" : "USD");
-  const [amount, setAmount] = useState(sell ? "1000" : "4000");
+  const [amount, setAmount] = useState(
+    sell ? String(Math.min(1000, state.balances.TBCi)) : "10",
+  );
   const [confirm, setConfirm] = useState(false);
   const [error, setError] = useState("");
   const q = Number(amount);
@@ -1021,7 +1176,7 @@ function History() {
   const intervals = [
     "September 01, 2018 – October 31, 2018",
     "November 01, 2018 – December 24, 2018",
-    "December 25, 2018 – March 31, 2019",
+    "December 25, 2018 – December 31, 2018",
   ];
   return (
     <section className="history-comparison">
@@ -1107,7 +1262,13 @@ function History() {
   );
 }
 function Holders() {
-  const { notify } = useDemo();
+  const { state, notify } = useDemo();
+  const selected = findIndex(state.selectedIndex);
+  const totalSupply = 140245398.2451327;
+  const weightTotal = Array.from(
+    { length: 212 },
+    (_, i) => (i + 1) ** -1.2,
+  ).reduce((s, v) => s + v, 0);
   const [page, setPage] = useState(0);
   const [all, setAll] = useState(false);
   const records = Array.from({ length: 212 }, (_, i) => ({
@@ -1116,8 +1277,8 @@ function Holders() {
       (BigInt("0x45261d4ee77acdb3286") + BigInt(i * 718953))
         .toString(16)
         .padStart(40, "0"),
-    quantity: 230530627 / (i + 1),
-    share: 27.1772 / (i + 1),
+    quantity: (totalSupply * (i + 1) ** -1.2) / weightTotal,
+    share: (100 * (i + 1) ** -1.2) / weightTotal,
   }));
   const current = all
     ? records
@@ -1138,7 +1299,7 @@ function Holders() {
       <section className="holder-information">
         <h2>Information</h2>
         <p>
-          TBCi-20 Stable (TBCi-20) is a cryptocurrency basket index.
+          {selected.name} is a cryptocurrency basket index.
           <br />
           The figures and addresses shown here are demonstration data.
         </p>
@@ -1146,8 +1307,8 @@ function Holders() {
           {[
             [
               ["Total Supply", "140,245,398.2451327"],
-              ["Index point", "87.842"],
-              ["Price", "$51.6755 (+2.11%)"],
+              ["Index point", number(selected.points)],
+              ["Price", money(selected.price, 3)],
               ["Holders", "212 demo addresses"],
               ["Contract", "Not connected — demo"],
               ["Decimals", "18"],
@@ -1156,7 +1317,7 @@ function Holders() {
               ["Market Volume", "$23,338,136.28"],
               ["Market Capitalization", "$375,221,919.00"],
               ["Circulating Supply", "140,245,398.00 TBCi"],
-              ["Token Distribution Date", "Jul 7, 2019"],
+              ["Token Distribution Date", "Aug 31, 2018 (sample)"],
               ["Tokens quantity", "20"],
               ["Transfers total", "2,060,577"],
             ],

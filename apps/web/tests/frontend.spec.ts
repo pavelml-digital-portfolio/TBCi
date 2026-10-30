@@ -118,9 +118,9 @@ test("index composition fields and calculator follow the source screen", async (
   await page
     .getByRole("button", { name: "Add comparison", exact: true })
     .click();
-  await expect(page.locator("path[data-comparison=ETH]")).toHaveCount(1);
+  await expect(page.locator("button[data-comparison=ETH]")).toHaveCount(1);
   await page.getByRole("button", { name: "Remove ETH comparison" }).click();
-  await expect(page.locator("path[data-comparison=ETH]")).toHaveCount(0);
+  await expect(page.locator("button[data-comparison=ETH]")).toHaveCount(0);
 });
 test("coin tabs, converter, price period and news filters work", async ({
   page,
@@ -165,7 +165,10 @@ test("exchange filters and news categories change the original tables and cards"
   ).toBeVisible();
   await open(page, "/news/?category=ANALYSIS");
   await expect(page.getByLabel("News category")).toHaveValue("ANALYSIS");
-  await expect(page.locator(".news-card")).toHaveCount(3);
+  expect(await page.locator(".news-card").count()).toBeGreaterThan(3);
+  await expect(page.locator(".news-card .news-photo span")).toHaveText(
+    Array(await page.locator(".news-card").count()).fill("ANALYSIS"),
+  );
   await page.getByLabel("Search news").fill("not-in-fixture");
   await expect(page.getByText("No news found.", { exact: true })).toBeVisible();
   await open(page, "/news/huobi-stablecoin/");

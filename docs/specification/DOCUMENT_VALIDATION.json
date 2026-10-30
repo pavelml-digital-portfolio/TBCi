@@ -1,16 +1,26 @@
 {
-  "version": "2.0",
+  "version": "2.1",
+  "frontend": "0.3.0",
   "canonical_screens": 21,
-  "requirements": 184,
-  "screen_acceptance_criteria": 50,
-  "decisions": 18,
-  "pdf_pages": 47,
-  "pdf_bookmarks": 60,
-  "docx_embedded_source_images": 21,
-  "api_paths": 20,
-  "api_status": "draft_next_backend_stage",
-  "source_hashes": "all_match",
-  "frontend_tests": "13 passed; all21 routes, mobile320/375",
+  "additional_review_screens": 8,
+  "requirements": 196,
+  "acceptance_criteria": 62,
+  "pdf_pages": 50,
+  "docx_source_images": 21,
+  "api_paths": 22,
+  "api_status": "future_backend_draft_not_implemented",
+  "typecheck": "passed; 0 errors, 0 warnings, 0 hints",
+  "build": "305 routes",
+  "playwright": "20 passed (including OHLC/date/data invariants)",
   "deployment_tests": "9 passed",
-  "limits": "Raster source; no production API/auth/funds. Historical numbers normalized for coherent demo math."
+  "viewport_coverage": [
+    320,
+    375,
+    768,
+    1024,
+    1280,
+    1496,
+    1920
+  ],
+  "source_checks": "all 21 canonical JPG hashes match; 21 CC0 SVG; 48 ICO both dates 2018; 32 articles >350 words"
 }

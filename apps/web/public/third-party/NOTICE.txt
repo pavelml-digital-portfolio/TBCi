@@ -1,0 +1,9 @@
+TradingView Lightweight Charts 5.2.1
+Copyright TradingView, Inc. Licensed under Apache-2.0.
+https://github.com/tradingview/lightweight-charts
+https://www.tradingview.com/
+The chart includes TradingView attribution and a link.
+
+Cryptocurrency Icons by the cryptocurrency-icons contributors (spothq).
+https://github.com/spothq/cryptocurrency-icons
+CC0-1.0 Universal. Local SVG files are unmodified upstream artwork.

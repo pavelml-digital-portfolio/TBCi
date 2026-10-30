@@ -6,14 +6,14 @@
       "route": "/",
       "width": 1680,
       "sourceHeight": 2626,
-      "renderHeight": 2626
+      "renderHeight": 2767
     },
     {
       "id": "PUB-03",
       "route": "/index/tbci-20-balance/",
       "width": 1680,
       "sourceHeight": 4100,
-      "renderHeight": 4100
+      "renderHeight": 4374
     },
     {
       "id": "PUB-06",
@@ -27,35 +27,35 @@
       "route": "/coins/bitcoin/",
       "width": 1680,
       "sourceHeight": 1933,
-      "renderHeight": 1933
+      "renderHeight": 2590
     },
     {
       "id": "PUB-08",
       "route": "/coins/bitcoin/charts/",
       "width": 1680,
       "sourceHeight": 1933,
-      "renderHeight": 1933
+      "renderHeight": 2015
     },
     {
       "id": "PUB-09",
       "route": "/coins/bitcoin/historical-price/",
       "width": 1680,
       "sourceHeight": 1933,
-      "renderHeight": 1933
+      "renderHeight": 2414
     },
     {
       "id": "PUB-10",
       "route": "/coins/bitcoin/markets/",
       "width": 1680,
       "sourceHeight": 1933,
-      "renderHeight": 1933
+      "renderHeight": 2034
     },
     {
       "id": "PUB-11",
       "route": "/coins/bitcoin/news/",
       "width": 1680,
       "sourceHeight": 1933,
-      "renderHeight": 1933
+      "renderHeight": 2429
     },
     {
       "id": "PUB-04",
@@ -69,42 +69,42 @@
       "route": "/exchanges/huobi/",
       "width": 1680,
       "sourceHeight": 1697,
-      "renderHeight": 1747
+      "renderHeight": 1781
     },
     {
       "id": "PUB-13",
       "route": "/news/",
       "width": 1680,
       "sourceHeight": 2785,
-      "renderHeight": 2785
+      "renderHeight": 3065
     },
     {
       "id": "PUB-14",
       "route": "/news/huobi-stablecoin/",
       "width": 1680,
       "sourceHeight": 2073,
-      "renderHeight": 2073
+      "renderHeight": 3264
     },
     {
       "id": "CAB-01",
       "route": "/app/wallets/",
       "width": 1496,
       "sourceHeight": 2550,
-      "renderHeight": 2577
+      "renderHeight": 3331
     },
     {
       "id": "CAB-02",
       "route": "/app/indices/",
       "width": 1496,
       "sourceHeight": 996,
-      "renderHeight": 996
+      "renderHeight": 1123
     },
     {
       "id": "CAB-03",
       "route": "/app/",
       "width": 1496,
       "sourceHeight": 2248,
-      "renderHeight": 2248
+      "renderHeight": 2924
     },
     {
       "id": "CAB-04",

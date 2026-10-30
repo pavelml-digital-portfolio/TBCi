@@ -1,4 +1,10 @@
+import { ExchangeVolumeChart } from "./TradingChart";
+import IcoCalendar from "./IcoCalendar";
+import { coinProfiles } from "../data/coin-profiles";
+import { MarketNotes, CoinExtra, IndexNotes } from "./MarketContent";
+import { seriesFor, marketStats, hash } from "../data/market";
 import { useEffect, useState } from "react";
+import { recentNews } from "../data/content";
 import {
   basket,
   coin,
@@ -31,7 +37,8 @@ type Page =
   | "exchange"
   | "news"
   | "article"
-  | "privacy";
+  | "privacy"
+  | "ico";
 const allIndices = [defaultIndex, ...indexChoices];
 function Header() {
   return (
@@ -48,6 +55,7 @@ function Header() {
             <a href="/coins/">Coins</a>
             <a href="/exchanges/">Exchanges</a>
             <a href="/news/">News</a>
+            <a href="/ico/">ICOs</a>
             <a href="/app/">Login / Register</a>
           </nav>
         </details>
@@ -64,7 +72,7 @@ function Header() {
           </details>
           <a href="/coins/">Coins</a>
           <a href="/exchanges/">Exchanges</a>
-          <a href="/news/?category=ico">ICOs</a>
+          <a href="/ico/">ICOs</a>
           <a href="/news/">News</a>
         </nav>
         <form className="header-search" action="/coins/">
@@ -238,7 +246,7 @@ function Ticker() {
           <small>Mrk.Cap</small>
           <b>$ 114.33 B</b>
         </div>
-        <Sparkline />
+        <Sparkline instrument={a.symbol} />
         <span className={a.change > 0 ? "positive" : "negative"}>
           {a.change > 0 ? "+" : ""}
           {number(a.change, 2)}%
@@ -310,7 +318,7 @@ function Home() {
             </details>
           </div>
         </div>
-        <Chart hero height={360} />
+        <Chart hero height={360} instrument={selected} />
       </div>
       <Ticker />
       <section className="home-intro">
@@ -503,26 +511,49 @@ function MarketHero({
         <div className="site-container">
           {(type === "exchange"
             ? [
-                ["Total volume", "$6 571 271 536"],
-                ["Volume 24h", "$571 271 536"],
-                ["Volume 7d", "$4 105 787 840"],
-                ["Volume 30d", "$12 812 934 128"],
-                ["Trading pairs", "350"],
+                ["Total volume", money(exchange.volume * 11.5, 0)],
+                ["Volume 24h", money(exchange.volume, 0)],
+                ["Volume 7d", money(exchange.volume * 7.2, 0)],
+                ["Volume 30d", money(exchange.volume * 26.7, 0)],
+                ["Trading pairs", String(exchange.markets)],
                 ["Top Pair", "BTC/USDT"],
               ]
             : type === "coin"
               ? [
-                  ["Market Cap", "$110 117 709 712"],
-                  ["Volume 24h", "$4 088 533 236"],
-                  ["Circulating Supply", "17 348 162 " + a!.symbol],
-                  ["Max Supply", "21 000 000 " + a!.symbol],
-                  ["Last trade", "0.004120 BTC ($25.75) / Coinbase"],
+                  [
+                    "Market Cap",
+                    money(
+                      (coinProfiles[a!.symbol]?.supply ?? 1e8) * a!.price,
+                      0,
+                    ),
+                  ],
+                  [
+                    "Volume 24h",
+                    money(marketStats(a!.symbol).volume * a!.price, 0),
+                  ],
+                  [
+                    "Circulating Supply",
+                    number(coinProfiles[a!.symbol]?.supply ?? 1e8, 0) +
+                      " " +
+                      a!.symbol,
+                  ],
+                  ["Network since", coinProfiles[a!.symbol]?.year ?? "2018"],
+                  [
+                    "Sector",
+                    coinProfiles[a!.symbol]?.sector ?? "Infrastructure",
+                  ],
                 ]
               : [
-                  ["Market Cap", "$110 117 709 712"],
-                  ["Volume 24h", "$4 088 533 236"],
+                  [
+                    "Market Cap",
+                    money(index.price * (140245398 + (hash(slug) % 1e7)), 0),
+                  ],
+                  [
+                    "Volume 24h",
+                    money(marketStats(slug).volume * index.price, 0),
+                  ],
                   ["Price", money(index.price, 3)],
-                  ["Total tokens", "140 245 398"],
+                  ["Total tokens", number(140245398 + (hash(slug) % 1e7), 0)],
                   ["Coins quantity", "20"],
                 ]
           ).map(([label, value]) => (
@@ -557,25 +588,27 @@ function MarketHero({
 }
 function IndexPage({ slug }: { slug: string }) {
   const [deposit, setDeposit] = useState(3788);
-  const [day, setDay] = useState(190);
+  const [day, setDay] = useState(60);
   const [comparison, setComparison] = useState("BTC");
   const item = findIndex(slug);
-  const rate = 1 + Math.max(0, 500 - day) / 22;
+  const history = seriesFor(slug);
+  const benchmark = seriesFor(comparison);
+  const rate = history.at(-1)!.close / history[day].close;
   const value = deposit * rate;
-  const baseRate =
-    comparison === "BTC" ? 5.48 : comparison === "ETH" ? 4.21 : 3.76;
-  const date = new Date(Date.UTC(2017, 5, 1 + day));
+  const baseRate = benchmark.at(-1)!.close / benchmark[day].close;
+  const date = new Date(Date.UTC(2018, 0, 1 + day));
   return (
     <>
       <MarketHero type="index" slug={slug} />
       <div className="site-container public-index-content">
-        <Chart multi height={510} />
+        <Chart multi height={440} instrument={slug} />
+        <IndexNotes id={slug} />
         <section className="composition-section">
           <h2>{item.name} Composition</h2>
           <p className="composition-subtitle">
             Diversified portfolio consists of the most liquid cryptocurrencies
           </p>
-          <Composition />
+          <Composition indexId={slug} />
         </section>
         <section>
           <h2 className="center-heading">List of included cryptocurrencies</h2>
@@ -629,13 +662,13 @@ function IndexPage({ slug }: { slug: string }) {
                 aria-label="Purchase date"
                 type="range"
                 min="0"
-                max="502"
+                max="364"
                 value={day}
                 onChange={(e) => setDay(Number(e.target.value))}
               />
               <span>
-                <small>1 Jun 2017</small>
-                <small>16 Oct 2018</small>
+                <small>1 Jan 2018</small>
+                <small>31 Dec 2018</small>
               </span>
             </label>
           </div>
@@ -939,14 +972,22 @@ function CurrencyTable({ composition = false }: { composition?: boolean }) {
                       </a>
                     </td>
                     <td>{a.symbol}</td>
-                    <td>{convert(110117709712 / (i + 1))}</td>
-                    <td>{convert(a.price)}</td>
-                    <td>{convert(4088533236 / (i + 1))}</td>
                     <td>
-                      {number(17348162 * (i + 1), 0)} {a.symbol}
+                      {convert(
+                        (coinProfiles[a.symbol]?.supply ?? 1e8) * a.price,
+                      )}
+                    </td>
+                    <td>{convert(a.price)}</td>
+                    <td>{convert(marketStats(a.symbol).volume * a.price)}</td>
+                    <td>
+                      {number(coinProfiles[a.symbol]?.supply ?? 1e8, 0)}{" "}
+                      {a.symbol}
                     </td>
                     <td>
-                      <Sparkline negative={a.change < 0} />
+                      <Sparkline
+                        negative={a.change < 0}
+                        instrument={a.symbol}
+                      />
                     </td>
                     <td className={a.change >= 0 ? "positive" : "negative"}>
                       {a.change > 0 ? "+" : ""}
@@ -1047,6 +1088,7 @@ function Converter({ symbol }: { symbol: string }) {
 }
 function CoinInfo({ slug, tab }: { slug: string; tab: string }) {
   const a = basket.find((c) => c.slug === slug) ?? basket[0];
+  const profile = coinProfiles[a.symbol] ?? coinProfiles.BTC;
   return (
     <>
       <MarketHero type="coin" slug={slug} tab={tab} />
@@ -1056,52 +1098,35 @@ function CoinInfo({ slug, tab }: { slug: string; tab: string }) {
           (tab === "overview" ? "coin-overview" : "")
         }
       >
-        {tab === "overview" || ["analysis", "forum"].includes(tab) ? (
+        {["analysis", "trades", "forum", "timeline"].includes(tab) ? (
+          <CoinExtra symbol={a.symbol} tab={tab} />
+        ) : tab === "overview" ? (
           <div className="coin-overview-grid">
             <aside>
               <h2>Detail information</h2>
               <table className="information-table">
                 <tbody>
                   {[
-                    ["Website", a.name + ".com"],
-                    ["Started", "03 January 2009 over 9 years ago"],
-                    ["Whitepaper", "Download"],
-                    ["Explorer", "blockchain.com/explorer"],
-                    ["Message Board", "bitcointalk.org"],
-                    ["Source Code", "github.com/bitcoin/"],
-                    ["Org. Structure", "Decentralized"],
+                    ["Website", profile.website],
+                    ["Network since", profile.year],
+                    ["Sector", profile.sector],
+                    ["Consensus (2018)", profile.consensus],
+                    ["Algorithm", profile.algorithm],
                     ["Open Source", "Yes"],
-                    ["Proof Type", "Proof of Work"],
-                    ["Algorithm", "SHA256"],
-                    ["Hardware wallet", "Yes"],
-                    ["Max Supply", "21 000 000"],
-                    ["Available Supply", "17 348 162"],
-                    ["Difficulty Adj.", "2016 blocks"],
-                    ["Block RR.", "50%"],
-                    ["Block No.", "247 856.0"],
-                    ["Network H/s", "51 417 644 209.9"],
-                    ["Block Reward", "12.5"],
+                    [
+                      "Sample circulating supply",
+                      number(profile.supply, 0) + " " + a.symbol,
+                    ],
+                    ["Sample market cap", money(profile.supply * a.price, 0)],
+                    ["Sample price", money(a.price, a.price < 1 ? 6 : 2)],
+                    ["Data period", "January–December 2018"],
                   ].map(([k, v], i) => (
                     <tr key={k}>
                       <th>{k}</th>
                       <td>
-                        {a.symbol!=="BTC"?"Not supplied":i < 6 ? (
-                          <a
-                            href={
-                              i === 0
-                                ? "https://bitcoin.org/"
-                                : i === 2
-                                  ? "https://bitcoin.org/bitcoin.pdf"
-                                  : i === 5
-                                    ? "https://github.com/bitcoin/bitcoin"
-                                    : i === 3
-                                      ? "https://www.blockchain.com/explorer"
-                                      : "https://bitcointalk.org/"
-                            }
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {v}
+                        {i === 0 ? (
+                          <a href={v} target="_blank" rel="noreferrer">
+                            {v.replace("https://", "")}
                           </a>
                         ) : (
                           v
@@ -1114,41 +1139,50 @@ function CoinInfo({ slug, tab }: { slug: string; tab: string }) {
             </aside>
             <div>
               <h2>Latest {a.name} - Historical Price Chart</h2>
-              <Chart multi signed height={410} />
+              <Chart multi signed height={330} instrument={a.symbol} />
               <Converter symbol={a.symbol} />
               <section className="about-coin">
                 <h2>About coin</h2>
-                {a.symbol==="BTC"?<>
-                <p>
-                  Bitcoin uses peer-to-peer technology to operate with no
-                  central authority or banks; managing transactions and the
-                  issuing of bitcoins is carried out collectively by the
-                  network. Although other cryptocurrencies have come before,
-                  Bitcoin is the first decentralized cryptocurrency. Its
-                  reputation has spawned copies and evolution in the space.
-                </p>
-                <p>
-                  With the largest variety of markets and the biggest value,
-                  Bitcoin is here to stay. It is the most traded cryptocurrency
-                  and one of the main entry points for other cryptocurrencies.
-                  The price is unstable as always and it can go up or down in a
-                  single day.
-                </p>
-                <p>
-                  Bitcoin is an SHA-256 POW coin with almost 21,000,000 total
-                  minable coins. The block time is 10 minutes. See below for a
-                  full range of markets where you can trade US Dollars for
-                  Bitcoin, crypto to Bitcoin and many other currencies.
-                </p>
-                <p>
-                  Learn about the history of Bitcoin and check out the facts
-                  about Bitcoin here.
-                </p></>:<p>{a.name} ({a.symbol}) is shown with illustrative historical market data. Detailed verified metadata for this asset was not supplied in the source archive.</p>}
+                {a.symbol === "BTC" ? (
+                  <>
+                    <p>
+                      Bitcoin uses peer-to-peer technology to operate with no
+                      central authority or banks; managing transactions and the
+                      issuing of bitcoins is carried out collectively by the
+                      network. Although other cryptocurrencies have come before,
+                      Bitcoin is the first decentralized cryptocurrency. Its
+                      reputation has spawned copies and evolution in the space.
+                    </p>
+                    <p>
+                      With the largest variety of markets and the biggest value,
+                      Bitcoin is here to stay. It is the most traded
+                      cryptocurrency and one of the main entry points for other
+                      cryptocurrencies. The price is unstable as always and it
+                      can go up or down in a single day.
+                    </p>
+                    <p>
+                      Bitcoin is an SHA-256 POW coin with almost 21,000,000
+                      total minable coins. The block time is 10 minutes. See
+                      below for a full range of markets where you can trade US
+                      Dollars for Bitcoin, crypto to Bitcoin and many other
+                      currencies.
+                    </p>
+                    <p>
+                      Learn about the history of Bitcoin and check out the facts
+                      about Bitcoin here.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>{profile.summary}</p>
+                    <p>{profile.detail}</p>
+                  </>
+                )}
               </section>
             </div>
           </div>
         ) : tab === "historical-price" ? (
-          <HistoricalTable name={a.name} />
+          <HistoricalTable name={a.name} symbol={a.symbol} />
         ) : tab === "markets" || tab === "trades" ? (
           <>
             <h2>{a.name} Markets</h2>
@@ -1159,21 +1193,25 @@ function CoinInfo({ slug, tab }: { slug: string; tab: string }) {
         ) : (
           <>
             <h2>{a.name} Charts</h2>
-            <CoinChart />
+            <CoinChart instrument={a.symbol} />
           </>
+        )}
+        {!["analysis", "forum", "trades", "timeline"].includes(tab) && (
+          <MarketNotes symbol={a.symbol} />
         )}
       </div>
       <Footer />
     </>
   );
 }
-function HistoricalTable({ name }: { name: string }) {
+function HistoricalTable({ name, symbol }: { name: string; symbol: string }) {
   const [start, setStart] = useState("2018-11-01");
   const [end, setEnd] = useState("2018-11-20");
-  const rows = Array.from({ length: 30 }, (_, i) => ({
-    date: "2018-11-" + String(i + 1).padStart(2, "0"),
-    open: 6333.75 + Math.sin(i) * 120,
-  }))
+  const rows = seriesFor(symbol)
+    .map((b) => ({
+      ...b,
+      date: new Date(b.time * 1000).toISOString().slice(0, 10),
+    }))
     .filter((r) => r.date >= start && r.date <= end)
     .reverse();
   return (
@@ -1222,11 +1260,16 @@ function HistoricalTable({ name }: { name: string }) {
               <tr key={r.date}>
                 <td>{r.date}</td>
                 <td>{money(r.open)}</td>
-                <td>{money(r.open * 1.02)}</td>
-                <td>{money(r.open * 0.97)}</td>
-                <td>{money(r.open * 1.01)}</td>
-                <td>{money(5364495000, 0)}</td>
-                <td>{money(110117709712, 0)}</td>
+                <td>{money(r.high)}</td>
+                <td>{money(r.low)}</td>
+                <td>{money(r.close)}</td>
+                <td>{money(r.volume, 0)}</td>
+                <td>
+                  {money(
+                    r.close * (coinProfiles[symbol]?.supply ?? 17348162),
+                    0,
+                  )}
+                </td>
               </tr>
             ))}
             {!rows.length && (
@@ -1352,7 +1395,7 @@ function CoinNews({ name }: { name: string }) {
             />
             <div>
               <time>
-                <b>{n.source}</b> &nbsp; {n.age}
+                <b>{n.source}</b> &nbsp; {n.date}
               </time>
               <h3>{n.title}</h3>
               <p>{n.summary}</p>
@@ -1554,7 +1597,7 @@ function Exchanges() {
                     </span>
                   </td>
                   <td>
-                    <Sparkline negative={e.change < 0} />
+                    <Sparkline negative={e.change < 0} instrument={e.slug} />
                   </td>
                   <td className={e.change > 0 ? "positive" : "negative"}>
                     {e.change > 0 ? "+" : ""}
@@ -1626,7 +1669,7 @@ function Exchange({ slug }: { slug: string }) {
                   ["Volume 24h", money(exchange.volume, 0)],
                   ["Volume 7d", money(exchange.volume * 7, 0)],
                   ["Volume 30d", money(exchange.volume * 30, 0)],
-                  ["Trading pairs", "350"],
+                  ["Trading pairs", String(exchange.markets)],
                   ["Top Pair", "BTC/USDT"],
                 ],
               ].map((rows, i) => (
@@ -1656,25 +1699,7 @@ function Exchange({ slug }: { slug: string }) {
                 </button>
               ))}
             </div>
-            <div className="volume-histogram">
-              {Array.from({ length: 48 }, (_, i) => (
-                <i
-                  key={i}
-                  style={{
-                    height:
-                      30 +
-                      Math.sin(i / (period === "24h" ? 9 : 5)) * 30 +
-                      Math.cos(i * 0.4) * 5 +
-                      "%",
-                  }}
-                />
-              ))}
-            </div>
-            <div className="chart-months">
-              <span>14. Nov</span>
-              <span>16. Nov</span>
-              <span>18. Nov</span>
-            </div>
+            <ExchangeVolumeChart exchange={slug} period={period} />
           </section>
         </div>
         <PairsTable />
@@ -1687,48 +1712,52 @@ function NewsPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [type, setType] = useState("all");
+  const [month, setMonth] = useState("all");
   const [popular, setPopular] = useState(false);
   const [limit, setLimit] = useState(9);
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    setQuery(params.get("q") ?? "");
-    const c = (params.get("category") ?? "all").toUpperCase();
+    const p = new URLSearchParams(location.search);
+    setQuery(p.get("q") ?? "");
+    const c = (p.get("category") ?? "all").toUpperCase();
     if (["NEWS", "ARTICLES", "ANALYSIS"].includes(c)) setCategory(c);
-    else if (c === "ICO") setQuery("TRX");
+    setMonth(p.get("month") ?? "all");
   }, []);
-  const feed = [
-    news.find((n) => n.slug === "gates-foundation")!,
-    {
-      ...news.find((n) => n.slug === "huobi-stablecoin")!,
-      category: "ARTICLES",
-    },
-    { ...news[2], image: "feed-ethereum.jpg" },
-    ...news.slice(3, 9),
-  ];
-  const list = feed.filter(
+  const list = recentNews.filter(
     (n) =>
       n.title.toLowerCase().includes(query.toLowerCase()) &&
       (category === "all" || n.category === category) &&
-      (type === "all" || n.category === type),
+      (type === "all" || n.category === type) &&
+      (month === "all" || n.publishedAt.slice(5, 7) === month),
   );
-  const items = popular ? [...list].reverse() : list;
+  const items = popular ? [...list].sort((a, b) => b.views - a.views) : list;
+  const featured = [
+    "top-coins-november",
+    "trx-network-2018",
+    "weekly-recap-november",
+  ].map((slug) => news.find((n) => n.slug === slug)!);
   return (
     <>
       <div className="list-hero news-hero">
         <div className="site-container">
-          <h1>News &amp; Articles</h1>
+          <div className="section-row">
+            <h1>News &amp; Articles</h1>
+            <span className="archive-badge">2018 archive</span>
+          </div>
           <div className="market-filter-bar">
             <label>
               Categories
               <select
                 aria-label="News category"
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                  setLimit(9);
+                }}
               >
                 <option value="all">All</option>
-                <option>NEWS</option>
-                <option>ARTICLES</option>
-                <option>ANALYSIS</option>
+                {["NEWS", "ARTICLES", "ANALYSIS"].map((v) => (
+                  <option key={v}>{v}</option>
+                ))}
               </select>
             </label>
             <label>
@@ -1739,11 +1768,33 @@ function NewsPage() {
                 onChange={(e) => setType(e.target.value)}
               >
                 <option value="all">All</option>
-                <option>NEWS</option>
-                <option>ANALYSIS</option>
+                {["NEWS", "ARTICLES", "ANALYSIS"].map((v) => (
+                  <option key={v}>{v}</option>
+                ))}
               </select>
             </label>
             <label>
+              Month
+              <select
+                aria-label="News month"
+                value={month}
+                onChange={(e) => {
+                  setMonth(e.target.value);
+                  setLimit(9);
+                }}
+              >
+                <option value="all">All 2018</option>
+                {Array.from({ length: 12 }, (_, i) => (
+                  <option key={i} value={String(i + 1).padStart(2, "0")}>
+                    {new Date(Date.UTC(2018, i, 1)).toLocaleString("en", {
+                      month: "long",
+                      timeZone: "UTC",
+                    })}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="news-search">
               Search
               <input
                 aria-label="Search news"
@@ -1764,30 +1815,20 @@ function NewsPage() {
         </div>
       </div>
       <div className="site-container news-page">
-        {!query && category === "all" && type === "all" && (
+        {!query && category === "all" && type === "all" && month === "all" && (
           <>
             <div className="featured-news">
-              {[
-                [
-                  "feature-main.jpg",
-                  "Top 3 Coins to Watch Nov 5 - Nov 11, 2018",
-                ],
-                ["feature-trx.jpg", "100,000 TRX Giveaway"],
-                [
-                  "feature-recap.jpg",
-                  "Crypto Recap of the Week Oct 29 - Nov 4, 2018",
-                ],
-              ].map(([image, title], i) => (
+              {featured.map((n, i) => (
                 <a
-                  key={image}
-                  href="/news/huobi-stablecoin/"
+                  key={n.slug}
+                  href={"/news/" + n.slug + "/"}
                   className={"featured-card feature-" + i}
                 >
-                  <img src={"/media/" + image} alt="" />
+                  <img src={"/media/" + n.image} alt="" />
                   <div>
-                    <h2>{title}</h2>
+                    <h2>{n.title}</h2>
                     <span>
-                      a day ago | {i === 2 ? "George Kingslay" : "Jon Nielsen"}
+                      {n.date} · {n.readMinutes} min read
                     </span>
                   </div>
                 </a>
@@ -1803,12 +1844,16 @@ function NewsPage() {
                       ({a.change}%)
                     </i>
                   </span>
-                  <Sparkline negative={a.change < 0} />
+                  <Sparkline instrument={a.symbol} negative={a.change < 0} />
                 </a>
               ))}
             </div>
           </>
         )}
+        <div className="news-results">
+          <span>{items.length} articles · January–December 2018</span>
+          <a href="/ico/">Explore the 2018 ICO calendar →</a>
+        </div>
         <NewsCards items={items.slice(0, limit)} />
         {!items.length && <p className="empty-cell">No news found.</p>}
         <div className="center-action">
@@ -1827,25 +1872,63 @@ function NewsPage() {
   );
 }
 function Article({ slug }: { slug: string }) {
-  const item =
-    [...news, ...coinNews].find((n) => n.slug === slug) ??
-    news.find((n) => n.slug === "huobi-stablecoin")!;
-  const huobi = slug === "huobi-stablecoin";
+  const item = news.find((n) => n.slug === slug) ?? news[0];
+  const [saved, setSaved] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    try {
+      setSaved(
+        JSON.parse(
+          localStorage.getItem("tbci-saved-articles") ?? "[]",
+        ).includes(slug),
+      );
+    } catch {}
+    const update = () => {
+      const el = document.querySelector(".article-body");
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      setProgress(
+        Math.max(
+          0,
+          Math.min(100, (-r.top / (r.height - innerHeight * 0.5)) * 100),
+        ),
+      );
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [slug]);
+  const related = recentNews
+    .filter((n) => n.slug !== slug)
+    .sort(
+      (a, b) => Number(b.topic === item.topic) - Number(a.topic === item.topic),
+    )
+    .slice(0, 3);
+  const toggleSave = () => {
+    try {
+      const list: string[] = JSON.parse(
+        localStorage.getItem("tbci-saved-articles") ?? "[]",
+      );
+      localStorage.setItem(
+        "tbci-saved-articles",
+        JSON.stringify(
+          saved
+            ? list.filter((s) => s !== slug)
+            : [...new Set([...list, slug])],
+        ),
+      );
+    } catch {}
+    setSaved(!saved);
+  };
   return (
     <>
+      <div className="reading-progress" style={{ width: progress + "%" }} />
       <div className="article-hero">
         <div className="site-container">
-          <h1>
-            {huobi ? (
-              <>
-                One coin to Rule Them All?
-                <br />
-                Huobi’s New Program Lets Users Swap Between Tokens
-              </>
-            ) : (
-              item.title
-            )}
-          </h1>
+          <a className="article-back" href="/news/">
+            ← 2018 archive
+          </a>
+          <h1>{item.title}</h1>
           <div className="article-meta">
             <a
               className="category-tag"
@@ -1853,107 +1936,97 @@ function Article({ slug }: { slug: string }) {
             >
               {item.category}
             </a>
-            <time>{item.date}</time>
+            <time dateTime={item.publishedAt}>{item.date}</time>
+            <span>{item.readMinutes} min read</span>
             <span>
-              Total views &nbsp;<b>394</b>
+              Views <b>{number(item.views, 0)}</b>
             </span>
-            <span>
-              Total shares &nbsp;<b>61</b>
-            </span>
+            <span>{item.author}</span>
           </div>
         </div>
       </div>
-      <main className="site-container article-layout" data-mockup="PUB-14">
-        <aside>
-          <Socials article />
+      <main
+        className="site-container article-layout expanded-article"
+        data-mockup="PUB-14"
+      >
+        <aside className="article-outline">
+          <span>IN THIS ARTICLE</span>
+          {item.sections.map((s, i) => (
+            <a key={s.heading} href={"#section-" + i}>
+              {s.heading}
+            </a>
+          ))}
+          <button aria-pressed={saved} onClick={toggleSave}>
+            {saved ? "★ Saved" : "☆ Save article"}
+          </button>
+          <button
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(location.href);
+                setCopied(true);
+              } catch {
+                setCopied(false);
+              }
+            }}
+          >
+            {copied ? "Link copied" : "Copy link"}
+          </button>
         </aside>
-        <article>
-          <p>
-            {huobi
-              ? "Singapore-based cryptocurrency exchange Huobi Global today introduced an all-in-one stablecoin program called HUSD, which will allow traders to convert between four USD-pegged cryptocurrency tokens."
-              : item.title +
-                ". This archival publication discusses developments in blockchain technology and cryptocurrency markets."}
-          </p>
+        <article className="article-body">
+          <p className="article-lead">{item.summary}</p>
           <img
             className="article-photo"
             src={"/media/" + item.image}
             width="760"
-            height="400"
-            alt={huobi ? "Huobi Global on a mobile phone" : ""}
+            height="430"
+            alt={"Archive illustration: " + item.title}
           />
-          <h2>
-            {huobi
-              ? "HUSD: Huobi’s All-in-One Stablecoin Solution"
-              : item.title}
-          </h2>
-          {huobi ? (
-            <>
-              <p>
-                According to the announcement, the HUSD solution aims to reduce
-                the need to choose between multiple stablecoins, as well as to
-                cut down on transaction costs incurred when switching between
-                these US dollar-pegged assets. It does so by automatically
-                converting all stablecoin deposits on Huobi’s platform to its
-                newly launched HUSD token, which is native to the exchange and
-                cannot be withdrawn.
-              </p>
-              <p>
-                According to Huobi, HUSD is pegged to stablecoin deposits rather
-                than USD itself. Its supply mechanism appears to be more
-                equivalent to regulated wallet services that people recharge
-                with fiat debit/credit cards, and, in return, instantly receive
-                available platform tokens to shop or pay for utility bills. Only
-                in the case of Huobi, people pay via stablecoins to purchase
-                HUSD as platform tokens.
-              </p>
-              <p>
-                Considering that the instability of any stablecoin listed on
-                Huobi can impact HUSD functionality, the exchange has confirmed
-                that it would evaluate each before deciding to add them to its
-                trading platform.
-              </p>
-              <h2>Tether Not Listed among Stablecoins</h2>
-              <p>
-                Huobi has added four stablecoins, which are Paxos Standard
-                (PAX), USD Coin (USDC), TrueUSD (TUSD), and Gemini Dollar
-                (GUSD), to its HUSD solution portfolio. The exchange had
-                announced the opening of deposits for these stablecoins earlier
-                in October.
-              </p>
-              <p>
-                Other stablecoins are visibly closing in to ease out the traders
-                after its volatile performance. At the same time, the volumes of
-                stablecoin alternatives are surging.
-              </p>
-            </>
-          ) : (
-            <>
-              <p>
-                This demonstration card preserves the title and photograph from
-                the supplied design. A complete licensed article has not been
-                supplied for this publication.
-              </p>
-              <p>
-                Market prices and events shown in the prototype are historical
-                examples. They are not current financial information.
-              </p>
-            </>
-          )}
-          <p className="article-author">AUTHOR &nbsp; Josiah Wilmoth</p>
-          <div className="article-tags" id="article-tags">
-            {[
-              "Blockchain news",
-              "HuobyGlobal",
-              "Exchange",
-              "Cryptocurrency",
-            ].map((t) => (
-              <a href="/news/" key={t}>
+          {item.sections.map((s, i) => (
+            <section key={s.heading} id={"section-" + i}>
+              <h2>{s.heading}</h2>
+              {s.paragraphs.map((p, k) => (
+                <p key={k}>{p}</p>
+              ))}
+            </section>
+          ))}
+          <div className="article-source-box">
+            <strong>Archive references</strong>
+            {item.sources.map((s) => (
+              <a
+                href={s.url}
+                key={s.url}
+                target={s.url.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+              >
+                {s.title} ↗
+              </a>
+            ))}
+            <p>
+              Original TBCi editorial reconstruction of a 2018 topic. View
+              counts and market illustrations are sample data.
+            </p>
+          </div>
+          <p className="article-author">AUTHOR · {item.author}</p>
+          <div className="article-tags">
+            {item.tags.map((t) => (
+              <a
+                href={
+                  "/news/?q=" +
+                  encodeURIComponent(t === "2018 archive" ? "" : t)
+                }
+                key={t}
+              >
                 #{t}
               </a>
             ))}
           </div>
         </article>
       </main>
+      <section className="site-container related-news">
+        <h2>Continue reading</h2>
+        <NewsCards items={related} />
+      </section>
+      <Footer />
     </>
   );
 }
@@ -2014,6 +2087,11 @@ export default function Public({
         <NewsPage />
       ) : page === "article" ? (
         <Article slug={slug} />
+      ) : page === "ico" ? (
+        <>
+          <IcoCalendar slug={slug === "bitcoin" ? undefined : slug} />
+          <Footer />
+        </>
       ) : (
         <>
           <div className="site-container privacy-content">
