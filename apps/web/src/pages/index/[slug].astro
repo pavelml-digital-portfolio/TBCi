@@ -1,0 +1,6 @@
+---
+import Base from "../../layouts/Base.astro";import Public from "../../components/Public";import {indexChoices,defaultIndex} from "../../data/demo";
+export function getStaticPaths(){return [defaultIndex,...indexChoices].map(a=>({params:{slug:a.id}}))}
+const {slug}=Astro.params;
+---
+<Base title={`${slug} — TBCi`}><Public client:load page="index" slug={slug}/></Base>

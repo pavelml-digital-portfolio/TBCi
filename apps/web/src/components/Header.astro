@@ -1,6 +1,0 @@
-<header class="site-header"><div class="site-container header-inner"><a class="brand" href="/" aria-label="TBCi — на главную"><img src="/brand/tbci-logo-primary.svg" width="138" height="45" alt="TBCi"/></a><nav id="site-menu" class="site-nav" aria-label="Основная навигация"><a href="/#index">Индекс</a><a href="/#composition">Состав</a><a href="/#methodology">Методология</a><a href="/#updates">Новости</a></nav><div class="header-actions"><span class="language-mark">RU</span><a href="/app/" class="button button--ghost login-link">Войти</a><a href="/app/" class="button button--primary desktop-account">Открыть кабинет</a><button type="button" class="menu-toggle" aria-label="Открыть меню" aria-controls="site-menu" aria-expanded="false"><span></span><span></span></button></div></div></header>
-<script>
-const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');const menu=document.querySelector('#site-menu');
-toggle?.addEventListener('click',()=>{const isOpen=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!isOpen));toggle.setAttribute('aria-label',isOpen?'Открыть меню':'Закрыть меню');menu?.classList.toggle('is-open',!isOpen)});
-menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false')}));
-</script>

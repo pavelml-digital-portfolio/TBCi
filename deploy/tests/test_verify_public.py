@@ -24,7 +24,7 @@ class PublicVerificationTests(unittest.TestCase):
     def setUp(self):
         self.responses = {
             '/deployment.json': (200, json.dumps({'commit': COMMIT, 'release': RELEASE})),
-            '/': (200, META + '<h1>Структура рынка.</h1>'),
+            '/': (200, META + '<h1>Tugush Blockchain Capital index</h1>'),
             '/robots.txt': (200, 'User-agent: *\nDisallow: /\n'),
             '/__tbci-release-smoke-404__/': (404, 'Not found'),
             **{path: (200, META + '<astro-island>Account</astro-island>')

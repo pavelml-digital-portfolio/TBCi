@@ -81,7 +81,7 @@ def probe(base_url, commit, release, timeout, deadline):
         # Another release may already be active, or vps-release may have rolled back.
         raise VerificationError('Public release identity differs; refusing to roll back another release')
     owns_release = True
-    get('/', marker='Структура рынка.', html=True)
+    get('/', marker='Tugush Blockchain Capital index', html=True)
     for path in ['/app/', '/app/wallets/', '/app/settings/']:
         get(path, marker='astro-island', html=True)
     robots = get('/robots.txt')

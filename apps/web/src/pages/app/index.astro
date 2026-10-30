@@ -1,4 +1,4 @@
 ---
 import Base from '../../layouts/Base.astro';import Account from '../../components/Account';
 ---
-<Base title="Обзор портфеля — TBCi" privatePage><Account client:only="react" section="overview"><div slot="fallback" class="loading-shell"><img src="/brand/tbci-logo-primary.svg" width="160" height="52" alt="TBCi"/><p>Загружаем кабинет…</p></div></Account></Base>
+<Base title="Overview — TBCi" account><Account client:only="react" section="overview"><div slot="fallback" class="loading-shell">Loading account…</div></Account></Base>

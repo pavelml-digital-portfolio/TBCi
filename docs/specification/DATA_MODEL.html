@@ -1,219 +1,154 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TBCi — DATA_MODEL</title><link rel="stylesheet" href="../brand/theme.css"><style>main{min-width:0;overflow-wrap:anywhere}.table-wrap{width:100%;max-width:100%;min-width:0}nav{min-width:0}nav a{max-width:100%;overflow-wrap:anywhere}</style></head><body><nav><a href="../index.html">Комплект</a><a href="index.html">Техническое задание</a><a href="TBCi-Technical-Specification.pdf">PDF</a><a href="openapi.yaml">OpenAPI</a></nav><main><h1 id="tbci--логическая-модель-данных">TBCi — логическая модель данных</h1>
-<p>Приложение к ТЗ v1.1. Это проект схемы, а не существующие таблицы. Имена SQL адаптируются к выбранному стеку без изменения инвариантов.</p>
-<h2 id="1-конвенции">1. Конвенции</h2>
-<p>UUID как primary key; время timestamptz UTC; суммы минимальных единиц NUMERIC(78,0), неотрицательные там, где требуется; цены decimal с явно выбранной точностью. Состояния — enum/справочник с валидируемыми переходами. Валюты не смешиваются в одной сумме. Число знаков хранится в версии AssetRoute, а не выводится из тикера.</p>
-<h2 id="2-основные-связи">2. Основные связи</h2>
-<pre class="mermaid"><code>erDiagram
-  USER ||--o{ WALLET : owns
-  USER ||--o{ SESSION : authenticates
-  USER ||--o{ KYC_CHECK : verified_by
-  USER ||--o{ QUOTE : requests
-  ASSET ||--o{ ASSET_ROUTE : supported_as
-  NETWORK ||--o{ ASSET_ROUTE : carries
-  WALLET ||--o{ DEPOSIT_ADDRESS : receives
-  ASSET_ROUTE ||--o{ DEPOSIT_ADDRESS : defines
-  INDEX_DEFINITION ||--o{ METHODOLOGY_VERSION : versions
-  METHODOLOGY_VERSION ||--o{ INDEX_OBSERVATION : computes
-  TOKEN_DEFINITION ||--o{ BASKET_VERSION : backed_by
-  BASKET_VERSION ||--|{ BASKET_COMPONENT : contains
-  ASSET ||--o{ BASKET_COMPONENT : component
-  BASKET_VERSION ||--o{ QUOTE : prices
-  QUOTE ||--o| OPERATION : accepted_as
-  OPERATION ||--o{ OPERATION_STEP : executes
-  OPERATION ||--o{ RESERVATION : reserves
-  OPERATION ||--o{ JOURNAL : records
-  JOURNAL ||--|{ LEDGER_ENTRY : contains
-  LEDGER_ACCOUNT ||--o{ LEDGER_ENTRY : posts
-  OPERATION ||--o{ CHAIN_TRANSACTION : broadcasts
-  CHAIN_TRANSACTION ||--o{ CHAIN_EVENT : emits
-  OPERATION ||--o{ REDEMPTION_CLAIM : owes
-  TOKEN_DEFINITION ||--o{ BACKING_ALLOCATION : allocates
-  OPERATION ||--o{ AUDIT_EVENT : traces</code></pre>
-<p>Диаграмма концептуальная: M:N связи раскладываются в link tables. BasketVersion токена ссылается на версию индексной методики, но индекс и обеспечение не становятся одной таблицей или одним числом.</p>
-<h2 id="3-детализация-критических-записей">3. Детализация критических записей</h2>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TBCi — DATA_MODEL</title><link rel="stylesheet" href="../brand/theme.css"><style>main{min-width:0;overflow-wrap:anywhere}.table-wrap{width:100%;max-width:100%;min-width:0}nav{min-width:0}nav a{max-width:100%;overflow-wrap:anywhere}</style></head><body><nav><a href="../index.html">Комплект</a><a href="index.html">Техническое задание</a><a href="TBCi-Technical-Specification.pdf">PDF</a><a href="openapi.yaml">OpenAPI</a></nav><main><h1 id="tbci--модель-данных-v20">TBCi — модель данных v2.0</h1>
+<p>Модель соответствует 21 экрану TBCI.rar и ТЗ v2.0. Текущий фронтенд использует локальную демонстрационную структуру; таблицы БД ниже — проект серверного этапа.</p>
+<h2 id="локальное-состояние-текущей-реализации">Локальное состояние текущей реализации</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Таблица"><table>
 <thead>
 <tr class="header">
-<th>Таблица</th>
-<th>Обязательные поля</th>
-<th>Ограничения и индексы</th>
+<th>Поле</th>
+<th>Смысл и ограничения</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>users</td>
-<td>id, email_norm, status, locale, timezone, created_at</td>
-<td>UNIQUE(email_norm); индекс status/created_at; удаление по retention policy</td>
+<td>name, email</td>
+<td>Локальный демонстрационный профиль; не учётная запись для аутентификации</td>
 </tr>
 <tr class="even">
-<td>sessions</td>
-<td>id, user_id, token_hash, expires_at, revoked_at, device_label</td>
-<td>UNIQUE(token_hash); каскадный отзыв, raw session token не хранить</td>
+<td>selectedIndex</td>
+<td>Выбранный ID индекса, общий для Overview/Buy/Sell/Compile/Unmake/History/Holders</td>
 </tr>
 <tr class="odd">
-<td>credentials</td>
-<td>user_id, password_hash, mfa_secret_ref, security_version</td>
-<td>Приложение не хранит TOTP секрет открытым текстом</td>
+<td>balances</td>
+<td>Количество каждого актива; конечное неотрицательное число; TBCi — псевдоним баланса выбранного индекса</td>
 </tr>
 <tr class="even">
-<td>kyc_checks</td>
-<td>id, user_id, provider_id/ref, state, valid_until, updated_at</td>
-<td>UNIQUE(provider_id, provider_ref); inbox-dedup callback</td>
-</tr>
-<tr class="odd">
-<td>assets</td>
-<td>id, canonical_name, symbol, status</td>
-<td>Тикер индексируется, но не уникален</td>
-</tr>
-<tr class="even">
-<td>networks</td>
-<td>id, namespace, chain_id, finality_policy_version</td>
-<td>UNIQUE(namespace, chain_id); конфигурация read-only после публикации</td>
-</tr>
-<tr class="odd">
-<td>asset_routes</td>
-<td>id, asset_id, network_id, contract_or_native_id, decimals, status, min/max_units</td>
-<td>UNIQUE(network_id, contract_or_native_id, version); versioned routes</td>
-</tr>
-<tr class="even">
-<td>wallets</td>
-<td>id, user_id, asset_id, asset_route_id, status</td>
-<td>UNIQUE(user_id, asset_route_id, account_namespace); балансы сетей не смешиваются</td>
-</tr>
-<tr class="odd">
-<td>deposit_addresses</td>
-<td>id, wallet_id, route_id, address, memo, provider_ref</td>
-<td>UNIQUE(route_id, address, normalized_memo); исключить коллизии назначения</td>
-</tr>
-<tr class="even">
-<td>methodology_versions</td>
-<td>id, index_id, state, base_at, base_value, criteria_json, effective_range, source_policy</td>
-<td>Запрет пересекающихся active intervals; immutable published rows</td>
-</tr>
-<tr class="odd">
-<td>basket_versions</td>
-<td>id, token_id, methodology_version_id, state, effective_at, proposed_by, approval_ref</td>
-<td>Уникальная активная версия на момент; нельзя изменить K active version</td>
-</tr>
-<tr class="even">
-<td>basket_components</td>
-<td>basket_version_id, asset_id, units_per_token_decimal, start_weight, price_snapshot_ref</td>
-<td>UNIQUE(version, asset); сумма весов валидируется при approve</td>
-</tr>
-<tr class="odd">
-<td>price_observations</td>
-<td>id, asset_id, provider, observed_at, received_at, price, circulating_supply, quality, revision</td>
-<td>UNIQUE(asset, provider, observed_at, revision); partition по времени</td>
-</tr>
-<tr class="even">
-<td>index_observations</td>
-<td>index_id, methodology_version_id, timestamp, value, divisor, input_snapshot_ref, revision</td>
-<td>UNIQUE(index, version, timestamp, revision); published revision явен</td>
-</tr>
-<tr class="odd">
-<td>token_definitions</td>
-<td>id, network_id, contract, decimals, symbol, policy_version, issuance_address</td>
-<td>UNIQUE(network_id, contract); mainnet отдельно от testnet</td>
-</tr>
-<tr class="even">
-<td>quotes</td>
-<td>id, actor_id/type, kind, token_id, basket_version_id, terms_json, terms_hash, expires_at, accepted_operation_id</td>
-<td>UNIQUE(accepted_operation_id); неизменяемые terms; index actor/created_at</td>
+<td>tokenBalances</td>
+<td>Независимое количество токенов по indexId</td>
 </tr>
 <tr class="odd">
 <td>operations</td>
-<td>id, actor_id/type, type, quote_id, state, version, created_at, completed_at, correlation_id</td>
-<td>UNIQUE(quote_id) для quote flows; optimistic version; index actor/time и state/time</td>
+<td>До 500 локальных событий buy/sell/compile/unmake/claim/deposit/withdraw</td>
 </tr>
 <tr class="even">
-<td>operation_steps</td>
-<td>id, operation_id, kind, business_request_id, state, attempt, provider_ref, next_retry_at</td>
-<td>UNIQUE(kind, business_request_id); lease/version worker</td>
+<td>addedWallets</td>
+<td>Уникальные символы дополнительных видимых кошельков</td>
 </tr>
 <tr class="odd">
-<td>reservations</td>
-<td>id, operation_id, account_id, amount_units, state, released_by_journal_id</td>
-<td>Неотрицательные units; unique logical reservation; нет удаления активного резерва</td>
-</tr>
-<tr class="even">
-<td>ledger_accounts</td>
-<td>id, asset_id, asset_route_id, owner_kind/id, category, status</td>
-<td>UNIQUE(asset_route, owner_kind/id, category, namespace); без свободного mixing активов</td>
-</tr>
-<tr class="odd">
-<td>journals</td>
-<td>id, operation_id, cause_kind/id, state, reversal_of, created_at</td>
-<td>UNIQUE(cause_kind, cause_id); immutable posted; ссылки на обратный journal</td>
-</tr>
-<tr class="even">
-<td>ledger_entries</td>
-<td>id, journal_id, account_id, asset_id, direction, amount_units</td>
-<td>&gt;0; согласованность asset account/entry; deferred проверка баланса journal/asset</td>
-</tr>
-<tr class="odd">
-<td>balance_projections</td>
-<td>account_id, debit_units, credit_units, revision, rebuilt_at</td>
-<td>Производная таблица; не первичный финансовый журнал</td>
-</tr>
-<tr class="even">
-<td>chain_transactions</td>
-<td>id, network_id, operation_step_id, hash, sender, nonce, state, block_hash/height</td>
-<td>UNIQUE(network, hash); nonce reservation уникальна по sender/network/nonce</td>
-</tr>
-<tr class="odd">
-<td>chain_events</td>
-<td>id, network_id, tx_hash, event_or_output_index, block_hash, observed_state</td>
-<td>UNIQUE(network, tx_hash, event_or_output_index, logical_event_kind)</td>
-</tr>
-<tr class="even">
-<td>backing_allocations</td>
-<td>id, token_id, basket_version_id, asset_id, allocated_units, state, source_journal_id</td>
-<td>Только ссылки на подтверждённые ресурсы; обновления через ledger/операцию</td>
-</tr>
-<tr class="odd">
-<td>redemption_claims</td>
-<td>id, redemption_operation_id, asset_id, gross_units, fee_units, net_units, settled_units, state</td>
-<td>0 ≤ settled ≤ net; UNIQUE(operation, asset); закрытие только при полном settlement</td>
-</tr>
-<tr class="even">
-<td>reconciliations</td>
-<td>id, scope, cutoff_at, source_snapshot_refs, result, freshness, created_at</td>
-<td>Immutable run; отдельные discrepancy rows по активам</td>
-</tr>
-<tr class="odd">
-<td>approvals</td>
-<td>id, entity_kind/id, proposed_by, approved_by, decision, terms_hash, decided_at</td>
-<td>proposer != approver; решение относится к конкретному хешу версии</td>
-</tr>
-<tr class="even">
-<td>idempotency_records</td>
-<td>actor, route, key, request_hash, response_status/body_ref, operation_id, expires_at</td>
-<td>UNIQUE(actor, route, key); payload mismatch → 409</td>
-</tr>
-<tr class="odd">
-<td>inbox / outbox</td>
-<td>event_id, schema_version, payload_ref, aggregate/version, process/delivery state</td>
-<td>Unique event_id; commit outbox вместе с бизнес-транзакцией</td>
-</tr>
-<tr class="even">
-<td>audit_events</td>
-<td>id, actor, role, action, entity, reason, before/after_ref, request_id, occurred_at</td>
-<td>Append-only; ограниченный доступ; экспорт и retention отдельно от debug logs</td>
+<td>redemption</td>
+<td>null либо indexId, amount и remaining по каждому компоненту; неисполненные требования Unmake</td>
 </tr>
 </tbody>
 </table></div>
-<h2 id="4-инварианты-и-атомарные-границы">4. Инварианты и атомарные границы</h2>
-<ul>
-<li>Сумма дебетов и кредитов равна по каждому asset в posted journal. Создание всех entries и перевод journal в posted выполняются одной транзакцией.</li>
-<li>Принятие quote, создание operation и нужных reservations атомарно; при awaiting_approval финансовых эффектов ещё нет. Подтверждение заново проверяет срок и допуски.</li>
-<li>Ни UI, ни кеш, ни текущий balance snapshot не могут единолично изменить available balance.</li>
-<li>Сторно сохраняет ссылку на исходную запись; повтор source event не создаёт второй сторно/journal.</li>
-<li>Внешний бизнес-effect сохраняет request_id независимо от срока idempotency cache.</li>
-<li>Изменение basket K атомарно активируется только после фактического обеспечения и обработки pending operations.</li>
-<li>Supply, backing, client balances и redemption claims сверяются на согласованный cutoff с учётом pending chain finality. Одно событие не попадает одновременно в final и pending totals.</li>
-<li>Все таблицы с пользовательскими ресурсами проверяются на владельца; read replica не используется для проверки достаточности баланса перед списанием.</li>
-</ul>
-<h2 id="5-хранение-и-объёмы">5. Хранение и объёмы</h2>
-<p>Minute history для одного индекса: примерно 525 600 точек в год без ревизий; 20 активов дают около 10,5 млн наблюдений в год при минутном сборе. Это оценка масштаба, не фактический объём базы. Партиционировать временные данные по месяцу, выбрать индексы по asset/index и времени, хранить агрегаты отдельно с ссылкой на revision.</p>
-<p>Финансовый ledger не удаляется ради ускорения выборки: допускаются проекции и архивирование по согласованной retention policy с возможностью восстановления аудита. KYC-файлы не хранятся в общедоступном bucket. Любая выгрузка имеет владельца, scope, срок жизни и аудит скачивания.</p>
+<p>Ключ: tbci-reference-demo-v2. Отдельно tbci-watchlist для избранных монет. Реальные приватные ключи, пароли и session token не сохраняются. Начальные данные определены в apps/web/src/data/demo.ts. Браузер может изменить localStorage — это не доверенный финансовый учёт.</p>
+<h2 id="проект-серверных-сущностей">Проект серверных сущностей</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Таблица"><table>
+<thead>
+<tr class="header">
+<th>Сущность</th>
+<th>Основные поля</th>
+<th>Экран/назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Asset</td>
+<td>id, symbol, name, slug, precision, networkId, icon, metadata</td>
+<td>Каталоги, справочник, кошельки; символ не глобальный идентификатор</td>
+</tr>
+<tr class="even">
+<td>Index</td>
+<td>id, slug, name, methodology, baseDate, baseValue, divisor</td>
+<td>PUB-01/PUB-03/CAB-02/CAB-03</td>
+</tr>
+<tr class="odd">
+<td>IndexPoint</td>
+<td>indexId, timestamp, value, sourceVersion, publishedAt</td>
+<td>Графики; индекс в пунктах отдельно от цены токена</td>
+</tr>
+<tr class="even">
+<td>BasketSnapshot</td>
+<td>id, indexId, effectiveAt, status, divisor</td>
+<td>Версионированный состав</td>
+</tr>
+<tr class="odd">
+<td>BasketComponent</td>
+<td>snapshotId, assetId, unitsPerToken, referencePrice, weight</td>
+<td>UNIQUE(snapshotId, assetId); сумма референсных весов 100%</td>
+</tr>
+<tr class="even">
+<td>MarketQuote/OHLC</td>
+<td>assetId, currencyId, timestamp, price, open/high/low/close, volume, source</td>
+<td>PUB-06…PUB-10, без смешения времени события и публикации</td>
+</tr>
+<tr class="odd">
+<td>Exchange/Pair</td>
+<td>id, slug, metadata; exchangeId, baseId, quoteId, volume, price, status</td>
+<td>PUB-04/PUB-05/PUB-10</td>
+</tr>
+<tr class="even">
+<td>NewsArticle</td>
+<td>id, slug, title, source, licensedBody, category, image, publishedAt</td>
+<td>PUB-11/PUB-13/PUB-14; источник и права контента обязательны</td>
+</tr>
+<tr class="odd">
+<td>User</td>
+<td>id, displayName, email, sessionVersion</td>
+<td>Только серверный этап, текущего входа нет</td>
+</tr>
+<tr class="even">
+<td>Wallet</td>
+<td>id, userId, assetId, available, reserved</td>
+<td>CAB-01; UNIQUE(userId, assetId), остатки ≥ 0</td>
+</tr>
+<tr class="odd">
+<td>TokenHolding</td>
+<td>userId, indexId, available, reserved</td>
+<td>Остатки токенов каждого индекса</td>
+</tr>
+<tr class="even">
+<td>FinancialQuote</td>
+<td>id, userId, indexId, kind, amount, paymentAssetId, basketSnapshotId, prices, feePolicyVersion, expiresAt</td>
+<td>Котировка до подтверждения без списания</td>
+</tr>
+<tr class="odd">
+<td>Order</td>
+<td>id, userId, quoteId, kind, state, idempotencyKey, createdAt</td>
+<td>Buy/Sell/Compile/Unmake; UNIQUE(userId, idempotencyKey)</td>
+</tr>
+<tr class="even">
+<td>RedemptionClaim</td>
+<td>orderId, assetId, amount, fulfilled, transferId</td>
+<td>CAB-07; защита от повторного вывода компонента</td>
+</tr>
+<tr class="odd">
+<td>LedgerEntry</td>
+<td>transactionId, accountId, assetId, signedAmount, reason</td>
+<td>Двойная запись; сумма проводок по активу равна нулю</td>
+</tr>
+<tr class="even">
+<td>Transfer</td>
+<td>id, walletId, providerId, externalId, network, address, amount, status</td>
+<td>Внешние пополнения/выводы только в следующем этапе</td>
+</tr>
+<tr class="odd">
+<td>HolderSnapshot</td>
+<td>indexId, network, contract, blockHeight, address, quantity</td>
+<td>CAB-09; контракт TBCi должен быть подтверждён</td>
+</tr>
+<tr class="even">
+<td>Watchlist</td>
+<td>userId, targetType, targetId</td>
+<td>Избранное монет/бирж; UNIQUE(userId, targetType, targetId)</td>
+</tr>
+<tr class="odd">
+<td>Outbox/AuditEvent</td>
+<td>id, aggregateId, type, payloadHash, createdAt, deliveredAt</td>
+<td>Надёжная внешняя отправка и расследование</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="инварианты-и-транзакции">Инварианты и транзакции</h2>
+<p>Все денежные величины — decimal в БД и строки в JSON; не floating point. Точность актива хранится в Asset. Цены и комиссии исполнения фиксируются в Order. Поле weight не заменяет unitsPerToken при переоценке рынка. Исторический BasketSnapshot неизменяем после публикации; исправление создаёт новую версию.</p>
+<p>Buy/Sell атомарно проверяют владение и доступный остаток, резервируют/списывают и зачисляют. Compile проверяет каждую строку полного состава и создаёт токены только после обеспеченности всех компонентов. Unmake один раз списывает токены и создаёт полный набор Claims; каждое Claim может быть исполнено только один раз. Транзакция БД защищает от гонки двух вкладок. Демо проверяет эти правила в одном браузере и не заменяет серверные блокировки.</p>
+<p>Времена — UTC ISO 8601. Денежная история не удаляется при закрытии кошелька; личные данные и учётные записи имеют отдельные правила хранения после выбора юрисдикции. Резервная копия проверяется восстановлением, а не только наличием файла.</p>
 </main></body></html>

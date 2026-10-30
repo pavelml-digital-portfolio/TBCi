@@ -1,0 +1,154 @@
+{
+  "source": "TBCI.rar",
+  "screens": [
+    {
+      "id": "PUB-01",
+      "route": "/",
+      "width": 1680,
+      "sourceHeight": 2626,
+      "renderHeight": 2626
+    },
+    {
+      "id": "PUB-03",
+      "route": "/index/tbci-20-balance/",
+      "width": 1680,
+      "sourceHeight": 4100,
+      "renderHeight": 4100
+    },
+    {
+      "id": "PUB-06",
+      "route": "/coins/",
+      "width": 1680,
+      "sourceHeight": 1358,
+      "renderHeight": 1381
+    },
+    {
+      "id": "PUB-07",
+      "route": "/coins/bitcoin/",
+      "width": 1680,
+      "sourceHeight": 1933,
+      "renderHeight": 1933
+    },
+    {
+      "id": "PUB-08",
+      "route": "/coins/bitcoin/charts/",
+      "width": 1680,
+      "sourceHeight": 1933,
+      "renderHeight": 1933
+    },
+    {
+      "id": "PUB-09",
+      "route": "/coins/bitcoin/historical-price/",
+      "width": 1680,
+      "sourceHeight": 1933,
+      "renderHeight": 1933
+    },
+    {
+      "id": "PUB-10",
+      "route": "/coins/bitcoin/markets/",
+      "width": 1680,
+      "sourceHeight": 1933,
+      "renderHeight": 1933
+    },
+    {
+      "id": "PUB-11",
+      "route": "/coins/bitcoin/news/",
+      "width": 1680,
+      "sourceHeight": 1933,
+      "renderHeight": 1933
+    },
+    {
+      "id": "PUB-04",
+      "route": "/exchanges/",
+      "width": 1680,
+      "sourceHeight": 1600,
+      "renderHeight": 1652
+    },
+    {
+      "id": "PUB-05",
+      "route": "/exchanges/huobi/",
+      "width": 1680,
+      "sourceHeight": 1697,
+      "renderHeight": 1747
+    },
+    {
+      "id": "PUB-13",
+      "route": "/news/",
+      "width": 1680,
+      "sourceHeight": 2785,
+      "renderHeight": 2785
+    },
+    {
+      "id": "PUB-14",
+      "route": "/news/huobi-stablecoin/",
+      "width": 1680,
+      "sourceHeight": 2073,
+      "renderHeight": 2073
+    },
+    {
+      "id": "CAB-01",
+      "route": "/app/wallets/",
+      "width": 1496,
+      "sourceHeight": 2550,
+      "renderHeight": 2577
+    },
+    {
+      "id": "CAB-02",
+      "route": "/app/indices/",
+      "width": 1496,
+      "sourceHeight": 996,
+      "renderHeight": 996
+    },
+    {
+      "id": "CAB-03",
+      "route": "/app/",
+      "width": 1496,
+      "sourceHeight": 2248,
+      "renderHeight": 2248
+    },
+    {
+      "id": "CAB-04",
+      "route": "/app/buy/",
+      "width": 1496,
+      "sourceHeight": 948,
+      "renderHeight": 948
+    },
+    {
+      "id": "CAB-05",
+      "route": "/app/compile/",
+      "width": 1496,
+      "sourceHeight": 1200,
+      "renderHeight": 1204
+    },
+    {
+      "id": "CAB-06",
+      "route": "/app/sell/",
+      "width": 1496,
+      "sourceHeight": 948,
+      "renderHeight": 948
+    },
+    {
+      "id": "CAB-07",
+      "route": "/app/unmake/",
+      "width": 1496,
+      "sourceHeight": 1270,
+      "renderHeight": 1270
+    },
+    {
+      "id": "CAB-08",
+      "route": "/app/history/",
+      "width": 1496,
+      "sourceHeight": 1034,
+      "renderHeight": 1034
+    },
+    {
+      "id": "CAB-09",
+      "route": "/app/holders/",
+      "width": 1496,
+      "sourceHeight": 1368,
+      "renderHeight": 1368
+    }
+  ],
+  "mobileOverflows": [],
+  "pageErrors": []
+}

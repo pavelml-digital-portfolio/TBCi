@@ -1,4 +1,4 @@
 ---
-import Base from '../../layouts/Base.astro';import Header from '../../components/Header.astro';import Footer from '../../components/Footer.astro';
+import Base from "../../layouts/Base.astro";import Public from "../../components/Public";
 ---
-<Base title="Конфиденциальность демо-сайта — TBCi"><Header/><main class="site-container editorial-page"><article class="article-content"><a href="/" class="back-link">← На главную</a><span class="eyebrow">ИНФОРМАЦИЯ</span><h1>Конфиденциальность</h1><p class="lead">Эта версия TBCi демонстрирует интерфейс сервиса.</p><h2>Локальные данные</h2><p>Демо-балансы, история операций и настройки кабинета хранятся в localStorage вашего браузера. Реальные финансовые операции не выполняются. Для удаления этих данных используйте «Сбросить демо» в настройках кабинета или очистите данные сайта в браузере.</p><h2>Форма подписки</h2><p>Email из формы подписки не отправляется на сервер и не сохраняется. В этой версии форма демонстрирует только интерфейс.</p><h2>Внешние сервисы</h2><p>Сайт не подключает внешние шрифты, аналитику или криптовалютные кошельки. Все иллюстрации и шрифты загружаются с этого сайта. Сервер хостинга может вести стандартные технические журналы запросов.</p></article></main><Footer/></Base>
+<Base><Public client:load page="privacy"/></Base>

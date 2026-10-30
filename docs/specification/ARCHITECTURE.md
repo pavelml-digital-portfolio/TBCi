@@ -1,86 +1,31 @@
-# TBCi — архитектурные схемы
+# TBCi — архитектура v2.0
 
-Приложение к ТЗ v1.1. Схемы задают базовый дизайн, а не текущую инфраструктуру.
+## Текущая поставка
 
-## 1. Модули и границы доверия
+Один Astro-проект apps/web → сборка HTML/JS/CSS/локальных изображений в apps/web/dist → Apache на tbci.pavelml.ru. Публичный HTML генерируется заранее; React гидратирует контролы. Кабинет монтируется React-компонентом на статических Astro-маршрутах. Все страницы доступны без аутентификации по прямому решению заказчика.
 
-```mermaid
-flowchart LR
-  U[Единый Astro / публичные страницы SSG] --> CDN[CDN / статические файлы]
-  APP[Тот же Astro / приватные страницы + React] --> WEB[Astro on-demand adapter / session gate]
-  U --> EDGE[HTTPS / WAF / API gateway]
-  WEB --> EDGE
-  APP --> EDGE
-  P[Партнёр] --> EDGE
-  EDGE --> API[Identity / market / portfolio API]
-  API --> Q[Quote engine]
-  API --> O[Operation orchestrator]
-  Q --> M[Market / index engine]
-  M --> MP[Провайдер рыночных данных]
-  O --> L[Ledger / reservations]
-  L --> DB[(PostgreSQL / outbox)]
-  O --> W[Workers / inbox]
-  W --> C[Custody / liquidity adapters]
-  W --> SG[Независимый policy / signing gateway]
-  SG --> K[HSM / MPC / KMS]
-  C --> CH[Сети / провайдеры]
-  SG --> CH
-  CH --> R[Наблюдение событий / reconciliation]
-  R --> DB
-  DB --> N[Notifications / webhooks]
-  A[Backoffice + MFA] --> API
-```
+Браузер → Public.tsx (публичные шаблоны) либо Account.tsx → DemoContext.tsx → localStorage. Финансовые операции никогда не покидают браузер. Никаких /api/v1 запросов сейчас нет. Публичные графики — иллюстративные SVG. Шрифты и изображения локальные. Subscribe валидирует email и сообщает, что данные не отправлены.
 
-Signing-контур — отдельная граница доверия. Он не принимает произвольные методы/назначения от API без проверки. Постоянный финансовый журнал находится в PostgreSQL; Redis и очереди не являются единственным источником балансов или финансовых намерений.
+Маршруты и визуальное происхождение: SCREENS.csv, screens.json, REVIEW.html. 21 исходный экран не равен количеству HTML-файлов: один шаблон генерируется для нескольких монет, индексов и бирж. Дополнительные страницы Setting/FAQ не имеют отдельных исходных JPG.
 
-## 2. Принятие операции
+## Проект следующего этапа
 
-```mermaid
-sequenceDiagram
-  participant U as Пользователь
-  participant API as API
-  participant DB as DB / ledger
-  participant W as Worker
-  participant E as Провайдер / сеть
-  U->>API: POST quote
-  API-->>U: terms / fees / expires_at
-  U->>API: POST operation + Idempotency-Key
-  API->>DB: Транзакция: validate + reserve + operation + outbox
-  DB-->>API: commit
-  API-->>U: 202 operation_id
-  W->>DB: Получить шаг с lease/version
-  W->>E: Выполнить с business_request_id
-  E-->>W: provider_ref / tx_hash / unknown
-  W->>E: Проверка статуса и финальности
-  W->>DB: Ledger settlement + state + outbox
-  U->>API: GET operation
-  API-->>U: completed / pending / manual_review
-```
+Браузер с прежними Astro/React шаблонами → session/API layer → модульное ядро. Предложение: NestJS, PostgreSQL (учёт/снимки/котировки/заказы), Redis (кэш/ограничение частоты), очередь и outbox workers (рыночные провайдеры, новости, custody). Это выбор реализации для оценки, не новый визуальный макет и не уже подключённый backend.
 
-Если требуется MFA и подтверждение не передано, операция создаётся в awaiting_approval без резерва. После challenge/confirm заново проверяются quote TTL, право и ресурсы; только затем выполняется транзакция резервирования.
+Модули: MarketData; Index/Basket; Content; Session/Profile; Wallet/Ledger; Quote/Execution; Redemption; Transfers; HolderSnapshots. Публичные чтения отделяются от команд по кошелькам. Клиент не вычисляет окончательный баланс и не определяет право вывода. Кэш не является источником учётной истины.
 
-## 3. Погашение и сохранение обязательств
+## Потоки исполнения
 
-```mermaid
-flowchart TD
-  A[Есть токены в custody / escrow] --> B[Reserve q и зафиксировать версию K]
-  B --> C[Burn request_id]
-  C --> D{Финальность установлена?}
-  D -- нет --> E[awaiting_network / резерв сохранён]
-  D -- да --> F[Supply уменьшается]
-  F --> G[Backing liability переносится в redemption claims]
-  G --> H[Зачисление компонентов во внутренние кошельки]
-  H --> I{Все компоненты учтены и сверены?}
-  I -- да --> J[completed]
-  I -- нет --> K[partial / manual_review; задолженность сохранена]
-```
+Buy/Sell: request quote → проверка курса/лимита/валюты → отображение подтверждения → execute с idempotency key → транзакционная проверка владельца/quote expiry/остатка → учёт → ответ. Неизвестный результат после timeout восстанавливается по orderId/idempotency key.
 
-Непогашенные claims не превращаются в свободный резерв. Внешний вывод компонентов — отдельная операция. Диаграмма не обещает атомарного завершения нескольких блокчейнов.
+Compile: quote с полной версией BasketSnapshot → расчёт всех компонентов → пополнение недостающих → execute проверяет обеспеченность всего набора → атомарные проводки → выпуск. Запрещено выдавать полный токен после частичной сборки.
 
-## 4. Ребалансировка
+Unmake: quote → атомарное погашение токенов и создание Claims → вывод одной или всех оставшихся Claims → исполнение/подтверждение внешнего перевода. Сетевой повтор не создаёт новую эмиссию и не списывает токены повторно.
 
-Draft → расчёт состава/затрат → независимое одобрение → планирование → остановка новых Compile/Unmake → завершение/урегулирование старых операций → реальное перемещение обеспечения → сверка → активация K и делителя → публикация истории → возобновление. При неопределённом обеспечении новая версия не активируется.
+Рыночные данные: адаптер → валидация времени/аномалий/полноты → версия набора → расчёт индекса → публикация → кэш чтения. Ошибка источника не подменяется нулевой ценой. UI будущего API показывает loading/empty/stale/error в существующей области, сохраняя структуру JPG.
 
-## 5. Фронтенд
+## Публикация
 
-Публичная часть: Astro + TypeScript, SSG, React-островки для графиков и интерактива. Кабинет: приватные страницы того же Astro-проекта под /app, on-demand session gate и интерактивные React-компоненты. Отдельного SPA/Vite-проекта нет. Backend: NestJS, отдельный API/worker-контур. Текущие данные приходят из API без пересборки статики. Общие UI/tokens/api-client пакеты; Next.js не используется; приватные маршруты обслуживает on-demand адаптер Astro, а финансовую логику — NestJS API.
+Git push main → Frontend checks (Python deploy tests, npm ci/check/build, Playwright) → Publish TBCi (штатный vps-release) → независимая проверка HTTPS и deployment.json. Публичный отчёт не загружается дополнительным artifact job после проверки: ранее этот шаг зависал после успешного GET. Секретный SSH-ключ доступен только workflow. Подробная команда и ограничения находятся в корневом DEPLOY.md.
+
+Контроль выпуска отделён от сетевой диагностики. Timeout не доказывает HTTP-ошибку сервиса; откат допускается только для подтверждённой неисправности собственного выпуска с проверкой текущего идентификатора. Штатные noindex, HTTPS и резервирование сохраняются.

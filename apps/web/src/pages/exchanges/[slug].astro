@@ -1,0 +1,6 @@
+---
+import Base from "../../layouts/Base.astro";import Public from "../../components/Public";import {exchanges} from "../../data/demo";
+export function getStaticPaths(){return exchanges.map(a=>({params:{slug:a.slug}}))}
+const {slug}=Astro.params;
+---
+<Base title={`${slug} — TBCi`}><Public client:load page="exchange" slug={slug}/></Base>

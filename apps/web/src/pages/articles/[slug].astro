@@ -1,6 +1,0 @@
----
-import Base from '../../layouts/Base.astro';import Header from '../../components/Header.astro';import Footer from '../../components/Footer.astro';import {articles} from '../../data/articles';
-export function getStaticPaths(){return articles.map(article=>({params:{slug:article.slug},props:{article}}))}
-const {article}=Astro.props;
----
-<Base title={`${article.title} — TBCi`} description={article.description}><Header/><main class="site-container editorial-page"><a href="/articles/" class="back-link">← Все материалы</a><article class="article-content"><span class="eyebrow">{article.category}</span><h1>{article.title}</h1><p class="lead">{article.description}</p><div class="article-divider"></div>{article.paragraphs.map((p:string)=><p>{p}</p>)}<a href="/#composition" class="button button--primary">Посмотреть состав</a></article></main><Footer/></Base>

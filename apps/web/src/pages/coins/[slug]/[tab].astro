@@ -1,0 +1,6 @@
+---
+import Base from "../../../layouts/Base.astro";import Public from "../../../components/Public";import {basket,publicCoinTabs} from "../../../data/demo";
+export function getStaticPaths(){return basket.flatMap(a=>publicCoinTabs.filter(t=>t[0]!=="overview").map(([tab])=>({params:{slug:a.slug,tab}})))}
+const {slug,tab}=Astro.params;
+---
+<Base title={`${slug} ${tab} — TBCi`}><Public client:load page="coin" slug={slug} tab={tab}/></Base>
