@@ -1,0 +1,124 @@
+{
+  "results": [
+    {
+      "file": "flow-deposit-qr-375.png",
+      "width": 375,
+      "geometry": {
+        "width": 373,
+        "scroll": 373,
+        "left": 0,
+        "right": 375
+      }
+    },
+    {
+      "file": "flow-withdraw-review-375.png",
+      "width": 375,
+      "geometry": {
+        "width": 373,
+        "scroll": 373,
+        "left": 0,
+        "right": 375
+      }
+    },
+    {
+      "file": "flow-kyc-personal-375.png",
+      "width": 375,
+      "geometry": {
+        "width": 373,
+        "scroll": 373,
+        "left": 0,
+        "right": 375
+      }
+    },
+    {
+      "file": "flow-kyc-identity-375.png",
+      "width": 375,
+      "geometry": {
+        "width": 373,
+        "scroll": 373,
+        "left": 0,
+        "right": 375
+      }
+    },
+    {
+      "file": "flow-kyc-address-375.png",
+      "width": 375,
+      "geometry": {
+        "width": 373,
+        "scroll": 373,
+        "left": 0,
+        "right": 375
+      }
+    },
+    {
+      "file": "flow-kyc-review-375.png",
+      "width": 375,
+      "geometry": {
+        "width": 373,
+        "scroll": 373,
+        "left": 0,
+        "right": 375
+      }
+    },
+    {
+      "file": "flow-deposit-qr-1496.png",
+      "width": 1496,
+      "geometry": {
+        "width": 658,
+        "scroll": 658,
+        "left": 418,
+        "right": 1078
+      }
+    },
+    {
+      "file": "flow-withdraw-review-1496.png",
+      "width": 1496,
+      "geometry": {
+        "width": 658,
+        "scroll": 658,
+        "left": 418,
+        "right": 1078
+      }
+    },
+    {
+      "file": "flow-kyc-personal-1496.png",
+      "width": 1496,
+      "geometry": {
+        "width": 658,
+        "scroll": 658,
+        "left": 418,
+        "right": 1078
+      }
+    },
+    {
+      "file": "flow-kyc-identity-1496.png",
+      "width": 1496,
+      "geometry": {
+        "width": 658,
+        "scroll": 658,
+        "left": 418,
+        "right": 1078
+      }
+    },
+    {
+      "file": "flow-kyc-address-1496.png",
+      "width": 1496,
+      "geometry": {
+        "width": 658,
+        "scroll": 658,
+        "left": 418,
+        "right": 1078
+      }
+    },
+    {
+      "file": "flow-kyc-review-1496.png",
+      "width": 1496,
+      "geometry": {
+        "width": 658,
+        "scroll": 658,
+        "left": 418,
+        "right": 1078
+      }
+    }
+  ]
+}

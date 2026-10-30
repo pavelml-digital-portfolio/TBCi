@@ -1,5 +1,10 @@
+import ActivityChart from "./ActivityChart";
+import { faqs } from "../data/faq";
+import { VerificationAllowance } from "./Verification";
+import UiIcon from "./UiIcon";
+import AccountSettings from "./AccountSettings";
 import { IndexNotes } from "./MarketContent";
-import { profiles, marketStats, seriesFor } from "../data/market";
+import { profiles, marketStats } from "../data/market";
 import { useState } from "react";
 import {
   assets,
@@ -48,7 +53,7 @@ const pages: Record<Section, string> = {
   unmake: "Unmake",
   history: "Historical price",
   holders: "Holders",
-  settings: "Setting",
+  settings: "Settings",
   help: "FAQ",
 };
 const refs: Record<Section, string> = {
@@ -69,7 +74,7 @@ const href = (section: Section) =>
 function TokenSummary() {
   const { state } = useDemo();
   const selected = findIndex(state.selectedIndex);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState(state.preferences.currency);
   return (
     <section className="token-summary">
       <div className="token-summary-name">
@@ -124,20 +129,10 @@ function TokenSummary() {
 }
 function Profits() {
   const { state } = useDemo();
-  const history = seriesFor(state.selectedIndex);
   const performance = marketStats(state.selectedIndex);
   const profit = (50000 * performance.returnPct) / 100;
-  const points = Array.from(
-    { length: 12 },
-    (_, i) => history[Math.min(364, Math.round((i * 364) / 11))],
-  );
-  const low = Math.min(...points.map((b) => b.close)),
-    high = Math.max(...points.map((b) => b.close));
-  const coords = points.map((b, i) => [
-    35 + (i * 455) / 11,
-    125 - ((b.close - low) / (high - low || 1)) * 95,
-  ]);
-  const [currency, setCurrency] = useState("USD");
+  const [profitDetail, setProfitDetail] = useState(false);
+  const [currency, setCurrency] = useState(state.preferences.currency);
   return (
     <div className="profit-grid">
       <section className="profit-card raised">
@@ -151,7 +146,13 @@ function Profits() {
           </strong>
           <CurrencyButtons value={currency} onChange={setCurrency} />
         </div>
-        <div className="profit-circle">
+        <button
+          type="button"
+          className="profit-circle"
+          aria-label="Inspect model profit"
+          aria-expanded={profitDetail}
+          onClick={() => setProfitDetail(!profitDetail)}
+        >
           <svg viewBox="0 0 120 120" aria-hidden="true">
             <circle
               cx="60"
@@ -168,7 +169,9 @@ function Profits() {
               fill="none"
               stroke="#218eff"
               strokeWidth="3"
-              strokeDasharray="95 340"
+              strokeDasharray={
+                Math.min(100, Math.abs(performance.returnPct)) * 3.393 + " 340"
+              }
               transform="rotate(-90 60 60)"
             />
           </svg>
@@ -178,46 +181,17 @@ function Profits() {
             >
               {number(performance.returnPct, 1)}%
             </strong>
-            <small>2018 sample return</small>
+            <small>
+              {profitDetail
+                ? "$50,000 starting model · " +
+                  money(50000 + profit, 0) +
+                  " ending value"
+                : "2018 sample return · select for details"}
+            </small>
           </div>
-        </div>
+        </button>
       </section>
-      <section className="profit-card raised transaction-chart">
-        <h2>Transaction history</h2>
-        <svg
-          viewBox="0 0 500 150"
-          role="img"
-          aria-label="Transaction history chart"
-        >
-          <g stroke="#e5e7e9">
-            {[20, 55, 90, 125].map((y) => (
-              <line key={y} x1="25" x2="490" y1={y} y2={y} />
-            ))}
-          </g>
-          <path
-            d={coords.map((p, i) => (i ? "L" : "M") + p.join(" ")).join(" ")}
-            fill="none"
-            stroke="#319dff"
-            strokeWidth="2"
-          />
-          {coords.map((p, i) => (
-            <circle key={i} cx={p[0]} cy={p[1]} r="3" fill="#319dff">
-              <title>
-                {new Date(points[i].time * 1000).toISOString().slice(0, 10) +
-                  " · " +
-                  number(points[i].close)}
-              </title>
-            </circle>
-          ))}
-          <g fill="#a2a2a8" fontSize="11">
-            {[35, 115, 210, 305, 405, 490].map((x, i) => (
-              <text key={x} x={x - 10} y="149">
-                {["Jan", "Mar", "May", "Jul", "Sep", "Dec"][i]}
-              </text>
-            ))}
-          </g>
-        </svg>
-      </section>
+      <ActivityChart />
     </div>
   );
 }
@@ -228,10 +202,16 @@ function WalletTable() {
     withdraw: boolean;
   } | null>(null);
   const [add, setAdd] = useState(false);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState(state.preferences.currency);
   const [sort, setSort] = useState("default");
   const [newSymbol, setNewSymbol] = useState("IOTA");
-  let rows = [...new Set([...walletSymbols, ...state.addedWallets])].map(coin);
+  let rows = [...new Set([...walletSymbols, ...state.addedWallets])]
+    .map(coin)
+    .filter(
+      (a) =>
+        !state.preferences.hideSmallBalances ||
+        state.balances[a.symbol] * a.price >= 1,
+    );
   if (sort === "balance")
     rows = rows.sort(
       (a, b) =>
@@ -334,6 +314,7 @@ function WalletTable() {
                     }
                   >
                     <TransferIcon />
+                    <span>Deposit</span>
                   </button>
                 </td>
                 <td>
@@ -345,6 +326,7 @@ function WalletTable() {
                     }
                   >
                     <TransferIcon out />
+                    <span>Withdraw</span>
                   </button>
                 </td>
               </tr>
@@ -510,7 +492,7 @@ function RecentActivity() {
 }
 function Wallets() {
   const { state } = useDemo();
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState(state.preferences.currency);
   const total = assets
     .filter((a) => a.symbol !== "TBCi")
     .reduce((s, a) => s + state.balances[a.symbol] * a.price, 0);
@@ -532,7 +514,7 @@ function Wallets() {
                 ? money(total, 0)
                 : number(total / coin(currency).price) + " " + currency}
             </strong>
-            <Sparkline instrument={state.selectedIndex} />
+            <Sparkline instrument="portfolio" />
           </div>
           <div className="section-row">
             <CurrencyButtons value={currency} onChange={setCurrency} />
@@ -543,7 +525,7 @@ function Wallets() {
           <div className="section-row">
             <h2>{findIndex(state.selectedIndex).name}</h2>
             <a className="button small" href="/app/indices/">
-              Choice index &nbsp; ⌄
+              Choice index <UiIcon name="chevron-down" />
             </a>
           </div>
           <div className="wallet-summary-number">
@@ -562,8 +544,19 @@ function Wallets() {
               </a>
             </div>
             <span>
-              <b className="blue">87.842</b>{" "}
-              <span className="positive">▲ 1.468 &nbsp; +2,11%</span>
+              <b className="blue">
+                {number(findIndex(state.selectedIndex).points)}
+              </b>{" "}
+              <span
+                className={
+                  findIndex(state.selectedIndex).change >= 0
+                    ? "positive"
+                    : "negative"
+                }
+              >
+                {findIndex(state.selectedIndex).change > 0 ? "+" : ""}
+                {findIndex(state.selectedIndex).change}%
+              </span>
             </span>
           </div>
         </section>
@@ -608,7 +601,7 @@ function Overview() {
 }
 function Choices() {
   const { state, selectIndex } = useDemo();
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState(state.preferences.currency);
   const [sort, setSort] = useState("default");
   const choices = [...indexChoices].sort((a, b) =>
     sort === "price"
@@ -733,7 +726,7 @@ function Amount({
           aria-label="Increase amount"
           onClick={() => onChange(String(Math.max(0, Number(value) || 0) + 1))}
         >
-          ⌃
+          <UiIcon name="chevron-up" />
         </button>
         <button
           aria-label="Decrease amount"
@@ -741,7 +734,7 @@ function Amount({
             onChange(String(Math.max(0, (Number(value) || 0) - 1)))
           }
         >
-          ⌄
+          <UiIcon name="chevron-down" />
         </button>
       </div>
       <label htmlFor="token-amount">{label}</label>
@@ -775,6 +768,7 @@ function Trade({ sell = false }: { sell?: boolean }) {
   return (
     <>
       <TokenSummary />
+      <VerificationAllowance />
       <section className="payment-section">
         <h2>{sell ? "Select currency wallet" : "Select method payment"}</h2>
         <div className="payment-methods">
@@ -936,6 +930,7 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
     <>
       <TokenSummary />
       {unmake && <h2 className="unmake-title">How much to unmake</h2>}
+      <VerificationAllowance />
       <div className="compile-controls">
         {unmake && (
           <div className="total-balance">
@@ -1073,6 +1068,7 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
                         }}
                       >
                         <TransferIcon out />
+                        <span>Withdraw</span>
                       </button>
                     </td>
                     <td>
@@ -1102,6 +1098,7 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
                         onClick={() => setFund(a.symbol)}
                       >
                         <TransferIcon />
+                        <span>Deposit</span>
                       </button>
                     </td>
                   </>
@@ -1392,84 +1389,45 @@ function Holders() {
   );
 }
 function Settings() {
-  const { state, setProfile, reset, notify } = useDemo();
-  const [name, setName] = useState(state.name);
-  const [email, setEmail] = useState(state.email);
-  return (
-    <div className="settings-content">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setProfile(name.trim(), email.trim());
-          notify("Profile saved in this browser.");
-        }}
-      >
-        <label htmlFor="profile-name">Name</label>
-        <input
-          id="profile-name"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label htmlFor="profile-email">Email</label>
-        <input
-          id="profile-email"
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button className="button primary">Save changes</button>
-      </form>
-      <h2>Demonstration account</h2>
-      <p>
-        All balances and operations are stored locally in this browser. No real
-        funds are used.
-      </p>
-      <button
-        className="button danger"
-        onClick={() => {
-          if (confirm("Reset demonstration balances and profile?")) {
-            reset();
-            location.reload();
-          }
-        }}
-      >
-        Reset demo data
-      </button>
-    </div>
-  );
+  return <AccountSettings />;
 }
 function Help() {
+  const [query, setQuery] = useState("");
+  const shown = faqs.filter(([q, a]) =>
+    (q + " " + a).toLowerCase().includes(query.toLowerCase()),
+  );
   return (
     <div className="faq">
-      {[
-        [
-          "What is TBCi?",
-          "A basket index representing a portfolio of cryptocurrencies. Index points and the value of a token are separate figures.",
-        ],
-        [
-          "Buy or Compile?",
-          "Buy exchanges one wallet currency for TBCi. Compile uses every component in the index basket.",
-        ],
-        [
-          "Sell or Unmake?",
-          "Sell receives one currency. Unmake redeems tokens into all the underlying components.",
-        ],
-        [
-          "Are real funds involved?",
-          "No. This account is a demonstration and all operations remain in this browser.",
-        ],
-        [
-          "Where can I find my operations?",
-          "The Transaction history chart summarizes the portfolio. Historical price compares changes in the index composition.",
-        ],
-      ].map(([q, a]) => (
+      <p className="faq-intro">
+        Practical answers about index operations, verification and your demo
+        wallet.
+      </p>
+      <label className="faq-search">
+        <UiIcon name="search" />
+        <input
+          aria-label="Search FAQ"
+          type="search"
+          placeholder="Search questions and answers"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </label>
+      {shown.map(([q, a]) => (
         <details key={q}>
-          <summary>{q}</summary>
+          <summary>
+            {q}
+            <UiIcon name="chevron-down" />
+          </summary>
           <p>{a}</p>
         </details>
       ))}
+      {!shown.length && <p>No answers match your search.</p>}
+      <p className="settings-help">
+        Need to inspect your account?{" "}
+        <a className="blue" href="/app/settings/">
+          Open Settings
+        </a>
+      </p>
     </div>
   );
 }
@@ -1541,7 +1499,19 @@ function Shell({ section }: { section: Section }) {
           <small>Cryptocurrency index</small>
         </a>
         <a className="sidebar-user" href="/app/settings/">
-          ◉ &nbsp; {state.name} <span>›</span>
+          <UiIcon name="shield" />
+          <span>
+            {state.name}
+            <small className="sidebar-level">
+              Level {state.kyc.level} ·{" "}
+              {state.kyc.level === 3
+                ? "Full KYC"
+                : state.kyc.level === 2
+                  ? "Basic KYC"
+                  : "Unverified"}
+            </small>
+          </span>
+          <UiIcon name="chevron-right" />
         </a>
         <nav aria-label="Account navigation">
           {(

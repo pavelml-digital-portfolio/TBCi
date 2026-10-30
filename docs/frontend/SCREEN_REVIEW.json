@@ -13,7 +13,7 @@
       "route": "/index/tbci-20-balance/",
       "width": 1680,
       "sourceHeight": 4100,
-      "renderHeight": 4374
+      "renderHeight": 4450
     },
     {
       "id": "PUB-06",
@@ -90,7 +90,7 @@
       "route": "/app/wallets/",
       "width": 1496,
       "sourceHeight": 2550,
-      "renderHeight": 3331
+      "renderHeight": 3557
     },
     {
       "id": "CAB-02",
@@ -104,7 +104,7 @@
       "route": "/app/",
       "width": 1496,
       "sourceHeight": 2248,
-      "renderHeight": 2924
+      "renderHeight": 3104
     },
     {
       "id": "CAB-04",
@@ -118,21 +118,21 @@
       "route": "/app/compile/",
       "width": 1496,
       "sourceHeight": 1200,
-      "renderHeight": 1204
+      "renderHeight": 1314
     },
     {
       "id": "CAB-06",
       "route": "/app/sell/",
       "width": 1496,
       "sourceHeight": 948,
-      "renderHeight": 948
+      "renderHeight": 959
     },
     {
       "id": "CAB-07",
       "route": "/app/unmake/",
       "width": 1496,
       "sourceHeight": 1270,
-      "renderHeight": 1270
+      "renderHeight": 1358
     },
     {
       "id": "CAB-08",

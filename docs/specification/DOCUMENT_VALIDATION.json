@@ -1,17 +1,17 @@
 {
-  "version": "2.1",
-  "frontend": "0.3.0",
+  "version": "2.2",
+  "frontend": "0.4.0",
   "canonical_screens": 21,
-  "additional_review_screens": 8,
-  "requirements": 196,
-  "acceptance_criteria": 62,
-  "pdf_pages": 50,
+  "additional_review_screens": 35,
+  "requirements": 213,
+  "acceptance_criteria": 79,
+  "pdf_pages": 52,
   "docx_source_images": 21,
   "api_paths": 22,
   "api_status": "future_backend_draft_not_implemented",
   "typecheck": "passed; 0 errors, 0 warnings, 0 hints",
   "build": "305 routes",
-  "playwright": "20 passed (including OHLC/date/data invariants)",
+  "playwright": "31 passed; UI, ledger, QR decoder, TOTP RFC vector, KYC outcomes, migration and chart bounds",
   "deployment_tests": "9 passed",
   "viewport_coverage": [
     320,
@@ -20,7 +20,14 @@
     1024,
     1280,
     1496,
-    1920
+    1920,
+    2560
   ],
-  "source_checks": "all 21 canonical JPG hashes match; 21 CC0 SVG; 48 ICO both dates 2018; 32 articles >350 words"
+  "source_checks": "all 21 canonical JPG hashes match; 21 CC0 SVG; 48 ICO both dates 2018; 32 articles >350 words",
+  "layout_checks": 224,
+  "layout_issues": 0,
+  "flow_dialog_checks": 12,
+  "pdf_outside_page": 0,
+  "missing_requirement_or_acceptance_ids": 0,
+  "review_date": "2026-10-31 Europe/Moscow"
 }

@@ -1,4 +1,4 @@
-# TBCi — модель данных v2.1
+# TBCi — модель данных v2.2
 
 Модель соответствует 21 экрану TBCI.rar и ТЗ v2.1. Текущий фронтенд использует локальную демонстрационную структуру; таблицы БД ниже — проект серверного этапа.
 
@@ -55,3 +55,8 @@ ICOOffer: id, name, token, type, country, start/end (обе даты 2018), repo
 Article: slug, title, publishedAt 2018, category, topic, image, summary, sections, author, readMinutes, sampleViews, sources, tags. Сохранение статей — локальный tbci-saved-articles; избранные ICO — tbci-ico-watchlist.
 
 ChartBar: timestamp UTC, open/high/low/close/volume; unique instrument/interval/timestamp. Проверяются OHLC-границы, положительные цены, возрастающее время, только 2018. Генератор детерминирован, параметры индексов независимы. Эти ряды не являются биржевыми данными и не попадают в финансовый ledger.
+
+
+## Расширение v2.2
+
+DemoState дополнен transfers, trustedAddresses, audit, security, preferences, sessions и kyc (уровень, purchaseTotalUsd, текущая заявка и история). transfer-engine.ts отвечает за идемпотентность, комиссии, подтверждения и возвраты; kyc.ts — за лимиты и состояния проверки. chart-bounds.ts ограничивает временной диапазон Lightweight Charts. WalletTransfer, AccountSettings, Verification и InteractiveDonut реализуют интерфейсы; подробности в [WALLET_KYC.md](../frontend/WALLET_KYC.md). Секреты аутентификатора остаются локальными, recovery codes хешируются, файлы KYC не сохраняются. Серверные схемы и OpenAPI ниже не являются реализованным API.

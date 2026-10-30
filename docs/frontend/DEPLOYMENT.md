@@ -9,7 +9,7 @@ DocumentRoot: `/srv/sites/tbci.pavelml.ru/www` → `current/www`.
 
 Workflow **Publish TBCi** запускается на `push` в `main` и вручную.
 Перед выкладкой вызывает общий CI: TypeScript/Astro, production-сборка,
-20 браузерных/данных сценариев по 21 исходному экрану. Проверенная сборка передаётся как artifact
+31 браузерный/модельный сценарий по 21 исходному экрану. Проверенная сборка передаётся как artifact
 с обязательным включением скрытого файла `.htaccess`.
 
 Публикация через `deploy/vps-publish.sh` проверяет архив и SHA-256,

@@ -1,0 +1,24 @@
+{
+  "reviewedOn": "2026-10-31 Europe/Moscow",
+  "package": "@sumsub/websdk",
+  "version": "2.9.1",
+  "url": "https://www.npmjs.com/package/@sumsub/websdk/v/2.9.1",
+  "tarballSha256": "7e144390bd4f25a6f2a8b1851ea392af8ebbece36d964f1e4ebcf5a9643c6ac4",
+  "reviewed": "README and TypeScript public event declarations",
+  "events": [
+    "idCheck.stepCompleted",
+    "idCheck.onApplicantSubmitted",
+    "idCheck.onApplicantStatusChanged",
+    "idCheck.onApplicantResubmitted",
+    "idCheck.onApplicantReviewComplete",
+    "idCheck.onApplicantLevelChanged"
+  ],
+  "fields": [
+    "levelName",
+    "reviewStatus",
+    "reviewAnswer",
+    "reviewRejectType"
+  ],
+  "integration": "not installed in the application; local simulation only",
+  "policy": "USD 1000/10000/unlimited cumulative caps are demo product rules, not provider or legal requirements"
+}

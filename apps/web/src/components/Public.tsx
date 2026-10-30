@@ -1,3 +1,4 @@
+import UiIcon from "./UiIcon";
 import { ExchangeVolumeChart } from "./TradingChart";
 import IcoCalendar from "./IcoCalendar";
 import { coinProfiles } from "../data/coin-profiles";
@@ -49,7 +50,9 @@ function Header() {
           <span>Cryptocurrency index</span>
         </a>
         <details className="mobile-public-menu">
-          <summary aria-label="Open navigation">☰</summary>
+          <summary aria-label="Open navigation">
+            <UiIcon name="menu" />
+          </summary>
           <nav>
             <a href="/index/tbci-20-balance/">Index</a>
             <a href="/coins/">Coins</a>
@@ -61,7 +64,9 @@ function Header() {
         </details>
         <nav className="public-nav" aria-label="Main navigation">
           <details className="index-dropdown">
-            <summary>Index &nbsp; ⌄</summary>
+            <summary>
+              Index <UiIcon name="chevron-down" />
+            </summary>
             <div className="dropdown">
               {allIndices.map((i) => (
                 <a key={i.id} href={"/index/" + i.id + "/"}>
@@ -76,7 +81,9 @@ function Header() {
           <a href="/news/">News</a>
         </nav>
         <form className="header-search" action="/coins/">
-          <span aria-hidden="true">⌕</span>
+          <button type="submit" aria-label="Search coins">
+            <UiIcon name="search" />
+          </button>
           <label className="sr-only" htmlFor="site-search">
             Search coins
           </label>
@@ -307,7 +314,9 @@ function Home() {
               </button>
             ))}
             <details>
-              <summary>More ⌄</summary>
+              <summary>
+                More <UiIcon name="chevron-down" />
+              </summary>
               <div className="dropdown">
                 {indexChoices.slice(3).map((i) => (
                   <button key={i.id} onClick={() => setSelected(i.id)}>
@@ -361,7 +370,8 @@ function Home() {
               </tbody>
             </table>
             <button className="button small" onClick={() => setMore(!more)}>
-              {more ? "Show less" : "View All Coins"} ⌄
+              {more ? "Show less" : "View All Coins"}{" "}
+              <UiIcon name={more ? "chevron-up" : "chevron-down"} />
             </button>
           </aside>
         </div>

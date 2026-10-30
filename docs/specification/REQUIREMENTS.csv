@@ -195,3 +195,20 @@ ENH-09,EXT-2018,extension,"21 локальный SVG, CC0 и SHA-256",explicit_u
 ENH-10,EXT-2018,extension,Устойчивая сетка сумм и селектора 320–1920,explicit_user_request_after_v2.0
 ENH-11,EXT-2018,extension,Согласованные моковые показатели и активность,explicit_user_request_after_v2.0
 ENH-12,EXT-2018,extension,Заполненные профили и отдельные вкладки монет,explicit_user_request_after_v2.0
+WAL-KYC-01,EXT-ACCOUNT,behavior,Графики остаются в границах ряда при всех способах навигации,user_requested_extension_v2_2
+WAL-KYC-02,EXT-ACCOUNT,behavior,Сегменты состава и легенда синхронно выбираются с мыши и клавиатуры,user_requested_extension_v2_2
+WAL-KYC-03,EXT-ACCOUNT,behavior,Sparklines и история переводов позволяют исследовать значения,user_requested_extension_v2_2
+WAL-KYC-04,EXT-ACCOUNT,behavior,Пошаговый Deposit с настоящим локальным QR и чеком,user_requested_extension_v2_2
+WAL-KYC-05,EXT-ACCOUNT,behavior,Пошаговый Withdraw с сетью и комиссией родного актива,user_requested_extension_v2_2
+WAL-KYC-06,EXT-ACCOUNT,behavior,Идемпотентность переводов и продолжение после reload,user_requested_extension_v2_2
+WAL-KYC-07,EXT-ACCOUNT,behavior,Сбой возвращает резерв и комиссию ровно один раз,user_requested_extension_v2_2
+WAL-KYC-08,EXT-ACCOUNT,behavior,Локальная TOTP и одноразовые recovery codes,user_requested_extension_v2_2
+WAL-KYC-09,EXT-ACCOUNT,behavior,Whitelist по активу сети адресу и memo,user_requested_extension_v2_2
+WAL-KYC-10,EXT-ACCOUNT,behavior,История и журнал фильтруются и экспортируются без секретов,user_requested_extension_v2_2
+WAL-KYC-11,EXT-ACCOUNT,behavior,Настройки профиля предпочтений и демонстрационных устройств,user_requested_extension_v2_2
+WAL-KYC-12,EXT-ACCOUNT,behavior,Level 2 по умолчанию и три покупательских уровня,user_requested_extension_v2_2
+WAL-KYC-13,EXT-ACCOUNT,behavior,Накопительный лимит Buy и Compile включая комиссию,user_requested_extension_v2_2
+WAL-KYC-14,EXT-ACCOUNT,behavior,Basic и Full KYC с образцами документов и приватностью,user_requested_extension_v2_2
+WAL-KYC-15,EXT-ACCOUNT,behavior,Рассмотрение KYC с тремя исходами и повторной подачей,user_requested_extension_v2_2
+WAL-KYC-16,EXT-ACCOUNT,behavior,Десять FAQ с ответами по 3–4 предложения и поиском,user_requested_extension_v2_2
+WAL-KYC-17,EXT-ACCOUNT,behavior,Общая проверка верстки 320–2560 и SVG иконок,user_requested_extension_v2_2

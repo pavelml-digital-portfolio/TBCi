@@ -1,3 +1,17 @@
+import { defaultKyc, type KycState } from "./kyc";
+import {
+  defaultSecurity,
+  defaultPreferences,
+  defaultSessions,
+  sampleTransfers,
+  sampleAudit,
+  type Transfer,
+  type TrustedAddress,
+  type AuditEvent,
+  type DemoSecurity,
+  type Preferences,
+  type DemoSession,
+} from "./wallet";
 export type Asset = {
   symbol: string;
   name: string;
@@ -139,23 +153,41 @@ export const number = (value: number, digits = 3) =>
     value,
   );
 export const money = (value: number, digits = 2) =>
-  "$" +
+  (value < 0 ? "-$" : "$") +
   new Intl.NumberFormat("en-US", {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
-  }).format(value);
+  }).format(Math.abs(value));
 export const coin = (symbol: string) =>
   assets.find((a) => a.symbol === symbol) ?? basket[0];
 export type Operation = {
   id: string;
   type:
-    "buy" | "sell" | "compile" | "unmake" | "deposit" | "withdraw" | "claim";
+    | "buy"
+    | "sell"
+    | "compile"
+    | "unmake"
+    | "deposit"
+    | "withdraw"
+    | "claim";
   symbol: string;
   amount: number;
   value: number;
   date: string;
+  transferId?: string;
+  network?: string;
+  address?: string;
+  fee?: number;
+  feeAsset?: string;
 };
 export type DemoState = {
+  kyc: KycState;
+  transfers: Transfer[];
+  trustedAddresses: TrustedAddress[];
+  audit: AuditEvent[];
+  security: DemoSecurity;
+  preferences: Preferences;
+  sessions: DemoSession[];
   name: string;
   email: string;
   selectedIndex: string;
@@ -173,6 +205,13 @@ const initialBalances = Object.fromEntries(
   basket.map((a) => [a.symbol, ((55537 - 5400.44) * a.weight) / 100 / a.price]),
 );
 export const seed: DemoState = {
+  kyc: defaultKyc,
+  transfers: sampleTransfers(),
+  trustedAddresses: [],
+  audit: sampleAudit(),
+  security: defaultSecurity,
+  preferences: defaultPreferences,
+  sessions: defaultSessions,
   name: "Sergey Petrov",
   email: "sergey@example.com",
   selectedIndex: "tbci-20-stable",

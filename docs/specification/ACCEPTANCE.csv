@@ -61,3 +61,20 @@ ENH-A09,EXT-2018,"21 локальный SVG, CC0 и SHA-256 — см. §12.5 Т�
 ENH-A10,EXT-2018,Устойчивая сетка сумм и селектора 320–1920 — см. §12.5 ТЗ,extension_2018
 ENH-A11,EXT-2018,Согласованные моковые показатели и активность — см. §12.5 ТЗ,extension_2018
 ENH-A12,EXT-2018,Заполненные профили и отдельные вкладки монет — см. §12.5 ТЗ,extension_2018
+WAL-A01,EXT-ACCOUNT,Графики остаются в границах ряда при всех способах навигации — см. §13 ТЗ,extension_wallet_kyc
+WAL-A02,EXT-ACCOUNT,Сегменты состава и легенда синхронно выбираются с мыши и клавиатуры — см. §13 ТЗ,extension_wallet_kyc
+WAL-A03,EXT-ACCOUNT,Sparklines и история переводов позволяют исследовать значения — см. §13 ТЗ,extension_wallet_kyc
+WAL-A04,EXT-ACCOUNT,Пошаговый Deposit с настоящим локальным QR и чеком — см. §13 ТЗ,extension_wallet_kyc
+WAL-A05,EXT-ACCOUNT,Пошаговый Withdraw с сетью и комиссией родного актива — см. §13 ТЗ,extension_wallet_kyc
+WAL-A06,EXT-ACCOUNT,Идемпотентность переводов и продолжение после reload — см. §13 ТЗ,extension_wallet_kyc
+WAL-A07,EXT-ACCOUNT,Сбой возвращает резерв и комиссию ровно один раз — см. §13 ТЗ,extension_wallet_kyc
+WAL-A08,EXT-ACCOUNT,Локальная TOTP и одноразовые recovery codes — см. §13 ТЗ,extension_wallet_kyc
+WAL-A09,EXT-ACCOUNT,Whitelist по активу сети адресу и memo — см. §13 ТЗ,extension_wallet_kyc
+WAL-A10,EXT-ACCOUNT,История и журнал фильтруются и экспортируются без секретов — см. §13 ТЗ,extension_wallet_kyc
+WAL-A11,EXT-ACCOUNT,Настройки профиля предпочтений и демонстрационных устройств — см. §13 ТЗ,extension_wallet_kyc
+WAL-A12,EXT-ACCOUNT,Level 2 по умолчанию и три покупательских уровня — см. §13 ТЗ,extension_wallet_kyc
+WAL-A13,EXT-ACCOUNT,Накопительный лимит Buy и Compile включая комиссию — см. §13 ТЗ,extension_wallet_kyc
+WAL-A14,EXT-ACCOUNT,Basic и Full KYC с образцами документов и приватностью — см. §13 ТЗ,extension_wallet_kyc
+WAL-A15,EXT-ACCOUNT,Рассмотрение KYC с тремя исходами и повторной подачей — см. §13 ТЗ,extension_wallet_kyc
+WAL-A16,EXT-ACCOUNT,Десять FAQ с ответами по 3–4 предложения и поиском — см. §13 ТЗ,extension_wallet_kyc
+WAL-A17,EXT-ACCOUNT,Общая проверка верстки 320–2560 и SVG иконок — см. §13 ТЗ,extension_wallet_kyc

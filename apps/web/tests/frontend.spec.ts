@@ -178,7 +178,7 @@ test("exchange filters and news categories change the original tables and cards"
 });
 test("buy checks funds and debits the correct fee once", async ({ page }) => {
   await open(page, "/app/buy/");
-  await page.getByLabel("Amount TBCi", { exact: true }).fill("10000");
+  await page.getByLabel("Amount TBCi", { exact: true }).fill("200");
   await page.getByRole("button", { name: /^Buy/ }).click();
   await page
     .getByRole("dialog")
@@ -285,22 +285,38 @@ test("wallet deposit, withdrawal, added wallet and persisted index selection", a
   await open(page, "/app/wallets/");
   const before = await stored(page);
   await page.getByRole("button", { name: "Deposit BTC", exact: true }).click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByLabel("Amount, BTC", { exact: true }).fill(".1");
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "Deposit balance", exact: true })
+    .getByRole("button", { name: "Simulate deposit", exact: true })
     .click();
   await expect
     .poll(async () => (await stored(page)).balances.BTC)
     .toBeCloseTo(before.balances.BTC + 0.1, 7);
+  await page.getByRole("button", { name: "Done", exact: true }).click();
   await page.getByRole("button", { name: "Withdraw BTC", exact: true }).click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByLabel("Amount, BTC", { exact: true }).fill(".01");
-  await page.getByLabel("Receiving address").fill("demo-destination");
+  await page
+    .getByRole("button", { name: "Use a sample recipient", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page
+    .getByRole("checkbox", {
+      name: "I checked the demo address and test network.",
+    })
+    .check();
   await page
     .getByRole("button", { name: "Confirm withdrawal", exact: true })
     .click();
   await expect
     .poll(async () => (await stored(page)).balances.BTC)
-    .toBeCloseTo(before.balances.BTC + 0.09, 7);
+    .toBeCloseTo(before.balances.BTC + 0.09 - 0.00005, 7);
+  await expect(
+    page.getByRole("heading", { name: "Withdrawal completed", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Done", exact: true }).click();
   await page.getByRole("button", { name: /Add currency/ }).click();
   await page.getByRole("button", { name: "Add wallet", exact: true }).click();
   await expect(

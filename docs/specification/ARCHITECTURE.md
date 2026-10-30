@@ -1,4 +1,4 @@
-# TBCi — архитектура v2.1
+# TBCi — архитектура v2.2
 
 ## Текущая поставка
 
@@ -29,3 +29,8 @@ Unmake: quote → атомарное погашение токенов и соз
 Git push main → Frontend checks (Python deploy tests, npm ci/check/build, Playwright) → Publish TBCi (штатный vps-release) → независимая проверка HTTPS и deployment.json. Публичный отчёт не загружается дополнительным artifact job после проверки: ранее этот шаг зависал после успешного GET. Секретный SSH-ключ доступен только workflow. Подробная команда и ограничения находятся в корневом DEPLOY.md.
 
 Контроль выпуска отделён от сетевой диагностики. Timeout не доказывает HTTP-ошибку сервиса; откат допускается только для подтверждённой неисправности собственного выпуска с проверкой текущего идентификатора. Штатные noindex, HTTPS и резервирование сохраняются.
+
+
+## Расширение v2.2
+
+DemoState дополнен transfers, trustedAddresses, audit, security, preferences, sessions и kyc (уровень, purchaseTotalUsd, текущая заявка и история). transfer-engine.ts отвечает за идемпотентность, комиссии, подтверждения и возвраты; kyc.ts — за лимиты и состояния проверки. chart-bounds.ts ограничивает временной диапазон Lightweight Charts. WalletTransfer, AccountSettings, Verification и InteractiveDonut реализуют интерфейсы; подробности в [WALLET_KYC.md](../frontend/WALLET_KYC.md). Секреты аутентификатора остаются локальными, recovery codes хешируются, файлы KYC не сохраняются. Серверные схемы и OpenAPI ниже не являются реализованным API.

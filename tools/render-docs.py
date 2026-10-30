@@ -27,11 +27,11 @@ W,H=A4
 
 def footer(c,d):
  if d.page==1:return
- c.setStrokeColor(HexColor('#A8BBD2'));c.line(48,37,W-48,37);c.setFillColor(HexColor('#37546C'));c.setFont('OS',8);c.drawString(48,24,'TBCi / техническое задание v2.1 / 30.10.2026');c.drawRightString(W-48,24,str(d.page))
+ c.setStrokeColor(HexColor('#A8BBD2'));c.line(48,37,W-48,37);c.setFillColor(HexColor('#37546C'));c.setFont('OS',8);c.drawString(48,24,'TBCi / техническое задание v2.2 / 31.10.2026');c.drawRightString(W-48,24,str(d.page))
 def cover(c,d):
- c.setFillColor(HexColor('#070A22'));c.rect(0,0,W,H,fill=1,stroke=0);c.setFillColor(HexColor('#F2F7FB'));c.setFont('OSB',52);c.drawString(48,H-120,'TBC');c.setFillColor(HexColor('#00CDEB'));c.drawString(48+pdfmetrics.stringWidth('TBC','OSB',52)-2,H-120,'i');c.setFillColor(HexColor('#F2F7FB'));c.setFont('OS',30);c.drawString(48,H-267,'Техническое задание');c.drawString(48,H-309,'на разработку сервиса');c.setFillColor(HexColor('#00CDEB'));c.setFont('OSS',13);c.drawString(48,H-373,'v2.1 / проект / 30 октября 2026');c.setFillColor(HexColor('#A8BBD2'));c.setFont('OS',11)
+ c.setFillColor(HexColor('#070A22'));c.rect(0,0,W,H,fill=1,stroke=0);c.setFillColor(HexColor('#F2F7FB'));c.setFont('OSB',52);c.drawString(48,H-120,'TBC');c.setFillColor(HexColor('#00CDEB'));c.drawString(48+pdfmetrics.stringWidth('TBC','OSB',52)-2,H-120,'i');c.setFillColor(HexColor('#F2F7FB'));c.setFont('OS',30);c.drawString(48,H-267,'Техническое задание');c.drawString(48,H-309,'на разработку сервиса');c.setFillColor(HexColor('#00CDEB'));c.setFont('OSS',13);c.drawString(48,H-373,'v2.2 / проект / 31 октября 2026');c.setFillColor(HexColor('#A8BBD2'));c.setFont('OS',11)
  for i,t in enumerate(['Индекс и рыночные данные. Личный кабинет.','Кошельки и учёт. Покупка, продажа, эмиссия и погашение.','Экранные требования, расчёты, эксплуатация и приёмка.']):c.drawString(48,H-433-i*24,t)
- c.setFont('OS',10);c.drawString(48,110,'21 исходный экран / 196 требований / 62 критерия');c.drawString(48,86,'Основа: 21 JPG + согласованное расширение 2018')
+ c.setFont('OS',10);c.drawString(48,110,'21 исходный экран / 213 требований / 79 критериев');c.drawString(48,86,'Основа: 21 JPG + согласованное расширение 2018')
 story=[Spacer(1,100),PageBreak(),Paragraph('Содержание',styles['h1'])]
 toc=TableOfContents();toc.levelStyles=[ParagraphStyle('toc0',fontName='OS',fontSize=9.7,leading=15.2,spaceBefore=4,leftIndent=0,firstLineIndent=0),ParagraphStyle('toc1',fontName='OS',fontSize=8.5,leading=13,leftIndent=15,spaceBefore=1)];story += [toc,PageBreak()]
 lines=(O/'TECHNICAL_SPEC.md').read_text().splitlines();i=0;anchor=0
@@ -65,7 +65,7 @@ for screen in json.loads((O/'screens.json').read_text()):
  story += [PageBreak(),Paragraph(screen['id']+' — '+screen['title'],styles['h2']),Paragraph(inline(screen['source']+' / '+screen['route']),styles['p'])]
  pic=O/screen['image'];iw,ih=PILImage.open(pic).size;scale=min((W-110)/iw,(H-230)/ih)
  story.append(PDFImage(str(pic),width=iw*scale,height=ih*scale));story.append(Spacer(1,8));story.append(Paragraph('Канонический исходный JPG; не браузерная реализация.',styles['cell']))
-Doc(str(O/'TBCi-Technical-Specification.pdf'),pagesize=A4,leftMargin=48,rightMargin=48,topMargin=45,bottomMargin=52,title='TBCi — техническое задание v2.1',author='TBCi').multiBuild(story,onFirstPage=cover,onLaterPages=footer)
+Doc(str(O/'TBCi-Technical-Specification.pdf'),pagesize=A4,leftMargin=48,rightMargin=48,topMargin=45,bottomMargin=52,title='TBCi — техническое задание v2.2',author='TBCi').multiBuild(story,onFirstPage=cover,onLaterPages=footer)
 # Editable Word document with actual Open Sans styles.
 subprocess.run(['pandoc',str(O/'TECHNICAL_SPEC.md'),'-f','gfm','--toc','--toc-depth=2','-o',str(O/'TBCi-Technical-Specification.docx')],check=True)
 d=Document(O/'TBCi-Technical-Specification.docx')

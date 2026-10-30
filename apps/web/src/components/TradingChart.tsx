@@ -1,3 +1,4 @@
+import { bindChartBounds } from "../data/chart-bounds";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   createChart,
@@ -66,6 +67,8 @@ export default function TradingChart({
   const hoverIndex = useRef(0);
   const viewport = useRef<{ from: number; to: number } | null>(null);
   const lastDataKey = useRef("");
+  const bounds = useRef<ReturnType<typeof bindChartBounds> | null>(null);
+  const [logical, setLogical] = useState({ from: 0, to: 0 });
   useEffect(() => {
     setSymbol(instrument);
     setHover(null);
@@ -157,7 +160,10 @@ export default function TradingChart({
         borderColor: dark ? "#ffffff18" : "#e9edf2",
         timeVisible: interval === "1H" || interval === "4H",
         secondsVisible: false,
-        rightOffset: 4,
+        rightOffset: 0,
+        fixLeftEdge: true,
+        fixRightEdge: true,
+        lockVisibleTimeRangeOnResize: true,
       },
       crosshair: {
         mode: CrosshairMode.Normal,
@@ -341,15 +347,16 @@ export default function TradingChart({
         hoverIndex.current = value.i;
       } else setHover(null);
     });
-    api.timeScale().subscribeVisibleLogicalRangeChange((range) => {
-      if (range) {
-        viewport.current = { from: range.from, to: range.to };
-        setVisible(Math.round(range.to - range.from));
-      }
+    const bound = bindChartBounds(api, values.length, (range) => {
+      viewport.current = range;
+      setLogical(range);
+      setVisible(
+        Math.min(values.length, Math.round(range.to - range.from) + 1),
+      );
     });
-    if (restoreViewport)
-      api.timeScale().setVisibleLogicalRange(restoreViewport);
-    else api.timeScale().fitContent();
+    bounds.current = bound;
+    if (restoreViewport) bound.set(restoreViewport);
+    else bound.reset();
     hoverIndex.current = values.length - 1;
     setVisible(
       restoreViewport
@@ -358,6 +365,8 @@ export default function TradingChart({
     );
     setReady(true);
     return () => {
+      bound.destroy();
+      bounds.current = null;
       api.remove();
       chart.current = null;
       main.current = null;
@@ -377,14 +386,7 @@ export default function TradingChart({
     setIndicators((a) =>
       a.includes(v) ? a.filter((s) => s !== v) : [...a, v],
     );
-  const zoom = (factor: number) => {
-    const ts = chart.current?.timeScale();
-    const range = ts?.getVisibleLogicalRange();
-    if (!ts || !range) return;
-    const mid = (range.from + range.to) / 2;
-    const half = ((range.to - range.from) * factor) / 2;
-    ts.setVisibleLogicalRange({ from: mid - half, to: mid + half });
-  };
+  const zoom = (factor: number) => bounds.current?.zoom(factor);
   const exportCsv = () => {
     const content =
       "Date,Open,High,Low,Close,Volume\n" +
@@ -414,6 +416,9 @@ export default function TradingChart({
       data-instrument={symbol}
       data-series-key={dataKey}
       data-ready={ready}
+      data-range-from={logical.from}
+      data-range-to={logical.to}
+      data-bar-count={values.length}
       aria-label={instrumentName(symbol) + " interactive chart"}
     >
       {!hero && (
@@ -658,7 +663,7 @@ export default function TradingChart({
             e.preventDefault();
           if (e.key === "+" || e.key === "=") zoom(0.7);
           if (e.key === "-") zoom(1.4);
-          if (e.key === "0") chart.current.timeScale().fitContent();
+          if (e.key === "0") bounds.current?.reset();
           if (["ArrowLeft", "ArrowRight"].includes(e.key)) {
             const i = Math.max(
               0,
@@ -682,15 +687,26 @@ export default function TradingChart({
         <>
           <div className="trading-bottom">
             <div className="trading-zoom">
-              <button aria-label="Zoom in" onClick={() => zoom(0.7)}>
+              <button
+                aria-label="Zoom in"
+                disabled={
+                  logical.to - logical.from <=
+                  Math.min(7, values.length - 1) + 0.01
+                }
+                onClick={() => zoom(0.7)}
+              >
                 +
               </button>
-              <button aria-label="Zoom out" onClick={() => zoom(1.4)}>
+              <button
+                aria-label="Zoom out"
+                disabled={logical.to - logical.from >= values.length - 1 - 0.01}
+                onClick={() => zoom(1.4)}
+              >
                 −
               </button>
               <button
                 aria-label="Reset chart zoom"
-                onClick={() => chart.current?.timeScale().fitContent()}
+                onClick={() => bounds.current?.reset()}
               >
                 Reset
               </button>
@@ -770,7 +786,7 @@ export default function TradingChart({
               defaultValue="0"
               onChange={(e) => {
                 const start = (Number(e.target.value) / 100) * values.length;
-                chart.current?.timeScale().setVisibleLogicalRange({
+                bounds.current?.set({
                   from: start,
                   to: Math.min(
                     values.length,
@@ -883,7 +899,13 @@ export function ExchangeVolumeChart({
       },
       grid: { vertLines: { visible: false }, horzLines: { color: "#f0f3f7" } },
       rightPriceScale: { borderVisible: false },
-      timeScale: { timeVisible: hourly, borderVisible: false },
+      timeScale: {
+        timeVisible: hourly,
+        borderVisible: false,
+        rightOffset: 0,
+        fixLeftEdge: true,
+        fixRightEdge: true,
+      },
       handleScroll: {
         mouseWheel: true,
         pressedMouseMove: true,
@@ -921,8 +943,12 @@ export function ExchangeVolumeChart({
         });
       else setAt(null);
     });
-    api.timeScale().fitContent();
-    return () => api.remove();
+    const bounds = bindChartBounds(api, rows.length);
+    bounds.reset();
+    return () => {
+      bounds.destroy();
+      api.remove();
+    };
   }, [exchange, period]);
   return (
     <div className="exchange-interactive-volume">

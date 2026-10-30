@@ -1,8 +1,9 @@
+import InteractiveDonut from "./InteractiveDonut";
+import WalletTransfer from "./WalletTransfer";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { basket, assets, coin, findIndex, money, number } from "../data/demo";
-import { useDemo } from "./DemoContext";
 import TradingChart from "./TradingChart";
-import { seriesFor, hash, random } from "../data/market";
+import { seriesFor } from "../data/market";
 export function Wordmark() {
   return (
     <span className="wordmark">
@@ -105,29 +106,82 @@ export function Sparkline({
   negative?: boolean;
   instrument?: string;
 }) {
-  const rnd = random(hash(instrument));
-  const base = seriesFor(instrument)
-    .slice(-30)
-    .map((b) => b.close);
-  const lo = Math.min(...base),
-    hi = Math.max(...base);
-  const points = base.map((v, i) => [
-    (i / (base.length - 1)) * 180,
-    45 - ((v - lo) / (hi - lo || 1)) * 35 + (rnd() - 0.5) * 2,
+  const rows = seriesFor(instrument).slice(-30);
+  const lo = Math.min(...rows.map((b) => b.close)),
+    hi = Math.max(...rows.map((b) => b.close));
+  const [point, setPoint] = useState<number | null>(null);
+  const coords = rows.map((b, i) => [
+    (i / (rows.length - 1)) * 180,
+    45 - ((b.close - lo) / (hi - lo || 1)) * 35,
   ]);
-  const path = points
-    .map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1))
-    .join(" ");
+  const path = coords.map((p, i) => (i ? "L" : "M") + p.join(" ")).join(" ");
+  const show = (x: number) =>
+    setPoint(
+      Math.max(0, Math.min(rows.length - 1, Math.round(x * (rows.length - 1)))),
+    );
   return (
-    <svg
-      className={"sparkline " + (negative ? "negative-line" : "")}
-      viewBox="0 0 180 55"
-      aria-hidden="true"
+    <div
+      className={
+        "sparkline interactive-sparkline " + (negative ? "negative-line" : "")
+      }
       data-instrument={instrument}
+      tabIndex={0}
+      role="group"
+      aria-label={
+        instrument + " · 30-day sample history. Use arrow keys to inspect."
+      }
+      onPointerMove={(e) => {
+        const box = e.currentTarget.getBoundingClientRect();
+        show((e.clientX - box.left) / box.width);
+      }}
+      onPointerLeave={() => setPoint(null)}
+      onFocus={() => setPoint(rows.length - 1)}
+      onBlur={() => setPoint(null)}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          setPoint(
+            Math.max(
+              0,
+              Math.min(
+                rows.length - 1,
+                (point ?? rows.length - 1) + (e.key === "ArrowRight" ? 1 : -1),
+              ),
+            ),
+          );
+        }
+        if (e.key === "Escape") setPoint(null);
+      }}
     >
-      <path d={path + "L180 55H0Z"} fill="currentColor" opacity=".1" />
-      <path d={path} fill="none" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
+      <svg viewBox="0 0 180 55" aria-hidden="true">
+        <path d={path + "L180 55H0Z"} fill="currentColor" opacity=".1" />
+        <path d={path} fill="none" stroke="currentColor" strokeWidth="1.8" />
+        {point !== null && (
+          <>
+            <line
+              x1={coords[point][0]}
+              x2={coords[point][0]}
+              y1="0"
+              y2="55"
+              stroke="currentColor"
+              strokeDasharray="2 2"
+            />
+            <circle
+              cx={coords[point][0]}
+              cy={coords[point][1]}
+              r="3"
+              fill="currentColor"
+            />
+          </>
+        )}
+      </svg>
+      {point !== null && (
+        <span className="sparkline-tooltip" role="status">
+          {new Date(rows[point].time * 1000).toISOString().slice(0, 10)} ·{" "}
+          {number(rows[point].close, 3)}
+        </span>
+      )}
+    </div>
   );
 }
 export function CurrencyButtons({
@@ -144,7 +198,6 @@ export function CurrencyButtons({
           {v}
         </button>
       ))}
-      <span>⌄</span>
     </div>
   );
 }
@@ -187,26 +240,21 @@ export function Composition({
   balances?: Record<string, number>;
   indexId?: string;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false),
+    [hover, setHover] = useState<string | null>(null),
+    [selected, setSelected] = useState<string | null>(null);
   const components =
     wallet && balances
       ? assets
           .filter((a) => a.symbol !== "TBCi")
           .map((a) => ({
             ...a,
-            weight: ((balances[a.symbol] * a.price) / (total || 1)) * 100,
+            weight:
+              (((balances[a.symbol] || 0) * a.price) / (total || 1)) * 100,
           }))
       : basket;
-  const [hover, setHover] = useState<string | null>(null);
-  let cursor = 0;
-  const gradient = components
-    .map((a) => {
-      const start = cursor;
-      cursor += a.weight;
-      return a.color + " " + start + "% " + cursor + "%";
-    })
-    .join(",");
   const shown = wallet && !expanded ? components.slice(0, 10) : components;
+  const active = hover || selected;
   return (
     <div
       className={
@@ -214,35 +262,26 @@ export function Composition({
       }
     >
       <div className="donut-wrap">
-        <div
-          className="donut"
-          style={{ background: "conic-gradient(" + gradient + ")" }}
-          role="img"
-          aria-label={
-            wallet
-              ? "Wallet asset composition"
-              : "Index sample composition, 20 assets"
-          }
-        >
-          <div className="donut-hole">
-            <strong>
-              {wallet ? money(total, 0) : findIndex(indexId).name}
-            </strong>
-            <span>{wallet ? "Total balance" : "Sample basket"}</span>
-          </div>
-        </div>
-        {hover && (
-          <div className="composition-tooltip">
-            {coin(hover).name}{" "}
-            <strong>
-              {number(
-                components.find((a) => a.symbol === hover)?.weight ?? 0,
-                2,
-              )}
-              %
-            </strong>
-          </div>
-        )}
+        <InteractiveDonut
+          items={components.map((a) => ({
+            id: a.symbol,
+            label: a.symbol + " · " + a.name,
+            value: a.weight,
+            color: a.color,
+            detail: wallet
+              ? money((balances?.[a.symbol] || 0) * a.price)
+              : "Sample basket weight",
+          }))}
+          title={wallet ? money(total, 0) : findIndex(indexId).name}
+          subtitle={wallet ? "Total balance" : "Sample basket"}
+          active={hover}
+          selected={selected}
+          onActive={setHover}
+          onSelect={setSelected}
+        />
+        <p className="infographic-help">
+          Hover to inspect · select a segment or currency
+        </p>
       </div>
       <div className="composition-tables">
         {(wallet ? [shown] : [shown.slice(0, 10), shown.slice(10)])
@@ -265,26 +304,32 @@ export function Composition({
                 {list.map((a) => (
                   <tr
                     key={a.symbol}
-                    onMouseEnter={() => setHover(a.symbol)}
-                    onMouseLeave={() => setHover(null)}
-                    className={hover === a.symbol ? "row-hover" : ""}
+                    onPointerEnter={() => setHover(a.symbol)}
+                    onPointerLeave={() => setHover(null)}
+                    className={active === a.symbol ? "row-hover" : ""}
                   >
                     <td>
-                      <span
-                        className="legend-dot"
-                        style={{ background: a.color }}
-                      />
-                      {a.symbol} <span className="subtle">{a.name}</span>
+                      <button
+                        className="composition-legend-button"
+                        aria-pressed={selected === a.symbol}
+                        onFocus={() => setHover(a.symbol)}
+                        onBlur={() => setHover(null)}
+                        onClick={() =>
+                          setSelected(selected === a.symbol ? null : a.symbol)
+                        }
+                      >
+                        <span
+                          className="legend-dot"
+                          style={{ background: a.color }}
+                        />
+                        {a.symbol} <span className="subtle">{a.name}</span>
+                      </button>
                     </td>
                     <td>{number(a.weight, 1)}%</td>
                     {wallet && (
                       <>
                         <td>
-                          {number(
-                            balances?.[a.symbol] ??
-                              (total * a.weight) / 100 / a.price,
-                          )}{" "}
-                          {a.symbol}
+                          {number(balances?.[a.symbol] ?? 0)} {a.symbol}
                         </td>
                         <td>{money((total * a.weight) / 100)}</td>
                       </>
@@ -437,69 +482,7 @@ export function Funding({
   withdraw?: boolean;
   onClose: () => void;
 }) {
-  const { state, fund, notify } = useDemo();
-  const [amount, setAmount] = useState("");
-  const [error, setError] = useState("");
   return (
-    <Modal
-      title={(withdraw ? "Withdraw " : "Deposit ") + symbol}
-      onClose={onClose}
-    >
-      <p className="demo-note">
-        Demonstration balance. No real transfer will be made.
-      </p>
-      <p>
-        Available: {number(state.balances[symbol])} {symbol}
-      </p>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const error = fund(symbol, Number(amount), withdraw);
-          if (error) {
-            setError(error);
-            return;
-          }
-          notify(
-            "Demo " + (withdraw ? "withdrawal" : "deposit") + " completed.",
-          );
-          onClose();
-        }}
-      >
-        <label htmlFor="fund-amount">Amount, {symbol}</label>
-        <input
-          id="fund-amount"
-          type="number"
-          min="0.00000001"
-          step="any"
-          required
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        {withdraw && (
-          <>
-            <label htmlFor="withdraw-address">Receiving address</label>
-            <input
-              id="withdraw-address"
-              required
-              minLength={6}
-              placeholder="Demo address"
-            />
-          </>
-        )}
-        {error && (
-          <p className="error" role="alert">
-            {error}
-          </p>
-        )}
-        <div className="modal-actions">
-          <button type="button" className="button" onClick={onClose}>
-            Cancel
-          </button>
-          <button className="button primary" type="submit">
-            {withdraw ? "Confirm withdrawal" : "Deposit balance"}
-          </button>
-        </div>
-      </form>
-    </Modal>
+    <WalletTransfer symbol={symbol} withdraw={withdraw} onClose={onClose} />
   );
 }

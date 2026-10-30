@@ -1,8 +1,42 @@
 import {
+  defaultKyc,
+  purchaseError,
+  purchaseUsed,
+  progressKyc,
+  type KycApplication,
+  type ClientLevel,
+} from "../data/kyc";
+import {
+  createTransfer,
+  validateTransfer,
+  progressTransfers,
+  failTransfer,
+  auditEvent,
+  type TransferRequest,
+} from "../data/transfer-engine";
+import {
+  defaultSecurity,
+  defaultPreferences,
+  defaultSessions,
+  sampleTransfers,
+  sampleAudit,
+  verifyTotp,
+  hashCode,
+  networksFor,
+  validateAddress,
+  sameAddress,
+  type Transfer,
+  type TrustedAddress,
+  type DemoSecurity,
+  type Preferences,
+  type AuditEvent,
+} from "../data/wallet";
+import {
   createContext,
   useContext,
   useEffect,
   useState,
+  useRef,
   type ReactNode,
 } from "react";
 import {
@@ -16,11 +50,15 @@ import {
 const KEY = "tbci-reference-demo-v2";
 type ContextValue = {
   state: DemoState;
+  submitKyc: (
+    a: Omit<KycApplication, "id" | "status" | "submittedAt" | "reviewAt">,
+  ) => string | null;
+  cancelKyc: () => void;
+  setDemoLevel: (level: ClientLevel) => void;
   notify: (message: string) => void;
   message: string;
   dismiss: () => void;
   selectIndex: (id: string) => void;
-  fund: (symbol: string, amount: number, withdraw?: boolean) => string | null;
   trade: (
     type: "buy" | "sell" | "compile",
     amount: number,
@@ -30,6 +68,25 @@ type ContextValue = {
   setProfile: (name: string, email: string) => void;
   addWallet: (symbol: string) => void;
   reset: () => void;
+  beginTransfer: (
+    r: TransferRequest,
+  ) => Promise<{ transfer?: Transfer; error?: string }>;
+  failPendingTransfer: (id: string) => void;
+  setPreferences: (value: Partial<Preferences>) => void;
+  updateSecurity: (
+    value: Partial<DemoSecurity>,
+    code?: string,
+  ) => Promise<string | null>;
+  addTrusted: (
+    value: Omit<TrustedAddress, "id" | "createdAt">,
+  ) => string | null;
+  removeTrusted: (id: string) => void;
+  revokeSession: (id: string) => void;
+  log: (
+    category: AuditEvent["category"],
+    action: string,
+    details: string,
+  ) => void;
 };
 const Context = createContext<ContextValue | null>(null);
 function initial(): DemoState {
@@ -45,13 +102,94 @@ function initial(): DemoState {
       ) &&
       Array.isArray(raw.operations)
     )
-      return { ...structuredClone(seed), ...raw };
+      return {
+        ...structuredClone(seed),
+        ...raw,
+        kyc: { ...structuredClone(defaultKyc), ...raw.kyc },
+        security: { ...defaultSecurity, ...raw.security },
+        preferences: {
+          ...defaultPreferences,
+          ...raw.preferences,
+          notifications: {
+            ...defaultPreferences.notifications,
+            ...raw.preferences?.notifications,
+          },
+        },
+        transfers: Array.isArray(raw.transfers)
+          ? raw.transfers
+          : sampleTransfers(),
+        audit: Array.isArray(raw.audit) ? raw.audit : sampleAudit(),
+        trustedAddresses: Array.isArray(raw.trustedAddresses)
+          ? raw.trustedAddresses
+          : [],
+        sessions: Array.isArray(raw.sessions)
+          ? raw.sessions
+          : structuredClone(defaultSessions),
+      };
   } catch {}
   return structuredClone(seed);
 }
 const round = (v: number) => Math.round(Math.max(0, v) * 1e8) / 1e8;
 export function DemoProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<DemoState>(initial);
+  const [state, reactSetState] = useState<DemoState>(initial);
+  const stateRef = useRef(state);
+  stateRef.current = state;
+  const setState = (value: DemoState | ((s: DemoState) => DemoState)) => {
+    const next = typeof value === "function" ? value(stateRef.current) : value;
+    if (next !== stateRef.current) {
+      stateRef.current = next;
+      reactSetState(next);
+    }
+  };
+  useEffect(() => {
+    setState((s) => {
+      let next = progressTransfers(s);
+      const kyc = progressKyc(next.kyc);
+      if (kyc !== next.kyc)
+        next = {
+          ...next,
+          kyc,
+          audit: [
+            auditEvent(
+              "verification",
+              "KYC review: " + kyc.application!.status,
+              "Level " +
+                kyc.application!.target +
+                " · " +
+                kyc.application!.reason,
+            ),
+            ...next.audit,
+          ].slice(0, 1000),
+        };
+      return next;
+    });
+    const timer = setInterval(
+      () =>
+        setState((s) => {
+          let next = progressTransfers(s);
+          const kyc = progressKyc(next.kyc);
+          if (kyc !== next.kyc)
+            next = {
+              ...next,
+              kyc,
+              audit: [
+                auditEvent(
+                  "verification",
+                  "KYC review: " + kyc.application!.status,
+                  "Level " +
+                    kyc.application!.target +
+                    " · " +
+                    kyc.application!.reason,
+                ),
+                ...next.audit,
+              ].slice(0, 1000),
+            };
+          return next;
+        }),
+      400,
+    );
+    return () => clearInterval(timer);
+  }, []);
   const [message, notify] = useState("");
   useEffect(() => {
     try {
@@ -73,7 +211,19 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     setState((s) => ({
       ...s,
       balances,
+      kyc:
+        type === "buy" || type === "compile"
+          ? { ...s.kyc, purchaseTotalUsd: purchaseUsed(s) + value * 1.005 }
+          : s.kyc,
       tokenBalances: { ...s.tokenBalances, [s.selectedIndex]: balances.TBCi },
+      audit: [
+        auditEvent(
+          type === "deposit" || type === "withdraw" ? "wallet" : "trading",
+          type + " completed",
+          amount + " " + symbol,
+        ),
+        ...s.audit,
+      ].slice(0, 1000),
       operations: [
         {
           id: crypto.randomUUID(),
@@ -86,24 +236,6 @@ export function DemoProvider({ children }: { children: ReactNode }) {
         ...s.operations,
       ].slice(0, 500),
     }));
-  const fund = (symbol: string, amount: number, withdraw = false) => {
-    const a = assets.find((a) => a.symbol === symbol);
-    if (!a || !Number.isFinite(amount) || amount <= 0 || amount * a.price > 1e9)
-      return "Enter a valid amount.";
-    if (withdraw && amount > state.balances[symbol])
-      return "Insufficient available balance.";
-    save(
-      {
-        ...state.balances,
-        [symbol]: round(state.balances[symbol] + (withdraw ? -amount : amount)),
-      },
-      withdraw ? "withdraw" : "deposit",
-      symbol,
-      amount,
-      amount * a.price,
-    );
-    return null;
-  };
   const trade = (
     type: "buy" | "sell" | "compile",
     amount: number,
@@ -111,8 +243,11 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   ) => {
     if (!Number.isFinite(amount) || amount <= 0 || amount > 1e6)
       return "Enter a valid token amount.";
-    const b = { ...state.balances };
-    const value = amount * findIndex(state.selectedIndex).price;
+    const current = stateRef.current;
+    const b = { ...current.balances };
+    const value = amount * findIndex(current.selectedIndex).price;
+    const kycError = purchaseError(current, type, value);
+    if (kycError) return kycError;
     const a = assets.find((a) => a.symbol === payment);
     if (type === "buy") {
       if (!a || a.symbol === "TBCi") return "Select a payment currency.";
@@ -151,6 +286,8 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   };
 
   const redeem = (amount: number, symbol?: string) => {
+    const kycError = purchaseError(stateRef.current, "unmake");
+    if (kycError) return kycError;
     if (!Number.isFinite(amount) || amount <= 0 || amount > 1e6)
       return "Enter a valid token amount.";
     if (symbol && !basket.some((a) => a.symbol === symbol))
@@ -206,15 +343,250 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     }));
     return null;
   };
+  const log = (
+    category: AuditEvent["category"],
+    action: string,
+    details: string,
+  ) =>
+    setState((s) => ({
+      ...s,
+      audit: [auditEvent(category, action, details), ...s.audit].slice(0, 1000),
+    }));
+  const verify = async (code: string, security = stateRef.current.security) => {
+    if (await verifyTotp(security.totpSecret, code))
+      return { valid: true, recovery: "" };
+    const hash = await hashCode(code);
+    return { valid: security.recoveryHashes.includes(hash), recovery: hash };
+  };
+  const beginTransfer = async (r: TransferRequest) => {
+    const existing = stateRef.current.transfers.find(
+      (t) => t.requestId === r.requestId,
+    );
+    if (existing) return { transfer: existing };
+    const invalid = validateTransfer(stateRef.current, r);
+    if (invalid) return { error: invalid };
+    let recovery = "";
+    if (r.kind === "withdraw" && stateRef.current.security.twoFactorEnabled) {
+      const checked = await verify(r.securityCode ?? "");
+      if (!checked.valid) {
+        log(
+          "security",
+          "Withdrawal verification failed",
+          "Invalid demo authenticator/recovery code",
+        );
+        return {
+          error: "Enter a valid authenticator code or an unused recovery code.",
+        };
+      }
+      recovery = checked.recovery;
+    }
+    const accepted = stateRef.current.transfers.find(
+      (t) => t.requestId === r.requestId,
+    );
+    if (accepted) return { transfer: accepted };
+    if (
+      recovery &&
+      !stateRef.current.security.recoveryHashes.includes(recovery)
+    )
+      return { error: "This recovery code has already been used." };
+    const result = createTransfer(stateRef.current, r);
+    if (result.error) return { error: result.error };
+    if (recovery)
+      result.state = {
+        ...result.state,
+        security: {
+          ...result.state.security,
+          recoveryHashes: result.state.security.recoveryHashes.filter(
+            (h) => h !== recovery,
+          ),
+        },
+      };
+    setState(result.state);
+    return { transfer: result.transfer };
+  };
+  const updateSecurity = async (value: Partial<DemoSecurity>, code = "") => {
+    const current = stateRef.current.security;
+    if (
+      current.twoFactorEnabled &&
+      (value.twoFactorEnabled === false || value.recoveryHashes)
+    ) {
+      const checked = await verify(code);
+      if (!checked.valid)
+        return "Enter a valid authenticator or recovery code.";
+    }
+    if (value.twoFactorEnabled && !current.twoFactorEnabled) {
+      if (!value.totpSecret || !(await verifyTotp(value.totpSecret, code)))
+        return "The 6-digit authenticator code is not valid.";
+    }
+    if (
+      value.dailyLimitUsd !== undefined &&
+      (!Number.isFinite(value.dailyLimitUsd) || value.dailyLimitUsd <= 0)
+    )
+      return "Enter a positive daily limit.";
+    setState((s) => ({
+      ...s,
+      security: { ...s.security, ...value },
+      audit: [
+        auditEvent(
+          "security",
+          "Security settings updated",
+          Object.keys(value)
+            .filter((k) => !["totpSecret", "recoveryHashes"].includes(k))
+            .join(", ") || "Recovery material replaced",
+        ),
+        ...s.audit,
+      ].slice(0, 1000),
+    }));
+    return null;
+  };
+  const addTrusted = (value: Omit<TrustedAddress, "id" | "createdAt">) => {
+    const n = networksFor(value.symbol).find((n) => n.id === value.network);
+    if (!n || !validateAddress(n, value.address))
+      return "The address does not match this test network.";
+    if (!value.label.trim()) return "Enter an address label.";
+    if (
+      stateRef.current.trustedAddresses.some(
+        (a) =>
+          a.network === value.network &&
+          a.symbol === value.symbol &&
+          sameAddress(a.address, value.address) &&
+          a.memo === value.memo,
+      )
+    )
+      return "This address is already in your whitelist.";
+    const address = {
+      ...value,
+      label: value.label.trim(),
+      address: value.address.trim(),
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+    };
+    setState((s) => ({
+      ...s,
+      trustedAddresses: [address, ...s.trustedAddresses],
+      audit: [
+        auditEvent(
+          "security",
+          "Trusted address added",
+          address.label + " · " + address.symbol + " · " + address.network,
+        ),
+        ...s.audit,
+      ].slice(0, 1000),
+    }));
+    return null;
+  };
   return (
     <Context.Provider
       value={{
         state,
+        submitKyc: (a) => {
+          const current = stateRef.current.kyc;
+          if (current.application?.status === "in_review")
+            return "A verification is already under review.";
+          if (a.target <= current.level)
+            return "Choose the next verification level.";
+          const application: KycApplication = {
+            ...a,
+            id: crypto.randomUUID(),
+            status: "in_review",
+            submittedAt: new Date().toISOString(),
+            reviewAt: Date.now() + 8000,
+          };
+          setState((s) => ({
+            ...s,
+            kyc: { ...s.kyc, application },
+            audit: [
+              auditEvent(
+                "verification",
+                "KYC submitted",
+                "Level " +
+                  a.target +
+                  " · " +
+                  a.documentType +
+                  " · demo metadata only",
+              ),
+              ...s.audit,
+            ].slice(0, 1000),
+          }));
+          return null;
+        },
+        cancelKyc: () =>
+          setState((s) => ({
+            ...s,
+            kyc: { ...s.kyc, application: null },
+            audit: [
+              auditEvent(
+                "verification",
+                "KYC draft/review cancelled",
+                "Existing verified level retained",
+              ),
+              ...s.audit,
+            ].slice(0, 1000),
+          })),
+        setDemoLevel: (level) =>
+          setState((s) => ({
+            ...s,
+            kyc: {
+              ...s.kyc,
+              level,
+              application: null,
+              verifiedAt: level === 1 ? null : new Date().toISOString(),
+            },
+            audit: [
+              auditEvent(
+                "verification",
+                "Demo client level changed",
+                "Level " + level + " · purchase usage retained",
+              ),
+              ...s.audit,
+            ].slice(0, 1000),
+          })),
+        beginTransfer,
+        failPendingTransfer: (id) => setState((s) => failTransfer(s, id)),
+        log,
+        updateSecurity,
+        addTrusted,
+        setPreferences: (value) =>
+          setState((s) => ({
+            ...s,
+            preferences: { ...s.preferences, ...value },
+            audit: [
+              auditEvent(
+                "preferences",
+                "Preferences updated",
+                Object.keys(value).join(", "),
+              ),
+              ...s.audit,
+            ].slice(0, 1000),
+          })),
+        removeTrusted: (id) =>
+          setState((s) => ({
+            ...s,
+            trustedAddresses: s.trustedAddresses.filter((a) => a.id !== id),
+            audit: [
+              auditEvent(
+                "security",
+                "Trusted address removed",
+                s.trustedAddresses.find((a) => a.id === id)?.label ?? id,
+              ),
+              ...s.audit,
+            ].slice(0, 1000),
+          })),
+        revokeSession: (id) =>
+          setState((s) => ({
+            ...s,
+            sessions: s.sessions.map((x) =>
+              x.id === id && !x.current ? { ...x, revoked: true } : x,
+            ),
+            audit: [
+              auditEvent("session", "Example session revoked", id),
+              ...s.audit,
+            ].slice(0, 1000),
+          })),
         message,
         notify,
         dismiss: () => notify(""),
         trade,
-        fund,
         redeem,
         selectIndex: (id) =>
           setState((s) => ({
@@ -222,7 +594,20 @@ export function DemoProvider({ children }: { children: ReactNode }) {
             selectedIndex: id,
             balances: { ...s.balances, TBCi: s.tokenBalances[id] ?? 0 },
           })),
-        setProfile: (name, email) => setState((s) => ({ ...s, name, email })),
+        setProfile: (name, email) =>
+          setState((s) => ({
+            ...s,
+            name,
+            email,
+            audit: [
+              auditEvent(
+                "profile",
+                "Profile updated",
+                "Display name and contact details changed locally",
+              ),
+              ...s.audit,
+            ].slice(0, 1000),
+          })),
         addWallet: (symbol) =>
           setState((s) => ({
             ...s,

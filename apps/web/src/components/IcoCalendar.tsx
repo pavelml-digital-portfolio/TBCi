@@ -1,3 +1,4 @@
+import InteractiveDonut from "./InteractiveDonut";
 import { useEffect, useState } from "react";
 import projects from "../data/ico-2018.json";
 
@@ -193,37 +194,18 @@ export default function IcoCalendar({ slug }: { slug?: string }) {
               Mock allocation for exploring the interface. These percentages are
               not the project’s historical tokenomics.
             </p>
-            <div
-              className="ico-allocation-ring"
-              role="img"
-              aria-label="Illustrative token allocation"
-              style={{
-                background:
-                  "conic-gradient(" +
-                  details.allocation
-                    .map((a, i) => {
-                      const prev = details.allocation
-                        .slice(0, i)
-                        .reduce((s, p) => s + p.share, 0);
-                      return (
-                        ["#218dff", "#8a7ec9", "#27a68d", "#e8b94f", "#e87e8e"][
-                          i
-                        ] +
-                        " " +
-                        prev +
-                        "% " +
-                        (prev + a.share) +
-                        "%"
-                      );
-                    })
-                    .join(",") +
-                  ")",
-              }}
-            >
-              <span>
-                100%<small>Sample allocation</small>
-              </span>
-            </div>
+            <InteractiveDonut
+              title="100%"
+              subtitle="Sample allocation"
+              items={details.allocation.map((a, i) => ({
+                id: a.label,
+                label: a.label,
+                value: a.share,
+                color: ["#218dff", "#8a7ec9", "#27a68d", "#e8b94f", "#e87e8e"][
+                  i
+                ],
+              }))}
+            />
             {details.allocation.map((a, i) => (
               <div className="allocation-row" key={a.label}>
                 <i
