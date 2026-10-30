@@ -36,5 +36,6 @@ jobs:
       - uses: actions/upload-artifact@v5
         with:
           name: tbci-static-site
+          include-hidden-files: true
           path: apps/web/dist/
           retention-days: 7

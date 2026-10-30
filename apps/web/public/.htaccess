@@ -1,0 +1,4 @@
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"

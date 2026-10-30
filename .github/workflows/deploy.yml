@@ -1,6 +1,8 @@
 name: Publish TBCi
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,9 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      SSH_HOST: 87.242.65.97
-      SSH_PORT: '22'
-      SSH_USER: vps-deploy
       RELEASE_ID: ${{ github.sha }}-${{ github.run_number }}-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@v5
@@ -28,24 +27,10 @@ jobs:
         with:
           name: tbci-static-site
           path: apps/web/dist
-      - name: Prepare release and verified SSH connection
-        env:
-          DEPLOY_KEY: ${{ secrets.VPS_DEPLOY_SSH_KEY }}
-          PINNED_HOSTS: ${{ vars.VPS_SSH_KNOWN_HOSTS }}
+      - name: Record release identity
         shell: bash
         run: |
           set -euo pipefail
-          test -n "$DEPLOY_KEY" || { echo '::error::VPS_DEPLOY_SSH_KEY is missing'; exit 1; }
-          umask 077
-          printf '%s\n' "$DEPLOY_KEY" > "$RUNNER_TEMP/tbci-deploy-key"
-          if [ -n "$PINNED_HOSTS" ]; then
-            printf '%s\n' "$PINNED_HOSTS" > "$RUNNER_TEMP/tbci-known-hosts"
-          else
-            ssh-keyscan -T 15 -p "$SSH_PORT" -t ed25519,ecdsa,rsa "$SSH_HOST" > "$RUNNER_TEMP/tbci-known-hosts" || {
-              echo '::error::SSH host is unreachable or did not return a host key'; exit 1;
-            }
-          fi
-          ssh-keygen -lf "$RUNNER_TEMP/tbci-known-hosts"
           python3 - <<'PY'
           import json, os
           from pathlib import Path
@@ -53,18 +38,12 @@ jobs:
               'commit': os.environ['GITHUB_SHA'], 'release': os.environ['RELEASE_ID']
           }) + '\n')
           PY
-          tar -czf "$RUNNER_TEMP/tbci-$RELEASE_ID.tar.gz" -C apps/web/dist .
       - name: Upload and switch release
         id: release
+        env:
+          VPS_DEPLOY_SSH_KEY: ${{ secrets.VPS_DEPLOY_SSH_KEY }}
         shell: bash
-        run: |
-          set -euo pipefail
-          ssh_options=(-i "$RUNNER_TEMP/tbci-deploy-key" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$RUNNER_TEMP/tbci-known-hosts" -o ConnectTimeout=15)
-          archive="$RUNNER_TEMP/tbci-$RELEASE_ID.tar.gz"
-          archive_sha=$(sha256sum "$archive" | cut -d ' ' -f 1)
-          scp "${ssh_options[@]}" -P "$SSH_PORT" "$archive" "$SSH_USER@$SSH_HOST:/tmp/tbci-$RELEASE_ID.tar.gz"
-          ssh "${ssh_options[@]}" -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            "bash -s -- publish '$RELEASE_ID' '/tmp/tbci-$RELEASE_ID.tar.gz' '$archive_sha'" < scripts/deploy/publish-release.sh
+        run: bash deploy/vps-publish.sh publish tbci.pavelml.ru apps/web/dist static
       - name: Verify public HTTPS release
         id: health
         shell: bash
@@ -80,11 +59,7 @@ jobs:
           echo 'Verified landing, account shell and exact release over HTTPS.' >> "$GITHUB_STEP_SUMMARY"
       - name: Roll back if public checks fail
         if: failure() && steps.release.outcome == 'success' && steps.health.outcome == 'failure'
+        env:
+          VPS_DEPLOY_SSH_KEY: ${{ secrets.VPS_DEPLOY_SSH_KEY }}
         shell: bash
-        run: |
-          ssh -i "$RUNNER_TEMP/tbci-deploy-key" -p "$SSH_PORT" -o BatchMode=yes -o IdentitiesOnly=yes \
-            -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$RUNNER_TEMP/tbci-known-hosts" \
-            -o ConnectTimeout=15 "$SSH_USER@$SSH_HOST" "bash -s -- rollback '$RELEASE_ID'" < scripts/deploy/publish-release.sh
-      - name: Remove temporary SSH credentials
-        if: always()
-        run: rm -f "$RUNNER_TEMP/tbci-deploy-key" "$RUNNER_TEMP/tbci-known-hosts"
+        run: bash deploy/vps-publish.sh rollback tbci.pavelml.ru
