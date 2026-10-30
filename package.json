@@ -1,0 +1,19 @@
+{
+  "name": "tbci",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web -- --host 0.0.0.0",
+    "build": "npm run build --workspace=apps/web",
+    "check": "npm run check --workspace=apps/web",
+    "preview": "npm run preview --workspace=apps/web -- --host 0.0.0.0",
+    "test:e2e": "npm run test:e2e --workspace=apps/web"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "packageManager": "npm@11.9.0"
+}

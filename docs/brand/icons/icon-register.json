@@ -1,0 +1,82 @@
+[
+  {
+    "name": "index",
+    "label": "Индекс",
+    "file": "index.svg"
+  },
+  {
+    "name": "wallet",
+    "label": "Кошелёк",
+    "file": "wallet.svg"
+  },
+  {
+    "name": "basket",
+    "label": "Корзина",
+    "file": "basket.svg"
+  },
+  {
+    "name": "buy",
+    "label": "Купить",
+    "file": "buy.svg"
+  },
+  {
+    "name": "sell",
+    "label": "Продать",
+    "file": "sell.svg"
+  },
+  {
+    "name": "compile",
+    "label": "Собрать",
+    "file": "compile.svg"
+  },
+  {
+    "name": "unmake",
+    "label": "Разобрать",
+    "file": "unmake.svg"
+  },
+  {
+    "name": "history",
+    "label": "История",
+    "file": "history.svg"
+  },
+  {
+    "name": "holders",
+    "label": "Держатели",
+    "file": "holders.svg"
+  },
+  {
+    "name": "security",
+    "label": "Защита",
+    "file": "security.svg"
+  },
+  {
+    "name": "api",
+    "label": "API",
+    "file": "api.svg"
+  },
+  {
+    "name": "methodology",
+    "label": "Методология",
+    "file": "methodology.svg"
+  },
+  {
+    "name": "rebalance",
+    "label": "Ребалансировка",
+    "file": "rebalance.svg"
+  },
+  {
+    "name": "news",
+    "label": "Новости",
+    "file": "news.svg"
+  },
+  {
+    "name": "search",
+    "label": "Поиск",
+    "file": "search.svg"
+  },
+  {
+    "name": "settings",
+    "label": "Настройки",
+    "file": "settings.svg"
+  }
+]

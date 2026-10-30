@@ -1,0 +1,232 @@
+[
+  {
+    "name": "index",
+    "label": "Индекс",
+    "file": "index.svg"
+  },
+  {
+    "name": "wallet",
+    "label": "Кошелёк",
+    "file": "wallet.svg"
+  },
+  {
+    "name": "basket",
+    "label": "Корзина",
+    "file": "basket.svg"
+  },
+  {
+    "name": "buy",
+    "label": "Купить",
+    "file": "buy.svg"
+  },
+  {
+    "name": "sell",
+    "label": "Продать",
+    "file": "sell.svg"
+  },
+  {
+    "name": "compile",
+    "label": "Собрать",
+    "file": "compile.svg"
+  },
+  {
+    "name": "unmake",
+    "label": "Разобрать",
+    "file": "unmake.svg"
+  },
+  {
+    "name": "history",
+    "label": "История",
+    "file": "history.svg"
+  },
+  {
+    "name": "holders",
+    "label": "Держатели",
+    "file": "holders.svg"
+  },
+  {
+    "name": "security",
+    "label": "Защита",
+    "file": "security.svg"
+  },
+  {
+    "name": "api",
+    "label": "API",
+    "file": "api.svg"
+  },
+  {
+    "name": "methodology",
+    "label": "Методология",
+    "file": "methodology.svg"
+  },
+  {
+    "name": "rebalance",
+    "label": "Ребалансировка",
+    "file": "rebalance.svg"
+  },
+  {
+    "name": "news",
+    "label": "Новости",
+    "file": "news.svg"
+  },
+  {
+    "name": "search",
+    "label": "Поиск",
+    "file": "search.svg"
+  },
+  {
+    "name": "settings",
+    "label": "Настройки",
+    "file": "settings.svg"
+  },
+  {
+    "name": "analytics",
+    "label": "Аналитика",
+    "file": "thematic/analytics.svg"
+  },
+  {
+    "name": "candlestick",
+    "label": "Свечи",
+    "file": "thematic/candlestick.svg"
+  },
+  {
+    "name": "allocation",
+    "label": "Распределение",
+    "file": "thematic/allocation.svg"
+  },
+  {
+    "name": "pie-chart",
+    "label": "Доли",
+    "file": "thematic/pie-chart.svg"
+  },
+  {
+    "name": "performance",
+    "label": "Доходность",
+    "file": "thematic/performance.svg"
+  },
+  {
+    "name": "volatility",
+    "label": "Волатильность",
+    "file": "thematic/volatility.svg"
+  },
+  {
+    "name": "comparison",
+    "label": "Сравнение",
+    "file": "thematic/comparison.svg"
+  },
+  {
+    "name": "calculator",
+    "label": "Калькулятор",
+    "file": "thematic/calculator.svg"
+  },
+  {
+    "name": "formula",
+    "label": "Формула",
+    "file": "thematic/formula.svg"
+  },
+  {
+    "name": "market-cap",
+    "label": "Капитализация",
+    "file": "thematic/market-cap.svg"
+  },
+  {
+    "name": "liquidity",
+    "label": "Ликвидность",
+    "file": "thematic/liquidity.svg"
+  },
+  {
+    "name": "order-book",
+    "label": "Стакан",
+    "file": "thematic/order-book.svg"
+  },
+  {
+    "name": "exchange",
+    "label": "Биржа",
+    "file": "thematic/exchange.svg"
+  },
+  {
+    "name": "swap",
+    "label": "Обмен",
+    "file": "thematic/swap.svg"
+  },
+  {
+    "name": "deposit",
+    "label": "Пополнение",
+    "file": "thematic/deposit.svg"
+  },
+  {
+    "name": "withdraw",
+    "label": "Вывод",
+    "file": "thematic/withdraw.svg"
+  },
+  {
+    "name": "network-transfer",
+    "label": "Перевод",
+    "file": "thematic/network-transfer.svg"
+  },
+  {
+    "name": "pending",
+    "label": "Ожидание",
+    "file": "thematic/pending.svg"
+  },
+  {
+    "name": "receipt",
+    "label": "Квитанция",
+    "file": "thematic/receipt.svg"
+  },
+  {
+    "name": "fees",
+    "label": "Комиссии",
+    "file": "thematic/fees.svg"
+  },
+  {
+    "name": "gas",
+    "label": "Сетевая комиссия",
+    "file": "thematic/gas.svg"
+  },
+  {
+    "name": "token",
+    "label": "Токен",
+    "file": "thematic/token.svg"
+  },
+  {
+    "name": "blockchain",
+    "label": "Блокчейн",
+    "file": "thematic/blockchain.svg"
+  },
+  {
+    "name": "smart-contract",
+    "label": "Смарт-контракт",
+    "file": "thematic/smart-contract.svg"
+  },
+  {
+    "name": "multisig",
+    "label": "Мультиподпись",
+    "file": "thematic/multisig.svg"
+  },
+  {
+    "name": "access-key",
+    "label": "Ключ доступа",
+    "file": "thematic/access-key.svg"
+  },
+  {
+    "name": "identity",
+    "label": "Идентификация",
+    "file": "thematic/identity.svg"
+  },
+  {
+    "name": "notification",
+    "label": "Уведомления",
+    "file": "thematic/notification.svg"
+  },
+  {
+    "name": "global-market",
+    "label": "Глобальный рынок",
+    "file": "thematic/global-market.svg"
+  },
+  {
+    "name": "support",
+    "label": "Поддержка",
+    "file": "thematic/support.svg"
+  }
+]

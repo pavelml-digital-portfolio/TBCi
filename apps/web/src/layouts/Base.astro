@@ -1,0 +1,7 @@
+---
+import '../styles/global.css';
+interface Props {title?:string;description?:string;privatePage?:boolean}
+const {title='TBCi — структура рынка, ясность данных',description='Криптовалютный индекс TBCi 20: динамика рынка, состав корзины и открытая методология.',privatePage=false}=Astro.props;
+---
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#070A22"/><meta name="description" content={description}/><meta name="generator" content={Astro.generator}/>{privatePage&&<meta name="robots" content="noindex,nofollow"/>}<link rel="icon" href="/brand/tbci-symbol-cyan.svg" type="image/svg+xml"/><link rel="preload" href="/fonts/OpenSans-Regular.ttf" as="font" type="font/ttf" crossorigin/><link rel="canonical" href={new URL(Astro.url.pathname,Astro.site).href}/><title>{title}</title></head><body><slot/></body></html>

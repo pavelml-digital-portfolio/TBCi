@@ -1,0 +1,4286 @@
+openapi: 3.1.0
+info:
+  title: TBCi core API — проект к ТЗ
+  version: 1.0.0
+  description: Проект контракта ядра. Денежные значения — строки. URL относительный, не действующий production endpoint.
+    Реальные провайдеры и параметры требуют согласования D01–D18.
+servers:
+- url: /api/v1
+x-contract-status: draft-defined-core
+x-not-yet-detailed:
+- Provider-specific custody/KYC wire callbacks and legal retention settings
+- TradingView vendor adapter wire format
+- Full operator search/policy-edit commands and provider-specific order/fee fields; bounded by technical specification
+paths:
+  /indices:
+    get:
+      operationId: indicesList
+      summary: Список indices
+      tags:
+      - indices
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /indices/{id}:
+    get:
+      operationId: indicesGet
+      summary: Карточка indices
+      tags:
+      - indices
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Index'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /assets:
+    get:
+      operationId: assetsList
+      summary: Список assets
+      tags:
+      - assets
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /assets/{id}:
+    get:
+      operationId: assetsGet
+      summary: Карточка assets
+      tags:
+      - assets
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /tokens:
+    get:
+      operationId: tokensList
+      summary: Список tokens
+      tags:
+      - tokens
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /tokens/{id}:
+    get:
+      operationId: tokensGet
+      summary: Карточка tokens
+      tags:
+      - tokens
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /exchanges:
+    get:
+      operationId: exchangesList
+      summary: Список exchanges
+      tags:
+      - exchanges
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangePage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /exchanges/{id}:
+    get:
+      operationId: exchangesGet
+      summary: Карточка exchanges
+      tags:
+      - exchanges
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exchange'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /news:
+    get:
+      operationId: newsList
+      summary: Список news
+      tags:
+      - news
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /news/{id}:
+    get:
+      operationId: newsGet
+      summary: Карточка news
+      tags:
+      - news
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /indices/{id}/history:
+    get:
+      operationId: indicesHistory
+      summary: История значений
+      tags:
+      - indices
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/History'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: interval
+        in: query
+        schema:
+          enum:
+          - 1m
+          - 5m
+          - 1h
+          - 1d
+          default: 1h
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /assets/{id}/history:
+    get:
+      operationId: assetsHistory
+      summary: История значений
+      tags:
+      - assets
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/History'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: interval
+        in: query
+        schema:
+          enum:
+          - 1m
+          - 5m
+          - 1h
+          - 1d
+          default: 1h
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /indices/{id}/composition:
+    get:
+      operationId: indexComposition
+      summary: Состав индекса
+      tags:
+      - indices
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Composition'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/AsOf'
+  /assets/{id}/markets:
+    get:
+      operationId: assetsMarkets
+      summary: Рынки
+      tags:
+      - assets
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /exchanges/{id}/markets:
+    get:
+      operationId: exchangesMarkets
+      summary: Рынки
+      tags:
+      - exchanges
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /tokens/{id}/holders:
+    get:
+      operationId: tokenHolders
+      summary: Держатели и on-chain balances
+      tags:
+      - tokens
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HolderPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /tokens/{id}/basket-history:
+    get:
+      operationId: tokenBasketHistory
+      summary: История корзины
+      tags:
+      - tokens
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Composition'
+                required:
+                - items
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /content/{slug}:
+    get:
+      operationId: contentGet
+      summary: Опубликованный текст
+      tags:
+      - content
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: locale
+        in: query
+        schema:
+          enum:
+          - ru
+          - en
+          default: ru
+  /auth/register:
+    post:
+      operationId: authRegister
+      summary: Регистрация с нейтральным ответом
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  maxLength: 254
+                password:
+                  type: string
+                  minLength: 12
+                  maxLength: 1024
+                  writeOnly: true
+                locale:
+                  enum:
+                  - ru
+                  - en
+              required:
+              - email
+              - password
+              additionalProperties: false
+  /auth/verify:
+    post:
+      operationId: authVerify
+      summary: Подтвердить email
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+              - token
+              additionalProperties: false
+  /auth/login:
+    post:
+      operationId: authLogin
+      summary: Вход / MFA challenge
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResult'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  maxLength: 254
+                password:
+                  type: string
+                  minLength: 12
+                  maxLength: 1024
+                  writeOnly: true
+              required:
+              - email
+              - password
+              additionalProperties: false
+      description: При успехе Secure/HttpOnly session cookie; при MFA только ограниченный challenge, без финансового
+        доступа.
+  /auth/logout:
+    post:
+      operationId: authLogout
+      summary: Отзыв текущей сессии
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+  /auth/recover:
+    post:
+      operationId: authRecover
+      summary: Начать восстановление без enumeration
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  maxLength: 254
+              required:
+              - email
+              additionalProperties: false
+  /auth/reset:
+    post:
+      operationId: authReset
+      summary: Восстановить пароль и отозвать сессии
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                new_password:
+                  type: string
+                  minLength: 12
+                  maxLength: 1024
+                  writeOnly: true
+              required:
+              - token
+              - new_password
+              additionalProperties: false
+  /auth/mfa/challenge:
+    post:
+      operationId: verifyMfaChallenge
+      summary: Проверить одноразовый TOTP challenge
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationToken'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                challenge_id:
+                  $ref: '#/components/schemas/Id'
+                code:
+                  type: string
+                  pattern: ^[0-9]{6,8}$
+                  writeOnly: true
+              required:
+              - challenge_id
+              - code
+              additionalProperties: false
+  /me:
+    get:
+      operationId: meGet
+      summary: Мой профиль
+      tags:
+      - me
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+    patch:
+      operationId: meUpdate
+      summary: Настройки языка и часового пояса
+      tags:
+      - me
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  enum:
+                  - ru
+                  - en
+                timezone:
+                  type: string
+              required: []
+              additionalProperties: false
+  /me/sessions:
+    get:
+      operationId: sessionsList
+      summary: Мои сессии
+      tags:
+      - me
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /me/sessions/{id}:
+    delete:
+      operationId: sessionRevoke
+      summary: Отозвать свою сессию
+      tags:
+      - me
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+  /me/kyc:
+    post:
+      operationId: kycStart
+      summary: Создать проверку KYC
+      tags:
+      - me
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  check_id:
+                    $ref: '#/components/schemas/Id'
+                  state:
+                    type: string
+                  redirect_url:
+                    type: string
+                    format: uri
+                required:
+                - check_id
+                - state
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+  /wallets:
+    get:
+      operationId: walletsList
+      summary: Мои кошельки
+      tags:
+      - wallets
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /wallets/{id}/deposit-address:
+    post:
+      operationId: depositAddressCreate
+      summary: Получить адрес и memo
+      tags:
+      - wallets
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepositAddress'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                asset_route_id:
+                  $ref: '#/components/schemas/Id'
+              required:
+              - asset_route_id
+              additionalProperties: false
+  /wallets/{id}/transactions:
+    get:
+      operationId: walletTransactions
+      summary: История операций кошелька
+      tags:
+      - wallets
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /portfolio:
+    get:
+      operationId: portfolioGet
+      summary: Оценка портфеля, не P&L
+      tags:
+      - portfolio
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /portfolio/history:
+    get:
+      operationId: portfolioHistory
+      summary: История оценки
+      tags:
+      - portfolio
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/History'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /portfolio/operations:
+    get:
+      operationId: portfolioOperations
+      summary: Мои операции
+      tags:
+      - portfolio
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+  /quotes:
+    post:
+      operationId: quoteCreate
+      summary: Рассчитать условия
+      tags:
+      - quotes
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+  /quotes/{id}:
+    get:
+      operationId: quoteGet
+      summary: Прочитать свою котировку
+      tags:
+      - quotes
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /operations:
+    post:
+      operationId: operationCreate
+      summary: Создать/принять финансовое намерение
+      tags:
+      - operations
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      description: При необходимом MFA без token — awaiting_approval без резерва. Только после полного подтверждения
+        и проверки expiry выполняются reserve + outbox. Quote связан с одной operation.
+    get:
+      operationId: operationsList
+      summary: История своих операций
+      tags:
+      - operations
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+      - name: state
+        in: query
+        schema:
+          enum:
+          - created
+          - awaiting_approval
+          - reserved
+          - executing
+          - awaiting_network
+          - partially_completed
+          - compensating
+          - manual_review
+          - completed
+          - failed
+          - cancelled
+  /operations/{id}:
+    get:
+      operationId: operationGet
+      summary: Текущее состояние и шаги
+      tags:
+      - operations
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /operations/{id}/confirmation-challenge:
+    post:
+      operationId: operationChallenge
+      summary: Получить MFA challenge, связанный с terms hash
+      tags:
+      - operations
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationChallenge'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+  /operations/{id}/confirm:
+    post:
+      operationId: operationConfirm
+      summary: Подтвердить и зарезервировать после MFA
+      tags:
+      - operations
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmOperationRequest'
+  /operations/{id}/cancel:
+    post:
+      operationId: operationCancel
+      summary: Отмена до необратимого эффекта
+      tags:
+      - operations
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  maxLength: 512
+              required: []
+              additionalProperties: false
+  /integrations/{provider}/events:
+    post:
+      operationId: providerEvent
+      summary: Приём подписанного события
+      tags:
+      - integrations
+      x-contract-status: draft-defined
+      security:
+      - providerSignature: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: provider
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Event-Timestamp
+        in: header
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: X-Event-Id
+        in: header
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      description: Signature по исходным байтам body; schema envelope нормализуется адаптером, реальный provider
+        wire format согласуется по провайдеру. Повторы подтверждаются без второго эффекта.
+  /backoffice/reconciliations:
+    get:
+      operationId: reconciliationsList
+      summary: Результаты сверок
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationPage'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+      description: Только внутренний operator session с MFA; partner token всегда запрещён.
+  /backoffice/stop-flags:
+    post:
+      operationId: stopFlagSet
+      summary: Изменить stop flag с причиной
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyCommand'
+  /backoffice/approvals/{id}:
+    post:
+      operationId: approvalDecide
+      summary: Независимое одобрение версии
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalCommand'
+  /auth/mfa/enroll:
+    post:
+      operationId: mfaEnroll
+      summary: Начать TOTP enrollment
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MfaEnrollment'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password_confirmation:
+                  type: string
+                  minLength: 12
+                  maxLength: 1024
+                  writeOnly: true
+              required:
+              - password_confirmation
+              additionalProperties: false
+  /auth/mfa/confirm:
+    post:
+      operationId: mfaEnrollmentConfirm
+      summary: Активировать TOTP и выдать recovery codes один раз
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                  recovery_codes_once:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - enabled
+                - recovery_codes_once
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enrollment_id:
+                  $ref: '#/components/schemas/Id'
+                code:
+                  type: string
+                  pattern: ^[0-9]{6,8}$
+              required:
+              - enrollment_id
+              - code
+              additionalProperties: false
+  /auth/mfa/recovery:
+    post:
+      operationId: mfaRecovery
+      summary: Проверить одноразовый recovery code
+      tags:
+      - auth
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationToken'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                challenge_id:
+                  $ref: '#/components/schemas/Id'
+                recovery_code:
+                  type: string
+                  writeOnly: true
+              required:
+              - challenge_id
+              - recovery_code
+              additionalProperties: false
+  /subscriptions:
+    post:
+      operationId: subscriptionCreate
+      summary: 'Подписка: нейтральный ответ'
+      tags:
+      - subscriptions
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  maxLength: 254
+                locale:
+                  enum:
+                  - ru
+                  - en
+                consent:
+                  const: true
+              required:
+              - email
+              - consent
+              additionalProperties: false
+  /subscriptions/confirm:
+    post:
+      operationId: subscriptionConfirm
+      summary: 'Подписка: нейтральный ответ'
+      tags:
+      - subscriptions
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+              - token
+              additionalProperties: false
+  /subscriptions/unsubscribe:
+    post:
+      operationId: subscriptionUnsubscribe
+      summary: 'Подписка: нейтральный ответ'
+      tags:
+      - subscriptions
+      x-contract-status: draft-defined
+      security: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+              - token
+              additionalProperties: false
+  /exports:
+    post:
+      operationId: exportCreate
+      summary: Создать CSV своей истории
+      tags:
+      - exports
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportJob'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scope:
+                  enum:
+                  - operations
+                  - wallet_transactions
+                from:
+                  type: string
+                  format: date-time
+                to:
+                  type: string
+                  format: date-time
+                locale:
+                  enum:
+                  - ru
+                  - en
+              required:
+              - scope
+              - from
+              - to
+              additionalProperties: false
+  /exports/{id}:
+    get:
+      operationId: exportGet
+      summary: Статус и ограниченная ссылка CSV
+      tags:
+      - exports
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      - partnerBearer: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportJob'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+  /partner/keys:
+    get:
+      operationId: partnerKeysList
+      summary: Список своих API-ключей
+      tags:
+      - partner
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APIKey'
+                required:
+                - items
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+    post:
+      operationId: partnerKeyCreate
+      summary: Выпустить ключ в пределах прав партнёра
+      tags:
+      - partner
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyCreated'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  maxLength: 100
+                scopes:
+                  type: array
+                  minItems: 1
+                  uniqueItems: true
+                  items:
+                    enum:
+                    - read:market
+                    - read:portfolio
+                    - trade:quote
+                    - trade:execute
+                expires_at:
+                  type: string
+                  format: date-time
+              required:
+              - label
+              - scopes
+              additionalProperties: false
+      description: Только подтверждённый partner account, MFA; нельзя выдать scope шире разрешённого account entitlement.
+        Secret показывается один раз.
+  /partner/keys/{id}:
+    delete:
+      operationId: partnerKeyRevoke
+      summary: Отозвать свой ключ
+      tags:
+      - partner
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+  /backoffice/content:
+    post:
+      operationId: contentDraftCreate
+      summary: Создать санитизированный черновик
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/Id'
+                  revision:
+                    type: integer
+                  state:
+                    const: draft
+                required:
+                - id
+                - revision
+                - state
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentDraftRequest'
+  /backoffice/content/{id}:
+    patch:
+      operationId: contentDraftUpdate
+      summary: Обновить черновик по версии
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/Id'
+                  revision:
+                    type: integer
+                required:
+                - id
+                - revision
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentDraftRequest'
+  /backoffice/content/{id}/publish:
+    post:
+      operationId: contentPublish
+      summary: Опубликовать конкретную ревизию
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                revision:
+                  type: integer
+                  minimum: 1
+                publish_at:
+                  type: string
+                  format: date-time
+              required:
+              - revision
+              additionalProperties: false
+  /backoffice/baskets:
+    post:
+      operationId: basketDraftCreate
+      summary: Предложить версию корзины
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/Id'
+                  state:
+                    const: draft
+                  terms_hash:
+                    type: string
+                required:
+                - id
+                - state
+                - terms_hash
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasketDraftRequest'
+  /backoffice/baskets/{id}/activate:
+    post:
+      operationId: basketActivate
+      summary: Запустить контролируемый cutover
+      tags:
+      - backoffice
+      x-contract-status: draft-defined
+      security:
+      - sessionCookie: []
+      responses:
+        '202':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Acknowledgement'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Id'
+      - $ref: '#/components/parameters/CSRF'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                approval_id:
+                  $ref: '#/components/schemas/Id'
+                terms_hash:
+                  type: string
+              required:
+              - approval_id
+              - terms_hash
+              additionalProperties: false
+      description: Не активировать до покрытия backing, двух одобрений и обработки pending операций; команда создаёт
+        операцию cutover.
+components:
+  schemas:
+    Id:
+      type: string
+      format: uuid
+    Decimal:
+      type: string
+      pattern: ^(0|[1-9][0-9]*)(\.[0-9]+)?$
+      description: Неотрицательный decimal без экспоненты и локальных разделителей. Никогда JSON number.
+      examples:
+      - '0'
+      - '10000.00'
+      - '0.833333333'
+      maxLength: 120
+    PositiveDecimal:
+      type: string
+      pattern: ^(?:[1-9][0-9]*(?:\.[0-9]+)?|0\.[0-9]*[1-9][0-9]*)$
+      examples:
+      - '1'
+      - '0.8'
+      maxLength: 120
+    Units:
+      type: string
+      pattern: ^(0|[1-9][0-9]*)$
+      examples:
+      - '100000000'
+      maxLength: 78
+    Problem:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri-reference
+        title:
+          type: string
+        status:
+          type: integer
+          minimum: 400
+          maximum: 599
+        code:
+          type: string
+        detail:
+          type: string
+        request_id:
+          $ref: '#/components/schemas/Id'
+        field_errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              code:
+                type: string
+              message:
+                type: string
+            required:
+            - field
+            - code
+            additionalProperties: false
+      required:
+      - type
+      - title
+      - status
+      - code
+      - request_id
+      additionalProperties: false
+    Amount:
+      type: object
+      properties:
+        asset_id:
+          $ref: '#/components/schemas/Id'
+        amount:
+          $ref: '#/components/schemas/Decimal'
+        amount_units:
+          $ref: '#/components/schemas/Units'
+      required:
+      - asset_id
+      - amount
+      additionalProperties: false
+      description: Если amount_units передано, оно соответствует amount и точности версии актива.
+    Freshness:
+      type: object
+      properties:
+        state:
+          enum:
+          - fresh
+          - stale
+          - unavailable
+        observed_at:
+          type: string
+          format: date-time
+        received_at:
+          type: string
+          format: date-time
+        provider:
+          type: string
+        revision:
+          type: integer
+          minimum: 1
+      required:
+      - state
+      - observed_at
+      - received_at
+      - provider
+      - revision
+      additionalProperties: false
+    Asset:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        symbol:
+          type: string
+        name:
+          type: string
+        status:
+          enum:
+          - enabled
+          - read_only
+          - paused
+          - disabled
+        price_usd:
+          $ref: '#/components/schemas/Decimal'
+        market_cap_usd:
+          $ref: '#/components/schemas/Decimal'
+        freshness:
+          $ref: '#/components/schemas/Freshness'
+      required:
+      - id
+      - symbol
+      - name
+      - status
+      additionalProperties: false
+    Index:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+        value:
+          $ref: '#/components/schemas/Decimal'
+        unit:
+          const: points
+        methodology_version_id:
+          $ref: '#/components/schemas/Id'
+        change_percent:
+          type: string
+          pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?$
+        freshness:
+          $ref: '#/components/schemas/Freshness'
+      required:
+      - id
+      - name
+      - unit
+      - methodology_version_id
+      - freshness
+      additionalProperties: false
+    HistoryPoint:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        value:
+          $ref: '#/components/schemas/Decimal'
+        revision:
+          type: integer
+          minimum: 1
+        quality:
+          enum:
+          - valid
+          - corrected
+          - unavailable
+      required:
+      - timestamp
+      - revision
+      - quality
+      additionalProperties: false
+    History:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryPoint'
+        interval:
+          type: string
+        as_of:
+          type: string
+          format: date-time
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        aggregation_method:
+          type: string
+      required:
+      - items
+      - interval
+      - as_of
+      - next_cursor
+      - aggregation_method
+      additionalProperties: false
+    Composition:
+      type: object
+      properties:
+        version_id:
+          $ref: '#/components/schemas/Id'
+        effective_at:
+          type: string
+          format: date-time
+        components:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              asset_id:
+                $ref: '#/components/schemas/Id'
+              quantity_per_token:
+                $ref: '#/components/schemas/Decimal'
+              start_weight:
+                $ref: '#/components/schemas/Decimal'
+              current_weight:
+                $ref: '#/components/schemas/Decimal'
+            required:
+            - asset_id
+            - start_weight
+            additionalProperties: false
+        divisor:
+          $ref: '#/components/schemas/Decimal'
+        methodology_version_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - version_id
+      - effective_at
+      - components
+      additionalProperties: false
+    User:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        email:
+          type: string
+          format: email
+        email_verified:
+          type: boolean
+        status:
+          type: string
+        locale:
+          enum:
+          - ru
+          - en
+        timezone:
+          type: string
+        kyc_state:
+          enum:
+          - not_started
+          - pending
+          - approved
+          - rejected
+          - expired
+          - review_required
+        allowed_actions:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - email
+      - email_verified
+      - status
+      - locale
+      - timezone
+      - kyc_state
+      - allowed_actions
+      additionalProperties: false
+    Wallet:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        asset_id:
+          $ref: '#/components/schemas/Id'
+        available_units:
+          $ref: '#/components/schemas/Units'
+        reserved_units:
+          $ref: '#/components/schemas/Units'
+        pending_units:
+          $ref: '#/components/schemas/Units'
+        display_decimals:
+          type: integer
+          minimum: 0
+          maximum: 36
+        updated_at:
+          type: string
+          format: date-time
+        asset_route_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - id
+      - asset_id
+      - available_units
+      - reserved_units
+      - pending_units
+      - display_decimals
+      - updated_at
+      - asset_route_id
+      additionalProperties: false
+    DepositAddress:
+      type: object
+      properties:
+        asset_route_id:
+          $ref: '#/components/schemas/Id'
+        network_id:
+          $ref: '#/components/schemas/Id'
+        address:
+          type: string
+        memo:
+          type:
+          - string
+          - 'null'
+        min_deposit:
+          $ref: '#/components/schemas/Amount'
+        required_confirmations:
+          type: integer
+          minimum: 1
+        status:
+          type: string
+      required:
+      - asset_route_id
+      - network_id
+      - address
+      - memo
+      - status
+      additionalProperties: false
+    Token:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+        symbol:
+          type: string
+        network_id:
+          $ref: '#/components/schemas/Id'
+        contract_address:
+          type: string
+        decimals:
+          type: integer
+          minimum: 0
+          maximum: 36
+        active_basket_version_id:
+          $ref: '#/components/schemas/Id'
+        nav:
+          $ref: '#/components/schemas/Amount'
+        total_supply_units:
+          $ref: '#/components/schemas/Units'
+        freshness:
+          $ref: '#/components/schemas/Freshness'
+      required:
+      - id
+      - name
+      - symbol
+      - network_id
+      - decimals
+      additionalProperties: false
+    Destination:
+      type: object
+      properties:
+        address:
+          type: string
+          minLength: 1
+          maxLength: 512
+        memo:
+          type:
+          - string
+          - 'null'
+          maxLength: 256
+      required:
+      - address
+      additionalProperties: false
+    BuyQuoteRequest:
+      type: object
+      properties:
+        operation_type:
+          const: buy
+        token_id:
+          $ref: '#/components/schemas/Id'
+        quantity:
+          $ref: '#/components/schemas/PositiveDecimal'
+        pay_wallet_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - operation_type
+      - token_id
+      - quantity
+      - pay_wallet_id
+      additionalProperties: false
+    SellQuoteRequest:
+      type: object
+      properties:
+        operation_type:
+          const: sell
+        token_id:
+          $ref: '#/components/schemas/Id'
+        quantity:
+          $ref: '#/components/schemas/PositiveDecimal'
+        receive_wallet_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - operation_type
+      - token_id
+      - quantity
+      - receive_wallet_id
+      additionalProperties: false
+    CompileQuoteRequest:
+      type: object
+      properties:
+        operation_type:
+          const: compile
+        token_id:
+          $ref: '#/components/schemas/Id'
+        quantity:
+          $ref: '#/components/schemas/PositiveDecimal'
+      required:
+      - operation_type
+      - token_id
+      - quantity
+      additionalProperties: false
+    UnmakeQuoteRequest:
+      type: object
+      properties:
+        operation_type:
+          const: unmake
+        token_id:
+          $ref: '#/components/schemas/Id'
+        quantity:
+          $ref: '#/components/schemas/PositiveDecimal'
+      required:
+      - operation_type
+      - token_id
+      - quantity
+      additionalProperties: false
+    WithdrawalQuoteRequest:
+      type: object
+      properties:
+        operation_type:
+          const: withdraw
+        wallet_id:
+          $ref: '#/components/schemas/Id'
+        asset_route_id:
+          $ref: '#/components/schemas/Id'
+        quantity:
+          $ref: '#/components/schemas/PositiveDecimal'
+        destination:
+          $ref: '#/components/schemas/Destination'
+      required:
+      - operation_type
+      - wallet_id
+      - asset_route_id
+      - quantity
+      - destination
+      additionalProperties: false
+    QuoteRequest:
+      oneOf:
+      - $ref: '#/components/schemas/BuyQuoteRequest'
+      - $ref: '#/components/schemas/SellQuoteRequest'
+      - $ref: '#/components/schemas/CompileQuoteRequest'
+      - $ref: '#/components/schemas/UnmakeQuoteRequest'
+      - $ref: '#/components/schemas/WithdrawalQuoteRequest'
+      discriminator:
+        propertyName: operation_type
+        mapping:
+          buy: '#/components/schemas/BuyQuoteRequest'
+          sell: '#/components/schemas/SellQuoteRequest'
+          compile: '#/components/schemas/CompileQuoteRequest'
+          unmake: '#/components/schemas/UnmakeQuoteRequest'
+          withdraw: '#/components/schemas/WithdrawalQuoteRequest'
+    Fee:
+      type: object
+      properties:
+        type:
+          enum:
+          - service
+          - liquidity
+          - network
+          - rounding
+        amount:
+          $ref: '#/components/schemas/Amount'
+        rate:
+          $ref: '#/components/schemas/Decimal'
+        basis:
+          $ref: '#/components/schemas/Amount'
+        payer:
+          enum:
+          - user
+          - treasury
+        included_in_total:
+          type: boolean
+      required:
+      - type
+      - amount
+      - payer
+      - included_in_total
+      additionalProperties: false
+    Movement:
+      type: object
+      properties:
+        direction:
+          enum:
+          - debit
+          - credit
+        wallet_id:
+          $ref: '#/components/schemas/Id'
+        amount:
+          $ref: '#/components/schemas/Amount'
+        shortfall:
+          $ref: '#/components/schemas/Amount'
+        max_network_fee:
+          $ref: '#/components/schemas/Amount'
+      required:
+      - direction
+      - amount
+      additionalProperties: false
+    Quote:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        operation_type:
+          enum:
+          - buy
+          - sell
+          - compile
+          - unmake
+          - withdraw
+        actor_id:
+          $ref: '#/components/schemas/Id'
+        token_id:
+          $ref: '#/components/schemas/Id'
+        quantity:
+          $ref: '#/components/schemas/PositiveDecimal'
+        basket_version_id:
+          $ref: '#/components/schemas/Id'
+        state:
+          enum:
+          - active
+          - awaiting_approval
+          - accepted
+          - expired
+          - invalidated
+        created_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+        prices_as_of:
+          type: string
+          format: date-time
+        fee_policy_version:
+          type: string
+        terms_hash:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+        movements:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Movement'
+        fees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fee'
+        requires_confirmation:
+          type: boolean
+        warnings:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - operation_type
+      - actor_id
+      - quantity
+      - state
+      - created_at
+      - expires_at
+      - fee_policy_version
+      - terms_hash
+      - movements
+      - fees
+      - requires_confirmation
+      - warnings
+      additionalProperties: false
+    OperationStep:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        kind:
+          type: string
+        state:
+          type: string
+        network_id:
+          $ref: '#/components/schemas/Id'
+        tx_hash:
+          type: string
+        confirmations:
+          type: integer
+          minimum: 0
+        required_confirmations:
+          type: integer
+          minimum: 1
+        error_code:
+          type: string
+      required:
+      - id
+      - kind
+      - state
+      additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        type:
+          enum:
+          - buy
+          - sell
+          - compile
+          - unmake
+          - withdraw
+          - deposit
+        quote_id:
+          $ref: '#/components/schemas/Id'
+        actor_id:
+          $ref: '#/components/schemas/Id'
+        state:
+          enum:
+          - created
+          - awaiting_approval
+          - reserved
+          - executing
+          - awaiting_network
+          - partially_completed
+          - compensating
+          - manual_review
+          - completed
+          - failed
+          - cancelled
+        version:
+          type: integer
+          minimum: 1
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        movements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Movement'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperationStep'
+        can_cancel:
+          type: boolean
+        error_code:
+          type: string
+        correlation_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - id
+      - type
+      - actor_id
+      - state
+      - version
+      - created_at
+      - updated_at
+      - movements
+      - steps
+      - can_cancel
+      - correlation_id
+      additionalProperties: false
+    CreateOperationRequest:
+      type: object
+      properties:
+        quote_id:
+          $ref: '#/components/schemas/Id'
+        terms_hash:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+        confirmation_token:
+          type: string
+          maxLength: 2048
+      required:
+      - quote_id
+      - terms_hash
+      additionalProperties: false
+      description: Без обязательного MFA token создаётся awaiting_approval без списания/резерва. Для исполнения
+        требуется confirm и повторная проверка quote TTL.
+    ConfirmOperationRequest:
+      type: object
+      properties:
+        confirmation_token:
+          type: string
+          minLength: 1
+          maxLength: 2048
+      required:
+      - confirmation_token
+      additionalProperties: false
+    ConfirmationChallenge:
+      type: object
+      properties:
+        challenge_id:
+          $ref: '#/components/schemas/Id'
+        operation_id:
+          $ref: '#/components/schemas/Id'
+        terms_hash:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        method:
+          const: totp
+      required:
+      - challenge_id
+      - operation_id
+      - terms_hash
+      - expires_at
+      - method
+      additionalProperties: false
+    ConfirmationToken:
+      type: object
+      properties:
+        confirmation_token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+      required:
+      - confirmation_token
+      - expires_at
+      additionalProperties: false
+    Event:
+      type: object
+      properties:
+        event_id:
+          $ref: '#/components/schemas/Id'
+        event_type:
+          type: string
+        schema_version:
+          const: 1
+        occurred_at:
+          type: string
+          format: date-time
+        aggregate_id:
+          $ref: '#/components/schemas/Id'
+        aggregate_version:
+          type: integer
+          minimum: 1
+        correlation_id:
+          $ref: '#/components/schemas/Id'
+        data:
+          type: object
+          additionalProperties: true
+      required:
+      - event_id
+      - event_type
+      - schema_version
+      - occurred_at
+      - aggregate_id
+      - aggregate_version
+      - correlation_id
+      - data
+      additionalProperties: false
+      description: data валидируется отдельной схемой события. Подпись проверяется по raw body до обработки.
+    Acknowledgement:
+      type: object
+      properties:
+        message:
+          type: string
+        request_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - message
+      - request_id
+      additionalProperties: false
+    LoginResult:
+      type: object
+      properties:
+        state:
+          enum:
+          - authenticated
+          - mfa_required
+        user:
+          anyOf:
+          - $ref: '#/components/schemas/User'
+          - type: 'null'
+        challenge_id:
+          $ref: '#/components/schemas/Id'
+      required:
+      - state
+      additionalProperties: false
+    Session:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          type: string
+          format: date-time
+        last_seen_at:
+          type: string
+          format: date-time
+        device_label:
+          type: string
+        is_current:
+          type: boolean
+      required:
+      - id
+      - created_at
+      - last_seen_at
+      - is_current
+      additionalProperties: false
+    PolicyCommand:
+      type: object
+      properties:
+        reason:
+          type: string
+          minLength: 5
+        scope:
+          type: string
+        enabled:
+          type: boolean
+        expected_version:
+          type: integer
+          minimum: 1
+      required:
+      - reason
+      - scope
+      - enabled
+      additionalProperties: false
+    ApprovalCommand:
+      type: object
+      properties:
+        decision:
+          enum:
+          - approve
+          - reject
+        reason:
+          type: string
+          minLength: 5
+        terms_hash:
+          type: string
+      required:
+      - decision
+      - reason
+      - terms_hash
+      additionalProperties: false
+    Reconciliation:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        scope:
+          type: string
+        cutoff_at:
+          type: string
+          format: date-time
+        state:
+          enum:
+          - running
+          - passed
+          - discrepancy
+          - source_unavailable
+        discrepancies:
+          type: array
+          items:
+            type: object
+            properties:
+              asset_id:
+                $ref: '#/components/schemas/Id'
+              expected:
+                $ref: '#/components/schemas/Decimal'
+              observed:
+                $ref: '#/components/schemas/Decimal'
+              code:
+                type: string
+            required:
+            - asset_id
+            - code
+            additionalProperties: false
+      required:
+      - id
+      - scope
+      - cutoff_at
+      - state
+      additionalProperties: false
+    Portfolio:
+      type: object
+      properties:
+        valuation_currency:
+          type: string
+        as_of:
+          type: string
+          format: date-time
+        total_estimated:
+          $ref: '#/components/schemas/Decimal'
+        stale_asset_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Id'
+        wallets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Wallet'
+        pnl_available:
+          type: boolean
+      required:
+      - valuation_currency
+      - as_of
+      - stale_asset_ids
+      - wallets
+      - pnl_available
+      additionalProperties: false
+    Content:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        slug:
+          type: string
+        locale:
+          enum:
+          - ru
+          - en
+        title:
+          type: string
+        body_html:
+          type: string
+        revision:
+          type: integer
+          minimum: 1
+        published_at:
+          type: string
+          format: date-time
+        source_url:
+          type: string
+          format: uri
+      required:
+      - id
+      - slug
+      - locale
+      - title
+      - revision
+      - published_at
+      additionalProperties: false
+    Exchange:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+        website:
+          type: string
+          format: uri
+        volume_usd_24h:
+          $ref: '#/components/schemas/Decimal'
+        freshness:
+          $ref: '#/components/schemas/Freshness'
+      required:
+      - id
+      - name
+      additionalProperties: false
+    Market:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        exchange_id:
+          $ref: '#/components/schemas/Id'
+        base_asset_id:
+          $ref: '#/components/schemas/Id'
+        quote_asset_id:
+          $ref: '#/components/schemas/Id'
+        price:
+          $ref: '#/components/schemas/Decimal'
+        volume_24h:
+          $ref: '#/components/schemas/Decimal'
+        observed_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - exchange_id
+      - base_asset_id
+      - quote_asset_id
+      - observed_at
+      additionalProperties: false
+    Holder:
+      type: object
+      properties:
+        address:
+          type: string
+        amount_units:
+          $ref: '#/components/schemas/Units'
+        share:
+          $ref: '#/components/schemas/Decimal'
+      required:
+      - address
+      - amount_units
+      additionalProperties: false
+    AssetPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    IndexPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Index'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    WalletPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Wallet'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    OperationPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Operation'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    TokenPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    SessionPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    ContentPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    ExchangePage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Exchange'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    MarketPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Market'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    HolderPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Holder'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    ReconciliationPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reconciliation'
+        next_cursor:
+          type:
+          - string
+          - 'null'
+        as_of:
+          type: string
+          format: date-time
+      required:
+      - items
+      - next_cursor
+      - as_of
+      additionalProperties: false
+    MfaEnrollment:
+      type: object
+      properties:
+        enrollment_id:
+          $ref: '#/components/schemas/Id'
+        secret_once:
+          type: string
+          readOnly: true
+        otpauth_uri:
+          type: string
+          format: uri
+        expires_at:
+          type: string
+          format: date-time
+      required:
+      - enrollment_id
+      - secret_once
+      - otpauth_uri
+      - expires_at
+      additionalProperties: false
+    ExportJob:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        state:
+          enum:
+          - queued
+          - processing
+          - ready
+          - failed
+          - expired
+        expires_at:
+          type: string
+          format: date-time
+        download_url:
+          type: string
+          format: uri
+        error_code:
+          type: string
+      required:
+      - id
+      - state
+      additionalProperties: false
+    APIKey:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        label:
+          type: string
+        scopes:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            enum:
+            - read:market
+            - read:portfolio
+            - trade:quote
+            - trade:execute
+        created_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+        revoked_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - label
+      - scopes
+      - created_at
+      additionalProperties: false
+    APIKeyCreated:
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/APIKey'
+        secret_once:
+          type: string
+          readOnly: true
+      required:
+      - key
+      - secret_once
+      additionalProperties: false
+    ContentDraftRequest:
+      type: object
+      properties:
+        slug:
+          type: string
+        locale:
+          enum:
+          - ru
+          - en
+        title:
+          type: string
+        body_html:
+          type: string
+        source_url:
+          type: string
+          format: uri
+        expected_revision:
+          type: integer
+          minimum: 1
+      required:
+      - slug
+      - locale
+      - title
+      - body_html
+      additionalProperties: false
+    BasketDraftRequest:
+      type: object
+      properties:
+        token_id:
+          $ref: '#/components/schemas/Id'
+        effective_at:
+          type: string
+          format: date-time
+        reason:
+          type: string
+          minLength: 5
+        components:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              asset_id:
+                $ref: '#/components/schemas/Id'
+              quantity_per_token:
+                $ref: '#/components/schemas/PositiveDecimal'
+              start_weight:
+                $ref: '#/components/schemas/PositiveDecimal'
+            required:
+            - asset_id
+            - quantity_per_token
+            - start_weight
+            additionalProperties: false
+      required:
+      - token_id
+      - effective_at
+      - reason
+      - components
+      additionalProperties: false
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 128
+      description: Actor + route + key; повтор с другим payload — 409. Cache не отменяет постоянную дедупликацию
+        quote/requestId.
+    CSRF:
+      name: X-CSRF-Token
+      in: header
+      required: false
+      schema:
+        type: string
+      description: Обязателен для изменяющего cookie-auth запроса; не требуется для подписанного partner/provider
+        входа.
+    Cursor:
+      name: cursor
+      in: query
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    AsOf:
+      name: as_of
+      in: query
+      schema:
+        type: string
+        format: date-time
+  responses:
+    Problem:
+      description: Структурированная ошибка; code и request_id обязательны.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: tbci_session
+      description: Web сессия Secure/HttpOnly; финансовые POST требуют CSRF при cookie-auth.
+    partnerBearer:
+      type: http
+      scheme: bearer
+      description: Непрозрачный scoped API credential, отзываемый и хранимый как hash; права проверяются сервером.
+    providerSignature:
+      type: apiKey
+      in: header
+      name: X-Event-Signature
+      description: HMAC-SHA256(timestamp + dot + raw body), политика конкретного адаптера подтверждается отдельно.

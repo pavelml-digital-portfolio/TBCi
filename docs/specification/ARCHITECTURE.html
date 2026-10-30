@@ -1,0 +1,67 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TBCi — ARCHITECTURE</title><link rel="stylesheet" href="../brand/theme.css"><style>main{min-width:0;overflow-wrap:anywhere}.table-wrap{width:100%;max-width:100%;min-width:0}nav{min-width:0}nav a{max-width:100%;overflow-wrap:anywhere}</style></head><body><nav><a href="../index.html">Комплект</a><a href="index.html">Техническое задание</a><a href="TBCi-Technical-Specification.pdf">PDF</a><a href="openapi.yaml">OpenAPI</a></nav><main><h1 id="tbci--архитектурные-схемы">TBCi — архитектурные схемы</h1>
+<p>Приложение к ТЗ v1.1. Схемы задают базовый дизайн, а не текущую инфраструктуру.</p>
+<h2 id="1-модули-и-границы-доверия">1. Модули и границы доверия</h2>
+<pre class="mermaid"><code>flowchart LR
+  U[Единый Astro / публичные страницы SSG] --&gt; CDN[CDN / статические файлы]
+  APP[Тот же Astro / приватные страницы + React] --&gt; WEB[Astro on-demand adapter / session gate]
+  U --&gt; EDGE[HTTPS / WAF / API gateway]
+  WEB --&gt; EDGE
+  APP --&gt; EDGE
+  P[Партнёр] --&gt; EDGE
+  EDGE --&gt; API[Identity / market / portfolio API]
+  API --&gt; Q[Quote engine]
+  API --&gt; O[Operation orchestrator]
+  Q --&gt; M[Market / index engine]
+  M --&gt; MP[Провайдер рыночных данных]
+  O --&gt; L[Ledger / reservations]
+  L --&gt; DB[(PostgreSQL / outbox)]
+  O --&gt; W[Workers / inbox]
+  W --&gt; C[Custody / liquidity adapters]
+  W --&gt; SG[Независимый policy / signing gateway]
+  SG --&gt; K[HSM / MPC / KMS]
+  C --&gt; CH[Сети / провайдеры]
+  SG --&gt; CH
+  CH --&gt; R[Наблюдение событий / reconciliation]
+  R --&gt; DB
+  DB --&gt; N[Notifications / webhooks]
+  A[Backoffice + MFA] --&gt; API</code></pre>
+<p>Signing-контур — отдельная граница доверия. Он не принимает произвольные методы/назначения от API без проверки. Постоянный финансовый журнал находится в PostgreSQL; Redis и очереди не являются единственным источником балансов или финансовых намерений.</p>
+<h2 id="2-принятие-операции">2. Принятие операции</h2>
+<pre class="mermaid"><code>sequenceDiagram
+  participant U as Пользователь
+  participant API as API
+  participant DB as DB / ledger
+  participant W as Worker
+  participant E as Провайдер / сеть
+  U-&gt;&gt;API: POST quote
+  API--&gt;&gt;U: terms / fees / expires_at
+  U-&gt;&gt;API: POST operation + Idempotency-Key
+  API-&gt;&gt;DB: Транзакция: validate + reserve + operation + outbox
+  DB--&gt;&gt;API: commit
+  API--&gt;&gt;U: 202 operation_id
+  W-&gt;&gt;DB: Получить шаг с lease/version
+  W-&gt;&gt;E: Выполнить с business_request_id
+  E--&gt;&gt;W: provider_ref / tx_hash / unknown
+  W-&gt;&gt;E: Проверка статуса и финальности
+  W-&gt;&gt;DB: Ledger settlement + state + outbox
+  U-&gt;&gt;API: GET operation
+  API--&gt;&gt;U: completed / pending / manual_review</code></pre>
+<p>Если требуется MFA и подтверждение не передано, операция создаётся в awaiting_approval без резерва. После challenge/confirm заново проверяются quote TTL, право и ресурсы; только затем выполняется транзакция резервирования.</p>
+<h2 id="3-погашение-и-сохранение-обязательств">3. Погашение и сохранение обязательств</h2>
+<pre class="mermaid"><code>flowchart TD
+  A[Есть токены в custody / escrow] --&gt; B[Reserve q и зафиксировать версию K]
+  B --&gt; C[Burn request_id]
+  C --&gt; D{Финальность установлена?}
+  D -- нет --&gt; E[awaiting_network / резерв сохранён]
+  D -- да --&gt; F[Supply уменьшается]
+  F --&gt; G[Backing liability переносится в redemption claims]
+  G --&gt; H[Зачисление компонентов во внутренние кошельки]
+  H --&gt; I{Все компоненты учтены и сверены?}
+  I -- да --&gt; J[completed]
+  I -- нет --&gt; K[partial / manual_review; задолженность сохранена]</code></pre>
+<p>Непогашенные claims не превращаются в свободный резерв. Внешний вывод компонентов — отдельная операция. Диаграмма не обещает атомарного завершения нескольких блокчейнов.</p>
+<h2 id="4-ребалансировка">4. Ребалансировка</h2>
+<p>Draft → расчёт состава/затрат → независимое одобрение → планирование → остановка новых Compile/Unmake → завершение/урегулирование старых операций → реальное перемещение обеспечения → сверка → активация K и делителя → публикация истории → возобновление. При неопределённом обеспечении новая версия не активируется.</p>
+<h2 id="5-фронтенд">5. Фронтенд</h2>
+<p>Публичная часть: Astro + TypeScript, SSG, React-островки для графиков и интерактива. Кабинет: приватные страницы того же Astro-проекта под /app, on-demand session gate и интерактивные React-компоненты. Отдельного SPA/Vite-проекта нет. Backend: NestJS, отдельный API/worker-контур. Текущие данные приходят из API без пересборки статики. Общие UI/tokens/api-client пакеты; Next.js не используется; приватные маршруты обслуживает on-demand адаптер Astro, а финансовую логику — NestJS API.</p>
+</main></body></html>

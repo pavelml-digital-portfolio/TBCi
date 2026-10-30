@@ -1,0 +1,647 @@
+[
+  {
+    "file": "logo/tbci-logo-mono-dark.png",
+    "bytes": 21279,
+    "sha256": "698498d874191402efe1298f0b24eae77c7329adbfbffae36e9be3dd9398197c"
+  },
+  {
+    "file": "logo/tbci-logo-mono-dark.svg",
+    "bytes": 1418,
+    "sha256": "4c2e4d59a3f2b8093ce7b050cffd82844926daee4de41af9f679c18393f5b2a9"
+  },
+  {
+    "file": "logo/tbci-logo-mono-white.png",
+    "bytes": 19189,
+    "sha256": "f37eca2333eab105f277a018f42fc1016d89d0443517c1a7c48b6b6c105d3c95"
+  },
+  {
+    "file": "logo/tbci-logo-mono-white.svg",
+    "bytes": 1419,
+    "sha256": "62ee366ac170e83a706c491566a127afe4d5ca0869724d81695d17cb773b1d55"
+  },
+  {
+    "file": "logo/tbci-logo-on-light.png",
+    "bytes": 21266,
+    "sha256": "4df349224b0f611238a9503e4c9c9053d0d2d37ee73524ad5eaf62e5f5c84f54"
+  },
+  {
+    "file": "logo/tbci-logo-on-light.svg",
+    "bytes": 1432,
+    "sha256": "e82afd0ba3c1218aa89784d7f4572ae97c74370e54b83adbf1d2f762d21bd7b0"
+  },
+  {
+    "file": "logo/tbci-logo-primary.pdf",
+    "bytes": 1297,
+    "sha256": "ba4917a159f2c5f251d176cfcf24fef820fca9e1b33395439ce203c132b22563"
+  },
+  {
+    "file": "logo/tbci-logo-primary.png",
+    "bytes": 20938,
+    "sha256": "4f901259d8ae7892a631e6a5c4495d8f10199f44d9b8704969e56a640b5de1f4"
+  },
+  {
+    "file": "logo/tbci-logo-primary.svg",
+    "bytes": 1431,
+    "sha256": "242ad990bb9eb12051ef6d32572c0dedb56d283f0667162f04bae4a7667f5cf6"
+  },
+  {
+    "file": "logo/tbci-symbol-cyan.png",
+    "bytes": 5252,
+    "sha256": "7705eb99748e23dafecd9d6e9ed563dff0bd4d83be2592e2fd18df4b1dacf35a"
+  },
+  {
+    "file": "logo/tbci-symbol-cyan.svg",
+    "bytes": 265,
+    "sha256": "44e452d865a7790e99332730dc466155ec20580b428b20ba9cd6dff11dd849b4"
+  },
+  {
+    "file": "logo/tbci-symbol-dark.png",
+    "bytes": 5312,
+    "sha256": "8db2c2a0f467b80ab293483e07ea8562b26dc4c39118c6a0ba96931a0459f6da"
+  },
+  {
+    "file": "logo/tbci-symbol-dark.svg",
+    "bytes": 265,
+    "sha256": "8260bb222365720d6268beac3223964d93da33d36d749211f0c2a3f374423b79"
+  },
+  {
+    "file": "logo/tbci-symbol-white.png",
+    "bytes": 5327,
+    "sha256": "42553bfe485c6c98ee80cd953bb1a2c8c4ffbf89db95914fb18c8659e2496a95"
+  },
+  {
+    "file": "logo/tbci-symbol-white.svg",
+    "bytes": 265,
+    "sha256": "976dea12d56b16220a736d934432efea0487db6aaccb274ab2c07df9921ed0e5"
+  },
+  {
+    "file": "icons/all-icons-register.json",
+    "bytes": 4615,
+    "sha256": "f1dda0c9b8849c522357f9558f20c79559d5d798a8578d7b2937822714a772bf"
+  },
+  {
+    "file": "icons/api.png",
+    "bytes": 834,
+    "sha256": "67a2cabbe7efe16b4f7bbeb36b6df443aee10c2970216da430a9fc9490498d22"
+  },
+  {
+    "file": "icons/api.svg",
+    "bytes": 273,
+    "sha256": "746faa90f94c0e0fb1b85016fa2b18e7c497090f2647f9f9ac486c2bf7cdef8c"
+  },
+  {
+    "file": "icons/basket.png",
+    "bytes": 966,
+    "sha256": "864f798e37d97512b3de83d830dbc690e48dce7fcdb07dc3290a891f86c9059b"
+  },
+  {
+    "file": "icons/basket.svg",
+    "bytes": 293,
+    "sha256": "81f36c497419c2bde00fc2485d9560a44a1f7854371ca3fe34ebfde815f5a822"
+  },
+  {
+    "file": "icons/buy.png",
+    "bytes": 475,
+    "sha256": "af20797a2755a34d0a5994343c245115d0652464ce52599bfcd80101865f7896"
+  },
+  {
+    "file": "icons/buy.svg",
+    "bytes": 286,
+    "sha256": "b4d845bc278264fd636f5541c63b74f35745d42a340db0894dd6a5ccb56d7acb"
+  },
+  {
+    "file": "icons/compile.png",
+    "bytes": 833,
+    "sha256": "d4a5df0813a4535a7e2d787d7131efd9f28a41c9ae977d1681952d85d9ccd9c3"
+  },
+  {
+    "file": "icons/compile.svg",
+    "bytes": 295,
+    "sha256": "0f492d7afa4c0d9ff9d13f393aa83176dcde2f492b91902637e4fba284c7d8a1"
+  },
+  {
+    "file": "icons/history.png",
+    "bytes": 2013,
+    "sha256": "848766c83e5622a772393560d4c5df988d5e2c4bdcd2e4a291348268ea9f43f9"
+  },
+  {
+    "file": "icons/history.svg",
+    "bytes": 286,
+    "sha256": "2799f2432d9ea22227ef33a120656b0f88a3ab67870b718dd86655cbdf0b5dd5"
+  },
+  {
+    "file": "icons/holders.png",
+    "bytes": 1782,
+    "sha256": "6b988ce17caa6d773ccc310f34efd9bf8419ba1bec534e04020f3382f607f369"
+  },
+  {
+    "file": "icons/holders.svg",
+    "bytes": 345,
+    "sha256": "2a7d666c6d640e081d95e05b5b2300764c81563fc086f4a37dd7e1fde394dd5b"
+  },
+  {
+    "file": "icons/icon-register.json",
+    "bytes": 1415,
+    "sha256": "0a37c9f217a8f277312ba1dc073325d4c6194857f3a6b53177ea6f997273b896"
+  },
+  {
+    "file": "icons/index.png",
+    "bytes": 883,
+    "sha256": "ae19642bfac248378cefecab216e0bd05e847f1c746a008047242ead0b58d60d"
+  },
+  {
+    "file": "icons/index.svg",
+    "bytes": 278,
+    "sha256": "4df62810418e55383186b3ffd07b13414fd45b0072ff27a74b0ac2ddc8f349a3"
+  },
+  {
+    "file": "icons/methodology.png",
+    "bytes": 541,
+    "sha256": "09d665dac420b132df87c3009178825174fb3753446ac33660b69fac455b580d"
+  },
+  {
+    "file": "icons/methodology.svg",
+    "bytes": 291,
+    "sha256": "74f521139c8c5c7ae7d5fc5d8479b79da63b57105ebf376afa4ef1ecf4efe5f1"
+  },
+  {
+    "file": "icons/news.png",
+    "bytes": 482,
+    "sha256": "55c5a9c57bc4a1ab8e6d1f11ff26ef0edcde564523f05907cc86e8d59f472c57"
+  },
+  {
+    "file": "icons/news.svg",
+    "bytes": 283,
+    "sha256": "f65399046c9006ca2800d27559ae5bdae686b0dd6a15daabcac146eb76628def"
+  },
+  {
+    "file": "icons/rebalance.png",
+    "bytes": 392,
+    "sha256": "b937cb93ae15b8af55ac930379c5b7e25ebefbec1d505a3e728bdb65311d1c46"
+  },
+  {
+    "file": "icons/rebalance.svg",
+    "bytes": 316,
+    "sha256": "736f94fd845a96795b33ebd7cab8c8c0268b88bd8eab3345c73aaf680f279fc6"
+  },
+  {
+    "file": "icons/search.png",
+    "bytes": 1305,
+    "sha256": "3a20912aff36acb067c697de17cb2e0705682ead60da84357fe1ca254fabd9ba"
+  },
+  {
+    "file": "icons/search.svg",
+    "bytes": 285,
+    "sha256": "a92c414c27441538fd73653f06afb162f146788dc63a7b75c517509e14416b4c"
+  },
+  {
+    "file": "icons/security.png",
+    "bytes": 1750,
+    "sha256": "c1b3ff72a9ddf690e8167951492c0a43f310ea49772892c72e5aca69a20bbb63"
+  },
+  {
+    "file": "icons/security.svg",
+    "bytes": 313,
+    "sha256": "f88929075ca28258657f1d5583514d537b84a798a3f226a5c868e28a399cf5ff"
+  },
+  {
+    "file": "icons/sell.png",
+    "bytes": 473,
+    "sha256": "08801157bf79f86af9ed24f9775cb9e6dd92b8b8e5d9181f668533a44d667145"
+  },
+  {
+    "file": "icons/sell.svg",
+    "bytes": 288,
+    "sha256": "cfbe67b1da0a6d5e9ab3074a0e7863b200827583bba7c784616931ae283e3431"
+  },
+  {
+    "file": "icons/settings.png",
+    "bytes": 707,
+    "sha256": "ef83383f5735faf7adbd3ad99567d187637654a9ae2498e18b5ac78298219b5a"
+  },
+  {
+    "file": "icons/settings.svg",
+    "bytes": 383,
+    "sha256": "ff8a045b74056c0cbc477a8fbdeb849bbbfbb6c5f5ae6183b4592e9e0e9abae5"
+  },
+  {
+    "file": "icons/tbci-all-icons-sprite.svg",
+    "bytes": 13038,
+    "sha256": "871a7c41ce6100969958e3b3ec14b9231f1dde6b738cf5e984f46242c95ad098"
+  },
+  {
+    "file": "icons/tbci-icons-sprite.svg",
+    "bytes": 3743,
+    "sha256": "dec2dd770b7f0b0bff539f9552c312114566a7a90033a94bdadfa5b9e3ae5adb"
+  },
+  {
+    "file": "icons/tbci-thematic-sprite.svg",
+    "bytes": 7031,
+    "sha256": "20c9edf6c9f111db6826fe042ef87e398bb27fd7c905992be628f17995acfc94"
+  },
+  {
+    "file": "icons/thematic/access-key.png",
+    "bytes": 1173,
+    "sha256": "b311ba4330eac73ed302035f6e08eadc45bc086c735daa3066b48c310188e233"
+  },
+  {
+    "file": "icons/thematic/access-key.svg",
+    "bytes": 313,
+    "sha256": "5439e97904943c077eaeb2def822942dd533a112260f327fe3a7107eff71a9b6"
+  },
+  {
+    "file": "icons/thematic/allocation.png",
+    "bytes": 389,
+    "sha256": "f9531fe55202fbc399c856be73dd39ca1f6a4a61a521d1f8820f8a8b0b5dbbcb"
+  },
+  {
+    "file": "icons/thematic/allocation.svg",
+    "bytes": 295,
+    "sha256": "a168e2234055d2e6bfe8013dc753a7a45b2867f7632c6828a4871ed15e0e641d"
+  },
+  {
+    "file": "icons/thematic/analytics.png",
+    "bytes": 421,
+    "sha256": "5f63adbb62983b2a5ece89733ae9ca1d2d01acafcdde5d2cbb96441422ad9b04"
+  },
+  {
+    "file": "icons/thematic/analytics.svg",
+    "bytes": 293,
+    "sha256": "559a9defe392a62bb83359687436e78e1c8eb0aac02fd968c890288c0498b299"
+  },
+  {
+    "file": "icons/thematic/blockchain.png",
+    "bytes": 454,
+    "sha256": "0d42663be6d5778d3ba625cd6dc929be3046a9fc14c00ff1114cca1f21035c61"
+  },
+  {
+    "file": "icons/thematic/blockchain.svg",
+    "bytes": 310,
+    "sha256": "f448e7aa1b0e5d79191db788fabb1bdec41e1825398938c861e37fa10b9c85bc"
+  },
+  {
+    "file": "icons/thematic/calculator.png",
+    "bytes": 526,
+    "sha256": "f8d5e0731bb4339b4c1740d87fa382f8e922bc1b3018bbc4f4553233568ec91e"
+  },
+  {
+    "file": "icons/thematic/calculator.svg",
+    "bytes": 316,
+    "sha256": "604659a99c7cb05a15a35480462958737705b2e94028bd880ffb3fe9883362a2"
+  },
+  {
+    "file": "icons/thematic/candlestick.png",
+    "bytes": 526,
+    "sha256": "47d5d0c2a474e25d71fc577ecb488f4c3d04d4aba44f153f643f5f6b3a73e1f5"
+  },
+  {
+    "file": "icons/thematic/candlestick.svg",
+    "bytes": 311,
+    "sha256": "16c2dc942688ce39a083402201c4a1c03e3d371a908d0b4af7205e4feb86c6c7"
+  },
+  {
+    "file": "icons/thematic/comparison.png",
+    "bytes": 1240,
+    "sha256": "f831310c394595773eeabaaedf893c712e2077e25fa3a8912fa65caf1e6d693c"
+  },
+  {
+    "file": "icons/thematic/comparison.svg",
+    "bytes": 293,
+    "sha256": "4fff2f729ccb3673b06073bc10937cef637055f4ffe9d4f3dff429b495fe5c25"
+  },
+  {
+    "file": "icons/thematic/deposit.png",
+    "bytes": 590,
+    "sha256": "a1ac1ad8229db6bee4de532312f248bbfb90fe6359dfa3f2c26ef95a5a318676"
+  },
+  {
+    "file": "icons/thematic/deposit.svg",
+    "bytes": 288,
+    "sha256": "0e7ed702c5ac9bd01af1f380b5fe52164b6d6abd6c123c2d4e9b812332257278"
+  },
+  {
+    "file": "icons/thematic/exchange.png",
+    "bytes": 795,
+    "sha256": "104370d4e78f7de7cc32ba14cb13e0c9c2694945e43329e45f3696e7a17ab24d"
+  },
+  {
+    "file": "icons/thematic/exchange.svg",
+    "bytes": 298,
+    "sha256": "ccc64208a0688b974994b5e381f5753ed9a76e80d4da9577e6479b15a5a157b2"
+  },
+  {
+    "file": "icons/thematic/fees.png",
+    "bytes": 1000,
+    "sha256": "f7fd7e3ef52dc36bbb1bdff650cddb317bfa48a548fac8998a20b4fa03695b59"
+  },
+  {
+    "file": "icons/thematic/fees.svg",
+    "bytes": 321,
+    "sha256": "91cce8f22f818bdafa576eefdb9eb6cac3d20653b7f8d98ce4b6302db78a841d"
+  },
+  {
+    "file": "icons/thematic/formula.png",
+    "bytes": 909,
+    "sha256": "ed2bdf09f5c9df13691844a5d654dd14fe91cd695e926886ffcb6a879a038398"
+  },
+  {
+    "file": "icons/thematic/formula.svg",
+    "bytes": 286,
+    "sha256": "a5c98b805ea54c9d96d5f03a8265e3e2961cfb7622f982a2729622a5d2fc4647"
+  },
+  {
+    "file": "icons/thematic/gas.png",
+    "bytes": 887,
+    "sha256": "443ab1f2b3a42789313c64b660d61013d1343b0967122c065195de9d3c4fb902"
+  },
+  {
+    "file": "icons/thematic/gas.svg",
+    "bytes": 330,
+    "sha256": "0699048457e74dd9c1a974948c3785e1e1601a70b69e4af521cce08dd6a420d5"
+  },
+  {
+    "file": "icons/thematic/global-market.png",
+    "bytes": 2503,
+    "sha256": "c4e3db035602b45a6032e898324068100b50432892839c0fab670499ee2d4576"
+  },
+  {
+    "file": "icons/thematic/global-market.svg",
+    "bytes": 348,
+    "sha256": "07b495625f3764e800c77e21804d2006923ba5a356de62ee9ed6b275a9c7a9ab"
+  },
+  {
+    "file": "icons/thematic/identity.png",
+    "bytes": 1126,
+    "sha256": "98712b1a1d6255d6ebb890796feb9a28c7735f6a436f1f62732d947cfacb31c7"
+  },
+  {
+    "file": "icons/thematic/identity.svg",
+    "bytes": 349,
+    "sha256": "7508a08c5440c4ab957f03ddaea416392f394a420f7ed1f27d49089c2596b195"
+  },
+  {
+    "file": "icons/thematic/liquidity.png",
+    "bytes": 2130,
+    "sha256": "a4575e79156fc37bb6acb9abee073a4d088d428eea482ad4c065aeb922265736"
+  },
+  {
+    "file": "icons/thematic/liquidity.svg",
+    "bytes": 336,
+    "sha256": "bca189e255ee1d774cb4a6b63f1059047edfeffb902bfc96195e05fc442f2257"
+  },
+  {
+    "file": "icons/thematic/market-cap.png",
+    "bytes": 649,
+    "sha256": "2e8acc14bed7463f6e5498d2add656ef549e59d545928bda12b0907caea96e03"
+  },
+  {
+    "file": "icons/thematic/market-cap.svg",
+    "bytes": 312,
+    "sha256": "7b4ce7e9cf6ca4ed0aa4b3d848359c62483a4f65f60cfa4cf0bcf6c0a35d61f0"
+  },
+  {
+    "file": "icons/thematic/multisig.png",
+    "bytes": 960,
+    "sha256": "b550dab805cd4821d6fd62290c901809d013eee6df5ad72d3c5f7e6024ab1a60"
+  },
+  {
+    "file": "icons/thematic/multisig.svg",
+    "bytes": 352,
+    "sha256": "ba3c5e7f34e22e2a4209bb474c0525c3dd621c8125a1427ca05bc39c053b06ec"
+  },
+  {
+    "file": "icons/thematic/network-transfer.png",
+    "bytes": 677,
+    "sha256": "928086bc4fd06a2e992dd0b059094b77a134c0a9de9a971742ef0fbd70aace3c"
+  },
+  {
+    "file": "icons/thematic/network-transfer.svg",
+    "bytes": 323,
+    "sha256": "8c2bcb1a93bd96c355d15687855637adad931e0e7436304f3b3a8e6796d07286"
+  },
+  {
+    "file": "icons/thematic/notification.png",
+    "bytes": 1360,
+    "sha256": "80e88d234880bdc561bcf5b476d7485df0a67eedd755be205432dba31cf88325"
+  },
+  {
+    "file": "icons/thematic/notification.svg",
+    "bytes": 297,
+    "sha256": "a4d75f0c5d480e456e775874734b032b05a169e962e4bbbcf3fd9a86e9e97eec"
+  },
+  {
+    "file": "icons/thematic/order-book.png",
+    "bytes": 505,
+    "sha256": "8dda5b2b634602e3c3e1f8fe86060426de89c832bd8b0bcf0cd49ef7a36ff0af"
+  },
+  {
+    "file": "icons/thematic/order-book.svg",
+    "bytes": 306,
+    "sha256": "6c700220e9d4e7fe14f1f99d98878dec5a1cc3f629a02ae4c6e657bbc3c1d8d8"
+  },
+  {
+    "file": "icons/thematic/pending.png",
+    "bytes": 1921,
+    "sha256": "de7d0b8c6fdc74d3898ceff126b233f1b950559e4b242a730118cb6fcdffcb34"
+  },
+  {
+    "file": "icons/thematic/pending.svg",
+    "bytes": 299,
+    "sha256": "c216fd23f3cf51f446ac3bf1b83e56e59b35a000795646e0e735a7fd646b39e2"
+  },
+  {
+    "file": "icons/thematic/performance.png",
+    "bytes": 729,
+    "sha256": "eb07aa9b47c1ba456df84eea6c5612693ce25ee90c357ff4e7dd5be73b72c3a0"
+  },
+  {
+    "file": "icons/thematic/performance.svg",
+    "bytes": 288,
+    "sha256": "13fc662983540e523ba588b89f79dddfd58bc175426489d2c807ae17c46d7e47"
+  },
+  {
+    "file": "icons/thematic/pie-chart.png",
+    "bytes": 2104,
+    "sha256": "038424e0677d78a4dbe6250dda61fc2548be3afe52412d26091a3458785b6107"
+  },
+  {
+    "file": "icons/thematic/pie-chart.svg",
+    "bytes": 292,
+    "sha256": "a81394d7243c8af3952bf6deb9b11b9cddb1f798710bb04235553c3327dfff1e"
+  },
+  {
+    "file": "icons/thematic/receipt.png",
+    "bytes": 840,
+    "sha256": "d8a9672e93ce460d6db6d2485cb2e69be4404d197b4bef47606c287339e2b29e"
+  },
+  {
+    "file": "icons/thematic/receipt.svg",
+    "bytes": 302,
+    "sha256": "ea75e03a4bf705b57ea1d764bc88eaf01f40ce436e30859ab058efe3ce383a5c"
+  },
+  {
+    "file": "icons/thematic/smart-contract.png",
+    "bytes": 694,
+    "sha256": "82f0e00e6918fefc0903ea59844da23ee4425591da660834d133a48e3b6be183"
+  },
+  {
+    "file": "icons/thematic/smart-contract.svg",
+    "bytes": 315,
+    "sha256": "16fa84b4e9a12b55f0a968c9bf4c2dadaa689d0b639df9f11027c2039a5f59b6"
+  },
+  {
+    "file": "icons/thematic/support.png",
+    "bytes": 1365,
+    "sha256": "71f09e45c36d884f685825c0091b2c8dded00c26dabc0c1356af540d03738e30"
+  },
+  {
+    "file": "icons/thematic/support.svg",
+    "bytes": 320,
+    "sha256": "bec110bb97f9b9c446732ee426b9eeeda60796e2018896602ae42034c1485f5c"
+  },
+  {
+    "file": "icons/thematic/swap.png",
+    "bytes": 449,
+    "sha256": "5fc3e909b85beef767948b09e9954d9c034f3d4f5bcfaba36acd526020d29ab1"
+  },
+  {
+    "file": "icons/thematic/swap.svg",
+    "bytes": 284,
+    "sha256": "78d96758bc15f5bc69d23f7ac0be455d545eca0002acdc6709d16a6879a43949"
+  },
+  {
+    "file": "icons/thematic/thematic-register.json",
+    "bytes": 3202,
+    "sha256": "816a779a43fd9c0d5b35deb4ead3d525a23075b42be57b8754dadd1230e7031e"
+  },
+  {
+    "file": "icons/thematic/token.png",
+    "bytes": 731,
+    "sha256": "b5cc2f225110dfe975da9713f37380559f304275f2a03f7c5ecb9f6159dc8032"
+  },
+  {
+    "file": "icons/thematic/token.svg",
+    "bytes": 297,
+    "sha256": "5d31539d9d0272164fc161db4a06873fe7dca865354a28986cfab409944d9900"
+  },
+  {
+    "file": "icons/thematic/volatility.png",
+    "bytes": 1076,
+    "sha256": "0e334fac90077cf4c2a41c95892560baf48f49d433deccfe582c84110cf0df79"
+  },
+  {
+    "file": "icons/thematic/volatility.svg",
+    "bytes": 282,
+    "sha256": "a0dce778b12754ef6593f350eed203c6e90b7c23105034e979c1f645614a4344"
+  },
+  {
+    "file": "icons/thematic/withdraw.png",
+    "bytes": 591,
+    "sha256": "c5d2c7597e3cf2fa6f610f7720a238265d8fa0ec9d5339054563f13d306b98b3"
+  },
+  {
+    "file": "icons/thematic/withdraw.svg",
+    "bytes": 278,
+    "sha256": "a0c9a151b0df8665d0072c3b3d9b531a371563e3b874706a7d79820e82671891"
+  },
+  {
+    "file": "icons/thematic-icons-preview.pdf",
+    "bytes": 78920,
+    "sha256": "093610f4f10141f9ca3ed3828050ddfee2c45ea2cf30e822d34a9f783e8f0f97"
+  },
+  {
+    "file": "icons/thematic-icons-preview.png",
+    "bytes": 107169,
+    "sha256": "d9d771e71d0d0a430de118932677dd940a5502634e21180eb80468bf69a4bbfc"
+  },
+  {
+    "file": "icons/unmake.png",
+    "bytes": 832,
+    "sha256": "a13206e326fe4eb3205bc3a652e794e20da8a05b74484a75b516ad8133e325a9"
+  },
+  {
+    "file": "icons/unmake.svg",
+    "bytes": 299,
+    "sha256": "e22c645725eefe407ccfd00a11bd54b752dbceef667319b053ba3b75aa7e86a5"
+  },
+  {
+    "file": "icons/wallet.png",
+    "bytes": 716,
+    "sha256": "1a217cffc1bb915c6d093ef58a134521086d49d5571aa38eed2427b889247264"
+  },
+  {
+    "file": "icons/wallet.svg",
+    "bytes": 360,
+    "sha256": "9b63422f60a6c0587ca9be4316acfe0d2747b12e4688c1632b159019bd597fbc"
+  },
+  {
+    "file": "backgrounds/bg-01-signal-horizon.png",
+    "bytes": 1495041,
+    "sha256": "441224d9d3bbc88fcba9171eb6987976ae105d65a878cf3729af009a30ca2123"
+  },
+  {
+    "file": "backgrounds/bg-02-network-field.png",
+    "bytes": 1548263,
+    "sha256": "9c7eb1ef98cf38deea56841b6a8d2349ba5eeef9fbf1e703ecc83a2e0d6d5732"
+  },
+  {
+    "file": "backgrounds/bg-03-faceted-terrain.png",
+    "bytes": 1558015,
+    "sha256": "0310eccdbe02c4db4be4648fe75244922839dc48fb7523de25bbcff7231d26f2"
+  },
+  {
+    "file": "illustrations/art-01-market-signal.png",
+    "bytes": 1695670,
+    "sha256": "4be6a76a5c97f2f887c5a11133071ee0c141a8638e51b202dab5651fac6db6d0"
+  },
+  {
+    "file": "illustrations/art-02-balanced-basket.png",
+    "bytes": 1671508,
+    "sha256": "82bdfb14729a485cb4b2431c603cddf5fa7ce3cbc99afb85cd093f617c30f6aa"
+  },
+  {
+    "file": "illustrations/art-03-methodology.png",
+    "bytes": 1802057,
+    "sha256": "82431b88b31c612991f447413578e932d14b5fcc5f5a8539edae6c482da5f11f"
+  },
+  {
+    "file": "illustrations/art-04-secure-custody.png",
+    "bytes": 1865039,
+    "sha256": "410b30309cf0b0f4f89c48841cb4d6dc46ac43011bd088d75739b185412bfb85"
+  },
+  {
+    "file": "illustrations/art-05-rebalancing.png",
+    "bytes": 1821607,
+    "sha256": "afab7dd515b070477d21e0b8395cef19e5a1f64497f24b8d43b569a8a27461d6"
+  },
+  {
+    "file": "illustrations/art-06-connected-data.png",
+    "bytes": 1714909,
+    "sha256": "c0f5d6360906fc1ac383a76e33469d3ce5990996ff5082d5d15ce3575986dcf7"
+  },
+  {
+    "file": "fonts/LICENSE-Apache-2.0.txt",
+    "bytes": 11358,
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "file": "fonts/NOTICE.txt",
+    "bytes": 1031,
+    "sha256": "94d4b78643f99d7cfa872145b38da578299f401405ca5cba66a5c95bf13933b0"
+  },
+  {
+    "file": "fonts/OpenSans-Bold.ttf",
+    "bytes": 224592,
+    "sha256": "5894a3649b213cf5b2d673b6e7a871815fd1d120fa68a463592f27db14eae323"
+  },
+  {
+    "file": "fonts/OpenSans-Regular.ttf",
+    "bytes": 217360,
+    "sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee"
+  },
+  {
+    "file": "fonts/OpenSans-Semibold.ttf",
+    "bytes": 221328,
+    "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2"
+  }
+]

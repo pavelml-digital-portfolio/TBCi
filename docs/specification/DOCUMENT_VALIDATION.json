@@ -1,0 +1,15 @@
+{
+  "spec_version": "1.1",
+  "brand_baseline": "2.1",
+  "pdf_pages": 38,
+  "pdf_bookmarks": 59,
+  "numbered_requirements": 133,
+  "acceptance_design_cases": 54,
+  "openapi_paths": 61,
+  "openapi_operations": 64,
+  "openapi_schemas": 61,
+  "decision_items": 18,
+  "baseline_files_matched": 142,
+  "checks": "document links; PDF bounds; refs and schema validity; decimal input rejection; register cross-links; arithmetic fixtures",
+  "application_tests_executed": false
+}

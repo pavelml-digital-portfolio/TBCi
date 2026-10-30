@@ -1,0 +1,110 @@
+[
+  {
+    "id": "bg-01-signal-horizon",
+    "type": "backgrounds",
+    "file": "backgrounds/bg-01-signal-horizon.png",
+    "original": "/workspace/generated_images/exec-389bbcad-0c93-4ea1-97c3-d51e17b760b7.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "441224d9d3bbc88fcba9171eb6987976ae105d65a878cf3729af009a30ca2123",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "bg-02-network-field",
+    "type": "backgrounds",
+    "file": "backgrounds/bg-02-network-field.png",
+    "original": "/workspace/generated_images/exec-13f16469-5616-4f3d-bd08-b3677bfde3d9.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "9c7eb1ef98cf38deea56841b6a8d2349ba5eeef9fbf1e703ecc83a2e0d6d5732",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "bg-03-faceted-terrain",
+    "type": "backgrounds",
+    "file": "backgrounds/bg-03-faceted-terrain.png",
+    "original": "/workspace/generated_images/exec-95a303d5-9e9b-4e20-9d34-ea02deebfac4.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "0310eccdbe02c4db4be4648fe75244922839dc48fb7523de25bbcff7231d26f2",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "art-01-market-signal",
+    "type": "illustrations",
+    "file": "illustrations/art-01-market-signal.png",
+    "original": "/workspace/generated_images/exec-9795779b-d9f8-453c-88f4-3fa1e81d33b2.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "4be6a76a5c97f2f887c5a11133071ee0c141a8638e51b202dab5651fac6db6d0",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "art-02-balanced-basket",
+    "type": "illustrations",
+    "file": "illustrations/art-02-balanced-basket.png",
+    "original": "/workspace/generated_images/exec-6e3a7e42-5ca3-4a1f-9bc1-a15bbcd1dd40.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "82bdfb14729a485cb4b2431c603cddf5fa7ce3cbc99afb85cd093f617c30f6aa",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "art-03-methodology",
+    "type": "illustrations",
+    "file": "illustrations/art-03-methodology.png",
+    "original": "/workspace/generated_images/exec-7cc0d91e-78b6-41b6-9da0-5b6d68840a74.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "82431b88b31c612991f447413578e932d14b5fcc5f5a8539edae6c482da5f11f",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "art-04-secure-custody",
+    "type": "illustrations",
+    "file": "illustrations/art-04-secure-custody.png",
+    "original": "/workspace/generated_images/exec-beaaa7fa-42d9-4ccd-87bc-41a8bc2372b5.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "410b30309cf0b0f4f89c48841cb4d6dc46ac43011bd088d75739b185412bfb85",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "art-05-rebalancing",
+    "type": "illustrations",
+    "file": "illustrations/art-05-rebalancing.png",
+    "original": "/workspace/generated_images/exec-c5c2c4bc-e53b-47d1-b9e7-e0f82c75800c.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "afab7dd515b070477d21e0b8395cef19e5a1f64497f24b8d43b569a8a27461d6",
+    "source": "AI generated for TBCi; not actual market data"
+  },
+  {
+    "id": "art-06-connected-data",
+    "type": "illustrations",
+    "file": "illustrations/art-06-connected-data.png",
+    "original": "/workspace/generated_images/exec-31fcb506-3e6e-4442-a6dd-4688c41a84b2.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "c0f5d6360906fc1ac383a76e33469d3ce5990996ff5082d5d15ce3575986dcf7",
+    "source": "AI generated for TBCi; not actual market data"
+  }
+]

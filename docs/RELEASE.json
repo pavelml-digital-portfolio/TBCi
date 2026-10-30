@@ -1,0 +1,28 @@
+{
+  "release": "brand-2.1_spec-1.1_landing-1",
+  "date": "2026-10-30",
+  "brand_version": "2.1",
+  "technical_spec_version": "1.1",
+  "technical_spec_status": "draft_for_development_and_estimation",
+  "frontend": {
+    "project": "Unified Astro + TypeScript",
+    "public": "SSG with React islands",
+    "account": "Private pages of same Astro project, on-demand access gate and React components"
+  },
+  "backend": "NestJS + PostgreSQL + Redis; modular monolith and workers",
+  "current_archive": "TBCi-current.zip",
+  "files_sha256": {
+    "brand/TBCI-Brandbook.pdf": "4f839a6dbb771e7956ad72d20d53a061674a6c132ebc35477dd5745153301264",
+    "brand/BRANDBOOK.md": "a53be46a7cc1a84b07164bd6284d36501ddfee95964b2abc6ace48ba63962c52",
+    "brand/logo/tbci-logo-primary.svg": "242ad990bb9eb12051ef6d32572c0dedb56d283f0667162f04bae4a7667f5cf6",
+    "specification/TECHNICAL_SPEC.md": "157dd9cdbfaec74a1ac8f475f545bcd702c564f32c9011c4fff57532fa826079",
+    "specification/TBCi-Technical-Specification.pdf": "cd4d9d6472796333ca9771fd255a4cff32ede70e3d76bf0b8c1c66ccf9e1dadf",
+    "specification/TBCi-Technical-Specification.docx": "3907c9b1f9802eab4acc8f4c174c27d67eee1bc72c3bed675267d7a762f30d18",
+    "specification/openapi.yaml": "8d7a089763699c39329e07f67f8d2b11e5822d49b776de1c5931b2fe3c2ea72f",
+    "specification/ACCEPTANCE.csv": "9a83d34ae0fcaf2062e50ac8c8eeda22bd5859021ac8bae557188013e4a8ecd3",
+    "specification/REQUIREMENTS.csv": "a6c938d823f5b62ad623702da2ecd6eca8811a11acb894d506db8902690ffd95",
+    "specification/DECISIONS.csv": "64661a9d9fcfda0eb2b94afbc58003f7ae7485c23eb0120c06343f7d319a99e0",
+    "design/TBCi-landing-v1.png": "af29e0c1897462006002b9e85145c6445d11768c5836785d3c8648e9c8260ce7"
+  },
+  "landing_mockup": "design/TBCi-landing-v1.png"
+}

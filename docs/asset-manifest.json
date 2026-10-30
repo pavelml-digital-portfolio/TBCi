@@ -1,0 +1,1150 @@
+{
+  "screens": [
+    {
+      "id": "PUB-01",
+      "screen": "PUB-01",
+      "title": "Главная",
+      "role": "primary",
+      "file": "assets/mockups/PUB-01.jpg",
+      "description": "График индекса, описание, новости и подписка.",
+      "size": [
+        1680,
+        2626
+      ],
+      "sha256": "0a348dba3f89dc5b09bc0931cf6bbd210756e57e861c5f5f971b8cb2e779e915",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/01_home.jpg"
+        },
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/01_home.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-02",
+      "screen": "PUB-02",
+      "title": "Раскрытое меню индексов",
+      "role": "primary",
+      "file": "assets/mockups/PUB-02.jpg",
+      "description": "Состояние меню; это не отдельная страница.",
+      "size": [
+        1680,
+        612
+      ],
+      "sha256": "5fa7e5994e0482a9a2f76560712d832faea13613793d8f0ddd415e2d2fbaecf8",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/01_home_menu_1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-03",
+      "screen": "PUB-03",
+      "title": "Страница индекса",
+      "role": "primary",
+      "file": "assets/mockups/PUB-03.jpg",
+      "description": "График, состав, расчёт и методология.",
+      "size": [
+        1680,
+        4100
+      ],
+      "sha256": "f01383ce9e3a1d1088ab6ea62a4d340d2504d36040c9ea480dfb268a7569e9cf",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/01_index.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-03-V",
+      "screen": "PUB-03",
+      "title": "Страница индекса",
+      "role": "variant",
+      "file": "assets/mockups/PUB-03-variant.jpg",
+      "description": "График, состав, расчёт и методология.",
+      "size": [
+        1680,
+        3977
+      ],
+      "sha256": "04cb65646eb43ac496e259efd92bed4e0525c3101c1669d77ee794ebdee619a3",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/02_index.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-04",
+      "screen": "PUB-04",
+      "title": "Каталог бирж",
+      "role": "primary",
+      "file": "assets/mockups/PUB-04.jpg",
+      "description": "Обзор бирж и объёмов. В альтернативе иной состав верхнего блока.",
+      "size": [
+        1680,
+        1600
+      ],
+      "sha256": "050b69127b17ab4daeb689bd33e812c800c42b6f41c383d0f4b771b7f4eb9a96",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/03_01_exchange.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-04-V",
+      "screen": "PUB-04",
+      "title": "Каталог бирж",
+      "role": "variant",
+      "file": "assets/mockups/PUB-04-variant.jpg",
+      "description": "Обзор бирж и объёмов. В альтернативе иной состав верхнего блока.",
+      "size": [
+        1680,
+        1358
+      ],
+      "sha256": "987928e3a8a604b27415e96b7e3484e6cf314394af465ce5706dd36fd91c16ce",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/03_exchange.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-05",
+      "screen": "PUB-05",
+      "title": "Карточка биржи",
+      "role": "primary",
+      "file": "assets/mockups/PUB-05.jpg",
+      "description": "Сведения о бирже, изменение объёма и торговые пары.",
+      "size": [
+        1680,
+        1697
+      ],
+      "sha256": "5291e88608c44b28361fe9080d4eb6d923f86f02555163c7118a4e8d853346af",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/03_02_exchange_overview.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-06",
+      "screen": "PUB-06",
+      "title": "Каталог криптовалют",
+      "role": "primary",
+      "file": "assets/mockups/PUB-06.jpg",
+      "description": "Рейтинг и рыночные показатели.",
+      "size": [
+        1680,
+        1358
+      ],
+      "sha256": "24c83683f1e2ec40f87a85fd0d3d7b8e594a4c10e36c425fbf6d0039f5231e3b",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/02_01_coins_all.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-06-V",
+      "screen": "PUB-06",
+      "title": "Каталог криптовалют",
+      "role": "variant",
+      "file": "assets/mockups/PUB-06-variant.jpg",
+      "description": "Рейтинг и рыночные показатели.",
+      "size": [
+        1680,
+        1358
+      ],
+      "sha256": "c854841b55c3d9ace70f6e1bfa046253be69abbf900b2b93068df22fe2b2f4a3",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_01_coins_all.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-07",
+      "screen": "PUB-07",
+      "title": "Обзор криптовалюты",
+      "role": "primary",
+      "file": "assets/mockups/PUB-07.jpg",
+      "description": "Описание монеты, показатели, график и конвертер.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "30403379219f130393f6fd34be040aee531c554d7db56463757ef6519d04170c",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/02_02_coins_overview.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-07-V",
+      "screen": "PUB-07",
+      "title": "Обзор криптовалюты",
+      "role": "variant",
+      "file": "assets/mockups/PUB-07-variant.jpg",
+      "description": "Описание монеты, показатели, график и конвертер.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "e644d19bd9b6b84142606a555de58318aca940893bb458913405697a395fb8d0",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_02_coins_overview .jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-08",
+      "screen": "PUB-08",
+      "title": "График криптовалюты",
+      "role": "primary",
+      "file": "assets/mockups/PUB-08.jpg",
+      "description": "История цены и объёмов.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "066cd67bdd20de3e844a58b3efc0cc2dd3c46c3b9665623eb6aa638cae8bc0e8",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_03_coins_charts.jpg"
+        },
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/02_03_coins_charts.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-09",
+      "screen": "PUB-09",
+      "title": "Исторические цены",
+      "role": "primary",
+      "file": "assets/mockups/PUB-09.jpg",
+      "description": "Таблица цен по датам.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "a2cefb41c6887403732b91e8e43c2c68b892bae2c951db60013407ea4da7c6fe",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_04_coins_Historical_price.jpg"
+        },
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/02_04_coins_Historical_price.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-10",
+      "screen": "PUB-10",
+      "title": "Рынки криптовалюты",
+      "role": "primary",
+      "file": "assets/mockups/PUB-10.jpg",
+      "description": "Биржи, торговые пары, объёмы и цены.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "c6993bd3dfb9b958cf2303a88b46dcab9ab7fcd99c5f5b46c95b24681d1ff9e4",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_05_coins_Markets.jpg"
+        },
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/02_05_coins_Markets.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-11",
+      "screen": "PUB-11",
+      "title": "Новости криптовалюты",
+      "role": "primary",
+      "file": "assets/mockups/PUB-11.jpg",
+      "description": "Новости выбранного актива.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "51a07d891c3e8605989c1d305d4c454a78325a2d50fe896930eff5813f72d346",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/02_06_coins_News.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-11-V",
+      "screen": "PUB-11",
+      "title": "Новости криптовалюты",
+      "role": "variant",
+      "file": "assets/mockups/PUB-11-variant.jpg",
+      "description": "Новости выбранного актива.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "de562d6037a01dfd8c8328923029ea88fcbbf7851158845d23015f9ef2095b80",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_06_coins_News.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-12",
+      "screen": "PUB-12",
+      "title": "События криптовалюты",
+      "role": "primary",
+      "file": "assets/mockups/PUB-12.jpg",
+      "description": "Прошедшие и предстоящие события.",
+      "size": [
+        1680,
+        1933
+      ],
+      "sha256": "10c391fa3c69a65d2f39857ee4b3a9f44458de075adedf07df1f562ece5778d0",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/04_07_coins_Events.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-13",
+      "screen": "PUB-13",
+      "title": "Лента новостей",
+      "role": "primary",
+      "file": "assets/mockups/PUB-13.jpg",
+      "description": "Ведущая публикация, карточки, котировки и подписка.",
+      "size": [
+        1680,
+        2785
+      ],
+      "sha256": "ed8f91acca59b88554f76786cd9b4d98c03de47282bf142f75dffb8633264fb0",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/04__01_news.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-13-V",
+      "screen": "PUB-13",
+      "title": "Лента новостей",
+      "role": "variant",
+      "file": "assets/mockups/PUB-13-variant.jpg",
+      "description": "Ведущая публикация, карточки, котировки и подписка.",
+      "size": [
+        1680,
+        2785
+      ],
+      "sha256": "1488f40bc3185386e645ad04037e43474cafa0845bc246ac93ec8963f48cb291",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/05_news.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-14",
+      "screen": "PUB-14",
+      "title": "Статья",
+      "role": "primary",
+      "file": "assets/mockups/PUB-14.jpg",
+      "description": "Заголовок, обложка, текст и связанные действия.",
+      "size": [
+        1680,
+        2073
+      ],
+      "sha256": "c5bc51e04e9cbc24e4e06069333f8b0f8da337fff24a5e3af3f8b0818a326cda",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Сайт/04_02_news_detal.jpg"
+        }
+      ]
+    },
+    {
+      "id": "PUB-14-V",
+      "screen": "PUB-14",
+      "title": "Статья",
+      "role": "variant",
+      "file": "assets/mockups/PUB-14-variant.jpg",
+      "description": "Заголовок, обложка, текст и связанные действия.",
+      "size": [
+        1680,
+        2073
+      ],
+      "sha256": "f56092d363ac8d8b0ee8903457d14c9f2fdd150d82a14529ea449fba402c2d48",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "TBCi/06_news_detal.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-01",
+      "screen": "CAB-01",
+      "title": "Кошельки",
+      "role": "primary",
+      "file": "assets/mockups/CAB-01.jpg",
+      "description": "Баланс, история, доход, состав портфеля и список кошельков.",
+      "size": [
+        1496,
+        2550
+      ],
+      "sha256": "512beb0d16a3ff8b7ade1c655df3e8a3753dcafc4361be891d1061b68e93f346",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/01_Wallet.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-01-V",
+      "screen": "CAB-01",
+      "title": "Кошельки",
+      "role": "variant",
+      "file": "assets/mockups/CAB-01-variant.jpg",
+      "description": "Баланс, история, доход, состав портфеля и список кошельков.",
+      "size": [
+        1580,
+        2296
+      ],
+      "sha256": "e83808a6c59722134e7999ce25094fdbe20eef2d1f627c146ad8ba377c59ef05",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "Личный кабинет/02 - Wallet.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-02",
+      "screen": "CAB-02",
+      "title": "Выбор индекса",
+      "role": "primary",
+      "file": "assets/mockups/CAB-02.jpg",
+      "description": "Каталог вариантов индекса и переход к операциям.",
+      "size": [
+        1496,
+        996
+      ],
+      "sha256": "8aadf0a65ce966f0d1c1a030e9112746e5bedf87abd5d08dbb6e9e050dcd58a7",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/02 - Choice index.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-03",
+      "screen": "CAB-03",
+      "title": "Обзор выбранного индекса",
+      "role": "primary",
+      "file": "assets/mockups/CAB-03.jpg",
+      "description": "Баланс токена, графики, доход, состав и методология.",
+      "size": [
+        1496,
+        2248
+      ],
+      "sha256": "d700c3b82b454e46b45bc103a103125c5d45c1ab2a02ebf24abbd4e76f693d1a",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/03_Overview.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-03-V",
+      "screen": "CAB-03",
+      "title": "Обзор выбранного индекса",
+      "role": "variant",
+      "file": "assets/mockups/CAB-03-variant.jpg",
+      "description": "Баланс токена, графики, доход, состав и методология.",
+      "size": [
+        1580,
+        1328
+      ],
+      "sha256": "71a16cdfb35dcc9d383dfac0623d19c12f33c52bbd41770285f7df7485d651cf",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "Личный кабинет/01 - Overview.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-04",
+      "screen": "CAB-04",
+      "title": "Покупка",
+      "role": "primary",
+      "file": "assets/mockups/CAB-04.jpg",
+      "description": "Покупка за один актив. В альтернативе на этом же экране есть таблица состава.",
+      "size": [
+        1496,
+        948
+      ],
+      "sha256": "3b3299aca9ae9fca3e50b95da70ec5b71a3f5f3b80b4df60ed36beb31b2c1927",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/04_01_Buy.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-04-V",
+      "screen": "CAB-04",
+      "title": "Покупка",
+      "role": "variant",
+      "file": "assets/mockups/CAB-04-variant.jpg",
+      "description": "Покупка за один актив. В альтернативе на этом же экране есть таблица состава.",
+      "size": [
+        1580,
+        1572
+      ],
+      "sha256": "ce00d9df4a3d6ac258b3e6583f05a4495c577b772d39cbbac10bda3f994cebcf",
+      "sources": [
+        {
+          "archive": "TBCi - design.rar",
+          "path": "Личный кабинет/03 - Buy.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-05",
+      "screen": "CAB-05",
+      "title": "Сборка / эмиссия",
+      "role": "primary",
+      "file": "assets/mockups/CAB-05.jpg",
+      "description": "Расчёт обеспечения и пополнение всех компонентов.",
+      "size": [
+        1496,
+        1200
+      ],
+      "sha256": "5b29e101c033946b9bf5b9be95a48c29f57f8ad330b21aa2f7b889a9bffd64a2",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/04_02_Compile.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-06",
+      "screen": "CAB-06",
+      "title": "Продажа",
+      "role": "primary",
+      "file": "assets/mockups/CAB-06.jpg",
+      "description": "Выбор валюты получения и расчёт продажи.",
+      "size": [
+        1496,
+        948
+      ],
+      "sha256": "e4509959694cdb948ef78ac3296925b1ced30e5d33e238890d9f1822feb3cafe",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/05_01_Sell.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-07",
+      "screen": "CAB-07",
+      "title": "Разборка / погашение",
+      "role": "primary",
+      "file": "assets/mockups/CAB-07.jpg",
+      "description": "Расчёт возврата компонентов корзины.",
+      "size": [
+        1496,
+        1270
+      ],
+      "sha256": "14d2d05610a48b624fc792cc4dadd2511bc0e4e3d76cca99eb74fde931a56cde",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/05_02_Unmake.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-08",
+      "screen": "CAB-08",
+      "title": "История состава",
+      "role": "primary",
+      "file": "assets/mockups/CAB-08.jpg",
+      "description": "Сравнение состава на две даты; это не журнал личных транзакций.",
+      "size": [
+        1496,
+        1034
+      ],
+      "sha256": "776b74f71dbfd50f3cf8ec308892ebf99ba056ceb5b1b78bbdbf66e5117f5695",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/06_History.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CAB-09",
+      "screen": "CAB-09",
+      "title": "Держатели токена",
+      "role": "primary",
+      "file": "assets/mockups/CAB-09.jpg",
+      "description": "Информация о контракте, предложении и держателях. Значения демонстрационные.",
+      "size": [
+        1496,
+        1368
+      ],
+      "sha256": "b6b2188bbeec3244c1792ebfc47587fa1c955b702891ff6adc0224873d0394e0",
+      "sources": [
+        {
+          "archive": "TBCI.rar",
+          "path": "Личный кабинет/07_Holders.jpg"
+        }
+      ]
+    }
+  ],
+  "supporting": [
+    {
+      "id": "SUP-01",
+      "file": "assets/supporting/SUP-01.png",
+      "pixel_sha256": "590e3994a04f751e947e45e39226af4639ccb8bcd7bc986b6a39b09c5a12de1f",
+      "sources": [
+        "doc-1-media/image1.png"
+      ]
+    },
+    {
+      "id": "SUP-02",
+      "file": "assets/supporting/SUP-02.png",
+      "pixel_sha256": "7171c633fee8336b8c80df0c34cf4e6c324d0e1ea7a8a3eaeacd822f02065592",
+      "sources": [
+        "doc-1-media/image10.png",
+        "doc-2-media/image14.png"
+      ]
+    },
+    {
+      "id": "SUP-03",
+      "file": "assets/supporting/SUP-03.png",
+      "pixel_sha256": "645036025c07f0ce931fa8ea0a77c17b74072077b1a9b1087893c407d93682be",
+      "sources": [
+        "doc-1-media/image11.png",
+        "doc-2-media/image5.png"
+      ]
+    },
+    {
+      "id": "SUP-04",
+      "file": "assets/supporting/SUP-04.png",
+      "pixel_sha256": "6e264a45c7d5d0c91f1899fbc17b9134f1bed2e06553ec35836bde4238f21336",
+      "sources": [
+        "doc-1-media/image12.png",
+        "doc-2-media/image11.png"
+      ]
+    },
+    {
+      "id": "SUP-05",
+      "file": "assets/supporting/SUP-05.png",
+      "pixel_sha256": "75fcd8755915fcba8702e9cf4695c08e12a11d3acccc5a483ffbe59f43cc2a6a",
+      "sources": [
+        "doc-1-media/image13.png",
+        "doc-2-media/image4.png"
+      ]
+    },
+    {
+      "id": "SUP-06",
+      "file": "assets/supporting/SUP-06.png",
+      "pixel_sha256": "d1684a5e2ccf467017dc68e154862f2a574d16f6004f876a56695fc526e14beb",
+      "sources": [
+        "doc-1-media/image14.png",
+        "doc-2-media/image2.png"
+      ]
+    },
+    {
+      "id": "SUP-07",
+      "file": "assets/supporting/SUP-07.png",
+      "pixel_sha256": "aaf933f145dcb724b9aff95dcd8e4a5368d2476c49accd35ccf71e19990de3d1",
+      "sources": [
+        "doc-1-media/image15.png",
+        "doc-2-media/image16.png"
+      ]
+    },
+    {
+      "id": "SUP-08",
+      "file": "assets/supporting/SUP-08.png",
+      "pixel_sha256": "f2518d2b8c345042221a5bc0091c999fbff1e36a53f16add2f990193f7114883",
+      "sources": [
+        "doc-1-media/image16.png",
+        "doc-2-media/image8.png"
+      ]
+    },
+    {
+      "id": "SUP-09",
+      "file": "assets/supporting/SUP-09.png",
+      "pixel_sha256": "fc9dfbe113d33f19e32972a3d5dd8980e939bd5c97263784cd8c469151584382",
+      "sources": [
+        "doc-1-media/image17.png"
+      ]
+    },
+    {
+      "id": "SUP-10",
+      "file": "assets/supporting/SUP-10.png",
+      "pixel_sha256": "0673afc00ed3cf6ee66923bf867fb4cdf015c1af0de3786bdd285beb72d4f87f",
+      "sources": [
+        "doc-1-media/image18.png",
+        "doc-2-media/image7.png"
+      ]
+    },
+    {
+      "id": "SUP-11",
+      "file": "assets/supporting/SUP-11.png",
+      "pixel_sha256": "daf28659eb7f6e37c4c7e012792f334eb504024095529aadaf0369bc6d5c0cdd",
+      "sources": [
+        "doc-1-media/image19.png",
+        "doc-2-media/image12.png"
+      ]
+    },
+    {
+      "id": "SUP-12",
+      "file": "assets/supporting/SUP-12.png",
+      "pixel_sha256": "b3e577194d0f6a944d78a99da59fa856aa2ca4f30c33fbf6ae0e96639d222b6b",
+      "sources": [
+        "doc-1-media/image2.png",
+        "doc-2-media/image6.png"
+      ]
+    },
+    {
+      "id": "SUP-13",
+      "file": "assets/supporting/SUP-13.png",
+      "pixel_sha256": "6b2503836e216fad88365731ee7045dc72c3a6ad179455b0c30e985de43ece5a",
+      "sources": [
+        "doc-1-media/image20.png",
+        "doc-2-media/image13.png"
+      ]
+    },
+    {
+      "id": "SUP-14",
+      "file": "assets/supporting/SUP-14.png",
+      "pixel_sha256": "20b0a1f0c32adb6cf87d7133ba89b58e30410615720b0c721e2a980cfc14345d",
+      "sources": [
+        "doc-1-media/image3.png",
+        "doc-2-media/image1.png"
+      ]
+    },
+    {
+      "id": "SUP-15",
+      "file": "assets/supporting/SUP-15.png",
+      "pixel_sha256": "9da2626c868c13d22f382f8bb75f9695b36725840a46ab90ff9b8c08ce1c1918",
+      "sources": [
+        "doc-1-media/image4.png",
+        "doc-2-media/image10.png"
+      ]
+    },
+    {
+      "id": "SUP-16",
+      "file": "assets/supporting/SUP-16.png",
+      "pixel_sha256": "fb8a721c37703acaf85c7360c8a606b9ad397bf96ffd095abb6f26cf6ebe39a4",
+      "sources": [
+        "doc-1-media/image5.png",
+        "doc-2-media/image9.png"
+      ]
+    },
+    {
+      "id": "SUP-17",
+      "file": "assets/supporting/SUP-17.jpg",
+      "pixel_sha256": "d3f586b65f8ccbaf2a6043d565d6e99b59e38499a554e265b235fe2da898acca",
+      "sources": [
+        "doc-1-media/image6.jpg"
+      ]
+    },
+    {
+      "id": "SUP-18",
+      "file": "assets/supporting/SUP-18.jpg",
+      "pixel_sha256": "b21b98c1bcdd4295430570729f7814c9608985ff987904e9adcf06062f4f6619",
+      "sources": [
+        "doc-1-media/image7.jpg"
+      ]
+    },
+    {
+      "id": "SUP-19",
+      "file": "assets/supporting/SUP-19.jpg",
+      "pixel_sha256": "5ff33aaf2bed0b5222da5dc789df5108da26e467afb27fd19fbc821c361d5964",
+      "sources": [
+        "doc-1-media/image8.jpg"
+      ]
+    },
+    {
+      "id": "SUP-20",
+      "file": "assets/supporting/SUP-20.png",
+      "pixel_sha256": "bffb7000200a46c9d8f9c577681a5a96fe448c990ace9473445e7788d841db53",
+      "sources": [
+        "doc-1-media/image9.png",
+        "doc-2-media/image3.png"
+      ]
+    },
+    {
+      "id": "SUP-21",
+      "file": "assets/supporting/SUP-21.jpg",
+      "pixel_sha256": "f0e1cc08d308663adb46520cb7e2abde475dedaeca0e1764daa5b2a793cc0081",
+      "sources": [
+        "doc-2-media/image15.jpg"
+      ]
+    },
+    {
+      "id": "SUP-22",
+      "file": "assets/supporting/SUP-22.jpg",
+      "pixel_sha256": "1cfd5cc6e89e121f7881ec81664eb14844f4152a5340f410a383b86fb3003a03",
+      "sources": [
+        "doc-2-media/image17.jpg"
+      ]
+    },
+    {
+      "id": "SUP-23",
+      "file": "assets/supporting/SUP-23.jpg",
+      "pixel_sha256": "0219dc38f7034e7fb46e415a5acf8ff9f7888f94bfec7a0efadfb532234d8d5c",
+      "sources": [
+        "doc-2-media/image18.jpg"
+      ]
+    },
+    {
+      "id": "SUP-24",
+      "file": "assets/supporting/SUP-24.png",
+      "pixel_sha256": "037ab9cefc096a2e06142275a98c695da70c76f1365b89f7c1d5ed672898fdda",
+      "sources": [
+        "doc-3-media/image1.png"
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/01_home.jpg",
+      "size": 1129510,
+      "sha256": "0a348dba3f89dc5b09bc0931cf6bbd210756e57e861c5f5f971b8cb2e779e915"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/01_home_menu_1.jpg",
+      "size": 313886,
+      "sha256": "5fa7e5994e0482a9a2f76560712d832faea13613793d8f0ddd415e2d2fbaecf8"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/02_index.jpg",
+      "size": 1079932,
+      "sha256": "04cb65646eb43ac496e259efd92bed4e0525c3101c1669d77ee794ebdee619a3"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/03_exchange.jpg",
+      "size": 686926,
+      "sha256": "987928e3a8a604b27415e96b7e3484e6cf314394af465ce5706dd36fd91c16ce"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_01_coins_all.jpg",
+      "size": 677792,
+      "sha256": "c854841b55c3d9ace70f6e1bfa046253be69abbf900b2b93068df22fe2b2f4a3"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_02_coins_overview .jpg",
+      "size": 698683,
+      "sha256": "e644d19bd9b6b84142606a555de58318aca940893bb458913405697a395fb8d0"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_03_coins_charts.jpg",
+      "size": 526749,
+      "sha256": "066cd67bdd20de3e844a58b3efc0cc2dd3c46c3b9665623eb6aa638cae8bc0e8"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_04_coins_Historical_price.jpg",
+      "size": 521063,
+      "sha256": "a2cefb41c6887403732b91e8e43c2c68b892bae2c951db60013407ea4da7c6fe"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_05_coins_Markets.jpg",
+      "size": 559164,
+      "sha256": "c6993bd3dfb9b958cf2303a88b46dcab9ab7fcd99c5f5b46c95b24681d1ff9e4"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_06_coins_News.jpg",
+      "size": 870648,
+      "sha256": "de562d6037a01dfd8c8328923029ea88fcbbf7851158845d23015f9ef2095b80"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/04_07_coins_Events.jpg",
+      "size": 472062,
+      "sha256": "10c391fa3c69a65d2f39857ee4b3a9f44458de075adedf07df1f562ece5778d0"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/05_news.jpg",
+      "size": 1388652,
+      "sha256": "1488f40bc3185386e645ad04037e43474cafa0845bc246ac93ec8963f48cb291"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "TBCi/06_news_detal.jpg",
+      "size": 736896,
+      "sha256": "f56092d363ac8d8b0ee8903457d14c9f2fdd150d82a14529ea449fba402c2d48"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "Личный кабинет/01 - Overview.jpg",
+      "size": 555525,
+      "sha256": "71a16cdfb35dcc9d383dfac0623d19c12f33c52bbd41770285f7df7485d651cf"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "Личный кабинет/02 - Wallet.jpg",
+      "size": 727699,
+      "sha256": "e83808a6c59722134e7999ce25094fdbe20eef2d1f627c146ad8ba377c59ef05"
+    },
+    {
+      "archive": "TBCi - design.rar",
+      "group": "design",
+      "path": "Личный кабинет/03 - Buy.jpg",
+      "size": 540713,
+      "sha256": "ce00d9df4a3d6ac258b3e6583f05a4495c577b772d39cbbac10bda3f994cebcf"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/01_home.jpg",
+      "size": 1129510,
+      "sha256": "0a348dba3f89dc5b09bc0931cf6bbd210756e57e861c5f5f971b8cb2e779e915"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/01_index.jpg",
+      "size": 1119397,
+      "sha256": "f01383ce9e3a1d1088ab6ea62a4d340d2504d36040c9ea480dfb268a7569e9cf"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/02_01_coins_all.jpg",
+      "size": 512351,
+      "sha256": "24c83683f1e2ec40f87a85fd0d3d7b8e594a4c10e36c425fbf6d0039f5231e3b"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/02_02_coins_overview.jpg",
+      "size": 686646,
+      "sha256": "30403379219f130393f6fd34be040aee531c554d7db56463757ef6519d04170c"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/02_03_coins_charts.jpg",
+      "size": 526749,
+      "sha256": "066cd67bdd20de3e844a58b3efc0cc2dd3c46c3b9665623eb6aa638cae8bc0e8"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/02_04_coins_Historical_price.jpg",
+      "size": 521063,
+      "sha256": "a2cefb41c6887403732b91e8e43c2c68b892bae2c951db60013407ea4da7c6fe"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/02_05_coins_Markets.jpg",
+      "size": 559164,
+      "sha256": "c6993bd3dfb9b958cf2303a88b46dcab9ab7fcd99c5f5b46c95b24681d1ff9e4"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/02_06_coins_News.jpg",
+      "size": 877325,
+      "sha256": "51a07d891c3e8605989c1d305d4c454a78325a2d50fe896930eff5813f72d346"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/03_01_exchange.jpg",
+      "size": 562442,
+      "sha256": "050b69127b17ab4daeb689bd33e812c800c42b6f41c383d0f4b771b7f4eb9a96"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/03_02_exchange_overview.jpg",
+      "size": 531244,
+      "sha256": "5291e88608c44b28361fe9080d4eb6d923f86f02555163c7118a4e8d853346af"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/04_02_news_detal.jpg",
+      "size": 683934,
+      "sha256": "c5bc51e04e9cbc24e4e06069333f8b0f8da337fff24a5e3af3f8b0818a326cda"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Сайт/04__01_news.jpg",
+      "size": 1386148,
+      "sha256": "ed8f91acca59b88554f76786cd9b4d98c03de47282bf142f75dffb8633264fb0"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "TBCI - Функциональные требования.docx",
+      "size": 1795787,
+      "sha256": "876bb01e2733c9e62165979c637977f78edc942644819dc2f64eed0284b69570"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/01_Wallet.jpg",
+      "size": 760873,
+      "sha256": "512beb0d16a3ff8b7ade1c655df3e8a3753dcafc4361be891d1061b68e93f346"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/02 - Choice index.jpg",
+      "size": 466581,
+      "sha256": "8aadf0a65ce966f0d1c1a030e9112746e5bedf87abd5d08dbb6e9e050dcd58a7"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/03_Overview.jpg",
+      "size": 812723,
+      "sha256": "d700c3b82b454e46b45bc103a103125c5d45c1ab2a02ebf24abbd4e76f693d1a"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/04_01_Buy.jpg",
+      "size": 371111,
+      "sha256": "3b3299aca9ae9fca3e50b95da70ec5b71a3f5f3b80b4df60ed36beb31b2c1927"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/04_02_Compile.jpg",
+      "size": 441873,
+      "sha256": "5b29e101c033946b9bf5b9be95a48c29f57f8ad330b21aa2f7b889a9bffd64a2"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/05_01_Sell.jpg",
+      "size": 378942,
+      "sha256": "e4509959694cdb948ef78ac3296925b1ced30e5d33e238890d9f1822feb3cafe"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/05_02_Unmake.jpg",
+      "size": 445009,
+      "sha256": "14d2d05610a48b624fc792cc4dadd2511bc0e4e3d76cca99eb74fde931a56cde"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/06_History.jpg",
+      "size": 415216,
+      "sha256": "776b74f71dbfd50f3cf8ec308892ebf99ba056ceb5b1b78bbdbf66e5117f5695"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "Личный кабинет/07_Holders.jpg",
+      "size": 595775,
+      "sha256": "b6b2188bbeec3244c1792ebfc47587fa1c955b702891ff6adc0224873d0394e0"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "TBCi - Личный кабинет - Техническое задание.docx",
+      "size": 2234414,
+      "sha256": "aed328464436b53786eecf766f6a73e37b11728fb827531f6361dbeccb84cdc1"
+    },
+    {
+      "archive": "TBCI.rar",
+      "group": "materials",
+      "path": "TBCindex - Техническая концепция проекта.docx",
+      "size": 65593,
+      "sha256": "737141787a5a7d24fc5d7070d9388cc895ad4c0a2f6fbafc5fd78c6605173a10"
+    },
+    {
+      "archive": "Новый концепт Лысенко.rar",
+      "group": "moodboard",
+      "path": "Новый концепт Лысенко.jpg",
+      "size": 2790365,
+      "sha256": "9f7915826bfbb19accd7cb3f57ee821738c4ab0d3e724a302b0d48b1e19062be"
+    }
+  ],
+  "source_documents": {
+    "doc-1": "TBCI - Функциональные требования.docx",
+    "doc-2": "TBCi - Личный кабинет - Техническое задание.docx",
+    "doc-3": "TBCindex - Техническая концепция проекта.docx"
+  }
+}

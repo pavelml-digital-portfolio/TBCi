@@ -1,0 +1,4 @@
+---
+import Base from '../../layouts/Base.astro';import Header from '../../components/Header.astro';import Footer from '../../components/Footer.astro';import {articles} from '../../data/articles';
+---
+<Base title="Материалы — TBCi"><Header/><main class="site-container editorial-page"><a href="/" class="back-link">← На главную</a><span class="eyebrow">ЖУРНАЛ TBCi</span><h1>Обновления и аналитика</h1><p class="lead">Методология, состав корзины и ориентиры для понимания рынка.</p><div class="article-list">{articles.map((a,i)=><a class="panel article-list-card" href={`/articles/${a.slug}/`}><span class="article-number">0{i+1}</span><div><span class="eyebrow">{a.category}</span><h2>{a.title}</h2><p>{a.description}</p></div><span aria-hidden="true">↗</span></a>)}</div></main><Footer/></Base>
