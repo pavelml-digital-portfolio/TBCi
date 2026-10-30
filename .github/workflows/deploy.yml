@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
   publish:
     needs: verify
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
@@ -48,7 +48,7 @@ jobs:
         run: bash deploy/vps-publish.sh publish tbci.pavelml.ru apps/web/dist static
   public:
     needs: publish
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v5
