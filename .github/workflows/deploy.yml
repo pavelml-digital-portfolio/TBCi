@@ -24,6 +24,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          sparse-checkout: deploy
       - uses: actions/download-artifact@v5
         with:
           name: tbci-static-site
@@ -52,6 +55,9 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          sparse-checkout: deploy
       - name: Verify public HTTPS release
         id: health
         shell: bash
@@ -62,11 +68,3 @@ jobs:
           VPS_DEPLOY_SSH_KEY: ${{ secrets.VPS_DEPLOY_SSH_KEY }}
         shell: bash
         run: bash deploy/vps-publish.sh rollback tbci.pavelml.ru
-      - name: Save public verification result
-        if: always()
-        uses: actions/upload-artifact@v5
-        with:
-          name: public-verification
-          path: ${{ runner.temp }}/tbci-public-verification.json
-          if-no-files-found: ignore
-          retention-days: 14
