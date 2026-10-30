@@ -53,7 +53,11 @@ jobs:
           if [ -n "$PINNED_HOSTS" ]; then
             printf '%s\n' "$PINNED_HOSTS" > "$hosts_file"
           else
-            ssh-keyscan -T 10 -p "$SSH_PORT" -t ed25519,ecdsa,rsa "$SSH_HOST" > "$hosts_file" || {
+            ssh-keyscan -v -T 20 -p "$SSH_PORT" -t ed25519 "$SSH_HOST" > "$hosts_file" 2> "$RUNNER_TEMP/tbci-keyscan-error" || {
+              while IFS= read -r line; do
+                line=${line//'%'/'%25'}; line=${line//$'\r'/'%0D'}
+                echo "::error title=SSH host-key exchange::$line"
+              done < "$RUNNER_TEMP/tbci-keyscan-error"
               echo "::error::SSH host-key scan failed for $SSH_HOST port $SSH_PORT; no verified SSH connection was attempted."
               exit 1
             }

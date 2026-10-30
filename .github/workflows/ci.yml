@@ -3,8 +3,10 @@ name: Frontend checks
 on:
   push:
     branches: [main]
+    paths: ['apps/web/**', 'package*.json', '.node-version', '.github/workflows/ci.yml']
   pull_request:
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -25,9 +27,14 @@ jobs:
       - run: npx playwright install --with-deps chromium
         working-directory: apps/web
       - run: npm run test:e2e
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: frontend-browser-results
           path: apps/web/test-results/
+          retention-days: 7
+      - uses: actions/upload-artifact@v5
+        with:
+          name: tbci-static-site
+          path: apps/web/dist/
           retention-days: 7
