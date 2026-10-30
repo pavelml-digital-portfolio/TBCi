@@ -34,14 +34,30 @@ jobs:
           trap 'rm -f "$key_file" "$hosts_file"' EXIT
           umask 077
           printf '%s\n' "$DEPLOY_KEY" > "$key_file"
+          ssh-keygen -y -P '' -f "$key_file" > /dev/null || {
+            echo '::error::VPS_DEPLOY_SSH_KEY is not a readable unencrypted private key.'
+            exit 1
+          }
           if [ -n "$PINNED_HOSTS" ]; then
             printf '%s\n' "$PINNED_HOSTS" > "$hosts_file"
           else
-            ssh-keyscan -T 10 -p "$SSH_PORT" -t ed25519 "$SSH_HOST" > "$hosts_file"
+            ssh-keyscan -T 10 -p "$SSH_PORT" -t ed25519 "$SSH_HOST" > "$hosts_file" || {
+              echo "::error::SSH host-key scan failed for $SSH_HOST port $SSH_PORT; no verified SSH connection was attempted."
+              exit 1
+            }
           fi
           echo 'SSH host public key (pin this for future releases):'
           cat "$hosts_file"
           ssh-keygen -lf "$hosts_file"
           ssh -i "$key_file" -p "$SSH_PORT" -o BatchMode=yes -o IdentitiesOnly=yes \
             -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$hosts_file" \
-            -o ConnectTimeout=15 "$SSH_USER@$SSH_HOST" 'bash -s' < scripts/deploy/inspect-vps.sh
+            -o ConnectTimeout=15 "$SSH_USER@$SSH_HOST" 'bash -s' < scripts/deploy/inspect-vps.sh > "$RUNNER_TEMP/tbci-inspect-output" 2> "$RUNNER_TEMP/tbci-ssh-error" || {
+              while IFS= read -r line; do
+                line=${line//'%'/'%25'}; line=${line//$'\r'/'%0D'}
+                echo "::error title=SSH inspection failed::$line"
+              done < "$RUNNER_TEMP/tbci-ssh-error"
+              echo '::error::SSH inspection failed; see the diagnostic output for the server restriction.'
+              cat "$RUNNER_TEMP/tbci-inspect-output"
+              exit 1
+            }
+          cat "$RUNNER_TEMP/tbci-inspect-output"
