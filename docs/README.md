@@ -15,4 +15,4 @@
 
 Выпуск 0.4.0: [кошелёк и KYC](frontend/WALLET_KYC.md), [новые снимки](frontend/FLOWS.html).
 
-Выпуск 0.5.0: [My Wallet/Wallet, все индексы и встроенная торговля](frontend/PORTFOLIO_WALLET.md), [288 проверок адаптации](frontend/LAYOUT_REVIEW.json).
+Выпуск 0.5.1: [Overview/Wallet, все индексы и встроенная торговля](frontend/PORTFOLIO_WALLET.md), [288 проверок адаптации](frontend/LAYOUT_REVIEW.json).

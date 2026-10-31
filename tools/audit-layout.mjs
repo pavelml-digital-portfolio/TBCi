@@ -118,6 +118,9 @@ for (const width of widths) {
       ]
         .filter((e) => {
           const b = box(e);
+          const track = e.closest(".mobile-carousel-track");
+          if (track && getComputedStyle(track).overflowX === "auto")
+            return b.width > 0 && e.scrollWidth > e.clientWidth + 1;
           return b.width && b.left >= 0 && b.right > width + 0.5;
         })
         .map((e) =>

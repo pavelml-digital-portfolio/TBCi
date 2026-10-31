@@ -1,11 +1,11 @@
 export const faqs = [
   [
     "What is TBCi?",
-    "TBCi is a demonstration of a cryptocurrency basket index and its related account tools. My Wallet shows all purchased indices together, while Wallet lists assets and handles transfers. Index points and a token’s dollar price are different measures, so they should not be compared directly. All market data here is historical or simulated.",
+    "TBCi is a demonstration of a cryptocurrency basket index and its related account tools. Overview shows all purchased indices together, while Wallet lists assets and handles transfers. Index points and a token’s dollar price are different measures, so they should not be compared directly. All market data here is historical or simulated.",
   ],
   [
     "Should I Buy or Compile an index?",
-    "Buy in My Wallet exchanges one wallet currency for the chosen index and includes a 0.5% commission in the payment total. Compile creates TBCi using every component of the basket in the required proportions, with the same commission. Choose Buy when you hold a single payment asset; choose Compile when you already hold the components. Both operations count toward your cumulative verification allowance.",
+    "Buy in Overview exchanges one wallet currency for the chosen index and includes a 0.5% commission in the payment total. Compile creates TBCi using every component of the basket in the required proportions, with the same commission. Choose Buy when you hold a single payment asset; choose Compile when you already hold the components. Both operations count toward your cumulative verification allowance.",
   ],
   [
     "What is the difference between Sell and Unmake?",

@@ -1,8 +1,8 @@
 {
   "version": "2.3",
-  "frontend": "0.5.0",
+  "frontend": "0.5.1",
   "canonical_screens": 21,
-  "additional_review_screens": 41,
+  "additional_review_screens": 49,
   "requirements": 226,
   "acceptance_criteria": 92,
   "pdf_pages": 55,
@@ -11,7 +11,7 @@
   "api_status": "future_backend_draft_not_implemented",
   "typecheck": "passed; 0 errors, 0 warnings, 0 hints",
   "build": "305 routes",
-  "playwright": "40 passed; multi-index ledger, portfolio analytics, inline trades, wallet conversion, QR, TOTP, KYC, migration and layout",
+  "playwright": "42 passed; existing ledger/security/KYC coverage plus mobile carousels, compact chart controls and currency-table actions",
   "deployment_tests": "9 passed",
   "viewport_coverage": [
     320,
@@ -32,5 +32,6 @@
   "missing_requirement_or_acceptance_ids": 0,
   "review_date": "2026-10-31 Europe/Moscow",
   "active_source_routes": 19,
-  "legacy_trade_aliases": 2
+  "legacy_trade_aliases": 2,
+  "mobile_carousel_states": 8
 }

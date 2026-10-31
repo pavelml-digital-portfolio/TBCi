@@ -12,6 +12,7 @@ import { networksFor, downloadData } from "../data/wallet";
 import { CryptoIcon, Funding, Modal } from "./Primitives";
 import { TransferProgress } from "./WalletTransfer";
 import UiIcon from "./UiIcon";
+import MobileCarousel from "./MobileCarousel";
 type WalletRow = {
   id: string;
   name: string;
@@ -240,8 +241,8 @@ export default function InternalWallet() {
               All assets <span className="count-badge">{filtered.length}</span>
             </h2>
             <p>
-              Transfer wallet assets directly; buy or sell index holdings in My
-              Wallet.
+              Transfer wallet assets directly; buy or sell index holdings in
+              Overview.
             </p>
           </div>
           <button className="button small" onClick={exportBalances}>
@@ -312,7 +313,81 @@ export default function InternalWallet() {
             <a href="/app/settings/#preferences">display preferences</a>.
           </p>
         )}
-        <table className="asset-wallet-table">
+        {filtered.some((a) => a.kind === "index") && (
+          <section
+            className="wallet-mobile-indices"
+            aria-label="Index holdings"
+          >
+            <h3>
+              Indices{" "}
+              <span className="count-badge">
+                {filtered.filter((a) => a.kind === "index").length}
+              </span>
+            </h3>
+            <MobileCarousel
+              label="Wallet indices"
+              className="wallet-index-carousel"
+              items={filtered
+                .filter((a) => a.kind === "index")
+                .map((a) => ({
+                  key: a.id,
+                  label: a.name,
+                  content: (
+                    <article
+                      className="wallet-index-card"
+                      data-wallet-index={a.id}
+                    >
+                      <div className="wallet-index-heading">
+                        <span className="index-mark">TBCi</span>
+                        <h4>
+                          <button
+                            onClick={() => setDetail(a)}
+                            aria-label={"Details " + a.name}
+                          >
+                            {a.name}
+                          </button>
+                        </h4>
+                      </div>
+                      <strong>
+                        {amount(a.quantity)} <small>TBCi</small>
+                      </strong>
+                      <span>{value(a.value)}</span>
+                      <div className="wallet-index-actions">
+                        <a
+                          className="button primary"
+                          href={"/app/?trade=buy&index=" + a.id}
+                        >
+                          Buy
+                        </a>
+                        <a
+                          className={
+                            "button " +
+                            (a.quantity <= 1e-8 ? "is-disabled" : "")
+                          }
+                          aria-disabled={a.quantity <= 1e-8}
+                          href={
+                            a.quantity > 1e-8
+                              ? "/app/?trade=sell&index=" + a.id
+                              : undefined
+                          }
+                        >
+                          Sell
+                        </a>
+                      </div>
+                    </article>
+                  ),
+                }))}
+            />
+          </section>
+        )}
+        <table
+          className={
+            "asset-wallet-table " +
+            (filtered.every((a) => a.kind === "index")
+              ? "wallet-indices-only"
+              : "")
+          }
+        >
           <thead>
             <tr>
               {["Asset", "Unit price", "Balance", "Value", "Actions"].map(
@@ -324,7 +399,7 @@ export default function InternalWallet() {
           </thead>
           <tbody>
             {filtered.map((a) => (
-              <tr key={a.id} data-asset={a.id}>
+              <tr key={a.id} data-asset={a.id} data-kind={a.kind}>
                 <td>
                   <button
                     className="wallet-asset-name"
@@ -338,6 +413,7 @@ export default function InternalWallet() {
                     )}
                     <span>
                       <strong>{a.name}</strong>
+                      <b className="wallet-mobile-symbol">{a.symbol}</b>
                       <small>
                         {a.symbol} ·{" "}
                         {a.kind === "index"
@@ -353,10 +429,18 @@ export default function InternalWallet() {
                   {money(a.price, a.price < 1 ? 6 : 3)}
                 </td>
                 <td data-label="Balance">
-                  <strong>
+                  <strong className="wallet-full-balance">
                     {amount(a.quantity)} {a.symbol}
                   </strong>
-                  <small>Available {amount(a.available)}</small>
+                  <strong className="wallet-mobile-balance">
+                    {amount(a.quantity, a.quantity >= 1000 ? 2 : 6)}
+                  </strong>
+                  <small className="wallet-mobile-value">
+                    {value(a.value)}
+                  </small>
+                  <small className="wallet-available">
+                    Available {amount(a.available)}
+                  </small>
                   {a.reserved > 0 && (
                     <small className="reserved-asset">
                       Reserved {amount(a.reserved)}
@@ -367,6 +451,15 @@ export default function InternalWallet() {
                   <strong data-value={a.value}>{value(a.value)}</strong>
                 </td>
                 <td className="wallet-row-actions">
+                  {a.kind !== "index" && (
+                    <button
+                      className="button wallet-mobile-action"
+                      aria-label={"Actions for " + a.symbol}
+                      onClick={() => setDetail(a)}
+                    >
+                      •••
+                    </button>
+                  )}
                   {a.kind === "index" ? (
                     <>
                       <a
@@ -645,7 +738,7 @@ export default function InternalWallet() {
           {currentDetail.kind === "index" ? (
             <>
               <p>
-                Buy or sell this index in My Wallet. Unmake redeems its basket
+                Buy or sell this index in Overview. Unmake redeems its basket
                 components.
               </p>
               <div className="modal-actions">

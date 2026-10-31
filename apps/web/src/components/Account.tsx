@@ -39,7 +39,7 @@ export type Section =
   | "settings"
   | "help";
 const pages: Record<Section, string> = {
-  overview: "My Wallet",
+  overview: "Overview",
   wallets: "Wallet",
   indices: "Explore indices",
   buy: "Buy",
@@ -209,7 +209,7 @@ function Choices() {
                 className="button small"
                 onClick={() => choose(a.id, "overview")}
               >
-                My Wallet
+                Overview
               </button>
               <button
                 className="button small"
@@ -914,7 +914,6 @@ function Shell({ section }: { section: Section }) {
               "indices",
               "history",
               "holders",
-              "settings",
               "help",
             ] as Section[]
           ).map((s) => (

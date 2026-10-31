@@ -26,6 +26,7 @@ import {
   type Bar,
 } from "../data/market";
 import { number, basket } from "../data/demo";
+import UiIcon from "./UiIcon";
 type Props = {
   instrument?: string;
   portfolio?: PortfolioPosition[];
@@ -60,6 +61,7 @@ export default function TradingChart({
   const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(0);
   const [showData, setShowData] = useState(false);
+  const [moreOptions, setMoreOptions] = useState(false);
   const [notice, setNotice] = useState("");
   const [symbol, setSymbol] = useState(instrument);
   const plot = useRef<HTMLDivElement>(null);
@@ -424,7 +426,12 @@ export default function TradingChart({
   return (
     <section
       ref={widget}
-      className={"trading-widget " + (hero ? "trading-dark" : "")}
+      className={
+        "trading-widget " +
+        (hero ? "trading-dark " : "") +
+        (portfolio ? "trading-compact " : "") +
+        (moreOptions ? "chart-options-open" : "")
+      }
       data-instrument={symbol}
       data-series-key={dataKey}
       data-ready={ready}
@@ -497,6 +504,18 @@ export default function TradingChart({
                 <option>Value</option>
                 <option>Return %</option>
               </select>
+              {portfolio && (
+                <button
+                  className="trading-options-toggle"
+                  aria-label="Chart options"
+                  aria-expanded={moreOptions}
+                  onClick={() => setMoreOptions(!moreOptions)}
+                >
+                  Options
+                  {indicators.length > 0 ? " · " + indicators.length : ""}
+                  <UiIcon name={moreOptions ? "chevron-up" : "chevron-down"} />
+                </button>
+              )}
             </div>
             <div className="trading-periods">
               {["1W", "1M", "3M", "6M", "1Y", "All"].map((p) => (
@@ -619,7 +638,7 @@ export default function TradingChart({
                   ["L", point.low],
                   ["C", point.close],
                 ].map(([label, value]) => (
-                  <span key={label}>
+                  <span key={label} className={"ohlc-" + label}>
                     <b>{label}</b>{" "}
                     {number(
                       Number(value),
@@ -729,6 +748,7 @@ export default function TradingChart({
                 Reset
               </button>
               <button
+                className="chart-advanced-tool"
                 disabled={!ready}
                 onClick={() => {
                   if (!main.current || !point) return;
@@ -748,6 +768,7 @@ export default function TradingChart({
                 Price level +
               </button>
               <button
+                className="chart-advanced-tool"
                 onClick={() => {
                   for (const line of lines.current)
                     main.current?.removePriceLine(line);
@@ -759,8 +780,11 @@ export default function TradingChart({
               </button>
             </div>
             <div className="trading-export">
-              <button onClick={exportCsv}>CSV</button>
+              <button className="chart-advanced-tool" onClick={exportCsv}>
+                CSV
+              </button>
               <button
+                className="chart-advanced-tool"
                 disabled={!ready}
                 onClick={() => {
                   const a = document.createElement("a");
@@ -787,6 +811,7 @@ export default function TradingChart({
                 ⛶
               </button>
               <button
+                className="chart-advanced-tool"
                 aria-pressed={showData}
                 onClick={() => setShowData(!showData)}
               >

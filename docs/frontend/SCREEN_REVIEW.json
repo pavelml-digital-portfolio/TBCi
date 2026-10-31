@@ -104,14 +104,14 @@
       "route": "/app/",
       "width": 1496,
       "sourceHeight": 2248,
-      "renderHeight": 3570
+      "renderHeight": 3568
     },
     {
       "id": "CAB-04",
       "route": "/app/buy/",
       "width": 1496,
       "sourceHeight": 948,
-      "renderHeight": 3570
+      "renderHeight": 3568
     },
     {
       "id": "CAB-05",
@@ -125,7 +125,7 @@
       "route": "/app/sell/",
       "width": 1496,
       "sourceHeight": 948,
-      "renderHeight": 3570
+      "renderHeight": 3568
     },
     {
       "id": "CAB-07",

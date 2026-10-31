@@ -11,6 +11,7 @@ import { profiles } from "../data/market";
 import { Sparkline } from "./Primitives";
 import TradingChart from "./TradingChart";
 import IndexTrade, { type TradeIntent } from "./IndexTrade";
+import MobileCarousel from "./MobileCarousel";
 import UiIcon from "./UiIcon";
 import { VerificationAllowance } from "./Verification";
 import {
@@ -192,75 +193,88 @@ export default function MyWallet() {
           </a>
         </div>
         {owned.length ? (
-          <div className="owned-index-grid">
-            {owned.map((i) => (
-              <article
-                className="owned-index-card"
-                key={i.id}
-                data-index={i.id}
-              >
-                <div className="owned-index-top">
-                  <span
-                    className="index-mark"
-                    style={{ background: i.color + "18", color: i.color }}
-                  >
-                    TBCi
-                  </span>
-                  <span className="settings-badge">
-                    {profiles[i.id]?.risk} risk
-                  </span>
-                </div>
-                <h3>{i.name}</h3>
-                <div className="owned-index-balance">
-                  <strong>
-                    {hidden ? "••••" : number(i.quantity, 8)}{" "}
-                    <small>TBCi</small>
-                  </strong>
-                  <span>{display(i.value)}</span>
-                </div>
-                <Sparkline instrument={i.id} />
-                <div className="owned-index-meta">
-                  <span>Unit price {money(i.price, 3)}</span>
-                  <span>
-                    {(i.value / (totals.indices || 1)) * 100 < 0.1
-                      ? "<0.1"
-                      : number((i.value / (totals.indices || 1)) * 100, 1)}
-                    % of indices
-                  </span>
-                </div>
-                <div className="owned-index-actions">
-                  <button
-                    className="button primary"
-                    aria-label={"Buy " + i.name}
-                    onClick={() => setIntent({ indexId: i.id, mode: "buy" })}
-                  >
-                    Buy
-                  </button>
-                  <button
-                    className="button"
-                    aria-label={"Sell " + i.name}
-                    onClick={() => setIntent({ indexId: i.id, mode: "sell" })}
-                  >
-                    Sell
-                  </button>
-                  <details>
-                    <summary aria-label={"More options for " + i.name}>
-                      •••
-                    </summary>
-                    <div className="dropdown">
-                      <a href={"/index/" + i.id + "/"}>Index information</a>
-                      <a href="/app/compile/" onClick={() => selectIndex(i.id)}>
-                        Compile
-                      </a>
-                      <a href="/app/unmake/" onClick={() => selectIndex(i.id)}>
-                        Unmake / claim
-                      </a>
-                    </div>
-                  </details>
-                </div>
-              </article>
-            ))}
-          </div>
+          <MobileCarousel
+            label="Your indices"
+            className="owned-index-carousel"
+            trackClassName="owned-index-grid"
+            items={owned.map((i) => ({
+              key: i.id,
+              label: i.name,
+              content: (
+                <article
+                  className="owned-index-card"
+                  key={i.id}
+                  data-index={i.id}
+                >
+                  <div className="owned-index-top">
+                    <span
+                      className="index-mark"
+                      style={{ background: i.color + "18", color: i.color }}
+                    >
+                      TBCi
+                    </span>
+                    <span className="settings-badge">
+                      {profiles[i.id]?.risk} risk
+                    </span>
+                  </div>
+                  <h3>{i.name}</h3>
+                  <div className="owned-index-balance">
+                    <strong>
+                      {hidden ? "••••" : number(i.quantity, 8)}{" "}
+                      <small>TBCi</small>
+                    </strong>
+                    <span>{display(i.value)}</span>
+                  </div>
+                  <Sparkline instrument={i.id} />
+                  <div className="owned-index-meta">
+                    <span>Unit price {money(i.price, 3)}</span>
+                    <span>
+                      {(i.value / (totals.indices || 1)) * 100 < 0.1
+                        ? "<0.1"
+                        : number((i.value / (totals.indices || 1)) * 100, 1)}
+                      % of indices
+                    </span>
+                  </div>
+                  <div className="owned-index-actions">
+                    <button
+                      className="button primary"
+                      aria-label={"Buy " + i.name}
+                      onClick={() => setIntent({ indexId: i.id, mode: "buy" })}
+                    >
+                      Buy
+                    </button>
+                    <button
+                      className="button"
+                      aria-label={"Sell " + i.name}
+                      onClick={() => setIntent({ indexId: i.id, mode: "sell" })}
+                    >
+                      Sell
+                    </button>
+                    <details>
+                      <summary aria-label={"More options for " + i.name}>
+                        •••
+                      </summary>
+                      <div className="dropdown">
+                        <a href={"/index/" + i.id + "/"}>Index information</a>
+                        <a
+                          href="/app/compile/"
+                          onClick={() => selectIndex(i.id)}
+                        >
+                          Compile
+                        </a>
+                        <a
+                          href="/app/unmake/"
+                          onClick={() => selectIndex(i.id)}
+                        >
+                          Unmake / claim
+                        </a>
+                      </div>
+                    </details>
+                  </div>
+                </article>
+              ),
+            }))}
+          />
         ) : (
           <div className="portfolio-empty">
             <h3>Your first index starts here</h3>
@@ -353,11 +367,28 @@ export default function MyWallet() {
           </div>
         )}
       </section>
-      <div className="portfolio-chart-grid">
-        <MonthlyReturns positions={positions} hidden={hidden} />
-        <ExposureMap positions={positions} hidden={hidden} />
-      </div>
-      <PortfolioActivity />
+      <MobileCarousel
+        label="Portfolio insights"
+        className="portfolio-insights-carousel"
+        trackClassName="portfolio-chart-grid"
+        items={[
+          {
+            key: "returns",
+            label: "Monthly model returns",
+            content: <MonthlyReturns positions={positions} hidden={hidden} />,
+          },
+          {
+            key: "exposure",
+            label: "Asset exposure map",
+            content: <ExposureMap positions={positions} hidden={hidden} />,
+          },
+          {
+            key: "activity",
+            label: "Recent index activity",
+            content: <PortfolioActivity />,
+          },
+        ]}
+      />
       <p className="portfolio-footnote">
         Demo balances · static prices as of 31 Dec 2018 · no real funds,
         execution or investment return.

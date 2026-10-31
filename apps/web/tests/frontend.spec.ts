@@ -66,7 +66,7 @@ test("source landing sections, composition expansion, direct login and demo news
   await page.getByRole("link", { name: "Login", exact: true }).click();
   await expect(page).toHaveURL(/\/app\/$/);
   await expect(
-    page.getByRole("heading", { name: "My Wallet", exact: true }),
+    page.getByRole("heading", { name: "Overview", exact: true }),
   ).toBeVisible();
   await expect(page.locator("input[type=password]")).toHaveCount(0);
 });
@@ -324,12 +324,12 @@ test("wallet deposit, withdrawal, complete asset list and multi-index portfolio"
   await page
     .locator(".choice-card")
     .nth(1)
-    .getByRole("button", { name: "My Wallet", exact: true })
+    .getByRole("button", { name: "Overview", exact: true })
     .click();
-  await expect(page.locator("h1")).toHaveText("My Wallet");
+  await expect(page.locator("h1")).toHaveText("Overview");
   await expect(page.locator(".owned-index-card")).toHaveCount(5);
   await page.reload();
-  await expect(page.locator("h1")).toHaveText("My Wallet");
+  await expect(page.locator("h1")).toHaveText("Overview");
 });
 test("composition history compares snapshots and holders paginate", async ({
   page,

@@ -3831,7 +3831,8 @@ tbody tr:last-child td {
   .nav-backdrop {
     display: block;
     position: fixed;
-    inset: 0;
+    inset: 0 0 0 var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
     background: #10172e66;
     z-index: 55;
   }
@@ -9878,7 +9879,7 @@ summary > .ui-icon,
   gap: 20px;
   margin: 24px 0;
 }
-.portfolio-chart-grid > .portfolio-panel {
+.portfolio-chart-grid > .mobile-carousel-slide > .portfolio-panel {
   margin: 0;
   padding: 22px;
   display: flex;
@@ -10809,7 +10810,7 @@ summary > .ui-icon,
     gap: 18px;
     margin: 22px 0;
   }
-  .portfolio-chart-grid > .portfolio-panel {
+  .portfolio-chart-grid > .mobile-carousel-slide > .portfolio-panel {
     padding: 17px;
   }
   .portfolio-chart-grid h2 {
@@ -11008,4 +11009,394 @@ summary > .ui-icon,
   line-height: 1.6;
   grid-column: 1/-1;
   border-bottom: 1px solid #e9eff6;
+}
+
+/* Mobile portfolio browsing; desktop keeps the same cards and analytics grid. */
+.mobile-carousel,
+.mobile-carousel-slide {
+  min-width: 0;
+}
+.mobile-carousel-track {
+  position: relative;
+}
+.mobile-carousel-controls,
+.trading-options-toggle,
+.wallet-mobile-indices,
+.wallet-mobile-symbol,
+.asset-wallet-table td > .wallet-mobile-balance,
+.asset-wallet-table td > .wallet-mobile-value,
+.wallet-row-actions > .wallet-mobile-action {
+  display: none;
+}
+.owned-index-grid > .mobile-carousel-slide > .owned-index-card {
+  height: 100%;
+}
+.portfolio-insights-carousel {
+  margin: 24px 0;
+}
+.portfolio-insights-carousel .portfolio-chart-grid {
+  margin: 0;
+}
+.portfolio-chart-grid > .mobile-carousel-slide > .portfolio-panel {
+  height: 100%;
+}
+.portfolio-chart-grid > .mobile-carousel-slide:last-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 767px) {
+  .mobile-carousel-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: var(--mobile-slide-height, auto);
+    padding: 1px 0 3px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .mobile-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-carousel-track:focus-visible {
+    outline: 2px solid #80baff;
+    outline-offset: 3px;
+  }
+  .mobile-carousel-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .owned-index-carousel .mobile-carousel-slide,
+  .wallet-index-carousel .mobile-carousel-slide {
+    flex-basis: 91%;
+  }
+  .owned-index-grid > .mobile-carousel-slide > .owned-index-card,
+  .portfolio-chart-grid > .mobile-carousel-slide > .portfolio-panel {
+    height: auto;
+  }
+  .owned-index-actions .dropdown {
+    top: auto;
+    bottom: calc(100% + 8px);
+  }
+  .mobile-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .mobile-carousel-controls > button {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border: 1px solid #dfe7f2;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    color: #5d83b1;
+    background: white;
+  }
+  .mobile-carousel-controls > button:disabled {
+    opacity: 0.35;
+  }
+  .mobile-carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .mobile-carousel-dots > button {
+    display: grid;
+    place-items: center;
+    width: 21px;
+    height: 36px;
+    padding: 0;
+  }
+  .mobile-carousel-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d7e2ef;
+  }
+  .mobile-carousel-dots [aria-current="true"] span {
+    width: 7px;
+    height: 7px;
+    background: #218dff;
+  }
+  .mobile-carousel-count {
+    font-size: 10px;
+    color: #8d9caf;
+    white-space: nowrap;
+  }
+  .portfolio-insights-carousel .portfolio-panel {
+    margin: 0;
+    padding: 17px;
+  }
+  .portfolio-insights-carousel .portfolio-activity ul {
+    max-height: 330px;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+  .portfolio-history > .portfolio-section-head > .settings-badge {
+    display: none;
+  }
+  .trading-compact .portfolio-series-label {
+    display: none;
+  }
+  .trading-compact .trading-main-controls {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+  }
+  .trading-compact .trading-main-controls select {
+    min-height: 34px;
+    font-size: 11px;
+    padding: 5px 7px;
+    flex: 1;
+    min-width: 0;
+    max-width: none !important;
+  }
+  .trading-compact .trading-options-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 34px;
+    margin-left: auto;
+    font-size: 10px;
+  }
+  .trading-compact .trading-periods {
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 2px;
+    justify-content: space-between;
+  }
+  .trading-compact .trading-periods button {
+    flex: 1;
+    min-height: 31px;
+    padding: 3px;
+  }
+  .trading-compact .trading-secondary {
+    gap: 12px;
+  }
+  .trading-compact .trading-comparisons {
+    flex-basis: 100%;
+  }
+  .trading-compact .trading-dates {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .trading-compact .trading-dates label {
+    min-width: 0;
+    flex: 1;
+    gap: 4px;
+  }
+  .trading-compact .trading-dates input {
+    width: 100%;
+    min-width: 0;
+    font-size: 10px;
+  }
+  .trading-compact .trading-ohlc {
+    gap: 5px 10px;
+    margin: 4px 0 8px;
+  }
+  .trading-compact .trading-ohlc time {
+    flex-basis: auto;
+  }
+  .trading-compact:not(.chart-options-open) .trading-secondary,
+  .trading-compact:not(.chart-options-open) .trading-indicators,
+  .trading-compact:not(.chart-options-open) [aria-label="Chart metric"],
+  .trading-compact:not(.chart-options-open) .ohlc-O,
+  .trading-compact:not(.chart-options-open) .ohlc-H,
+  .trading-compact:not(.chart-options-open) .ohlc-L,
+  .trading-compact:not(.chart-options-open) .trading-ohlc > .subtle,
+  .trading-compact:not(.chart-options-open) .chart-advanced-tool,
+  .trading-compact:not(.chart-options-open) .trading-navigator {
+    display: none;
+  }
+  .trading-compact.chart-options-open [aria-label="Chart metric"] {
+    order: 1;
+    flex-basis: 100%;
+  }
+  .trading-compact .trading-bottom {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+  .trading-compact.chart-options-open .trading-bottom {
+    flex-wrap: wrap;
+  }
+  .trading-compact .trading-bottom button {
+    min-height: 32px;
+  }
+  .wallet-mobile-indices {
+    display: block;
+    margin: 20px 0 24px;
+  }
+  .wallet-mobile-indices h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+  .wallet-index-card {
+    padding: 17px;
+    border: 1px solid #dfe7f2;
+    border-radius: 6px;
+    background: #fbfdff;
+    min-width: 0;
+  }
+  .wallet-index-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+  }
+  .wallet-index-heading h4 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    min-width: 0;
+  }
+  .wallet-index-heading button {
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+  .wallet-index-card > strong {
+    display: block;
+    font-size: 25px;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+  .wallet-index-card > strong small {
+    font-size: 12px;
+    color: #8c9db3;
+  }
+  .wallet-index-card > span {
+    display: block;
+    font-size: 12px;
+    color: #8396ae;
+    margin: 5px 0 17px;
+  }
+  .wallet-index-actions {
+    display: flex;
+    gap: 9px;
+  }
+  .wallet-index-actions .button {
+    flex: 1;
+    font-size: 12px;
+    min-height: 35px;
+    min-width: 0;
+  }
+  .internal-wallet .asset-wallet-table {
+    display: table;
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+  .internal-wallet .asset-wallet-table thead {
+    display: table-header-group;
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+  .internal-wallet .asset-wallet-table tbody {
+    display: table-row-group;
+  }
+  .internal-wallet .asset-wallet-table tr {
+    display: table-row;
+    padding: 0;
+    border: 0;
+  }
+  .internal-wallet .asset-wallet-table th,
+  .internal-wallet .asset-wallet-table td {
+    padding: 10px 4px;
+    border-bottom: 1px solid #e7edf5;
+    text-align: left;
+    font-size: 10px;
+  }
+  .internal-wallet .asset-wallet-table td {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .internal-wallet .asset-wallet-table td::before {
+    display: none;
+  }
+  .internal-wallet .asset-wallet-table th:first-child {
+    width: 34%;
+  }
+  .internal-wallet .asset-wallet-table th:nth-child(3) {
+    width: auto;
+    text-align: right;
+  }
+  .internal-wallet .asset-wallet-table th:last-child {
+    width: 42px;
+    font-size: 9px;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-align: center;
+  }
+  .internal-wallet .asset-wallet-table td:nth-child(3) {
+    text-align: right;
+  }
+  .internal-wallet .asset-wallet-table [data-kind="index"],
+  .internal-wallet .wallet-indices-only,
+  .internal-wallet .asset-wallet-table th:nth-child(2),
+  .internal-wallet .asset-wallet-table th:nth-child(4),
+  .internal-wallet .asset-wallet-table td:nth-child(2),
+  .internal-wallet .asset-wallet-table td:nth-child(4),
+  .asset-wallet-table .wallet-asset-name strong,
+  .asset-wallet-table .wallet-asset-name small,
+  .asset-wallet-table td > .wallet-full-balance,
+  .asset-wallet-table td > .wallet-available,
+  .wallet-row-actions > .button:not(.wallet-mobile-action) {
+    display: none;
+  }
+  .asset-wallet-table .wallet-asset-name {
+    gap: 5px;
+    min-height: 44px;
+  }
+  .asset-wallet-table .wallet-asset-name .crypto-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  .wallet-mobile-symbol {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: #4b6485;
+  }
+  .asset-wallet-table td > .wallet-mobile-balance {
+    display: block;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+  .asset-wallet-table td > .wallet-mobile-value {
+    display: block;
+    font-size: 9px;
+  }
+  .internal-wallet .asset-wallet-table td.wallet-row-actions {
+    padding: 6px 0;
+    text-align: center;
+  }
+  .wallet-row-actions > .wallet-mobile-action {
+    display: inline-flex;
+    flex: none;
+    width: 38px;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
 }

@@ -15,4 +15,4 @@
 
 Расширение v2.2: [кошелёк, KYC, безопасность, FAQ и вёрстка](../frontend/WALLET_KYC.md), ТЗ §13.
 
-Расширение v2.3: [My Wallet/Wallet, все позиции, торговые диалоги и аналитика](../frontend/PORTFOLIO_WALLET.md), ТЗ §14. CAB-04/CAB-06 сохранены как архивные макеты; отдельные Buy/Sell заменены диалогами. [Проверка выпуска](DOCUMENT_VALIDATION.md).
+Расширение v2.3: [Overview/Wallet, все позиции, торговые диалоги и аналитика](../frontend/PORTFOLIO_WALLET.md), ТЗ §14. CAB-04/CAB-06 сохранены как архивные макеты; отдельные Buy/Sell заменены диалогами. [Проверка выпуска](DOCUMENT_VALIDATION.md).

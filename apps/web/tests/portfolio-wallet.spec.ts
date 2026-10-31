@@ -133,11 +133,11 @@ test("pending outgoing principal and native fee are reserved and returned exactl
     5,
   );
 });
-test("My Wallet shows every owned index and filters composition and all portfolio analytics", async ({
+test("Overview shows every owned index and filters composition and all portfolio analytics", async ({
   page,
 }) => {
   await open(page, "/app/");
-  await expect(page.locator("h1")).toHaveText("My Wallet");
+  await expect(page.locator("h1")).toHaveText("Overview");
   await expect(page.locator(".owned-index-card")).toHaveCount(5);
   await expect(
     page
@@ -251,7 +251,7 @@ test("Wallet contains every asset, zero filter, categories, details, export and 
     .locator('[data-asset="tbci-10-stable"]')
     .getByRole("link", { name: "Buy", exact: true })
     .click();
-  await expect(page.locator("h1")).toHaveText("My Wallet");
+  await expect(page.locator("h1")).toHaveText("Overview");
   await expect(page.getByLabel("Index", { exact: true })).toHaveValue(
     "tbci-10-stable",
   );
@@ -264,7 +264,7 @@ test("legacy buy and sell URLs route to inline trading; devices remain aligned a
   for (const action of ["buy", "sell"]) {
     await page.goto("/app/" + action + "/");
     await page.waitForURL((u) => u.pathname === "/app/");
-    await expect(page.locator("h1")).toHaveText("My Wallet");
+    await expect(page.locator("h1")).toHaveText("Overview");
     await expect(page.getByRole("dialog")).toBeVisible();
     await page
       .getByRole("button", { name: "Close dialog", exact: true })
