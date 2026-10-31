@@ -1,3 +1,4 @@
+import { portfolioSeries, type PortfolioPosition } from "../data/portfolio";
 import { bindChartBounds } from "../data/chart-bounds";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -27,6 +28,7 @@ import {
 import { number, basket } from "../data/demo";
 type Props = {
   instrument?: string;
+  portfolio?: PortfolioPosition[];
   height?: number;
   hero?: boolean;
   compare?: boolean;
@@ -36,6 +38,7 @@ type Mode = "Area" | "Candles" | "Line";
 const toDate = (t: number) => new Date(t * 1000).toISOString().slice(0, 10);
 export default function TradingChart({
   instrument = "tbci-20-stable",
+  portfolio,
   height = 410,
   hero = false,
   compare = false,
@@ -77,11 +80,12 @@ export default function TradingChart({
   const bars = useMemo(
     () =>
       valid
-        ? seriesFor(symbol, interval).filter(
-            (b) => toDate(b.time) >= from && toDate(b.time) <= to,
-          )
+        ? (portfolio
+            ? portfolioSeries(portfolio, interval)
+            : seriesFor(symbol, interval)
+          ).filter((b) => toDate(b.time) >= from && toDate(b.time) <= to)
         : [],
-    [symbol, interval, from, to, valid],
+    [symbol, interval, from, to, valid, portfolio],
   );
   const values = useMemo(() => {
     if (metric !== "Return %" || !bars.length) return bars;
@@ -95,7 +99,15 @@ export default function TradingChart({
     }));
   }, [bars, metric]);
   const point = hover ?? values.at(-1);
-  const dataKey = symbol + "-" + interval + "-" + from + "-" + to;
+  const dataKey =
+    symbol +
+    "-" +
+    interval +
+    "-" +
+    from +
+    "-" +
+    to +
+    (portfolio ? JSON.stringify(portfolio) : "");
   const setRange = (p: string) => {
     setPeriod(p);
     const n =
@@ -425,31 +437,37 @@ export default function TradingChart({
         <>
           <div className="trading-toolbar">
             <div className="trading-main-controls">
-              <label>
-                <span className="sr-only">Main chart series</span>
-                <select
-                  aria-label="Main chart series"
-                  value={symbol}
-                  onChange={(e) => setSymbol(e.target.value)}
-                >
-                  {(symbol.startsWith("tbci-")
-                    ? [
-                        "tbci-20-stable",
-                        "tbci-10-stable",
-                        "tbci-20-balance",
-                        "tbci-50-active",
-                        "tbci-20-balance-2",
-                        "tbci-20-utility",
-                        "tbci-20-security",
-                      ]
-                    : [...basket.map((a) => a.symbol), "portfolio"]
-                  ).map((id) => (
-                    <option key={id} value={id}>
-                      {instrumentName(id)}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              {portfolio ? (
+                <span className="portfolio-series-label">
+                  Selected index portfolio
+                </span>
+              ) : (
+                <label>
+                  <span className="sr-only">Main chart series</span>
+                  <select
+                    aria-label="Main chart series"
+                    value={symbol}
+                    onChange={(e) => setSymbol(e.target.value)}
+                  >
+                    {(symbol.startsWith("tbci-")
+                      ? [
+                          "tbci-20-stable",
+                          "tbci-10-stable",
+                          "tbci-20-balance",
+                          "tbci-50-active",
+                          "tbci-20-balance-2",
+                          "tbci-20-utility",
+                          "tbci-20-security",
+                        ]
+                      : [...basket.map((a) => a.symbol), "portfolio"]
+                    ).map((id) => (
+                      <option key={id} value={id}>
+                        {instrumentName(id)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
               <select
                 aria-label="Chart type"
                 value={mode}
@@ -798,7 +816,9 @@ export default function TradingChart({
             <output aria-label="Visible chart bars">{visible} bars</output>
           </label>
           <p className="trading-caption">
-            2018 archive · Simulated OHLCV
+            {portfolio
+              ? "2018 scenario · current holdings revalued through simulated prices · not personal PnL"
+              : "2018 archive · Simulated OHLCV"}
             {compares.length
               ? " · Comparison series rebased to the same starting value"
               : ""}

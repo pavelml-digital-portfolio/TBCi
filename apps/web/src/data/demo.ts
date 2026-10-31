@@ -59,7 +59,7 @@ export const assets: Asset[] = [
   ...basket,
   {
     symbol: "USD",
-    name: "Visa/Mastercard",
+    name: "US Dollar",
     price: 1,
     weight: 0,
     color: "#269c74",
@@ -115,7 +115,7 @@ export const indexChoices = [
   },
   {
     id: "tbci-20-balance-2",
-    name: "TBCi-20 Balance",
+    name: "TBCi-20 Balance II",
     price: 50.537,
     balance: 0,
     points: 88.642,
@@ -163,6 +163,7 @@ export const coin = (symbol: string) =>
 export type Operation = {
   id: string;
   type:
+    | "convert"
     | "buy"
     | "sell"
     | "compile"
@@ -174,6 +175,11 @@ export type Operation = {
   amount: number;
   value: number;
   date: string;
+  receivedSymbol?: string;
+  receivedAmount?: number;
+  indexId?: string;
+  requestId?: string;
+  paymentSymbol?: string;
   transferId?: string;
   network?: string;
   address?: string;

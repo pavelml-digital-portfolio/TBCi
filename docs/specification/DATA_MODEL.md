@@ -1,4 +1,4 @@
-# TBCi — модель данных v2.2
+# TBCi — модель данных v2.3
 
 Модель соответствует 21 экрану TBCI.rar и ТЗ v2.1. Текущий фронтенд использует локальную демонстрационную структуру; таблицы БД ниже — проект серверного этапа.
 
@@ -60,3 +60,8 @@ ChartBar: timestamp UTC, open/high/low/close/volume; unique instrument/interval/
 ## Расширение v2.2
 
 DemoState дополнен transfers, trustedAddresses, audit, security, preferences, sessions и kyc (уровень, purchaseTotalUsd, текущая заявка и история). transfer-engine.ts отвечает за идемпотентность, комиссии, подтверждения и возвраты; kyc.ts — за лимиты и состояния проверки. chart-bounds.ts ограничивает временной диапазон Lightweight Charts. WalletTransfer, AccountSettings, Verification и InteractiveDonut реализуют интерфейсы; подробности в [WALLET_KYC.md](../frontend/WALLET_KYC.md). Секреты аутентификатора остаются локальными, recovery codes хешируются, файлы KYC не сохраняются. Серверные схемы и OpenAPI ниже не являются реализованным API.
+
+
+## Переработка v2.3
+
+MyWallet и InternalWallet отделяют инвестиционный портфель от хранения/переводов. portfolio.ts агрегирует все tokenBalances, резервы, Claims и вложенные экспозиции; index-trading.ts проводит сделки по явному indexId и идемпотентные конвертации. IndexTrade — единый диалог Buy/Sell. PortfolioCharts — состав, месячные столбцы и treemap; TradingChart принимает агрегированный ряд. Operation дополнен indexId, requestId, paymentSymbol, receivedSymbol/receivedAmount. hideZeroBalances/hideBalances и валюта сохраняются в Preferences. balances.TBCi служит только совместимости, в общие суммы не входит. См. [PORTFOLIO_WALLET.md](../frontend/PORTFOLIO_WALLET.md).

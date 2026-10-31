@@ -19,7 +19,7 @@ test("actual chart viewport stays inside the data during wheel, drag, navigator 
   page,
 }) => {
   test.setTimeout(90000);
-  await page.goto("/app/wallets/");
+  await page.goto("/app/");
   await page.locator("h1").waitFor();
   const chart = page.locator(".trading-widget").first();
   await expect(chart).toHaveAttribute("data-ready", "true");

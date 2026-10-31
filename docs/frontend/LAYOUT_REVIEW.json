@@ -1,15 +1,17 @@
 {
-  "generatedAt": "2026-10-30T21:50:17.526Z",
+  "generatedAt": "2026-10-31T07:57:14.380Z",
   "viewports": [
     320,
     375,
+    677,
     768,
     1024,
+    1280,
     1496,
     1920,
     2560
   ],
-  "checks": 224,
+  "checks": 288,
   "issues": [],
   "runtimeErrors": [],
   "results": [
@@ -463,6 +465,230 @@
     },
     {
       "route": "/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/index/tbci-20-balance/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/charts/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/historical-price/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/markets/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/news/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/exchanges/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/exchanges/huobi/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/news/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/news/huobi-stablecoin/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/wallets/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/indices/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/buy/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/compile/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/sell/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/unmake/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/history/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/holders/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/ico/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/ico/pundi-x/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/help/",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#profile",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#verification",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#preferences",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#security",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#whitelist",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#transfers",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#activity",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#devices",
+      "width": 677,
+      "scroll": 677,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/",
       "width": 768,
       "scroll": 768,
       "collisions": [],
@@ -906,6 +1132,230 @@
       "route": "/app/settings/#devices",
       "width": 1024,
       "scroll": 1024,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/index/tbci-20-balance/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/charts/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/historical-price/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/markets/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/coins/bitcoin/news/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/exchanges/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/exchanges/huobi/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/news/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/news/huobi-stablecoin/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/wallets/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/indices/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/buy/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/compile/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/sell/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/unmake/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/history/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/holders/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/ico/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/ico/pundi-x/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/help/",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#profile",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#verification",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#preferences",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#security",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#whitelist",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#transfers",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#activity",
+      "width": 1280,
+      "scroll": 1280,
+      "collisions": [],
+      "overflow": []
+    },
+    {
+      "route": "/app/settings/#devices",
+      "width": 1280,
+      "scroll": 1280,
       "collisions": [],
       "overflow": []
     },

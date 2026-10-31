@@ -1,6 +1,6 @@
 # Комплект TBCi
 
-Действующая визуальная основа — **21 JPG из TBCI.rar**. Фронтенд и ТЗ v2.2 приведены к этим макетам.
+Действующая визуальная основа — **21 JPG из TBCI.rar**. Фронтенд и ТЗ v2.3 приведены к этим макетам.
 
 - [Техническое задание PDF](specification/TBCi-Technical-Specification.pdf), [Word](specification/TBCi-Technical-Specification.docx), [HTML](specification/TECHNICAL_SPEC.html).
 - [Реестр 21 экрана](specification/SCREENS.csv), [сравнение исходников и реализации](specification/REVIEW.html).
@@ -14,3 +14,5 @@
 Последующее согласованное расширение: [графики/контент/вёрстка 0.3.0](frontend/CONTENT_AUDIT.md), [источники 2018 и SVG](sources/README.md).
 
 Выпуск 0.4.0: [кошелёк и KYC](frontend/WALLET_KYC.md), [новые снимки](frontend/FLOWS.html).
+
+Выпуск 0.5.0: [My Wallet/Wallet, все индексы и встроенная торговля](frontend/PORTFOLIO_WALLET.md), [288 проверок адаптации](frontend/LAYOUT_REVIEW.json).

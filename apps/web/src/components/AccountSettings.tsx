@@ -1192,7 +1192,7 @@ function Devices() {
         {state.sessions.map((s) => (
           <article key={s.id}>
             <span className="device-icon">
-              <UiIcon name={s.current ? "shield" : "wallet"} size={22} />
+              <UiIcon name={s.current ? "shield" : "device"} size={22} />
             </span>
             <div>
               <h3>{s.device}</h3>

@@ -1,22 +1,22 @@
-ID,Title,Source,Route,Width,Height,SHA256,CanonicalImage
-PUB-01,Главная,Сайт/01_home.jpg,/,1680,2626,0a348dba3f89dc5b09bc0931cf6bbd210756e57e861c5f5f971b8cb2e779e915,../assets/mockups/PUB-01.jpg
-PUB-03,Страница индекса,Сайт/01_index.jpg,/index/tbci-20-balance/,1680,4100,f01383ce9e3a1d1088ab6ea62a4d340d2504d36040c9ea480dfb268a7569e9cf,../assets/mockups/PUB-03.jpg
-PUB-06,Каталог монет,Сайт/02_01_coins_all.jpg,/coins/,1680,1358,24c83683f1e2ec40f87a85fd0d3d7b8e594a4c10e36c425fbf6d0039f5231e3b,../assets/mockups/PUB-06.jpg
-PUB-07,Монета: Overview,Сайт/02_02_coins_overview.jpg,/coins/bitcoin/,1680,1933,30403379219f130393f6fd34be040aee531c554d7db56463757ef6519d04170c,../assets/mockups/PUB-07.jpg
-PUB-08,Монета: Charts,Сайт/02_03_coins_charts.jpg,/coins/bitcoin/charts/,1680,1933,066cd67bdd20de3e844a58b3efc0cc2dd3c46c3b9665623eb6aa638cae8bc0e8,../assets/mockups/PUB-08.jpg
-PUB-09,Монета: Historical price,Сайт/02_04_coins_Historical_price.jpg,/coins/bitcoin/historical-price/,1680,1933,a2cefb41c6887403732b91e8e43c2c68b892bae2c951db60013407ea4da7c6fe,../assets/mockups/PUB-09.jpg
-PUB-10,Монета: Markets,Сайт/02_05_coins_Markets.jpg,/coins/bitcoin/markets/,1680,1933,c6993bd3dfb9b958cf2303a88b46dcab9ab7fcd99c5f5b46c95b24681d1ff9e4,../assets/mockups/PUB-10.jpg
-PUB-11,Монета: News,Сайт/02_06_coins_News.jpg,/coins/bitcoin/news/,1680,1933,51a07d891c3e8605989c1d305d4c454a78325a2d50fe896930eff5813f72d346,../assets/mockups/PUB-11.jpg
-PUB-04,Каталог бирж,Сайт/03_01_exchange.jpg,/exchanges/,1680,1600,050b69127b17ab4daeb689bd33e812c800c42b6f41c383d0f4b771b7f4eb9a96,../assets/mockups/PUB-04.jpg
-PUB-05,Страница биржи,Сайт/03_02_exchange_overview.jpg,/exchanges/huobi/,1680,1697,5291e88608c44b28361fe9080d4eb6d923f86f02555163c7118a4e8d853346af,../assets/mockups/PUB-05.jpg
-PUB-13,Лента новостей,Сайт/04__01_news.jpg,/news/,1680,2785,ed8f91acca59b88554f76786cd9b4d98c03de47282bf142f75dffb8633264fb0,../assets/mockups/PUB-13.jpg
-PUB-14,Статья,Сайт/04_02_news_detal.jpg,/news/huobi-stablecoin/,1680,2073,c5bc51e04e9cbc24e4e06069333f8b0f8da337fff24a5e3af3f8b0818a326cda,../assets/mockups/PUB-14.jpg
-CAB-01,Мои кошельки,Личный кабинет/01_Wallet.jpg,/app/wallets/,1496,2550,512beb0d16a3ff8b7ade1c655df3e8a3753dcafc4361be891d1061b68e93f346,../assets/mockups/CAB-01.jpg
-CAB-02,Выбор индекса,Личный кабинет/02 - Choice index.jpg,/app/indices/,1496,996,8aadf0a65ce966f0d1c1a030e9112746e5bedf87abd5d08dbb6e9e050dcd58a7,../assets/mockups/CAB-02.jpg
-CAB-03,Обзор выбранного индекса,Личный кабинет/03_Overview.jpg,/app/,1496,2248,d700c3b82b454e46b45bc103a103125c5d45c1ab2a02ebf24abbd4e76f693d1a,../assets/mockups/CAB-03.jpg
-CAB-04,Покупка,Личный кабинет/04_01_Buy.jpg,/app/buy/,1496,948,3b3299aca9ae9fca3e50b95da70ec5b71a3f5f3b80b4df60ed36beb31b2c1927,../assets/mockups/CAB-04.jpg
-CAB-05,Сборка токена,Личный кабинет/04_02_Compile.jpg,/app/compile/,1496,1200,5b29e101c033946b9bf5b9be95a48c29f57f8ad330b21aa2f7b889a9bffd64a2,../assets/mockups/CAB-05.jpg
-CAB-06,Продажа,Личный кабинет/05_01_Sell.jpg,/app/sell/,1496,948,e4509959694cdb948ef78ac3296925b1ced30e5d33e238890d9f1822feb3cafe,../assets/mockups/CAB-06.jpg
-CAB-07,Разборка токена,Личный кабинет/05_02_Unmake.jpg,/app/unmake/,1496,1270,14d2d05610a48b624fc792cc4dadd2511bc0e4e3d76cca99eb74fde931a56cde,../assets/mockups/CAB-07.jpg
-CAB-08,История состава,Личный кабинет/06_History.jpg,/app/history/,1496,1034,776b74f71dbfd50f3cf8ec308892ebf99ba056ceb5b1b78bbdbf66e5117f5695,../assets/mockups/CAB-08.jpg
-CAB-09,Держатели,Личный кабинет/07_Holders.jpg,/app/holders/,1496,1368,b6b2188bbeec3244c1792ebfc47587fa1c955b702891ff6adc0224873d0394e0,../assets/mockups/CAB-09.jpg
+ID,Title,Source,Route,Width,Height,SHA256,CanonicalImage,Status,Replacement
+PUB-01,Главная,Сайт/01_home.jpg,/,1680,2626,0a348dba3f89dc5b09bc0931cf6bbd210756e57e861c5f5f971b8cb2e779e915,../assets/mockups/PUB-01.jpg,active,
+PUB-03,Страница индекса,Сайт/01_index.jpg,/index/tbci-20-balance/,1680,4100,f01383ce9e3a1d1088ab6ea62a4d340d2504d36040c9ea480dfb268a7569e9cf,../assets/mockups/PUB-03.jpg,active,
+PUB-06,Каталог монет,Сайт/02_01_coins_all.jpg,/coins/,1680,1358,24c83683f1e2ec40f87a85fd0d3d7b8e594a4c10e36c425fbf6d0039f5231e3b,../assets/mockups/PUB-06.jpg,active,
+PUB-07,Монета: Overview,Сайт/02_02_coins_overview.jpg,/coins/bitcoin/,1680,1933,30403379219f130393f6fd34be040aee531c554d7db56463757ef6519d04170c,../assets/mockups/PUB-07.jpg,active,
+PUB-08,Монета: Charts,Сайт/02_03_coins_charts.jpg,/coins/bitcoin/charts/,1680,1933,066cd67bdd20de3e844a58b3efc0cc2dd3c46c3b9665623eb6aa638cae8bc0e8,../assets/mockups/PUB-08.jpg,active,
+PUB-09,Монета: Historical price,Сайт/02_04_coins_Historical_price.jpg,/coins/bitcoin/historical-price/,1680,1933,a2cefb41c6887403732b91e8e43c2c68b892bae2c951db60013407ea4da7c6fe,../assets/mockups/PUB-09.jpg,active,
+PUB-10,Монета: Markets,Сайт/02_05_coins_Markets.jpg,/coins/bitcoin/markets/,1680,1933,c6993bd3dfb9b958cf2303a88b46dcab9ab7fcd99c5f5b46c95b24681d1ff9e4,../assets/mockups/PUB-10.jpg,active,
+PUB-11,Монета: News,Сайт/02_06_coins_News.jpg,/coins/bitcoin/news/,1680,1933,51a07d891c3e8605989c1d305d4c454a78325a2d50fe896930eff5813f72d346,../assets/mockups/PUB-11.jpg,active,
+PUB-04,Каталог бирж,Сайт/03_01_exchange.jpg,/exchanges/,1680,1600,050b69127b17ab4daeb689bd33e812c800c42b6f41c383d0f4b771b7f4eb9a96,../assets/mockups/PUB-04.jpg,active,
+PUB-05,Страница биржи,Сайт/03_02_exchange_overview.jpg,/exchanges/huobi/,1680,1697,5291e88608c44b28361fe9080d4eb6d923f86f02555163c7118a4e8d853346af,../assets/mockups/PUB-05.jpg,active,
+PUB-13,Лента новостей,Сайт/04__01_news.jpg,/news/,1680,2785,ed8f91acca59b88554f76786cd9b4d98c03de47282bf142f75dffb8633264fb0,../assets/mockups/PUB-13.jpg,active,
+PUB-14,Статья,Сайт/04_02_news_detal.jpg,/news/huobi-stablecoin/,1680,2073,c5bc51e04e9cbc24e4e06069333f8b0f8da337fff24a5e3af3f8b0818a326cda,../assets/mockups/PUB-14.jpg,active,
+CAB-01,Мои кошельки,Личный кабинет/01_Wallet.jpg,/app/wallets/,1496,2550,512beb0d16a3ff8b7ade1c655df3e8a3753dcafc4361be891d1061b68e93f346,../assets/mockups/CAB-01.jpg,active_updated,
+CAB-02,Выбор индекса,Личный кабинет/02 - Choice index.jpg,/app/indices/,1496,996,8aadf0a65ce966f0d1c1a030e9112746e5bedf87abd5d08dbb6e9e050dcd58a7,../assets/mockups/CAB-02.jpg,active,
+CAB-03,Обзор выбранного индекса,Личный кабинет/03_Overview.jpg,/app/,1496,2248,d700c3b82b454e46b45bc103a103125c5d45c1ab2a02ebf24abbd4e76f693d1a,../assets/mockups/CAB-03.jpg,active_updated,
+CAB-04,Покупка,Личный кабинет/04_01_Buy.jpg,/app/buy/,1496,948,3b3299aca9ae9fca3e50b95da70ec5b71a3f5f3b80b4df60ed36beb31b2c1927,../assets/mockups/CAB-04.jpg,replaced_by_inline_dialog,/app/?trade=buy
+CAB-05,Сборка токена,Личный кабинет/04_02_Compile.jpg,/app/compile/,1496,1200,5b29e101c033946b9bf5b9be95a48c29f57f8ad330b21aa2f7b889a9bffd64a2,../assets/mockups/CAB-05.jpg,active,
+CAB-06,Продажа,Личный кабинет/05_01_Sell.jpg,/app/sell/,1496,948,e4509959694cdb948ef78ac3296925b1ced30e5d33e238890d9f1822feb3cafe,../assets/mockups/CAB-06.jpg,replaced_by_inline_dialog,/app/?trade=sell
+CAB-07,Разборка токена,Личный кабинет/05_02_Unmake.jpg,/app/unmake/,1496,1270,14d2d05610a48b624fc792cc4dadd2511bc0e4e3d76cca99eb74fde931a56cde,../assets/mockups/CAB-07.jpg,active,
+CAB-08,История состава,Личный кабинет/06_History.jpg,/app/history/,1496,1034,776b74f71dbfd50f3cf8ec308892ebf99ba056ceb5b1b78bbdbf66e5117f5695,../assets/mockups/CAB-08.jpg,active,
+CAB-09,Держатели,Личный кабинет/07_Holders.jpg,/app/holders/,1496,1368,b6b2188bbeec3244c1792ebfc47587fa1c955b702891ff6adc0224873d0394e0,../assets/mockups/CAB-09.jpg,active,

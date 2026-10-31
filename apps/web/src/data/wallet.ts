@@ -203,6 +203,8 @@ export type Preferences = {
   currency: string;
   timezone: string;
   hideSmallBalances: boolean;
+  hideZeroBalances: boolean;
+  hideBalances: boolean;
   notifications: {
     deposit: boolean;
     withdraw: boolean;
@@ -231,6 +233,8 @@ export const defaultPreferences: Preferences = {
   currency: "USD",
   timezone: "UTC",
   hideSmallBalances: false,
+  hideZeroBalances: false,
+  hideBalances: false,
   notifications: {
     deposit: true,
     withdraw: true,

@@ -1,0 +1,4 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Sell index — My Wallet" account><main class="legacy-trade-redirect"><h1>Sell index in My Wallet</h1><p>Index trading has moved into your portfolio.</p><a href="/app/?trade=sell">Continue to My Wallet</a></main><script>location.replace('/app/?trade=sell'+(location.search.includes('index=')?'&'+location.search.slice(1):''));</script></Base>

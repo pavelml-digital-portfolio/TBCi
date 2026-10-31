@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';import Account,{type Section} from '../../components/Account';
-export function getStaticPaths(){return ['wallets','indices','buy','compile','sell','unmake','history','holders','settings','help'].map(section=>({params:{section},props:{section:section as Section}}))}
+export function getStaticPaths(){return ['wallets','indices','compile','unmake','history','holders','settings','help'].map(section=>({params:{section},props:{section:section as Section}}))}
 const {section}=Astro.props;
 ---
 <Base title={`${section} — TBCi`} account><Account client:only="react" section={section}><div slot="fallback" class="loading-shell">Loading account…</div></Account></Base>

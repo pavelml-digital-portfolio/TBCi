@@ -1,3 +1,4 @@
+import { indexBasket } from "../data/portfolio";
 import UiIcon from "./UiIcon";
 import { ExchangeVolumeChart } from "./TradingChart";
 import IcoCalendar from "./IcoCalendar";
@@ -494,10 +495,16 @@ function MarketHero({
             </div>
             {type === "index" ? (
               <div className="inline-actions">
-                <a className="button primary" href="/app/buy/">
+                <a
+                  className="button primary"
+                  href={"/app/?trade=buy&index=" + slug}
+                >
                   Buy TBCi
                 </a>
-                <a className="button dark" href="/app/sell/">
+                <a
+                  className="button dark"
+                  href={"/app/?trade=sell&index=" + slug}
+                >
                   Sell
                 </a>
               </div>
@@ -628,7 +635,7 @@ function IndexPage({ slug }: { slug: string }) {
               Capitalization size = min $0.3 bln.
             </strong>
           </p>
-          <CurrencyTable composition />
+          <CurrencyTable composition compositionIndex={slug} />
           <p className="exclusion-note">
             Note: The TBC 20 Crypto Index deliberately excludes cryptocurrencies
             standing for any fiat currencies (USDT), exchange services and
@@ -716,7 +723,10 @@ function IndexPage({ slug }: { slug: string }) {
                 </tbody>
               </table>
               <div className="center-action">
-                <a className="button primary" href="/app/buy/">
+                <a
+                  className="button primary"
+                  href={"/app/?trade=buy&index=" + slug}
+                >
                   Buy TBCi
                 </a>
               </div>
@@ -741,7 +751,13 @@ function IndexPage({ slug }: { slug: string }) {
   );
 }
 
-function CurrencyTable({ composition = false }: { composition?: boolean }) {
+function CurrencyTable({
+  composition = false,
+  compositionIndex = "tbci-20-stable",
+}: {
+  composition?: boolean;
+  compositionIndex?: string;
+}) {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("rank");
   const [type, setType] = useState("coins");
@@ -795,7 +811,9 @@ function CurrencyTable({ composition = false }: { composition?: boolean }) {
     "LINK",
     "ZEC",
   ];
-  let rows = (composition ? basket : order.map(coin)).filter(
+  let rows = (
+    composition ? indexBasket(compositionIndex) : order.map(coin)
+  ).filter(
     (a, i) =>
       (a.name + " " + a.symbol).toLowerCase().includes(query.toLowerCase()) &&
       (!onlyWatch || watch.includes(a.symbol)) &&
@@ -942,7 +960,7 @@ function CurrencyTable({ composition = false }: { composition?: boolean }) {
                     <td>{money(110117709712 / (i + 1), 0)}</td>
                     <td>
                       <div className="volume-cell">
-                        <span>{a.weight}%</span>
+                        <span>{number(a.weight, 2)}%</span>
                         <i
                           style={{
                             background: a.color,

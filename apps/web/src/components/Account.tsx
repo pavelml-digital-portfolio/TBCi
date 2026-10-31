@@ -1,18 +1,17 @@
-import ActivityChart from "./ActivityChart";
+import MyWallet from "./MyWallet";
+import InternalWallet from "./InternalWallet";
+import { indexBasket, allIndices } from "../data/portfolio";
 import { faqs } from "../data/faq";
 import { VerificationAllowance } from "./Verification";
 import UiIcon from "./UiIcon";
 import AccountSettings from "./AccountSettings";
-import { IndexNotes } from "./MarketContent";
 import { profiles, marketStats } from "../data/market";
 import { useState } from "react";
 import {
-  assets,
-  basket,
   walletSymbols,
   coin,
+  basket,
   findIndex,
-  indexChoices,
   TOKEN_PRICE,
   money,
   number,
@@ -21,13 +20,9 @@ import { DemoProvider, useDemo } from "./DemoContext";
 import {
   Wordmark,
   AssetLabel,
-  CryptoIcon,
   TransferIcon,
   Sparkline,
   CurrencyButtons,
-  Chart,
-  Composition,
-  Methodology,
   Modal,
   Funding,
 } from "./Primitives";
@@ -44,9 +39,9 @@ export type Section =
   | "settings"
   | "help";
 const pages: Record<Section, string> = {
-  overview: "Overview",
-  wallets: "My Wallets",
-  indices: "Choice index",
+  overview: "My Wallet",
+  wallets: "Wallet",
+  indices: "Explore indices",
   buy: "Buy",
   compile: "Compile",
   sell: "Sell",
@@ -70,7 +65,11 @@ const refs: Record<Section, string> = {
   help: "NAV-FAQ",
 };
 const href = (section: Section) =>
-  section === "overview" ? "/app/" : "/app/" + section + "/";
+  section === "overview"
+    ? "/app/"
+    : section === "buy" || section === "sell"
+      ? "/app/?trade=" + section
+      : "/app/" + section + "/";
 function TokenSummary() {
   const { state } = useDemo();
   const selected = findIndex(state.selectedIndex);
@@ -127,483 +126,11 @@ function TokenSummary() {
     </section>
   );
 }
-function Profits() {
-  const { state } = useDemo();
-  const performance = marketStats(state.selectedIndex);
-  const profit = (50000 * performance.returnPct) / 100;
-  const [profitDetail, setProfitDetail] = useState(false);
-  const [currency, setCurrency] = useState(state.preferences.currency);
-  return (
-    <div className="profit-grid">
-      <section className="profit-card raised">
-        <div>
-          <h2>Total Profit</h2>
-          <p className="subtle">1 Jan 2018 – 31 Dec 2018 · model return</p>
-          <strong className="profit-number">
-            {currency === "USD"
-              ? money(profit, 0)
-              : number(profit / coin(currency).price) + " " + currency}
-          </strong>
-          <CurrencyButtons value={currency} onChange={setCurrency} />
-        </div>
-        <button
-          type="button"
-          className="profit-circle"
-          aria-label="Inspect model profit"
-          aria-expanded={profitDetail}
-          onClick={() => setProfitDetail(!profitDetail)}
-        >
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <circle
-              cx="60"
-              cy="60"
-              r="54"
-              fill="none"
-              stroke="#d6dfe5"
-              strokeWidth="3"
-            />
-            <circle
-              cx="60"
-              cy="60"
-              r="54"
-              fill="none"
-              stroke="#218eff"
-              strokeWidth="3"
-              strokeDasharray={
-                Math.min(100, Math.abs(performance.returnPct)) * 3.393 + " 340"
-              }
-              transform="rotate(-90 60 60)"
-            />
-          </svg>
-          <div>
-            <strong
-              className={performance.returnPct >= 0 ? "positive" : "negative"}
-            >
-              {number(performance.returnPct, 1)}%
-            </strong>
-            <small>
-              {profitDetail
-                ? "$50,000 starting model · " +
-                  money(50000 + profit, 0) +
-                  " ending value"
-                : "2018 sample return · select for details"}
-            </small>
-          </div>
-        </button>
-      </section>
-      <ActivityChart />
-    </div>
-  );
-}
-function WalletTable() {
-  const { state, addWallet } = useDemo();
-  const [fund, setFund] = useState<{
-    symbol: string;
-    withdraw: boolean;
-  } | null>(null);
-  const [add, setAdd] = useState(false);
-  const [currency, setCurrency] = useState(state.preferences.currency);
-  const [sort, setSort] = useState("default");
-  const [newSymbol, setNewSymbol] = useState("IOTA");
-  let rows = [...new Set([...walletSymbols, ...state.addedWallets])]
-    .map(coin)
-    .filter(
-      (a) =>
-        !state.preferences.hideSmallBalances ||
-        state.balances[a.symbol] * a.price >= 1,
-    );
-  if (sort === "balance")
-    rows = rows.sort(
-      (a, b) =>
-        state.balances[b.symbol] * b.price - state.balances[a.symbol] * a.price,
-    );
-  if (sort === "name") rows = rows.sort((a, b) => a.name.localeCompare(b.name));
-  const total = assets
-    .filter((a) => a.symbol !== "TBCi")
-    .reduce((s, a) => s + state.balances[a.symbol] * a.price, 0);
-  return (
-    <section className="wallet-table-section">
-      <div className="section-row">
-        <h2>Your wallets balance</h2>
-        <label>
-          Currency equivalent{" "}
-          <select
-            aria-label="Wallet equivalent currency"
-            value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
-          >
-            <option>USD</option>
-            <option>BTC</option>
-            <option>ETH</option>
-          </select>
-        </label>
-      </div>
-      <div className="table-scroll">
-        <table className="wallet-table">
-          <thead>
-            <tr>
-              <th>
-                <button
-                  onClick={() => setSort(sort === "name" ? "default" : "name")}
-                >
-                  Currency ↕
-                </button>
-              </th>
-              <th>Volume ↕</th>
-              <th>
-                <button
-                  onClick={() =>
-                    setSort(sort === "balance" ? "default" : "balance")
-                  }
-                >
-                  Balance ↕
-                </button>
-              </th>
-              <th>Equivalent {currency}</th>
-              <th>Deposit</th>
-              <th>Withdraw</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((a) => (
-              <tr key={a.symbol}>
-                <td>
-                  <AssetLabel symbol={a.symbol} />
-                </td>
-                <td>
-                  <div className="volume-cell">
-                    <span>
-                      {number(
-                        ((state.balances[a.symbol] * a.price) / total) * 100,
-                        2,
-                      )}
-                      %
-                    </span>
-                    <i
-                      style={{
-                        background: a.color,
-                        width:
-                          Math.min(
-                            100,
-                            ((state.balances[a.symbol] * a.price) / total) *
-                              300,
-                          ) + "%",
-                      }}
-                    />
-                  </div>
-                </td>
-                <td>
-                  {number(state.balances[a.symbol])} {a.symbol}
-                </td>
-                <td>
-                  {currency === "USD"
-                    ? money(state.balances[a.symbol] * a.price)
-                    : number(
-                        (state.balances[a.symbol] * a.price) /
-                          coin(currency).price,
-                      ) +
-                      " " +
-                      currency}
-                </td>
-                <td>
-                  <button
-                    className="transfer-button"
-                    aria-label={"Deposit " + a.symbol}
-                    onClick={() =>
-                      setFund({ symbol: a.symbol, withdraw: false })
-                    }
-                  >
-                    <TransferIcon />
-                    <span>Deposit</span>
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="transfer-button"
-                    aria-label={"Withdraw " + a.symbol}
-                    onClick={() =>
-                      setFund({ symbol: a.symbol, withdraw: true })
-                    }
-                  >
-                    <TransferIcon out />
-                    <span>Withdraw</span>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <button
-        className="button primary add-currency"
-        onClick={() => setAdd(true)}
-      >
-        Add currency &nbsp; +
-      </button>
-      {fund && <Funding {...fund} onClose={() => setFund(null)} />}{" "}
-      {add && (
-        <Modal title="Add currency" onClose={() => setAdd(false)}>
-          <label htmlFor="new-currency">Currency</label>
-          <select
-            id="new-currency"
-            value={newSymbol}
-            onChange={(e) => setNewSymbol(e.target.value)}
-          >
-            {assets
-              .filter(
-                (a) =>
-                  a.symbol !== "TBCi" &&
-                  !rows.some((r) => r.symbol === a.symbol),
-              )
-              .map((a) => (
-                <option key={a.symbol} value={a.symbol}>
-                  {a.name} ({a.symbol})
-                </option>
-              ))}
-          </select>
-          <div className="modal-actions">
-            <button className="button" onClick={() => setAdd(false)}>
-              Cancel
-            </button>
-            <button
-              className="button primary"
-              onClick={() => {
-                addWallet(newSymbol);
-                setAdd(false);
-              }}
-            >
-              Add wallet
-            </button>
-          </div>
-        </Modal>
-      )}
-    </section>
-  );
-}
-function RecentActivity() {
-  const { state } = useDemo();
-  const [kind, setKind] = useState("All");
-  const samples = [
-    {
-      id: "sample-1",
-      type: "buy",
-      symbol: "TBCi",
-      amount: 12,
-      value: 473.49,
-      date: "2018-12-28T14:21:00Z",
-    },
-    {
-      id: "sample-2",
-      type: "deposit",
-      symbol: "ETH",
-      amount: 1.25,
-      value: 260.125,
-      date: "2018-12-22T09:40:00Z",
-    },
-    {
-      id: "sample-3",
-      type: "compile",
-      symbol: "TBCi",
-      amount: 8,
-      value: 315.66,
-      date: "2018-12-18T11:12:00Z",
-    },
-    {
-      id: "sample-4",
-      type: "sell",
-      symbol: "TBCi",
-      amount: 3,
-      value: 118.37,
-      date: "2018-12-14T16:33:00Z",
-    },
-    {
-      id: "sample-5",
-      type: "withdraw",
-      symbol: "BTC",
-      amount: 0.05,
-      value: 316.69,
-      date: "2018-12-10T10:07:00Z",
-    },
-  ];
-  const rows = [...state.operations, ...samples]
-    .filter((r) => kind === "All" || r.type === kind.toLowerCase())
-    .slice(0, 8);
-  return (
-    <section className="recent-activity">
-      <div className="section-row">
-        <h2>Recent activity</h2>
-        <select
-          aria-label="Activity type"
-          value={kind}
-          onChange={(e) => setKind(e.target.value)}
-        >
-          {["All", "Buy", "Sell", "Compile", "Deposit", "Withdraw"].map((v) => (
-            <option key={v}>{v}</option>
-          ))}
-        </select>
-      </div>
-      <p className="section-intro">
-        Local demo actions and illustrative 2018 activity. Archive samples do
-        not change your available balance.
-      </p>
-      <div className="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              {[
-                "Date / UTC",
-                "Operation",
-                "Amount",
-                "Equivalent",
-                "Status",
-              ].map((v) => (
-                <th key={v}>{v}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr key={r.id}>
-                <td>
-                  {new Date(r.date).toLocaleDateString("en-GB", {
-                    timeZone: "UTC",
-                  })}
-                  <small>
-                    {r.id.startsWith("sample")
-                      ? "2018 archive sample"
-                      : "Local demo operation"}
-                  </small>
-                </td>
-                <td>{r.type.charAt(0).toUpperCase() + r.type.slice(1)}</td>
-                <td>
-                  {number(r.amount)} {r.symbol}
-                </td>
-                <td>{money(r.value)}</td>
-                <td>
-                  <span className="activity-status">Completed</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
-}
-function Wallets() {
-  const { state } = useDemo();
-  const [currency, setCurrency] = useState(state.preferences.currency);
-  const total = assets
-    .filter((a) => a.symbol !== "TBCi")
-    .reduce((s, a) => s + state.balances[a.symbol] * a.price, 0);
-  return (
-    <>
-      <div className="wallet-summary-grid">
-        <section className="wallet-summary raised">
-          <div className="section-row">
-            <h2>Total available</h2>
-            <small className="subtle">
-              24 hour change
-              <br />
-              October 22, 2018 09:42 PM UTC
-            </small>
-          </div>
-          <div className="wallet-summary-number">
-            <strong>
-              {currency === "USD"
-                ? money(total, 0)
-                : number(total / coin(currency).price) + " " + currency}
-            </strong>
-            <Sparkline instrument="portfolio" />
-          </div>
-          <div className="section-row">
-            <CurrencyButtons value={currency} onChange={setCurrency} />
-            <span className="positive">▲ 1.468 &nbsp; +2,11%</span>
-          </div>
-        </section>
-        <section className="wallet-summary raised">
-          <div className="section-row">
-            <h2>{findIndex(state.selectedIndex).name}</h2>
-            <a className="button small" href="/app/indices/">
-              Choice index <UiIcon name="chevron-down" />
-            </a>
-          </div>
-          <div className="wallet-summary-number">
-            <strong>
-              {number(state.balances.TBCi)} <small>TBCi</small>
-            </strong>
-            <Sparkline instrument={state.selectedIndex} />
-          </div>
-          <div className="section-row">
-            <div className="inline-actions">
-              <a className="button primary" href="/app/buy/">
-                Buy
-              </a>
-              <a className="button" href="/app/sell/">
-                Sell
-              </a>
-            </div>
-            <span>
-              <b className="blue">
-                {number(findIndex(state.selectedIndex).points)}
-              </b>{" "}
-              <span
-                className={
-                  findIndex(state.selectedIndex).change >= 0
-                    ? "positive"
-                    : "negative"
-                }
-              >
-                {findIndex(state.selectedIndex).change > 0 ? "+" : ""}
-                {findIndex(state.selectedIndex).change}%
-              </span>
-            </span>
-          </div>
-        </section>
-      </div>
-      <section className="balance-chart">
-        <h2>Total available</h2>
-        <Chart height={360} instrument="portfolio" />
-      </section>
-      <Profits />
-      <section className="composition-section">
-        <h2>Total Balance Composition</h2>
-        <Composition
-          wallet
-          total={total}
-          balances={state.balances}
-          indexId={state.selectedIndex}
-        />
-      </section>
-      <WalletTable />
-      <RecentActivity />
-    </>
-  );
-}
-function Overview() {
-  const { state } = useDemo();
-  return (
-    <>
-      <TokenSummary />
-      <section className="overview-chart">
-        <Chart multi height={400} instrument={state.selectedIndex} />
-        <IndexNotes id={state.selectedIndex} />
-      </section>
-      <Profits />
-      <section className="composition-section">
-        <h2>{findIndex(state.selectedIndex).name} Composition</h2>
-        <Composition indexId={state.selectedIndex} />
-      </section>
-      <RecentActivity />
-      <Methodology />
-    </>
-  );
-}
 function Choices() {
   const { state, selectIndex } = useDemo();
   const [currency, setCurrency] = useState(state.preferences.currency);
   const [sort, setSort] = useState("default");
-  const choices = [...indexChoices].sort((a, b) =>
+  const choices = [...allIndices].sort((a, b) =>
     sort === "price"
       ? b.price - a.price
       : sort === "growth"
@@ -612,7 +139,12 @@ function Choices() {
   );
   const choose = (id: string, destination: Section) => {
     selectIndex(id);
-    location.href = href(destination);
+    location.href =
+      destination === "buy" || destination === "sell"
+        ? "/app/?trade=" + destination + "&index=" + id
+        : destination === "overview"
+          ? "/app/?focus=" + id
+          : href(destination);
   };
   return (
     <>
@@ -677,7 +209,7 @@ function Choices() {
                 className="button small"
                 onClick={() => choose(a.id, "overview")}
               >
-                Overview
+                My Wallet
               </button>
               <button
                 className="button small"
@@ -753,147 +285,6 @@ function Amount({
     </div>
   );
 }
-function Trade({ sell = false }: { sell?: boolean }) {
-  const { state, trade, notify } = useDemo();
-  const [payment, setPayment] = useState(sell ? "ETH" : "USD");
-  const [amount, setAmount] = useState(
-    sell ? String(Math.min(1000, state.balances.TBCi)) : "10",
-  );
-  const [confirm, setConfirm] = useState(false);
-  const [error, setError] = useState("");
-  const q = Number(amount);
-  const value = q * findIndex(state.selectedIndex).price;
-  const cost = (value * (sell ? 0.995 : 1.005)) / coin(payment).price;
-  const action = sell ? "Sell" : "Buy";
-  return (
-    <>
-      <TokenSummary />
-      <VerificationAllowance />
-      <section className="payment-section">
-        <h2>{sell ? "Select currency wallet" : "Select method payment"}</h2>
-        <div className="payment-methods">
-          {["BTC", "ETH", "USD", "XRP", "EOS", "LTC"].map((symbol) => (
-            <button
-              key={symbol}
-              className="payment-method"
-              aria-pressed={payment === symbol}
-              onClick={() => {
-                setPayment(symbol);
-                setError("");
-              }}
-            >
-              <span className="payment-coin">
-                <CryptoIcon symbol={symbol} size={38} />
-                {payment === symbol && <span className="chosen-check">✓</span>}
-              </span>
-              {payment === symbol && (
-                <small className="chosen-label">CHOICED</small>
-              )}
-              <strong>
-                {symbol === "USD"
-                  ? money(state.balances.USD)
-                  : number(state.balances[symbol]) + " " + symbol}
-              </strong>
-              <small>{symbol === "XRP" ? "XRP" : coin(symbol).name}</small>
-            </button>
-          ))}
-        </div>
-      </section>
-      <section className="amount-section">
-        <h2>{sell ? "How much to sell?" : "How much to buy?"}</h2>
-        <div className="trade-calculation">
-          {sell && (
-            <div className="total-balance">
-              <span>TOTAL BALANCE</span>
-              <strong>
-                {number(state.balances.TBCi)} <small>TBCi</small>
-              </strong>
-            </div>
-          )}
-          <Amount
-            value={amount}
-            onChange={(v) => {
-              setAmount(v);
-              setError("");
-            }}
-          />
-          <div className="commission-box">
-            <span>COMMISSION 0.5%</span>
-            <strong className="negative">
-              {money((Number.isFinite(value) ? value : 0) * 0.005, 3)}
-            </strong>
-          </div>
-          <span className="calculation-arrow">›</span>
-          <div className="total-cost">
-            <span>TOTAL COST</span>
-            <strong>
-              {payment === "USD" ? "$ " : ""}
-              {number(Number.isFinite(cost) ? cost : 0, 3)}{" "}
-              {payment !== "USD" && <small>{payment}</small>}
-            </strong>
-          </div>
-          <button
-            className="button primary trade-submit"
-            disabled={!Number.isFinite(q) || q <= 0}
-            onClick={() => {
-              setError("");
-              setConfirm(true);
-            }}
-          >
-            {action} &nbsp; ›
-          </button>
-        </div>
-        <p className="update-note">
-          ⟳ &nbsp; Update: Oct 22, 2018 09:42 PM UTC
-        </p>
-      </section>
-      {confirm && (
-        <Modal
-          title={"Confirm " + action.toLowerCase()}
-          onClose={() => setConfirm(false)}
-        >
-          <p className="demo-note">
-            Demo operation. No actual payment or blockchain transaction.
-          </p>
-          <dl className="confirmation-values">
-            <dt>Amount</dt>
-            <dd>{number(q)} TBCi</dd>
-            <dt>{sell ? "You receive" : "Total cost"}</dt>
-            <dd>
-              {number(cost, 6)} {payment}
-            </dd>
-            <dt>Commission</dt>
-            <dd>0.5%</dd>
-          </dl>
-          {error && (
-            <p className="error" role="alert">
-              {error}
-            </p>
-          )}
-          <div className="modal-actions">
-            <button className="button" onClick={() => setConfirm(false)}>
-              Cancel
-            </button>
-            <button
-              className="button primary"
-              onClick={() => {
-                const failure = trade(sell ? "sell" : "buy", q, payment);
-                if (failure) {
-                  setError(failure);
-                  return;
-                }
-                notify("Demo " + action.toLowerCase() + " completed.");
-                setConfirm(false);
-              }}
-            >
-              Confirm {action.toLowerCase()}
-            </button>
-          </div>
-        </Modal>
-      )}
-    </>
-  );
-}
 function Compile({ unmake = false }: { unmake?: boolean }) {
   const { state, trade, redeem, notify } = useDemo();
   const active =
@@ -911,7 +302,11 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
   const [fund, setFund] = useState<string | null>(null);
   const q = Number(amount);
   const valid = Number.isFinite(q) && q > 0;
-  const rows = basket.map((a) => ({
+  const rows = (
+    active
+      ? basket.filter((a) => Object.hasOwn(active.remaining, a.symbol))
+      : indexBasket(state.selectedIndex)
+  ).map((a) => ({
     ...a,
     required:
       (((valid ? q : 0) * findIndex(state.selectedIndex).price * a.weight) /
@@ -998,10 +393,7 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
             </tr>
           </thead>
           <tbody>
-            {(expanded
-              ? rows
-              : walletSymbols.map((s) => rows.find((a) => a.symbol === s)!)
-            ).map((a) => (
+            {(expanded ? rows : rows.slice(0, 10)).map((a) => (
               <tr key={a.symbol}>
                 <td>
                   <AssetLabel symbol={a.symbol} />
@@ -1434,13 +826,13 @@ function Help() {
 function Content({ section }: { section: Section }) {
   switch (section) {
     case "wallets":
-      return <Wallets />;
+      return <InternalWallet />;
     case "indices":
       return <Choices />;
     case "buy":
-      return <Trade />;
+      return <MyWallet />;
     case "sell":
-      return <Trade sell />;
+      return <MyWallet />;
     case "compile":
       return <Compile />;
     case "unmake":
@@ -1454,21 +846,22 @@ function Content({ section }: { section: Section }) {
     case "help":
       return <Help />;
     default:
-      return <Overview />;
+      return <MyWallet />;
   }
 }
 function Shell({ section }: { section: Section }) {
   const { state, message, dismiss } = useDemo();
   const [menu, setMenu] = useState(false);
-  const indexed = !["wallets", "indices", "settings", "help"].includes(section);
+  const indexed = ["compile", "unmake", "history", "holders"].includes(section);
   const title =
     pages[section] + (indexed ? " " + findIndex(state.selectedIndex).name : "");
   const active =
-    section === "indices"
+    section === "compile" ||
+    section === "unmake" ||
+    section === "buy" ||
+    section === "sell"
       ? "overview"
-      : section === "compile" || section === "unmake"
-        ? "buy"
-        : section;
+      : section;
   return (
     <div
       className={"account-shell account-" + section}
@@ -1483,7 +876,7 @@ function Shell({ section }: { section: Section }) {
           aria-label="Toggle account navigation"
           aria-expanded={menu}
         >
-          ☰
+          <UiIcon name="menu" />
         </button>
       </div>
       {menu && (
@@ -1518,8 +911,7 @@ function Shell({ section }: { section: Section }) {
             [
               "overview",
               "wallets",
-              "buy",
-              "sell",
+              "indices",
               "history",
               "holders",
               "settings",
@@ -1532,13 +924,13 @@ function Shell({ section }: { section: Section }) {
               href={href(s)}
               aria-current={active === s ? "page" : undefined}
             >
-              {s === "wallets"
-                ? "My wallet"
-                : s === "buy"
-                  ? "Buy index"
-                  : s === "sell"
-                    ? "Sell index"
-                    : pages[s]}
+              {pages[s]}
+              {s === "overview" && (
+                <small className="nav-description">Index portfolio</small>
+              )}
+              {s === "wallets" && (
+                <small className="nav-description">Assets & transfers</small>
+              )}
             </a>
           ))}
         </nav>

@@ -5,6 +5,8 @@ const stored = (page: Page) =>
   );
 const open = async (page: Page, path: string) => {
   await page.goto(path);
+  if (/\/app\/(buy|sell)\//.test(path))
+    await page.waitForURL((url) => url.pathname === "/app/");
   await page.locator("h1").waitFor();
   await expect(page.locator("astro-island[ssr]")).toHaveCount(0);
 };
@@ -25,14 +27,12 @@ const refs: [string, string][] = [
   ["/app/wallets/", "CAB-01"],
   ["/app/indices/", "CAB-02"],
   ["/app/", "CAB-03"],
-  ["/app/buy/", "CAB-04"],
   ["/app/compile/", "CAB-05"],
-  ["/app/sell/", "CAB-06"],
   ["/app/unmake/", "CAB-07"],
   ["/app/history/", "CAB-08"],
   ["/app/holders/", "CAB-09"],
 ];
-test("21 source screens load without runtime errors and keep noindex", async ({
+test("19 active reference screens load without runtime errors and keep noindex", async ({
   page,
 }) => {
   test.setTimeout(90000);
@@ -66,7 +66,7 @@ test("source landing sections, composition expansion, direct login and demo news
   await page.getByRole("link", { name: "Login", exact: true }).click();
   await expect(page).toHaveURL(/\/app\/$/);
   await expect(
-    page.getByRole("heading", { name: "Overview TBCi-20 Stable", exact: true }),
+    page.getByRole("heading", { name: "My Wallet", exact: true }),
   ).toBeVisible();
   await expect(page.locator("input[type=password]")).toHaveCount(0);
 });
@@ -179,26 +179,24 @@ test("exchange filters and news categories change the original tables and cards"
 test("buy checks funds and debits the correct fee once", async ({ page }) => {
   await open(page, "/app/buy/");
   await page.getByLabel("Amount TBCi", { exact: true }).fill("200");
-  await page.getByRole("button", { name: /^Buy/ }).click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Confirm buy", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Review buy", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("Insufficient USD");
-  await page.getByRole("button", { name: "Close dialog" }).click();
   await page.getByLabel("Amount TBCi", { exact: true }).fill("-1");
-  await expect(page.getByRole("button", { name: /^Buy/ })).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Review buy", exact: true }),
+  ).toBeDisabled();
   await page.getByLabel("Amount TBCi", { exact: true }).fill("1");
-  await page.getByRole("button", { name: /^Buy/ }).click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Confirm buy", exact: true })
-    .click();
-  await expect.poll(async () => (await stored(page)).balances.TBCi).toBe(2354);
+  await page.getByRole("button", { name: "Review buy", exact: true }).click();
+  await page.getByRole("button", { name: "Confirm buy", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Purchase completed", exact: true }),
+  ).toBeVisible();
+  expect((await stored(page)).tokenBalances["tbci-20-stable"]).toBe(2354);
   expect((await stored(page)).balances.USD).toBeCloseTo(
     5400.44 - price * 1.005,
     6,
   );
+  await page.getByRole("button", { name: "Done", exact: true }).click();
   await page.reload();
   await page.locator("h1").waitFor();
   expect((await stored(page)).operations).toHaveLength(1);
@@ -208,15 +206,16 @@ test("sell uses the selected receiving wallet and net fee", async ({
 }) => {
   await open(page, "/app/sell/");
   const before = await stored(page);
+  await page.getByLabel("Receive in", { exact: true }).selectOption("BTC");
   await page.getByLabel("Amount TBCi", { exact: true }).fill("2");
-  await page.getByRole("button", { name: /^Sell/ }).click();
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Confirm sell", exact: true })
-    .click();
-  await expect.poll(async () => (await stored(page)).balances.TBCi).toBe(2351);
-  expect((await stored(page)).balances.ETH).toBeCloseTo(
-    before.balances.ETH + (2 * price * 0.995) / 208.1,
+  await page.getByRole("button", { name: "Review sell", exact: true }).click();
+  await page.getByRole("button", { name: "Confirm sell", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Sale completed", exact: true }),
+  ).toBeVisible();
+  expect((await stored(page)).tokenBalances["tbci-20-stable"]).toBe(2351);
+  expect((await stored(page)).balances.BTC).toBeCloseTo(
+    before.balances.BTC + (2 * price * 0.995) / 6333.75,
     7,
   );
 });
@@ -279,7 +278,7 @@ test("unmake withdraws individual claims without burning tokens twice, including
     before.balances.ETH,
   );
 });
-test("wallet deposit, withdrawal, added wallet and persisted index selection", async ({
+test("wallet deposit, withdrawal, complete asset list and multi-index portfolio", async ({
   page,
 }) => {
   await open(page, "/app/wallets/");
@@ -317,21 +316,20 @@ test("wallet deposit, withdrawal, added wallet and persisted index selection", a
     page.getByRole("heading", { name: "Withdrawal completed", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Done", exact: true }).click();
-  await page.getByRole("button", { name: /Add currency/ }).click();
-  await page.getByRole("button", { name: "Add wallet", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Deposit IOTA", exact: true }),
   ).toBeVisible();
   await open(page, "/app/indices/");
-  await expect(page.locator(".choice-card")).toHaveCount(6);
+  await expect(page.locator(".choice-card")).toHaveCount(7);
   await page
     .locator(".choice-card")
-    .first()
-    .getByRole("button", { name: "Overview", exact: true })
+    .nth(1)
+    .getByRole("button", { name: "My Wallet", exact: true })
     .click();
-  await expect(page.locator("h1")).toHaveText("Overview TBCi-10 Stable");
+  await expect(page.locator("h1")).toHaveText("My Wallet");
+  await expect(page.locator(".owned-index-card")).toHaveCount(5);
   await page.reload();
-  await expect(page.locator("h1")).toHaveText("Overview TBCi-10 Stable");
+  await expect(page.locator("h1")).toHaveText("My Wallet");
 });
 test("composition history compares snapshots and holders paginate", async ({
   page,

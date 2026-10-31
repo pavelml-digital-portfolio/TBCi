@@ -1,11 +1,11 @@
 export const faqs = [
   [
     "What is TBCi?",
-    "TBCi is a demonstration of a cryptocurrency basket index and its related account tools. The index tracks a group of assets, while a TBCi token represents a share of a model portfolio. Index points and a token’s dollar price are different measures, so they should not be compared directly. All market data here is historical or simulated.",
+    "TBCi is a demonstration of a cryptocurrency basket index and its related account tools. My Wallet shows all purchased indices together, while Wallet lists assets and handles transfers. Index points and a token’s dollar price are different measures, so they should not be compared directly. All market data here is historical or simulated.",
   ],
   [
     "Should I Buy or Compile an index?",
-    "Buy exchanges one wallet currency for TBCi and includes a 0.5% commission in the payment total. Compile creates TBCi using every component of the basket in the required proportions, with the same commission. Choose Buy when you hold a single payment asset; choose Compile when you already hold the components. Both operations count toward your cumulative verification allowance.",
+    "Buy in My Wallet exchanges one wallet currency for the chosen index and includes a 0.5% commission in the payment total. Compile creates TBCi using every component of the basket in the required proportions, with the same commission. Choose Buy when you hold a single payment asset; choose Compile when you already hold the components. Both operations count toward your cumulative verification allowance.",
   ],
   [
     "What is the difference between Sell and Unmake?",
@@ -17,7 +17,7 @@ export const faqs = [
   ],
   [
     "Where can I find my operations and transfer details?",
-    "Open Settings → Deposits / Withdrawals to filter transfers by asset, type, status or data source and view their details. Each receipt includes the network, address, amount, fee, confirmations and a demo transaction ID. Settings → Activity log records profile, security, verification and trading events with additional data. Historical price compares index basket snapshots rather than listing your personal operations.",
+    "Open Wallet for all assets, available and reserved balances, deposits and withdrawals. Open Settings → Deposits / Withdrawals to filter transfers by asset, type, status or data source and view their details. Settings → Activity log records profile, security, verification and trading events with additional data. Historical price compares index basket snapshots rather than listing your personal operations.",
   ],
   [
     "How do verification levels and purchase limits work?",

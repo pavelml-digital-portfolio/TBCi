@@ -1,80 +1,93 @@
-ID,Screen,Expected,Scope
-PUB-01-A01,PUB-01,Порядок и пропорции семи областей совпадают с JPG при ширине 1680 px,source_visual_or_behavioral_acceptance
-PUB-01-A02,PUB-01,Шесть фотографий взяты из исходного макета; нет самостоятельного добавленного блока динамики ниже первого экрана,source_visual_or_behavioral_acceptance
-PUB-01-A03,PUB-01,"Переход Login открывает CAB-03, пароль нигде не запрашивается",source_visual_or_behavioral_acceptance
-PUB-03-A01,PUB-03,"Сохранены пять столбцов состава, два ползунка и кольцевой результат",source_visual_or_behavioral_acceptance
-PUB-03-A02,PUB-03,График не заменяет методологию; все области присутствуют в исходном порядке,source_visual_or_behavioral_acceptance
-PUB-03-A03,PUB-03,"Доход в прототипе обозначен как пример, не как обещание или текущая доходность",source_visual_or_behavioral_acceptance
-PUB-06-A01,PUB-06,Ровно пять фильтров и десять столбцов; звёзды присутствуют перед номером,source_visual_or_behavioral_acceptance
-PUB-06-A02,PUB-06,После обновления страницы избранное сохраняется; запрос Bitcoin находит Bitcoin и Bitcoin Cash,source_visual_or_behavioral_acceptance
-PUB-07-A01,PUB-07,"Слева справочная таблица, справа линейный график и конвертер; график без площадной заливки",source_visual_or_behavioral_acceptance
-PUB-07-A02,PUB-07,Справочник Bitcoin не выдаётся за реальные параметры другой монеты,source_visual_or_behavioral_acceptance
-PUB-08-A01,PUB-08,"Цена — зелёная линия, капитализация — синяя, объём — серая гистограмма",source_visual_or_behavioral_acceptance
-PUB-08-A02,PUB-08,Управление интервалом и масштабом работает; при неверных датах нет вводящего в заблуждение графика,source_visual_or_behavioral_acceptance
-PUB-09-A01,PUB-09,Таблица содержит семь исходных столбцов,source_visual_or_behavioral_acceptance
-PUB-09-A02,PUB-09,OHLC в каждой строке удовлетворяет Low ≤ Open/Close ≤ High,source_visual_or_behavioral_acceptance
-PUB-10-A01,PUB-10,"Девять столбцов, парные обозначения и индикатор статуса сохранены",source_visual_or_behavioral_acceptance
-PUB-10-A02,PUB-10,Рыночные данные из макета не представлены как действующие котировки,source_visual_or_behavioral_acceptance
-PUB-11-A01,PUB-11,Горизонтальные карточки и фотографии соответствуют JPG,source_visual_or_behavioral_acceptance
-PUB-11-A02,PUB-11,Фильтрация по CNN оставляет две исходные карточки,source_visual_or_behavioral_acceptance
-PUB-04-A01,PUB-04,"Три фильтра и девять столбцов, а также обе исходные статистические области присутствуют",source_visual_or_behavioral_acceptance
-PUB-04-A02,PUB-04,"Binance, Huobi, OKEx, BitForex, Coinbene сохранены в начальной выдаче",source_visual_or_behavioral_acceptance
-PUB-05-A01,PUB-05,"Карточка и логотип относятся к Huobi, а не к Binance",source_visual_or_behavioral_acceptance
-PUB-05-A02,PUB-05,Двухколоночная справочная область не заменяется набором новых KPI-карточек,source_visual_or_behavioral_acceptance
-PUB-13-A01,PUB-13,Геометрия крупного материала и двух малых соответствует исходнику,source_visual_or_behavioral_acceptance
-PUB-13-A02,PUB-13,У фильтра ANALYSIS нет чужих категорий; пустой запрос даёт понятное сообщение,source_visual_or_behavioral_acceptance
-PUB-14-A01,PUB-14,"Фотография, заголовок, два подзаголовка и порядок материала воспроизведены",source_visual_or_behavioral_acceptance
-PUB-14-A02,PUB-14,На других статьях не появляется чужой текст Huobi,source_visual_or_behavioral_acceptance
-CAB-01-A01,CAB-01,Пять рабочих областей сохранены в исходном порядке,source_visual_or_behavioral_acceptance
-CAB-01-A02,CAB-01,Пополнение и вывод меняют только локальные демонстрационные балансы,source_visual_or_behavioral_acceptance
-CAB-01-A03,CAB-01,Никакого нового верхнего хедера кабинета нет,source_visual_or_behavioral_acceptance
-CAB-02-A01,CAB-02,Шесть карточек и три основных действия воспроизведены,source_visual_or_behavioral_acceptance
-CAB-02-A02,CAB-02,Выбор первого индекса открывает Overview TBCi-10 Stable,source_visual_or_behavioral_acceptance
-CAB-02-A03,CAB-02,"Повторное имя Balance из JPG отмечено как нерешённая исходная неоднозначность, а не слияние разных ID",source_visual_or_behavioral_acceptance
-CAB-03-A01,CAB-03,"Это обзор одного выбранного индекса, не придуманная сводка портфеля",source_visual_or_behavioral_acceptance
-CAB-03-A02,CAB-03,"График, две нижние карточки, состав и методология присутствуют",source_visual_or_behavioral_acceptance
-CAB-04-A01,CAB-04,Сохранена горизонтальная цепочка сумма → комиссия → итог и шесть вариантов,source_visual_or_behavioral_acceptance
-CAB-04-A02,CAB-04,Пример макета 4000 не означает достаточность начальных средств,source_visual_or_behavioral_acceptance
-CAB-04-A03,CAB-04,Повторное подтверждение не дублирует операцию,source_visual_or_behavioral_acceptance
-CAB-05-A01,CAB-05,"Дефицит последнего компонента блокирует сборку, даже если первые строки обеспечены",source_visual_or_behavioral_acceptance
-CAB-05-A02,CAB-05,Нельзя списать только часть компонентов и выдать полный токен,source_visual_or_behavioral_acceptance
-CAB-05-A03,CAB-05,В таблице сохранены исходные шесть столбцов,source_visual_or_behavioral_acceptance
-CAB-06-A01,CAB-06,Отдельно виден Total balance; это продажа в одну валюту,source_visual_or_behavioral_acceptance
-CAB-06-A02,CAB-06,Комиссия вычитается из результата; в случае ошибки ни один баланс не меняется,source_visual_or_behavioral_acceptance
-CAB-07-A01,CAB-07,Один вывод BTC и последующий Withdraw all уменьшают TBCi только один раз,source_visual_or_behavioral_acceptance
-CAB-07-A02,CAB-07,"Уже выведенная строка недоступна, остальные сохраняются",source_visual_or_behavioral_acceptance
-CAB-07-A03,CAB-07,Sell и Unmake не объединены в одну кнопку,source_visual_or_behavioral_acceptance
-CAB-08-A01,CAB-08,Historical price сравнивает состав индекса в двух датах,source_visual_or_behavioral_acceptance
-CAB-08-A02,CAB-08,Здесь нет подмены на персональный журнал покупок и пополнений,source_visual_or_behavioral_acceptance
-CAB-08-A03,CAB-08,"При смене периода меняются данные, а не только заголовок",source_visual_or_behavioral_acceptance
-CAB-09-A01,CAB-09,Сохранены обе таблицы Information и исходная структура списка,source_visual_or_behavioral_acceptance
-CAB-09-A02,CAB-09,Не используется адрес чужого контракта OMG из исходного JPG как контракт TBCi,source_visual_or_behavioral_acceptance
-ENH-A01,EXT-2018,"Панорамирование, масштаб, перекрестие и клавиатура — см. §12.5 ТЗ",extension_2018
-ENH-A02,EXT-2018,Независимые ряды семи индексов 2018 — см. §12.5 ТЗ,extension_2018
-ENH-A03,EXT-2018,"Интервалы, типы, сравнения, индикаторы — см. §12.5 ТЗ",extension_2018
-ENH-A04,EXT-2018,"Таблица данных, PNG/CSV, датировки UTC — см. §12.5 ТЗ",extension_2018
-ENH-A05,EXT-2018,32 статьи более 350 слов за 2018 — см. §12.5 ТЗ,extension_2018
-ENH-A06,EXT-2018,"Фильтры, оглавление, сохранение, связанные статьи — см. §12.5 ТЗ",extension_2018
-ENH-A07,EXT-2018,48 архивных ICO и происхождение фактов — см. §12.5 ТЗ,extension_2018
-ENH-A08,EXT-2018,Месяцы/дни/статусы/избранное ICO — см. §12.5 ТЗ,extension_2018
-ENH-A09,EXT-2018,"21 локальный SVG, CC0 и SHA-256 — см. §12.5 ТЗ",extension_2018
-ENH-A10,EXT-2018,Устойчивая сетка сумм и селектора 320–1920 — см. §12.5 ТЗ,extension_2018
-ENH-A11,EXT-2018,Согласованные моковые показатели и активность — см. §12.5 ТЗ,extension_2018
-ENH-A12,EXT-2018,Заполненные профили и отдельные вкладки монет — см. §12.5 ТЗ,extension_2018
-WAL-A01,EXT-ACCOUNT,Графики остаются в границах ряда при всех способах навигации — см. §13 ТЗ,extension_wallet_kyc
-WAL-A02,EXT-ACCOUNT,Сегменты состава и легенда синхронно выбираются с мыши и клавиатуры — см. §13 ТЗ,extension_wallet_kyc
-WAL-A03,EXT-ACCOUNT,Sparklines и история переводов позволяют исследовать значения — см. §13 ТЗ,extension_wallet_kyc
-WAL-A04,EXT-ACCOUNT,Пошаговый Deposit с настоящим локальным QR и чеком — см. §13 ТЗ,extension_wallet_kyc
-WAL-A05,EXT-ACCOUNT,Пошаговый Withdraw с сетью и комиссией родного актива — см. §13 ТЗ,extension_wallet_kyc
-WAL-A06,EXT-ACCOUNT,Идемпотентность переводов и продолжение после reload — см. §13 ТЗ,extension_wallet_kyc
-WAL-A07,EXT-ACCOUNT,Сбой возвращает резерв и комиссию ровно один раз — см. §13 ТЗ,extension_wallet_kyc
-WAL-A08,EXT-ACCOUNT,Локальная TOTP и одноразовые recovery codes — см. §13 ТЗ,extension_wallet_kyc
-WAL-A09,EXT-ACCOUNT,Whitelist по активу сети адресу и memo — см. §13 ТЗ,extension_wallet_kyc
-WAL-A10,EXT-ACCOUNT,История и журнал фильтруются и экспортируются без секретов — см. §13 ТЗ,extension_wallet_kyc
-WAL-A11,EXT-ACCOUNT,Настройки профиля предпочтений и демонстрационных устройств — см. §13 ТЗ,extension_wallet_kyc
-WAL-A12,EXT-ACCOUNT,Level 2 по умолчанию и три покупательских уровня — см. §13 ТЗ,extension_wallet_kyc
-WAL-A13,EXT-ACCOUNT,Накопительный лимит Buy и Compile включая комиссию — см. §13 ТЗ,extension_wallet_kyc
-WAL-A14,EXT-ACCOUNT,Basic и Full KYC с образцами документов и приватностью — см. §13 ТЗ,extension_wallet_kyc
-WAL-A15,EXT-ACCOUNT,Рассмотрение KYC с тремя исходами и повторной подачей — см. §13 ТЗ,extension_wallet_kyc
-WAL-A16,EXT-ACCOUNT,Десять FAQ с ответами по 3–4 предложения и поиском — см. §13 ТЗ,extension_wallet_kyc
-WAL-A17,EXT-ACCOUNT,Общая проверка верстки 320–2560 и SVG иконок — см. §13 ТЗ,extension_wallet_kyc
+ID,Screen,Expected,Scope,Status,SupersededBy
+PUB-01-A01,PUB-01,Порядок и пропорции семи областей совпадают с JPG при ширине 1680 px,source_visual_or_behavioral_acceptance,active,
+PUB-01-A02,PUB-01,Шесть фотографий взяты из исходного макета; нет самостоятельного добавленного блока динамики ниже первого экрана,source_visual_or_behavioral_acceptance,active,
+PUB-01-A03,PUB-01,"Переход Login открывает CAB-03, пароль нигде не запрашивается",source_visual_or_behavioral_acceptance,active,
+PUB-03-A01,PUB-03,"Сохранены пять столбцов состава, два ползунка и кольцевой результат",source_visual_or_behavioral_acceptance,active,
+PUB-03-A02,PUB-03,График не заменяет методологию; все области присутствуют в исходном порядке,source_visual_or_behavioral_acceptance,active,
+PUB-03-A03,PUB-03,"Доход в прототипе обозначен как пример, не как обещание или текущая доходность",source_visual_or_behavioral_acceptance,active,
+PUB-06-A01,PUB-06,Ровно пять фильтров и десять столбцов; звёзды присутствуют перед номером,source_visual_or_behavioral_acceptance,active,
+PUB-06-A02,PUB-06,После обновления страницы избранное сохраняется; запрос Bitcoin находит Bitcoin и Bitcoin Cash,source_visual_or_behavioral_acceptance,active,
+PUB-07-A01,PUB-07,"Слева справочная таблица, справа линейный график и конвертер; график без площадной заливки",source_visual_or_behavioral_acceptance,active,
+PUB-07-A02,PUB-07,Справочник Bitcoin не выдаётся за реальные параметры другой монеты,source_visual_or_behavioral_acceptance,active,
+PUB-08-A01,PUB-08,"Цена — зелёная линия, капитализация — синяя, объём — серая гистограмма",source_visual_or_behavioral_acceptance,active,
+PUB-08-A02,PUB-08,Управление интервалом и масштабом работает; при неверных датах нет вводящего в заблуждение графика,source_visual_or_behavioral_acceptance,active,
+PUB-09-A01,PUB-09,Таблица содержит семь исходных столбцов,source_visual_or_behavioral_acceptance,active,
+PUB-09-A02,PUB-09,OHLC в каждой строке удовлетворяет Low ≤ Open/Close ≤ High,source_visual_or_behavioral_acceptance,active,
+PUB-10-A01,PUB-10,"Девять столбцов, парные обозначения и индикатор статуса сохранены",source_visual_or_behavioral_acceptance,active,
+PUB-10-A02,PUB-10,Рыночные данные из макета не представлены как действующие котировки,source_visual_or_behavioral_acceptance,active,
+PUB-11-A01,PUB-11,Горизонтальные карточки и фотографии соответствуют JPG,source_visual_or_behavioral_acceptance,active,
+PUB-11-A02,PUB-11,Фильтрация по CNN оставляет две исходные карточки,source_visual_or_behavioral_acceptance,active,
+PUB-04-A01,PUB-04,"Три фильтра и девять столбцов, а также обе исходные статистические области присутствуют",source_visual_or_behavioral_acceptance,active,
+PUB-04-A02,PUB-04,"Binance, Huobi, OKEx, BitForex, Coinbene сохранены в начальной выдаче",source_visual_or_behavioral_acceptance,active,
+PUB-05-A01,PUB-05,"Карточка и логотип относятся к Huobi, а не к Binance",source_visual_or_behavioral_acceptance,active,
+PUB-05-A02,PUB-05,Двухколоночная справочная область не заменяется набором новых KPI-карточек,source_visual_or_behavioral_acceptance,active,
+PUB-13-A01,PUB-13,Геометрия крупного материала и двух малых соответствует исходнику,source_visual_or_behavioral_acceptance,active,
+PUB-13-A02,PUB-13,У фильтра ANALYSIS нет чужих категорий; пустой запрос даёт понятное сообщение,source_visual_or_behavioral_acceptance,active,
+PUB-14-A01,PUB-14,"Фотография, заголовок, два подзаголовка и порядок материала воспроизведены",source_visual_or_behavioral_acceptance,active,
+PUB-14-A02,PUB-14,На других статьях не появляется чужой текст Huobi,source_visual_or_behavioral_acceptance,active,
+CAB-01-A01,CAB-01,Пять рабочих областей сохранены в исходном порядке,source_visual_or_behavioral_acceptance,active,
+CAB-01-A02,CAB-01,Пополнение и вывод меняют только локальные демонстрационные балансы,source_visual_or_behavioral_acceptance,active,
+CAB-01-A03,CAB-01,Никакого нового верхнего хедера кабинета нет,source_visual_or_behavioral_acceptance,active,
+CAB-02-A01,CAB-02,Шесть карточек и три основных действия воспроизведены,source_visual_or_behavioral_acceptance,active,
+CAB-02-A02,CAB-02,Выбор первого индекса открывает Overview TBCi-10 Stable,source_visual_or_behavioral_acceptance,active,
+CAB-02-A03,CAB-02,"Повторное имя Balance из JPG отмечено как нерешённая исходная неоднозначность, а не слияние разных ID",source_visual_or_behavioral_acceptance,active,
+CAB-03-A01,CAB-03,"Это обзор одного выбранного индекса, не придуманная сводка портфеля",source_visual_or_behavioral_acceptance,active,
+CAB-03-A02,CAB-03,"График, две нижние карточки, состав и методология присутствуют",source_visual_or_behavioral_acceptance,active,
+CAB-04-A01,CAB-04,Сохранена горизонтальная цепочка сумма → комиссия → итог и шесть вариантов,source_visual_or_behavioral_acceptance,superseded,MW-02
+CAB-04-A02,CAB-04,Пример макета 4000 не означает достаточность начальных средств,source_visual_or_behavioral_acceptance,superseded,MW-02
+CAB-04-A03,CAB-04,Повторное подтверждение не дублирует операцию,source_visual_or_behavioral_acceptance,superseded,MW-02
+CAB-05-A01,CAB-05,"Дефицит последнего компонента блокирует сборку, даже если первые строки обеспечены",source_visual_or_behavioral_acceptance,active,
+CAB-05-A02,CAB-05,Нельзя списать только часть компонентов и выдать полный токен,source_visual_or_behavioral_acceptance,active,
+CAB-05-A03,CAB-05,В таблице сохранены исходные шесть столбцов,source_visual_or_behavioral_acceptance,active,
+CAB-06-A01,CAB-06,Отдельно виден Total balance; это продажа в одну валюту,source_visual_or_behavioral_acceptance,superseded,MW-02
+CAB-06-A02,CAB-06,Комиссия вычитается из результата; в случае ошибки ни один баланс не меняется,source_visual_or_behavioral_acceptance,superseded,MW-02
+CAB-07-A01,CAB-07,Один вывод BTC и последующий Withdraw all уменьшают TBCi только один раз,source_visual_or_behavioral_acceptance,active,
+CAB-07-A02,CAB-07,"Уже выведенная строка недоступна, остальные сохраняются",source_visual_or_behavioral_acceptance,active,
+CAB-07-A03,CAB-07,Sell и Unmake не объединены в одну кнопку,source_visual_or_behavioral_acceptance,active,
+CAB-08-A01,CAB-08,Historical price сравнивает состав индекса в двух датах,source_visual_or_behavioral_acceptance,active,
+CAB-08-A02,CAB-08,Здесь нет подмены на персональный журнал покупок и пополнений,source_visual_or_behavioral_acceptance,active,
+CAB-08-A03,CAB-08,"При смене периода меняются данные, а не только заголовок",source_visual_or_behavioral_acceptance,active,
+CAB-09-A01,CAB-09,Сохранены обе таблицы Information и исходная структура списка,source_visual_or_behavioral_acceptance,active,
+CAB-09-A02,CAB-09,Не используется адрес чужого контракта OMG из исходного JPG как контракт TBCi,source_visual_or_behavioral_acceptance,active,
+ENH-A01,EXT-2018,"Панорамирование, масштаб, перекрестие и клавиатура — см. §12.5 ТЗ",extension_2018,active,
+ENH-A02,EXT-2018,Независимые ряды семи индексов 2018 — см. §12.5 ТЗ,extension_2018,active,
+ENH-A03,EXT-2018,"Интервалы, типы, сравнения, индикаторы — см. §12.5 ТЗ",extension_2018,active,
+ENH-A04,EXT-2018,"Таблица данных, PNG/CSV, датировки UTC — см. §12.5 ТЗ",extension_2018,active,
+ENH-A05,EXT-2018,32 статьи более 350 слов за 2018 — см. §12.5 ТЗ,extension_2018,active,
+ENH-A06,EXT-2018,"Фильтры, оглавление, сохранение, связанные статьи — см. §12.5 ТЗ",extension_2018,active,
+ENH-A07,EXT-2018,48 архивных ICO и происхождение фактов — см. §12.5 ТЗ,extension_2018,active,
+ENH-A08,EXT-2018,Месяцы/дни/статусы/избранное ICO — см. §12.5 ТЗ,extension_2018,active,
+ENH-A09,EXT-2018,"21 локальный SVG, CC0 и SHA-256 — см. §12.5 ТЗ",extension_2018,active,
+ENH-A10,EXT-2018,Устойчивая сетка сумм и селектора 320–1920 — см. §12.5 ТЗ,extension_2018,active,
+ENH-A11,EXT-2018,Согласованные моковые показатели и активность — см. §12.5 ТЗ,extension_2018,active,
+ENH-A12,EXT-2018,Заполненные профили и отдельные вкладки монет — см. §12.5 ТЗ,extension_2018,active,
+WAL-A01,EXT-ACCOUNT,Графики остаются в границах ряда при всех способах навигации — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A02,EXT-ACCOUNT,Сегменты состава и легенда синхронно выбираются с мыши и клавиатуры — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A03,EXT-ACCOUNT,Sparklines и история переводов позволяют исследовать значения — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A04,EXT-ACCOUNT,Пошаговый Deposit с настоящим локальным QR и чеком — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A05,EXT-ACCOUNT,Пошаговый Withdraw с сетью и комиссией родного актива — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A06,EXT-ACCOUNT,Идемпотентность переводов и продолжение после reload — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A07,EXT-ACCOUNT,Сбой возвращает резерв и комиссию ровно один раз — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A08,EXT-ACCOUNT,Локальная TOTP и одноразовые recovery codes — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A09,EXT-ACCOUNT,Whitelist по активу сети адресу и memo — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A10,EXT-ACCOUNT,История и журнал фильтруются и экспортируются без секретов — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A11,EXT-ACCOUNT,Настройки профиля предпочтений и демонстрационных устройств — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A12,EXT-ACCOUNT,Level 2 по умолчанию и три покупательских уровня — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A13,EXT-ACCOUNT,Накопительный лимит Buy и Compile включая комиссию — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A14,EXT-ACCOUNT,Basic и Full KYC с образцами документов и приватностью — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A15,EXT-ACCOUNT,Рассмотрение KYC с тремя исходами и повторной подачей — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A16,EXT-ACCOUNT,Десять FAQ с ответами по 3–4 предложения и поиском — см. §13 ТЗ,extension_wallet_kyc,active,
+WAL-A17,EXT-ACCOUNT,Общая проверка верстки 320–2560 и SVG иконок — см. §13 ТЗ,extension_wallet_kyc,active,
+MW-A01,EXT-PORTFOLIO,My Wallet показывает все купленные индексные позиции — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A02,EXT-PORTFOLIO,Buy/Sell встроены в My Wallet и принимают явный indexId/requestId — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A03,EXT-PORTFOLIO,Отдельные торговые страницы выведены из меню; старые URL переводят в диалог — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A04,EXT-PORTFOLIO,Balance Composition агрегирует и фильтрует все купленные индексы — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A05,EXT-PORTFOLIO,"Общий фильтр обновляет кольцо, модельную историю, столбцы и treemap — см. §14 ТЗ",extension_portfolio_wallet,active,
+MW-A06,EXT-PORTFOLIO,Wallet показывает весь каталог активов с остатками и действиями — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A07,EXT-PORTFOLIO,"Поиск, категории, сортировка и скрытие нулевых остатков — см. §14 ТЗ",extension_portfolio_wallet,active,
+MW-A08,EXT-PORTFOLIO,Общий баланс учитывает резервы и Claims без двойного TBCi — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A09,EXT-PORTFOLIO,"Детали актива и прежние Deposit/Withdraw, QR и проверки безопасности — см. §14 ТЗ",extension_portfolio_wallet,active,
+MW-A10,EXT-PORTFOLIO,Внутренняя конвертация активов с комиссией и идемпотентностью — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A11,EXT-PORTFOLIO,"Сокрытие сумм, эквивалент и экспорт текущего списка — см. §14 ТЗ",extension_portfolio_wallet,active,
+MW-A12,EXT-PORTFOLIO,Адаптивные карточки активов и сетка устройств/сессий — см. §14 ТЗ,extension_portfolio_wallet,active,
+MW-A13,EXT-PORTFOLIO,Миграция сохраняет позиции и ограничения KYC/2FA — см. §14 ТЗ,extension_portfolio_wallet,active,

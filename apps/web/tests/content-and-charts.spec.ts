@@ -92,7 +92,7 @@ test("canvas charts support OHLC, real zoom, indicators, comparisons and exports
 test("different indices have different complete series, not scaled copies", async ({
   page,
 }) => {
-  await open(page, "/app/");
+  await open(page, "/index/tbci-20-balance/");
   const chart = page.locator(".trading-widget").first();
   await chart.getByRole("button", { name: "Show data", exact: true }).click();
   const first = await chart.locator("tbody tr").allTextContents();
@@ -239,58 +239,45 @@ test("coin sections have distinct useful content and vector icons load locally",
     ),
   ).toBeTruthy();
 });
-test("large equivalents and payment controls stay separate at phone, laptop and wide widths", async ({
+test("large portfolio balances, trade controls and public pages fit all widths", async ({
   page,
 }) => {
   test.setTimeout(120000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  for (const width of [320, 375, 768, 1024, 1280, 1496, 1920]) {
+  for (const width of [320, 375, 768, 1024, 1280, 1496, 1920, 2560]) {
     await page.setViewportSize({ width, height: 1000 });
-    await open(page, "/app/indices/");
-    await page
-      .locator(".choice-card")
-      .filter({
-        has: page.getByRole("heading", { name: "TBCi-50 Active", exact: true }),
-      })
-      .getByRole("button", { name: "Buy", exact: true })
-      .click();
-    await open(page, "/app/sell/");
+    await open(page, "/app/");
     await page.evaluate(() => {
-      const key = "tbci-reference-demo-v2";
-      const s = JSON.parse(localStorage.getItem(key)!);
-      s.balances.TBCi = 123456789;
-      s.tokenBalances[s.selectedIndex] = 123456789;
+      const key = "tbci-reference-demo-v2",
+        s = JSON.parse(localStorage.getItem(key)!);
+      s.tokenBalances["tbci-50-active"] = 123456789;
       localStorage.setItem(key, JSON.stringify(s));
     });
     await page.reload();
     await page.locator("h1").waitFor();
-    await page.getByLabel("Amount TBCi", { exact: true }).fill("1000000");
     for (const currency of ["USD", "BTC", "ETH"]) {
-      await page.getByLabel("Token equivalent currency").selectOption(currency);
-      const boxes = await page
-        .locator(".summary-value")
-        .nth(1)
-        .evaluate((el) => {
-          const a = el.querySelector("strong")!.getBoundingClientRect();
-          const b = el.querySelector("select")!.getBoundingClientRect();
-          return {
-            overlap:
-              Math.min(a.right, b.right) > Math.max(a.left, b.left) + 1 &&
-              Math.min(a.bottom, b.bottom) > Math.max(a.top, b.top) + 1,
-          };
-        });
+      await page
+        .getByLabel("Display currency", { exact: true })
+        .selectOption(currency);
       expect(
-        boxes.overlap,
-        "equivalent collision at " + width + " " + currency,
-      ).toBe(false);
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+        "Portfolio overflow " + width + " " + currency,
+      ).toBe(true);
     }
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-      "Sell overflow at " + width,
-    ).toBeTruthy();
+    await page
+      .getByRole("button", { name: "Sell TBCi-50 Active", exact: true })
+      .click();
+    await page.getByLabel("Amount TBCi", { exact: true }).fill("1000000");
+    const rect = await page
+      .getByRole("dialog")
+      .evaluate((e) => ({ scroll: e.scrollWidth, width: e.clientWidth }));
+    expect(rect.scroll).toBeLessThanOrEqual(rect.width + 1);
+    await page
+      .getByRole("button", { name: "Close dialog", exact: true })
+      .click();
     for (const path of [
       "/ico/",
       "/ico/quarkchain/",

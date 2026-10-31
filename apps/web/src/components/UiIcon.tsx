@@ -1,4 +1,7 @@
 export type UiIconName =
+  | "eye"
+  | "eye-off"
+  | "device"
   | "search"
   | "chevron-down"
   | "chevron-up"
@@ -19,6 +22,10 @@ export type UiIconName =
   | "arrow-in"
   | "arrow-out";
 const paths: Record<UiIconName, string> = {
+  eye: "M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12ZM15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0",
+  "eye-off":
+    "m3 3 18 18M10 5c8-1 12 7 12 7a20 20 0 0 1-4 5M6 6a20 20 0 0 0-4 6s4 7 10 7a14 14 0 0 0 4-1M10 10a3 3 0 0 0 4 4",
+  device: "M3 4h18v13H3zM8 21h8M12 17v4",
   search: "m21 21-5-5M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0",
   "chevron-down": "m6 9 6 6 6-6",
   "chevron-up": "m6 15 6-6 6 6",

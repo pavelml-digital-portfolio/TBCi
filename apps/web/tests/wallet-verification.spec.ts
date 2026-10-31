@@ -274,7 +274,12 @@ test("2FA and trusted addresses enforce a withdrawal and consume a recovery code
   await expect(page.getByRole("alert")).toContainText("test network");
   await page.getByLabel("Receiving address", { exact: true }).fill(address);
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("checkbox").check();
+  await page
+    .getByRole("dialog")
+    .getByRole("checkbox", {
+      name: "I checked the demo address and test network.",
+    })
+    .check();
   await page
     .getByLabel("Authenticator or recovery code", { exact: true })
     .fill(recovery);
@@ -292,7 +297,12 @@ test("2FA and trusted addresses enforce a withdrawal and consume a recovery code
   await page.getByLabel("Receiving address", { exact: true }).fill(address);
   await page.getByLabel("Amount, BTC", { exact: true }).fill(".01");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await page.getByRole("checkbox").check();
+  await page
+    .getByRole("dialog")
+    .getByRole("checkbox", {
+      name: "I checked the demo address and test network.",
+    })
+    .check();
   await page
     .getByLabel("Authenticator or recovery code", { exact: true })
     .fill(recovery);
@@ -314,11 +324,14 @@ test("infographics respond to keyboard and selection; FAQ has ten substantial se
   await expect(donut.locator(".donut-hole")).toContainText("Bitcoin");
   await donut.getByRole("button", { name: "Clear selection" }).click();
   await expect(donut).toHaveAttribute("data-selected", "");
-  await page.getByRole("button", { name: "Inspect model profit" }).click();
-  await expect(page.locator(".profit-circle")).toContainText("starting model");
-  await page.getByRole("button", { name: /Jan 2018 ·/ }).click();
-  await expect(page.locator(".history-chart-detail")).toContainText("Jan 2018");
-  await expect(page.locator(".history-chart-detail a")).toBeVisible();
+  await page.getByRole("button", { name: /Jan model return/ }).click();
+  await expect(
+    page.locator(".monthly-returns .portfolio-chart-detail"),
+  ).toContainText("Jan 2018");
+  await page.getByRole("button", { name: /BTC exposure/ }).focus();
+  await expect(
+    page.locator(".exposure-map .portfolio-chart-detail"),
+  ).toContainText("Bitcoin");
   await open(page, "/app/help/");
   await expect(page.locator(".faq details")).toHaveCount(10);
   const answers = await page.locator(".faq details>p").allTextContents();
@@ -338,27 +351,27 @@ test("purchase UI enforces Level 1 and Level 2 budgets across successive trades"
   await page
     .getByRole("button", { name: "Switch to Level 1", exact: true })
     .click();
-  await open(page, "/app/buy/");
-  const attempt = async (amount: string) => {
+  const attempt = async (amount: string, payment = "USD", confirm = false) => {
+    await open(page, "/app/?trade=buy");
+    await page.getByLabel("Pay with", { exact: true }).selectOption(payment);
     await page.getByLabel("Amount TBCi", { exact: true }).fill(amount);
-    await page.locator(".trade-submit").click();
-    await page
-      .getByRole("dialog")
-      .getByRole("button", { name: "Confirm buy", exact: true })
-      .click();
+    await page.getByRole("button", { name: "Review buy", exact: true }).click();
+    if (confirm) {
+      await page
+        .getByRole("button", { name: "Confirm buy", exact: true })
+        .click();
+      await page.getByRole("button", { name: "Done", exact: true }).click();
+    }
   };
   await attempt("26");
   await expect(page.getByRole("alert")).toContainText("purchase limit");
   expect((await stored(page)).operations).toHaveLength(0);
-  await page.getByRole("button", { name: "Cancel", exact: true }).click();
-  await attempt("10");
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await attempt("10", "USD", true);
   const afterBuy = await stored(page);
   expect(afterBuy.kyc.purchaseTotalUsd).toBeGreaterThan(390);
   await attempt("20");
   await expect(page.getByRole("alert")).toContainText("purchase limit");
   expect((await stored(page)).operations).toHaveLength(1);
-  await page.getByRole("button", { name: "Cancel", exact: true }).click();
   await open(page, "/app/settings/#verification");
   await page.getByText("Test another client level", { exact: true }).click();
   await page
@@ -367,12 +380,7 @@ test("purchase UI enforces Level 1 and Level 2 budgets across successive trades"
   expect((await stored(page)).kyc.purchaseTotalUsd).toBe(
     afterBuy.kyc.purchaseTotalUsd,
   );
-  await open(page, "/app/buy/");
-  await page
-    .locator(".payment-method")
-    .filter({ has: page.locator('img[src$="BTC.svg"]') })
-    .click();
-  await attempt("255");
+  await attempt("255", "BTC");
   await expect(page.getByRole("alert")).toContainText("Level 2");
   expect((await stored(page)).operations).toHaveLength(1);
 });

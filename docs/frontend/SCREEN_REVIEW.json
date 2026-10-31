@@ -90,28 +90,28 @@
       "route": "/app/wallets/",
       "width": 1496,
       "sourceHeight": 2550,
-      "renderHeight": 3557
+      "renderHeight": 3562
     },
     {
       "id": "CAB-02",
       "route": "/app/indices/",
       "width": 1496,
       "sourceHeight": 996,
-      "renderHeight": 1123
+      "renderHeight": 1395
     },
     {
       "id": "CAB-03",
       "route": "/app/",
       "width": 1496,
       "sourceHeight": 2248,
-      "renderHeight": 3104
+      "renderHeight": 3570
     },
     {
       "id": "CAB-04",
       "route": "/app/buy/",
       "width": 1496,
       "sourceHeight": 948,
-      "renderHeight": 948
+      "renderHeight": 3570
     },
     {
       "id": "CAB-05",
@@ -125,7 +125,7 @@
       "route": "/app/sell/",
       "width": 1496,
       "sourceHeight": 948,
-      "renderHeight": 959
+      "renderHeight": 3570
     },
     {
       "id": "CAB-07",

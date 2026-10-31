@@ -1,7 +1,11 @@
 import {
+  executeIndexTrade,
+  executeAssetConversion,
+} from "../data/index-trading";
+import { indexBasket, allIndices } from "../data/portfolio";
+import {
   defaultKyc,
   purchaseError,
-  purchaseUsed,
   progressKyc,
   type KycApplication,
   type ClientLevel,
@@ -50,6 +54,12 @@ import {
 const KEY = "tbci-reference-demo-v2";
 type ContextValue = {
   state: DemoState;
+  convertAssets: (
+    from: string,
+    to: string,
+    amount: number,
+    requestId: string,
+  ) => string | null;
   submitKyc: (
     a: Omit<KycApplication, "id" | "status" | "submittedAt" | "reviewAt">,
   ) => string | null;
@@ -63,6 +73,8 @@ type ContextValue = {
     type: "buy" | "sell" | "compile",
     amount: number,
     payment?: string,
+    indexId?: string,
+    requestId?: string,
   ) => string | null;
   redeem: (amount: number, symbol?: string) => string | null;
   setProfile: (name: string, email: string) => void;
@@ -105,6 +117,16 @@ function initial(): DemoState {
       return {
         ...structuredClone(seed),
         ...raw,
+        tokenBalances: Object.fromEntries(
+          allIndices.map((i) => [
+            i.id,
+            Number.isFinite(raw.tokenBalances?.[i.id])
+              ? Math.max(0, raw.tokenBalances[i.id])
+              : i.id === raw.selectedIndex
+                ? raw.balances.TBCi
+                : 0,
+          ]),
+        ),
         kyc: { ...structuredClone(defaultKyc), ...raw.kyc },
         security: { ...defaultSecurity, ...raw.security },
         preferences: {
@@ -138,6 +160,9 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     const next = typeof value === "function" ? value(stateRef.current) : value;
     if (next !== stateRef.current) {
       stateRef.current = next;
+      try {
+        localStorage.setItem(KEY, JSON.stringify(next));
+      } catch {}
       reactSetState(next);
     }
   };
@@ -201,90 +226,25 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     const timer = setTimeout(() => notify(""), 6000);
     return () => clearTimeout(timer);
   }, [message]);
-  const save = (
-    balances: Record<string, number>,
-    type: Operation["type"],
-    symbol: string,
-    amount: number,
-    value: number,
-  ) =>
-    setState((s) => ({
-      ...s,
-      balances,
-      kyc:
-        type === "buy" || type === "compile"
-          ? { ...s.kyc, purchaseTotalUsd: purchaseUsed(s) + value * 1.005 }
-          : s.kyc,
-      tokenBalances: { ...s.tokenBalances, [s.selectedIndex]: balances.TBCi },
-      audit: [
-        auditEvent(
-          type === "deposit" || type === "withdraw" ? "wallet" : "trading",
-          type + " completed",
-          amount + " " + symbol,
-        ),
-        ...s.audit,
-      ].slice(0, 1000),
-      operations: [
-        {
-          id: crypto.randomUUID(),
-          type,
-          symbol,
-          amount,
-          value,
-          date: new Date().toISOString(),
-        },
-        ...s.operations,
-      ].slice(0, 500),
-    }));
   const trade = (
     type: "buy" | "sell" | "compile",
     amount: number,
     payment = "USD",
+    indexId = stateRef.current.selectedIndex,
+    requestId?: string,
   ) => {
-    if (!Number.isFinite(amount) || amount <= 0 || amount > 1e6)
-      return "Enter a valid token amount.";
-    const current = stateRef.current;
-    const b = { ...current.balances };
-    const value = amount * findIndex(current.selectedIndex).price;
-    const kycError = purchaseError(current, type, value);
-    if (kycError) return kycError;
-    const a = assets.find((a) => a.symbol === payment);
-    if (type === "buy") {
-      if (!a || a.symbol === "TBCi") return "Select a payment currency.";
-      const cost = (value * 1.005) / a.price;
-      if (b[payment] + 1e-8 < cost)
-        return (
-          "Insufficient " + payment + " balance. Deposit funds before buying."
-        );
-      b[payment] = round(b[payment] - cost);
-      b.TBCi = round(b.TBCi + amount);
-    }
-    if (type === "sell") {
-      if (!a || a.symbol === "TBCi") return "Select a receiving currency.";
-      if (amount > b.TBCi) return "Insufficient TBCi balance.";
-      b.TBCi = round(b.TBCi - amount);
-      b[payment] = round(b[payment] + (value * 0.995) / a.price);
-    }
-    if (type === "compile") {
-      const missing = basket.find(
-        (a) =>
-          b[a.symbol] + 1e-8 < ((value * a.weight) / 100 / a.price) * 1.005,
-      );
-      if (missing)
-        return (
-          "Insufficient " + missing.symbol + ". Deposit the missing components."
-        );
-      for (const a of basket)
-        b[a.symbol] = round(
-          b[a.symbol] - ((value * a.weight) / 100 / a.price) * 1.005,
-        );
-      b.TBCi = round(b.TBCi + amount);
-    }
-
-    save(b, type, "TBCi", amount, value);
+    const result = executeIndexTrade(
+      stateRef.current,
+      type,
+      amount,
+      payment,
+      indexId,
+      requestId,
+    );
+    if (result.error) return result.error;
+    setState(result.state);
     return null;
   };
-
   const redeem = (amount: number, symbol?: string) => {
     const kycError = purchaseError(stateRef.current, "unmake");
     if (kycError) return kycError;
@@ -297,6 +257,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     if (!state.redemption && amount > state.balances.TBCi)
       return "Insufficient TBCi balance.";
     const price = findIndex(state.selectedIndex).price;
+    const components = indexBasket(state.selectedIndex);
     const created = !state.redemption;
     const b = { ...state.balances };
     const redemption = state.redemption
@@ -305,7 +266,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
           indexId: state.selectedIndex,
           amount,
           remaining: Object.fromEntries(
-            basket.map((a) => [
+            components.map((a) => [
               a.symbol,
               round(((amount * price * a.weight) / 100 / a.price) * 0.995),
             ]),
@@ -331,6 +292,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
           (symbol ? assets.find((a) => a.symbol === symbol)!.price : 1),
       value: credited,
       date: new Date().toISOString(),
+      indexId: state.selectedIndex,
     };
     setState((s) => ({
       ...s,
@@ -587,8 +549,21 @@ export function DemoProvider({ children }: { children: ReactNode }) {
         notify,
         dismiss: () => notify(""),
         trade,
+        convertAssets: (from, to, amount, requestId) => {
+          const result = executeAssetConversion(
+            stateRef.current,
+            from,
+            to,
+            amount,
+            requestId,
+          );
+          if (result.error) return result.error;
+          setState(result.state);
+          return null;
+        },
         redeem,
         selectIndex: (id) =>
+          allIndices.some((i) => i.id === id) &&
           setState((s) => ({
             ...s,
             selectedIndex: id,

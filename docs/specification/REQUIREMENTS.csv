@@ -1,214 +1,227 @@
-ID,Screen,Kind,Requirement,Basis
-PUB-01-B01,PUB-01,visual,"Тёмная шапка: словесный логотип TBCi, подпись Cryptocurrency index, Index, Coins, Exchanges, ICOs, News, Search, Login / Register",source_jpg
-PUB-01-B02,PUB-01,visual,"Широкий тёмный первый экран: название Tugush Blockchain Capital index 20 Balance, значение индекса, абсолютное и процентное изменение, дата UTC, ссылки социальных сетей",source_jpg
-PUB-01-B03,PUB-01,visual,Переключатели TBCi-10 Stable / TBCi-20 Balance / TBCi-50 Active / More; большой площадной график внутри первого экрана,source_jpg
-PUB-01-B04,PUB-01,visual,"Полоса котировки монеты: стрелки, название и символ, цена, Direct vol 24h, Total vol 24h, Mrk.Cap, sparkline, изменение, All Coins",source_jpg
-PUB-01-B05,PUB-01,visual,"Introducing TBC Index: два текстовых абзаца слева, Current Composition с шестью начальными строками справа",source_jpg
-PUB-01-B06,PUB-01,visual,"News & Articles: шесть карточек в сетке 3 × 2, фотографии, категория, заголовок, дата; View More News",source_jpg
-PUB-01-B07,PUB-01,visual,"Daily updates: пояснение, email, Subscribe, Follow us on; тёмный трёхколоночный подвал",source_jpg
-PUB-01-F01,PUB-01,behavior,Index открывает список индексов и ведёт на PUB-03; смена индекса меняет подпись и показатель первого экрана,derived_from_visible_control
-PUB-01-F02,PUB-01,behavior,Поиск отправляет q на PUB-06; Login и Register сразу открывают /app/ без формы входа,derived_from_visible_control
-PUB-01-F03,PUB-01,behavior,Стрелки котировки переключают монету; All Coins открывает каталог,derived_from_visible_control
-PUB-01-F04,PUB-01,behavior,View All Coins раскрывает полный демонстрационный состав; повторное нажатие сворачивает его,derived_from_visible_control
-PUB-01-F05,PUB-01,behavior,"Карточка ведёт к статье, View More News — PUB-13; email проходит HTML-валидацию, Subscribe показывает результат без отправки",derived_from_visible_control
-PUB-03-B01,PUB-03,visual,"Тёмный заголовок индекса: имя, значение, изменение, дата; действия Watchlist и распространения ссылки",source_jpg
-PUB-03-B02,PUB-03,visual,"Полоса Market Cap, Volume 24h, Price, Total tokens, Coins quantity",source_jpg
-PUB-03-B03,PUB-03,visual,"Сравнительный площадной график: основная серия, чип BTC, Add coins, периоды",source_jpg
-PUB-03-B04,PUB-03,visual,"TBCi 20 Balance Composition: заголовок и подзаголовок, кольцевая диаграмма слева, две таблицы легенды по десять строк справа",source_jpg
-PUB-03-B05,PUB-03,visual,List of included cryptocurrencies: критерий капитализации и таблица Currency / Market cap / Share of portfolio / Price / Value of share; десять видимых строк исходного примера; примечание об исключениях,source_jpg
-PUB-03-B06,PUB-03,visual,"Calculate profit index: два ползунка Initial investment и Purchase date, сравнение индекса с выбранной монетой, Cost / Rate, Buy TBCi, кольцо Revenue / Rate",source_jpg
-PUB-03-B07,PUB-03,visual,"Design and calculation methodology: два абзаца, формула, расшифровка величин; общий подвал",source_jpg
-PUB-03-F01,PUB-03,behavior,Выбор основной серии и периода меняет демонстрационный график,derived_from_visible_control
-PUB-03-F02,PUB-03,behavior,BTC можно убрать; Add coins + добавляет поддерживаемую монету без дубля,derived_from_visible_control
-PUB-03-F03,PUB-03,behavior,Подсветка сегмента синхронизируется с легендой; ссылка монеты ведёт на PUB-07,derived_from_visible_control
-PUB-03-F04,PUB-03,behavior,Ползунки пересчитывают итог и доход; выбор BTC/ETH/LTC меняет сравнение,derived_from_visible_control
-PUB-03-F05,PUB-03,behavior,Buy TBCi открывает CAB-04,derived_from_visible_control
-PUB-06-B01,PUB-06,visual,Тёмная область All Cryptocurrency list,source_jpg
-PUB-06-B02,PUB-06,visual,Пять фильтров Type coins / Market Cap / Price / Volume 24h / Currency и кнопка Watchlist,source_jpg
-PUB-06-B03,PUB-06,visual,Таблица: звезда / # / Name / Symbol / Market Cap / Price / Volume (24h) / Circulating Supply / Price Graph (7d) / % 24H,source_jpg
-PUB-06-B04,PUB-06,visual,"Show more, индикатор диапазона результатов; общий подвал",source_jpg
-PUB-06-F01,PUB-06,behavior,Фильтры применяются совместно к данным; Currency переводит денежные столбцы,derived_from_visible_control
-PUB-06-F02,PUB-06,behavior,Звезда меняет избранное и сохраняет его в этом браузере; Watchlist оставляет выбранные строки,derived_from_visible_control
-PUB-06-F03,PUB-06,behavior,Сортировка Name/Price переключает порядок; q из поиска шапки фильтрует имя и тикер,derived_from_visible_control
-PUB-06-F04,PUB-06,behavior,Name открывает PUB-07; Show more расширяет список без повторов,derived_from_visible_control
-PUB-07-B01,PUB-07,visual,"Карточка Bitcoin BTC: иконка, Rank 1, цена, изменение, дата; Watchlist, ссылки и распространение",source_jpg
-PUB-07-B02,PUB-07,visual,Полоса Market Cap / Volume 24h / Circulating Supply / Max Supply / Last trade,source_jpg
-PUB-07-B03,PUB-07,visual,Навигация Overview / Historical price / Analysis / Markets / Charts / Trades / Forum / News / Timeline,source_jpg
-PUB-07-B04,PUB-07,visual,"Двухколоночная область: Detail information слева; Latest Bitcoin - Historical Price Chart справа, синие и жёлтые линии процентного изменения",source_jpg
-PUB-07-B05,PUB-07,visual,"Convertisseur: give away / convert, валюта и сумма, результат",source_jpg
-PUB-07-B06,PUB-07,visual,About coin: несколько абзацев; общий подвал,source_jpg
-PUB-07-F01,PUB-07,behavior,Вкладки с отдельными JPG открывают PUB-08…PUB-11,derived_from_visible_control
-PUB-07-F02,PUB-07,behavior,Информационные внешние ссылки соответствуют выбранной монете; в прототипе полный справочник есть для Bitcoin,derived_from_visible_control
-PUB-07-F03,PUB-07,behavior,"Периоды графика меняют отображение, указатель/клавиатура показывают подсказку",derived_from_visible_control
-PUB-07-F04,PUB-07,behavior,Конвертер переводит неотрицательную сумму по демонстрационному курсу,derived_from_visible_control
-PUB-08-B01,PUB-08,visual,Общая карточка монеты и вкладки как PUB-07,source_jpg
-PUB-08-B02,PUB-08,visual,"Bitcoin Charts: периоды 1D / 7D / 1M / 3M / 1Y / YTD / All, From / To, Technical Chart, Linear Scale / Log Scale",source_jpg
-PUB-08-B03,PUB-08,visual,Основной график Market Cap и Price (USD) с левой и правой шкалами,source_jpg
-PUB-08-B04,PUB-08,visual,"Гистограмма 24h Vol, временная шкала, нижний навигатор диапазона, легенда Market Cap / Price (USD) / Price (BTC) / 24h Vol",source_jpg
-PUB-08-B05,PUB-08,visual,Сохраняется большая белая область до общего подвала,source_jpg
-PUB-08-F01,PUB-08,behavior,Период и даты управляют отображаемым интервалом; From не позже To,derived_from_visible_control
-PUB-08-F02,PUB-08,behavior,Linear / Log меняют масштаб оси,derived_from_visible_control
-PUB-08-F03,PUB-08,behavior,Легенда включает/выключает серии,derived_from_visible_control
-PUB-08-F04,PUB-08,behavior,Technical Chart включает демонстрационный индикатор; навигатор меняет диапазон,derived_from_visible_control
-PUB-09-B01,PUB-09,visual,Общая карточка монеты и вкладки,source_jpg
-PUB-09-B02,PUB-09,visual,"Historical price for Bitcoin, интервал дат",source_jpg
-PUB-09-B03,PUB-09,visual,Таблица Date / Open / High / Low / Close / Volume / Market Cap,source_jpg
-PUB-09-B04,PUB-09,visual,Общий подвал и исходная свободная область,source_jpg
-PUB-09-F01,PUB-09,behavior,From / To ограничивают строки; обновление результата без перезагрузки,derived_from_visible_control
-PUB-09-F02,PUB-09,behavior,При пустом диапазоне показывается сообщение,derived_from_visible_control
-PUB-09-F03,PUB-09,behavior,Вкладки сохраняют выбранную монету,derived_from_visible_control
-PUB-10-B01,PUB-10,visual,Общая карточка монеты и вкладки,source_jpg
-PUB-10-B02,PUB-10,visual,Bitcoin Markets,source_jpg
-PUB-10-B03,PUB-10,visual,Таблица # / Currency / Pair / Volume 24h / Price / Volume (%) / Updated / Charts / Status,source_jpg
-PUB-10-B04,PUB-10,visual,Общий подвал,source_jpg
-PUB-10-F01,PUB-10,behavior,Название актива открывает его страницу,derived_from_visible_control
-PUB-10-F02,PUB-10,behavior,Charts открывает график соответствующей монеты,derived_from_visible_control
-PUB-10-F03,PUB-10,behavior,"В production сортировка, пагинация и время последнего обновления приходят из рыночного источника",derived_from_visible_control
-PUB-11-B01,PUB-11,visual,Общая карточка монеты и вкладки,source_jpg
-PUB-11-B02,PUB-11,visual,Bitcoin News и три селектора News Feeds / Include / Exclude,source_jpg
-PUB-11-B03,PUB-11,visual,"Шесть горизонтальных карточек: фото слева, источник и относительное время, заголовок, отрывок, категории справа",source_jpg
-PUB-11-B04,PUB-11,visual,Общий подвал,source_jpg
-PUB-11-F01,PUB-11,behavior,News Feeds ограничивает источник,derived_from_visible_control
-PUB-11-F02,PUB-11,behavior,Include / Exclude применяют категории совместно,derived_from_visible_control
-PUB-11-F03,PUB-11,behavior,Карточка открывает статью; для карточек без полного исходного текста открывается явно обозначенный демонстрационный материал,derived_from_visible_control
-PUB-04-B01,PUB-04,visual,Тёмный заголовок Cryptocurrency Exchanges,source_jpg
-PUB-04-B02,PUB-04,visual,Три селектора Volume / Change 24h / Crypto и Watchlist,source_jpg
-PUB-04-B03,PUB-04,visual,"Trading Overview: Volume markets, Exchanges, Pairs",source_jpg
-PUB-04-B04,PUB-04,visual,"Market By Volume: горизонтальные полосы USDT / BTC / XRP / ETH / OTHER, Share, Volume",source_jpg
-PUB-04-B05,PUB-04,visual,Таблица звезда / # / Name / Volume (24h) / Total % / Pairs / Top Pair / Vol Graph (7d) / % 24H,source_jpg
-PUB-04-B06,PUB-04,visual,Show more / Next 100 / View All; общий подвал,source_jpg
-PUB-04-F01,PUB-04,behavior,Volume и Change фильтруют строки; Crypto меняет выбранную валюту/пары,derived_from_visible_control
-PUB-04-F02,PUB-04,behavior,Звезда управляет списком избранных в текущей сессии; Watchlist фильтрует его,derived_from_visible_control
-PUB-04-F03,PUB-04,behavior,Название открывает PUB-05 по выбранному slug,derived_from_visible_control
-PUB-04-F04,PUB-04,behavior,Кнопки продолжения расширяют выдачу до конца доступного набора,derived_from_visible_control
-PUB-05-B01,PUB-05,visual,"Тёмная карточка Huobi: знак, Rank, объём, изменение, Watchlist и действия ссылки",source_jpg
-PUB-05-B02,PUB-05,visual,Полоса Total volume / Volume 24h / Volume 7d / Volume 30d / Trading pairs / Top Pair,source_jpg
-PUB-05-B03,PUB-05,visual,"Detail information: две таблицы со ссылками, датой запуска, объёмами и торговыми параметрами",source_jpg
-PUB-05-B04,PUB-05,visual,Volume change: периоды и серая гистограмма справа,source_jpg
-PUB-05-B05,PUB-05,visual,Таблица торговых пар с девятью столбцами как PUB-10; общий подвал,source_jpg
-PUB-05-F01,PUB-05,behavior,Период Volume change переключает данные гистограммы,derived_from_visible_control
-PUB-05-F02,PUB-05,behavior,Ссылки пар и графиков сохраняют соответствующий актив,derived_from_visible_control
-PUB-05-F03,PUB-05,behavior,Действия копирования/распространения ссылки сообщают результат,derived_from_visible_control
-PUB-13-B01,PUB-13,visual,Тёмный заголовок News & Articles,source_jpg
-PUB-13-B02,PUB-13,visual,Categories / Types / Search; Newest first / Popular first,source_jpg
-PUB-13-B03,PUB-13,visual,"Три главных материала: один крупный слева, два друг над другом справа",source_jpg
-PUB-13-B04,PUB-13,visual,Полоса пяти котировок со sparklines,source_jpg
-PUB-13-B05,PUB-13,visual,"Девять карточек 3 × 3: фотография, категория, заголовок, дата",source_jpg
-PUB-13-B06,PUB-13,visual,"View More News, Daily updates, общий подвал",source_jpg
-PUB-13-F01,PUB-13,behavior,"Поиск по заголовку, категория и тип применяются совместно",derived_from_visible_control
-PUB-13-F02,PUB-13,behavior,Newest / Popular меняют демонстрационный порядок,derived_from_visible_control
-PUB-13-F03,PUB-13,behavior,Параметры q/category из URL применяются при открытии страницы,derived_from_visible_control
-PUB-13-F04,PUB-13,behavior,Статья открывается с карточки; подписка работает как на PUB-01,derived_from_visible_control
-PUB-14-B01,PUB-14,visual,Тёмный заголовок One coin to Rule Them All? Huobi’s New Program Lets Users Swap Between Tokens,source_jpg
-PUB-14-B02,PUB-14,visual,"Категория, дата, Total views, Total shares",source_jpg
-PUB-14-B03,PUB-14,visual,Узкая колонка социальных действий слева и текстовая колонка справа,source_jpg
-PUB-14-B04,PUB-14,visual,"Вступление, большая фотография Huobi, подзаголовки HUSD: Huobi’s All-in-One Stablecoin Solution и Tether Not Listed among Stablecoins, абзацы",source_jpg
-PUB-14-B05,PUB-14,visual,Автор и теги; белое завершение страницы без придуманного тёмного подвала,source_jpg
-PUB-14-F01,PUB-14,behavior,Категория/теги возвращают к ленте,derived_from_visible_control
-PUB-14-F02,PUB-14,behavior,Социальное действие использует Web Share либо копирует адрес; уведомление при отсутствии доступа,derived_from_visible_control
-PUB-14-F03,PUB-14,behavior,"Счётчики в прототипе — фиксированные значения из примера, не реальные события",derived_from_visible_control
-CAB-01-B01,CAB-01,visual,Слева тёмное меню с логотипом и Sergey Petrov; активный My wallet; справа белое полотно на сером фоне,source_jpg
-CAB-01-B02,CAB-01,visual,"Заголовок My Wallets; две карточки Total available и выбранного индекса с балансом, sparklines, валютами, Choice index, Buy/Sell",source_jpg
-CAB-01-B03,CAB-01,visual,Total available: большой светлый площадной график и периоды,source_jpg
-CAB-01-B04,CAB-01,visual,Две карточки Total Profit и Transaction history,source_jpg
-CAB-01-B05,CAB-01,visual,"Total Balance Composition: кольцо, сумма в центре, легенда Currency / Percentage / Balance / Equivalent",source_jpg
-CAB-01-B06,CAB-01,visual,Your wallets balance: Currency / Volume / Balance / Equivalent / Deposit / Withdraw; Add currency,source_jpg
-CAB-01-B07,CAB-01,visual,Небольшой копирайт под полотном,source_jpg
-CAB-01-F01,CAB-01,behavior,USD/BTC/ETH меняют эквивалент; Choice index открывает CAB-02,derived_from_visible_control
-CAB-01-F02,CAB-01,behavior,Buy/Sell открывают CAB-04/CAB-06 выбранного индекса,derived_from_visible_control
-CAB-01-F03,CAB-01,behavior,График имеет периоды и подсказки,derived_from_visible_control
-CAB-01-F04,CAB-01,behavior,Deposit/Withdraw открывают диалог соответствующего актива; Add currency добавляет кошелёк без дубля,derived_from_visible_control
-CAB-01-F05,CAB-01,behavior,Сортировка Currency/Balance и выбор эквивалента меняют таблицу,derived_from_visible_control
-CAB-02-B01,CAB-02,visual,Общий каркас кабинета; активный Overview,source_jpg
-CAB-02-B02,CAB-02,visual,"Choice index; Price equivalent USD/BTC/ETH, Current balance",source_jpg
-CAB-02-B03,CAB-02,visual,"Сетка из шести карточек 2 × 3: имя, цена, баланс, sparkline, значение индекса, изменение 24h",source_jpg
-CAB-02-B04,CAB-02,visual,Действия Overview / Compile / Buy / меню дополнительных действий Sell / Unmake / Historical price / Holders,source_jpg
-CAB-02-F01,CAB-02,behavior,Валюта меняет цену; сортировка меняет порядок карточек,derived_from_visible_control
-CAB-02-F02,CAB-02,behavior,"Любое действие сначала сохраняет выбранный indexId, затем переходит на нужный экран",derived_from_visible_control
-CAB-02-F03,CAB-02,behavior,Балансы независимы для каждого индекса и сохраняются после обновления,derived_from_visible_control
-CAB-03-B01,CAB-03,visual,"Overview TBCi-20 Stable, справа Choice index",source_jpg
-CAB-03-B02,CAB-03,visual,"Общая строка индекса: мини-кольцо и Information, Total balance, Equivalent, валюта, изменение, значение, дата и sparkline",source_jpg
-CAB-03-B03,CAB-03,visual,"Большой сравнительный график с выбранной серией, BTC, Add coins и периодами",source_jpg
-CAB-03-B04,CAB-03,visual,Total Profit и Transaction history,source_jpg
-CAB-03-B05,CAB-03,visual,TBCi-20 Stable Composition: кольцо с легендой в двух колонках,source_jpg
-CAB-03-B06,CAB-03,visual,"Design and calculation methodology: абзацы, формула и определения",source_jpg
-CAB-03-F01,CAB-03,behavior,Choice index меняет контекст; выбранный контекст виден во всех финансовых экранах,derived_from_visible_control
-CAB-03-F02,CAB-03,behavior,"Валюта Equivalent, периоды и серии графика интерактивны",derived_from_visible_control
-CAB-03-F03,CAB-03,behavior,Наведение на кольцо/легенду показывает актив и вес,derived_from_visible_control
-CAB-04-B01,CAB-04,visual,"Buy [выбранный индекс], Choice index и общая строка баланса",source_jpg
-CAB-04-B02,CAB-04,visual,"Select method payment: шесть вариантов BTC / ETH / Visa-Mastercard (USD) / XRP / EOS / LTC, иконки, остатки; выбранный вариант с голубой галочкой",source_jpg
-CAB-04-B03,CAB-04,visual,"How much to buy?: степпер и Amount TBCi, Commission 0.5%, стрелка, Total cost с валютой, Buy",source_jpg
-CAB-04-B04,CAB-04,visual,Время обновления UTC,source_jpg
-CAB-04-F01,CAB-04,behavior,Выбор кошелька меняет итог в его валюте,derived_from_visible_control
-CAB-04-F02,CAB-04,behavior,Степпер и ввод принимают положительное конечное количество,derived_from_visible_control
-CAB-04-F03,CAB-04,behavior,Buy открывает проверяемое подтверждение; при достаточном балансе списывает стоимость с комиссией и зачисляет токены,derived_from_visible_control
-CAB-04-F04,CAB-04,behavior,"При недостатке выводится ошибка, балансы не меняются",derived_from_visible_control
-CAB-05-B01,CAB-05,visual,"Compile [индекс], Choice index, общая строка",source_jpg
-CAB-05-B02,CAB-05,visual,"Amount со степпером, Calculate, Compile и время обновления",source_jpg
-CAB-05-B03,CAB-05,visual,Таблица Currency / Price / Available / Balance TBCi / Rest / Deposit; полосы обеспеченности цветом монеты,source_jpg
-CAB-05-B04,CAB-05,visual,В исходнике десять видимых демонстрационных строк,source_jpg
-CAB-05-F01,CAB-05,behavior,Изменение суммы сбрасывает рассчитанное состояние,derived_from_visible_control
-CAB-05-F02,CAB-05,behavior,Calculate рассчитывает компоненты полного состава; в демоверсии раскрывает все 20 строк,derived_from_visible_control
-CAB-05-F03,CAB-05,behavior,Rest = положительный недостающий остаток; Deposit пополняет конкретную монету,derived_from_visible_control
-CAB-05-F04,CAB-05,behavior,Compile доступна только после расчёта и обеспечения всех компонентов,derived_from_visible_control
-CAB-05-F05,CAB-05,behavior,Подтверждение атомарно списывает полный состав и увеличивает токены,derived_from_visible_control
-CAB-06-B01,CAB-06,visual,"Sell [индекс], Choice index, общая строка",source_jpg
-CAB-06-B02,CAB-06,visual,"Select currency wallet: те же шесть валют, выбран ETH",source_jpg
-CAB-06-B03,CAB-06,visual,"How much to sell?: Total balance TBCi, Amount, Commission 0.5%, Total cost в валюте получения, Sell",source_jpg
-CAB-06-B04,CAB-06,visual,Время обновления UTC,source_jpg
-CAB-06-F01,CAB-06,behavior,Выбор валюты меняет кошелёк зачисления,derived_from_visible_control
-CAB-06-F02,CAB-06,behavior,Сумма ограничивается доступным токеновым балансом,derived_from_visible_control
-CAB-06-F03,CAB-06,behavior,Подтверждение списывает токены и зачисляет один выбранный актив за вычетом комиссии,derived_from_visible_control
-CAB-07-B01,CAB-07,visual,"Unmake [индекс], Choice index, общая строка",source_jpg
-CAB-07-B02,CAB-07,visual,How much to unmake: Total balance / Amount / Commission 0.5% / Calculate / Withdraw all,source_jpg
-CAB-07-B03,CAB-07,visual,Таблица Currency / Cost / Balance TBCi / Withdraw / Available wallet; полосы компонентов,source_jpg
-CAB-07-B04,CAB-07,visual,Десять видимых строк в начальном примере,source_jpg
-CAB-07-F01,CAB-07,behavior,Calculate определяет все компоненты и раскрывает полный состав,derived_from_visible_control
-CAB-07-F02,CAB-07,behavior,Withdraw в строке получает один компонент; Withdraw all получает все оставшиеся,derived_from_visible_control
-CAB-07-F03,CAB-07,behavior,Первое подтверждение погашает токены один раз и создаёт требования на полный состав,derived_from_visible_control
-CAB-07-F04,CAB-07,behavior,Остаток требований сохраняется при обновлении; повторный вывод одной строки запрещён,derived_from_visible_control
-CAB-07-F05,CAB-07,behavior,"Пока остаются компоненты, сумма фиксирована; другой индекс не может забрать эти требования",derived_from_visible_control
-CAB-08-B01,CAB-08,visual,"Historical price [индекс], Choice index",source_jpg
-CAB-08-B02,CAB-08,visual,"Period 2: November 01, 2018 – December 24, 2018; Previous period / Next period",source_jpg
-CAB-08-B03,CAB-08,visual,"Две таблицы рядом: Start price и End price, значение индекса и изменение",source_jpg
-CAB-08-B04,CAB-08,visual,Столбцы Currency / Price of share / Value of share / Percent,source_jpg
-CAB-08-B05,CAB-08,visual,Изменившиеся строки подсвечены розовым; пример замены Stellar на IOTA,source_jpg
-CAB-08-F01,CAB-08,behavior,Previous / Next переключают снимки состава и интервал,derived_from_visible_control
-CAB-08-F02,CAB-08,behavior,Границы доступных периодов отключают соответствующую кнопку,derived_from_visible_control
-CAB-08-F03,CAB-08,behavior,Контекст выбранного индекса сохраняется,derived_from_visible_control
-CAB-09-B01,CAB-09,visual,"Holders [индекс], Choice index, общая строка",source_jpg
-CAB-09-B02,CAB-09,visual,"Information: описание и две справочные таблицы предложения, цены, держателей, контракта, рынка и выпуска",source_jpg
-CAB-09-B03,CAB-09,visual,List of all holders: Rank / Address / Quantity / Percentage / Equivalent,source_jpg
-CAB-09-B04,CAB-09,visual,Next 100 / View All,source_jpg
-CAB-09-F01,CAB-09,behavior,Адрес можно скопировать; сообщение об успехе или недоступности clipboard,derived_from_visible_control
-CAB-09-F02,CAB-09,behavior,Next 100 показывает следующую страницу; View All раскрывает демонстрационный набор,derived_from_visible_control
-CAB-09-F03,CAB-09,behavior,Общие поля зависят от выбранного индекса; в прототипе адреса явно демонстрационные,derived_from_visible_control
-ENH-01,EXT-2018,extension,"Панорамирование, масштаб, перекрестие и клавиатура",explicit_user_request_after_v2.0
-ENH-02,EXT-2018,extension,Независимые ряды семи индексов 2018,explicit_user_request_after_v2.0
-ENH-03,EXT-2018,extension,"Интервалы, типы, сравнения, индикаторы",explicit_user_request_after_v2.0
-ENH-04,EXT-2018,extension,"Таблица данных, PNG/CSV, датировки UTC",explicit_user_request_after_v2.0
-ENH-05,EXT-2018,extension,32 статьи более 350 слов за 2018,explicit_user_request_after_v2.0
-ENH-06,EXT-2018,extension,"Фильтры, оглавление, сохранение, связанные статьи",explicit_user_request_after_v2.0
-ENH-07,EXT-2018,extension,48 архивных ICO и происхождение фактов,explicit_user_request_after_v2.0
-ENH-08,EXT-2018,extension,Месяцы/дни/статусы/избранное ICO,explicit_user_request_after_v2.0
-ENH-09,EXT-2018,extension,"21 локальный SVG, CC0 и SHA-256",explicit_user_request_after_v2.0
-ENH-10,EXT-2018,extension,Устойчивая сетка сумм и селектора 320–1920,explicit_user_request_after_v2.0
-ENH-11,EXT-2018,extension,Согласованные моковые показатели и активность,explicit_user_request_after_v2.0
-ENH-12,EXT-2018,extension,Заполненные профили и отдельные вкладки монет,explicit_user_request_after_v2.0
-WAL-KYC-01,EXT-ACCOUNT,behavior,Графики остаются в границах ряда при всех способах навигации,user_requested_extension_v2_2
-WAL-KYC-02,EXT-ACCOUNT,behavior,Сегменты состава и легенда синхронно выбираются с мыши и клавиатуры,user_requested_extension_v2_2
-WAL-KYC-03,EXT-ACCOUNT,behavior,Sparklines и история переводов позволяют исследовать значения,user_requested_extension_v2_2
-WAL-KYC-04,EXT-ACCOUNT,behavior,Пошаговый Deposit с настоящим локальным QR и чеком,user_requested_extension_v2_2
-WAL-KYC-05,EXT-ACCOUNT,behavior,Пошаговый Withdraw с сетью и комиссией родного актива,user_requested_extension_v2_2
-WAL-KYC-06,EXT-ACCOUNT,behavior,Идемпотентность переводов и продолжение после reload,user_requested_extension_v2_2
-WAL-KYC-07,EXT-ACCOUNT,behavior,Сбой возвращает резерв и комиссию ровно один раз,user_requested_extension_v2_2
-WAL-KYC-08,EXT-ACCOUNT,behavior,Локальная TOTP и одноразовые recovery codes,user_requested_extension_v2_2
-WAL-KYC-09,EXT-ACCOUNT,behavior,Whitelist по активу сети адресу и memo,user_requested_extension_v2_2
-WAL-KYC-10,EXT-ACCOUNT,behavior,История и журнал фильтруются и экспортируются без секретов,user_requested_extension_v2_2
-WAL-KYC-11,EXT-ACCOUNT,behavior,Настройки профиля предпочтений и демонстрационных устройств,user_requested_extension_v2_2
-WAL-KYC-12,EXT-ACCOUNT,behavior,Level 2 по умолчанию и три покупательских уровня,user_requested_extension_v2_2
-WAL-KYC-13,EXT-ACCOUNT,behavior,Накопительный лимит Buy и Compile включая комиссию,user_requested_extension_v2_2
-WAL-KYC-14,EXT-ACCOUNT,behavior,Basic и Full KYC с образцами документов и приватностью,user_requested_extension_v2_2
-WAL-KYC-15,EXT-ACCOUNT,behavior,Рассмотрение KYC с тремя исходами и повторной подачей,user_requested_extension_v2_2
-WAL-KYC-16,EXT-ACCOUNT,behavior,Десять FAQ с ответами по 3–4 предложения и поиском,user_requested_extension_v2_2
-WAL-KYC-17,EXT-ACCOUNT,behavior,Общая проверка верстки 320–2560 и SVG иконок,user_requested_extension_v2_2
+ID,Screen,Kind,Requirement,Basis,Status,SupersededBy
+PUB-01-B01,PUB-01,visual,"Тёмная шапка: словесный логотип TBCi, подпись Cryptocurrency index, Index, Coins, Exchanges, ICOs, News, Search, Login / Register",source_jpg,active,
+PUB-01-B02,PUB-01,visual,"Широкий тёмный первый экран: название Tugush Blockchain Capital index 20 Balance, значение индекса, абсолютное и процентное изменение, дата UTC, ссылки социальных сетей",source_jpg,active,
+PUB-01-B03,PUB-01,visual,Переключатели TBCi-10 Stable / TBCi-20 Balance / TBCi-50 Active / More; большой площадной график внутри первого экрана,source_jpg,active,
+PUB-01-B04,PUB-01,visual,"Полоса котировки монеты: стрелки, название и символ, цена, Direct vol 24h, Total vol 24h, Mrk.Cap, sparkline, изменение, All Coins",source_jpg,active,
+PUB-01-B05,PUB-01,visual,"Introducing TBC Index: два текстовых абзаца слева, Current Composition с шестью начальными строками справа",source_jpg,active,
+PUB-01-B06,PUB-01,visual,"News & Articles: шесть карточек в сетке 3 × 2, фотографии, категория, заголовок, дата; View More News",source_jpg,active,
+PUB-01-B07,PUB-01,visual,"Daily updates: пояснение, email, Subscribe, Follow us on; тёмный трёхколоночный подвал",source_jpg,active,
+PUB-01-F01,PUB-01,behavior,Index открывает список индексов и ведёт на PUB-03; смена индекса меняет подпись и показатель первого экрана,derived_from_visible_control,active,
+PUB-01-F02,PUB-01,behavior,Поиск отправляет q на PUB-06; Login и Register сразу открывают /app/ без формы входа,derived_from_visible_control,active,
+PUB-01-F03,PUB-01,behavior,Стрелки котировки переключают монету; All Coins открывает каталог,derived_from_visible_control,active,
+PUB-01-F04,PUB-01,behavior,View All Coins раскрывает полный демонстрационный состав; повторное нажатие сворачивает его,derived_from_visible_control,active,
+PUB-01-F05,PUB-01,behavior,"Карточка ведёт к статье, View More News — PUB-13; email проходит HTML-валидацию, Subscribe показывает результат без отправки",derived_from_visible_control,active,
+PUB-03-B01,PUB-03,visual,"Тёмный заголовок индекса: имя, значение, изменение, дата; действия Watchlist и распространения ссылки",source_jpg,active,
+PUB-03-B02,PUB-03,visual,"Полоса Market Cap, Volume 24h, Price, Total tokens, Coins quantity",source_jpg,active,
+PUB-03-B03,PUB-03,visual,"Сравнительный площадной график: основная серия, чип BTC, Add coins, периоды",source_jpg,active,
+PUB-03-B04,PUB-03,visual,"TBCi 20 Balance Composition: заголовок и подзаголовок, кольцевая диаграмма слева, две таблицы легенды по десять строк справа",source_jpg,active,
+PUB-03-B05,PUB-03,visual,List of included cryptocurrencies: критерий капитализации и таблица Currency / Market cap / Share of portfolio / Price / Value of share; десять видимых строк исходного примера; примечание об исключениях,source_jpg,active,
+PUB-03-B06,PUB-03,visual,"Calculate profit index: два ползунка Initial investment и Purchase date, сравнение индекса с выбранной монетой, Cost / Rate, Buy TBCi, кольцо Revenue / Rate",source_jpg,active,
+PUB-03-B07,PUB-03,visual,"Design and calculation methodology: два абзаца, формула, расшифровка величин; общий подвал",source_jpg,active,
+PUB-03-F01,PUB-03,behavior,Выбор основной серии и периода меняет демонстрационный график,derived_from_visible_control,active,
+PUB-03-F02,PUB-03,behavior,BTC можно убрать; Add coins + добавляет поддерживаемую монету без дубля,derived_from_visible_control,active,
+PUB-03-F03,PUB-03,behavior,Подсветка сегмента синхронизируется с легендой; ссылка монеты ведёт на PUB-07,derived_from_visible_control,active,
+PUB-03-F04,PUB-03,behavior,Ползунки пересчитывают итог и доход; выбор BTC/ETH/LTC меняет сравнение,derived_from_visible_control,active,
+PUB-03-F05,PUB-03,behavior,Buy TBCi открывает CAB-04,derived_from_visible_control,active,
+PUB-06-B01,PUB-06,visual,Тёмная область All Cryptocurrency list,source_jpg,active,
+PUB-06-B02,PUB-06,visual,Пять фильтров Type coins / Market Cap / Price / Volume 24h / Currency и кнопка Watchlist,source_jpg,active,
+PUB-06-B03,PUB-06,visual,Таблица: звезда / # / Name / Symbol / Market Cap / Price / Volume (24h) / Circulating Supply / Price Graph (7d) / % 24H,source_jpg,active,
+PUB-06-B04,PUB-06,visual,"Show more, индикатор диапазона результатов; общий подвал",source_jpg,active,
+PUB-06-F01,PUB-06,behavior,Фильтры применяются совместно к данным; Currency переводит денежные столбцы,derived_from_visible_control,active,
+PUB-06-F02,PUB-06,behavior,Звезда меняет избранное и сохраняет его в этом браузере; Watchlist оставляет выбранные строки,derived_from_visible_control,active,
+PUB-06-F03,PUB-06,behavior,Сортировка Name/Price переключает порядок; q из поиска шапки фильтрует имя и тикер,derived_from_visible_control,active,
+PUB-06-F04,PUB-06,behavior,Name открывает PUB-07; Show more расширяет список без повторов,derived_from_visible_control,active,
+PUB-07-B01,PUB-07,visual,"Карточка Bitcoin BTC: иконка, Rank 1, цена, изменение, дата; Watchlist, ссылки и распространение",source_jpg,active,
+PUB-07-B02,PUB-07,visual,Полоса Market Cap / Volume 24h / Circulating Supply / Max Supply / Last trade,source_jpg,active,
+PUB-07-B03,PUB-07,visual,Навигация Overview / Historical price / Analysis / Markets / Charts / Trades / Forum / News / Timeline,source_jpg,active,
+PUB-07-B04,PUB-07,visual,"Двухколоночная область: Detail information слева; Latest Bitcoin - Historical Price Chart справа, синие и жёлтые линии процентного изменения",source_jpg,active,
+PUB-07-B05,PUB-07,visual,"Convertisseur: give away / convert, валюта и сумма, результат",source_jpg,active,
+PUB-07-B06,PUB-07,visual,About coin: несколько абзацев; общий подвал,source_jpg,active,
+PUB-07-F01,PUB-07,behavior,Вкладки с отдельными JPG открывают PUB-08…PUB-11,derived_from_visible_control,active,
+PUB-07-F02,PUB-07,behavior,Информационные внешние ссылки соответствуют выбранной монете; в прототипе полный справочник есть для Bitcoin,derived_from_visible_control,active,
+PUB-07-F03,PUB-07,behavior,"Периоды графика меняют отображение, указатель/клавиатура показывают подсказку",derived_from_visible_control,active,
+PUB-07-F04,PUB-07,behavior,Конвертер переводит неотрицательную сумму по демонстрационному курсу,derived_from_visible_control,active,
+PUB-08-B01,PUB-08,visual,Общая карточка монеты и вкладки как PUB-07,source_jpg,active,
+PUB-08-B02,PUB-08,visual,"Bitcoin Charts: периоды 1D / 7D / 1M / 3M / 1Y / YTD / All, From / To, Technical Chart, Linear Scale / Log Scale",source_jpg,active,
+PUB-08-B03,PUB-08,visual,Основной график Market Cap и Price (USD) с левой и правой шкалами,source_jpg,active,
+PUB-08-B04,PUB-08,visual,"Гистограмма 24h Vol, временная шкала, нижний навигатор диапазона, легенда Market Cap / Price (USD) / Price (BTC) / 24h Vol",source_jpg,active,
+PUB-08-B05,PUB-08,visual,Сохраняется большая белая область до общего подвала,source_jpg,active,
+PUB-08-F01,PUB-08,behavior,Период и даты управляют отображаемым интервалом; From не позже To,derived_from_visible_control,active,
+PUB-08-F02,PUB-08,behavior,Linear / Log меняют масштаб оси,derived_from_visible_control,active,
+PUB-08-F03,PUB-08,behavior,Легенда включает/выключает серии,derived_from_visible_control,active,
+PUB-08-F04,PUB-08,behavior,Technical Chart включает демонстрационный индикатор; навигатор меняет диапазон,derived_from_visible_control,active,
+PUB-09-B01,PUB-09,visual,Общая карточка монеты и вкладки,source_jpg,active,
+PUB-09-B02,PUB-09,visual,"Historical price for Bitcoin, интервал дат",source_jpg,active,
+PUB-09-B03,PUB-09,visual,Таблица Date / Open / High / Low / Close / Volume / Market Cap,source_jpg,active,
+PUB-09-B04,PUB-09,visual,Общий подвал и исходная свободная область,source_jpg,active,
+PUB-09-F01,PUB-09,behavior,From / To ограничивают строки; обновление результата без перезагрузки,derived_from_visible_control,active,
+PUB-09-F02,PUB-09,behavior,При пустом диапазоне показывается сообщение,derived_from_visible_control,active,
+PUB-09-F03,PUB-09,behavior,Вкладки сохраняют выбранную монету,derived_from_visible_control,active,
+PUB-10-B01,PUB-10,visual,Общая карточка монеты и вкладки,source_jpg,active,
+PUB-10-B02,PUB-10,visual,Bitcoin Markets,source_jpg,active,
+PUB-10-B03,PUB-10,visual,Таблица # / Currency / Pair / Volume 24h / Price / Volume (%) / Updated / Charts / Status,source_jpg,active,
+PUB-10-B04,PUB-10,visual,Общий подвал,source_jpg,active,
+PUB-10-F01,PUB-10,behavior,Название актива открывает его страницу,derived_from_visible_control,active,
+PUB-10-F02,PUB-10,behavior,Charts открывает график соответствующей монеты,derived_from_visible_control,active,
+PUB-10-F03,PUB-10,behavior,"В production сортировка, пагинация и время последнего обновления приходят из рыночного источника",derived_from_visible_control,active,
+PUB-11-B01,PUB-11,visual,Общая карточка монеты и вкладки,source_jpg,active,
+PUB-11-B02,PUB-11,visual,Bitcoin News и три селектора News Feeds / Include / Exclude,source_jpg,active,
+PUB-11-B03,PUB-11,visual,"Шесть горизонтальных карточек: фото слева, источник и относительное время, заголовок, отрывок, категории справа",source_jpg,active,
+PUB-11-B04,PUB-11,visual,Общий подвал,source_jpg,active,
+PUB-11-F01,PUB-11,behavior,News Feeds ограничивает источник,derived_from_visible_control,active,
+PUB-11-F02,PUB-11,behavior,Include / Exclude применяют категории совместно,derived_from_visible_control,active,
+PUB-11-F03,PUB-11,behavior,Карточка открывает статью; для карточек без полного исходного текста открывается явно обозначенный демонстрационный материал,derived_from_visible_control,active,
+PUB-04-B01,PUB-04,visual,Тёмный заголовок Cryptocurrency Exchanges,source_jpg,active,
+PUB-04-B02,PUB-04,visual,Три селектора Volume / Change 24h / Crypto и Watchlist,source_jpg,active,
+PUB-04-B03,PUB-04,visual,"Trading Overview: Volume markets, Exchanges, Pairs",source_jpg,active,
+PUB-04-B04,PUB-04,visual,"Market By Volume: горизонтальные полосы USDT / BTC / XRP / ETH / OTHER, Share, Volume",source_jpg,active,
+PUB-04-B05,PUB-04,visual,Таблица звезда / # / Name / Volume (24h) / Total % / Pairs / Top Pair / Vol Graph (7d) / % 24H,source_jpg,active,
+PUB-04-B06,PUB-04,visual,Show more / Next 100 / View All; общий подвал,source_jpg,active,
+PUB-04-F01,PUB-04,behavior,Volume и Change фильтруют строки; Crypto меняет выбранную валюту/пары,derived_from_visible_control,active,
+PUB-04-F02,PUB-04,behavior,Звезда управляет списком избранных в текущей сессии; Watchlist фильтрует его,derived_from_visible_control,active,
+PUB-04-F03,PUB-04,behavior,Название открывает PUB-05 по выбранному slug,derived_from_visible_control,active,
+PUB-04-F04,PUB-04,behavior,Кнопки продолжения расширяют выдачу до конца доступного набора,derived_from_visible_control,active,
+PUB-05-B01,PUB-05,visual,"Тёмная карточка Huobi: знак, Rank, объём, изменение, Watchlist и действия ссылки",source_jpg,active,
+PUB-05-B02,PUB-05,visual,Полоса Total volume / Volume 24h / Volume 7d / Volume 30d / Trading pairs / Top Pair,source_jpg,active,
+PUB-05-B03,PUB-05,visual,"Detail information: две таблицы со ссылками, датой запуска, объёмами и торговыми параметрами",source_jpg,active,
+PUB-05-B04,PUB-05,visual,Volume change: периоды и серая гистограмма справа,source_jpg,active,
+PUB-05-B05,PUB-05,visual,Таблица торговых пар с девятью столбцами как PUB-10; общий подвал,source_jpg,active,
+PUB-05-F01,PUB-05,behavior,Период Volume change переключает данные гистограммы,derived_from_visible_control,active,
+PUB-05-F02,PUB-05,behavior,Ссылки пар и графиков сохраняют соответствующий актив,derived_from_visible_control,active,
+PUB-05-F03,PUB-05,behavior,Действия копирования/распространения ссылки сообщают результат,derived_from_visible_control,active,
+PUB-13-B01,PUB-13,visual,Тёмный заголовок News & Articles,source_jpg,active,
+PUB-13-B02,PUB-13,visual,Categories / Types / Search; Newest first / Popular first,source_jpg,active,
+PUB-13-B03,PUB-13,visual,"Три главных материала: один крупный слева, два друг над другом справа",source_jpg,active,
+PUB-13-B04,PUB-13,visual,Полоса пяти котировок со sparklines,source_jpg,active,
+PUB-13-B05,PUB-13,visual,"Девять карточек 3 × 3: фотография, категория, заголовок, дата",source_jpg,active,
+PUB-13-B06,PUB-13,visual,"View More News, Daily updates, общий подвал",source_jpg,active,
+PUB-13-F01,PUB-13,behavior,"Поиск по заголовку, категория и тип применяются совместно",derived_from_visible_control,active,
+PUB-13-F02,PUB-13,behavior,Newest / Popular меняют демонстрационный порядок,derived_from_visible_control,active,
+PUB-13-F03,PUB-13,behavior,Параметры q/category из URL применяются при открытии страницы,derived_from_visible_control,active,
+PUB-13-F04,PUB-13,behavior,Статья открывается с карточки; подписка работает как на PUB-01,derived_from_visible_control,active,
+PUB-14-B01,PUB-14,visual,Тёмный заголовок One coin to Rule Them All? Huobi’s New Program Lets Users Swap Between Tokens,source_jpg,active,
+PUB-14-B02,PUB-14,visual,"Категория, дата, Total views, Total shares",source_jpg,active,
+PUB-14-B03,PUB-14,visual,Узкая колонка социальных действий слева и текстовая колонка справа,source_jpg,active,
+PUB-14-B04,PUB-14,visual,"Вступление, большая фотография Huobi, подзаголовки HUSD: Huobi’s All-in-One Stablecoin Solution и Tether Not Listed among Stablecoins, абзацы",source_jpg,active,
+PUB-14-B05,PUB-14,visual,Автор и теги; белое завершение страницы без придуманного тёмного подвала,source_jpg,active,
+PUB-14-F01,PUB-14,behavior,Категория/теги возвращают к ленте,derived_from_visible_control,active,
+PUB-14-F02,PUB-14,behavior,Социальное действие использует Web Share либо копирует адрес; уведомление при отсутствии доступа,derived_from_visible_control,active,
+PUB-14-F03,PUB-14,behavior,"Счётчики в прототипе — фиксированные значения из примера, не реальные события",derived_from_visible_control,active,
+CAB-01-B01,CAB-01,visual,Слева тёмное меню с логотипом и Sergey Petrov; активный My wallet; справа белое полотно на сером фоне,source_jpg,active,
+CAB-01-B02,CAB-01,visual,"Заголовок My Wallets; две карточки Total available и выбранного индекса с балансом, sparklines, валютами, Choice index, Buy/Sell",source_jpg,active,
+CAB-01-B03,CAB-01,visual,Total available: большой светлый площадной график и периоды,source_jpg,active,
+CAB-01-B04,CAB-01,visual,Две карточки Total Profit и Transaction history,source_jpg,active,
+CAB-01-B05,CAB-01,visual,"Total Balance Composition: кольцо, сумма в центре, легенда Currency / Percentage / Balance / Equivalent",source_jpg,active,
+CAB-01-B06,CAB-01,visual,Your wallets balance: Currency / Volume / Balance / Equivalent / Deposit / Withdraw; Add currency,source_jpg,active,
+CAB-01-B07,CAB-01,visual,Небольшой копирайт под полотном,source_jpg,active,
+CAB-01-F01,CAB-01,behavior,USD/BTC/ETH меняют эквивалент; Choice index открывает CAB-02,derived_from_visible_control,active,
+CAB-01-F02,CAB-01,behavior,Buy/Sell открывают CAB-04/CAB-06 выбранного индекса,derived_from_visible_control,active,
+CAB-01-F03,CAB-01,behavior,График имеет периоды и подсказки,derived_from_visible_control,active,
+CAB-01-F04,CAB-01,behavior,Deposit/Withdraw открывают диалог соответствующего актива; Add currency добавляет кошелёк без дубля,derived_from_visible_control,active,
+CAB-01-F05,CAB-01,behavior,Сортировка Currency/Balance и выбор эквивалента меняют таблицу,derived_from_visible_control,active,
+CAB-02-B01,CAB-02,visual,Общий каркас кабинета; активный Overview,source_jpg,active,
+CAB-02-B02,CAB-02,visual,"Choice index; Price equivalent USD/BTC/ETH, Current balance",source_jpg,active,
+CAB-02-B03,CAB-02,visual,"Сетка из шести карточек 2 × 3: имя, цена, баланс, sparkline, значение индекса, изменение 24h",source_jpg,active,
+CAB-02-B04,CAB-02,visual,Действия Overview / Compile / Buy / меню дополнительных действий Sell / Unmake / Historical price / Holders,source_jpg,active,
+CAB-02-F01,CAB-02,behavior,Валюта меняет цену; сортировка меняет порядок карточек,derived_from_visible_control,active,
+CAB-02-F02,CAB-02,behavior,"Любое действие сначала сохраняет выбранный indexId, затем переходит на нужный экран",derived_from_visible_control,active,
+CAB-02-F03,CAB-02,behavior,Балансы независимы для каждого индекса и сохраняются после обновления,derived_from_visible_control,active,
+CAB-03-B01,CAB-03,visual,"Overview TBCi-20 Stable, справа Choice index",source_jpg,active,
+CAB-03-B02,CAB-03,visual,"Общая строка индекса: мини-кольцо и Information, Total balance, Equivalent, валюта, изменение, значение, дата и sparkline",source_jpg,active,
+CAB-03-B03,CAB-03,visual,"Большой сравнительный график с выбранной серией, BTC, Add coins и периодами",source_jpg,active,
+CAB-03-B04,CAB-03,visual,Total Profit и Transaction history,source_jpg,active,
+CAB-03-B05,CAB-03,visual,TBCi-20 Stable Composition: кольцо с легендой в двух колонках,source_jpg,active,
+CAB-03-B06,CAB-03,visual,"Design and calculation methodology: абзацы, формула и определения",source_jpg,active,
+CAB-03-F01,CAB-03,behavior,Choice index меняет контекст; выбранный контекст виден во всех финансовых экранах,derived_from_visible_control,active,
+CAB-03-F02,CAB-03,behavior,"Валюта Equivalent, периоды и серии графика интерактивны",derived_from_visible_control,active,
+CAB-03-F03,CAB-03,behavior,Наведение на кольцо/легенду показывает актив и вес,derived_from_visible_control,active,
+CAB-04-B01,CAB-04,visual,"Buy [выбранный индекс], Choice index и общая строка баланса",source_jpg,superseded,MW-02
+CAB-04-B02,CAB-04,visual,"Select method payment: шесть вариантов BTC / ETH / Visa-Mastercard (USD) / XRP / EOS / LTC, иконки, остатки; выбранный вариант с голубой галочкой",source_jpg,superseded,MW-02
+CAB-04-B03,CAB-04,visual,"How much to buy?: степпер и Amount TBCi, Commission 0.5%, стрелка, Total cost с валютой, Buy",source_jpg,superseded,MW-02
+CAB-04-B04,CAB-04,visual,Время обновления UTC,source_jpg,superseded,MW-02
+CAB-04-F01,CAB-04,behavior,Выбор кошелька меняет итог в его валюте,derived_from_visible_control,superseded,MW-02
+CAB-04-F02,CAB-04,behavior,Степпер и ввод принимают положительное конечное количество,derived_from_visible_control,superseded,MW-02
+CAB-04-F03,CAB-04,behavior,Buy открывает проверяемое подтверждение; при достаточном балансе списывает стоимость с комиссией и зачисляет токены,derived_from_visible_control,superseded,MW-02
+CAB-04-F04,CAB-04,behavior,"При недостатке выводится ошибка, балансы не меняются",derived_from_visible_control,superseded,MW-02
+CAB-05-B01,CAB-05,visual,"Compile [индекс], Choice index, общая строка",source_jpg,active,
+CAB-05-B02,CAB-05,visual,"Amount со степпером, Calculate, Compile и время обновления",source_jpg,active,
+CAB-05-B03,CAB-05,visual,Таблица Currency / Price / Available / Balance TBCi / Rest / Deposit; полосы обеспеченности цветом монеты,source_jpg,active,
+CAB-05-B04,CAB-05,visual,В исходнике десять видимых демонстрационных строк,source_jpg,active,
+CAB-05-F01,CAB-05,behavior,Изменение суммы сбрасывает рассчитанное состояние,derived_from_visible_control,active,
+CAB-05-F02,CAB-05,behavior,Calculate рассчитывает компоненты полного состава; в демоверсии раскрывает все 20 строк,derived_from_visible_control,active,
+CAB-05-F03,CAB-05,behavior,Rest = положительный недостающий остаток; Deposit пополняет конкретную монету,derived_from_visible_control,active,
+CAB-05-F04,CAB-05,behavior,Compile доступна только после расчёта и обеспечения всех компонентов,derived_from_visible_control,active,
+CAB-05-F05,CAB-05,behavior,Подтверждение атомарно списывает полный состав и увеличивает токены,derived_from_visible_control,active,
+CAB-06-B01,CAB-06,visual,"Sell [индекс], Choice index, общая строка",source_jpg,superseded,MW-02
+CAB-06-B02,CAB-06,visual,"Select currency wallet: те же шесть валют, выбран ETH",source_jpg,superseded,MW-02
+CAB-06-B03,CAB-06,visual,"How much to sell?: Total balance TBCi, Amount, Commission 0.5%, Total cost в валюте получения, Sell",source_jpg,superseded,MW-02
+CAB-06-B04,CAB-06,visual,Время обновления UTC,source_jpg,superseded,MW-02
+CAB-06-F01,CAB-06,behavior,Выбор валюты меняет кошелёк зачисления,derived_from_visible_control,superseded,MW-02
+CAB-06-F02,CAB-06,behavior,Сумма ограничивается доступным токеновым балансом,derived_from_visible_control,superseded,MW-02
+CAB-06-F03,CAB-06,behavior,Подтверждение списывает токены и зачисляет один выбранный актив за вычетом комиссии,derived_from_visible_control,superseded,MW-02
+CAB-07-B01,CAB-07,visual,"Unmake [индекс], Choice index, общая строка",source_jpg,active,
+CAB-07-B02,CAB-07,visual,How much to unmake: Total balance / Amount / Commission 0.5% / Calculate / Withdraw all,source_jpg,active,
+CAB-07-B03,CAB-07,visual,Таблица Currency / Cost / Balance TBCi / Withdraw / Available wallet; полосы компонентов,source_jpg,active,
+CAB-07-B04,CAB-07,visual,Десять видимых строк в начальном примере,source_jpg,active,
+CAB-07-F01,CAB-07,behavior,Calculate определяет все компоненты и раскрывает полный состав,derived_from_visible_control,active,
+CAB-07-F02,CAB-07,behavior,Withdraw в строке получает один компонент; Withdraw all получает все оставшиеся,derived_from_visible_control,active,
+CAB-07-F03,CAB-07,behavior,Первое подтверждение погашает токены один раз и создаёт требования на полный состав,derived_from_visible_control,active,
+CAB-07-F04,CAB-07,behavior,Остаток требований сохраняется при обновлении; повторный вывод одной строки запрещён,derived_from_visible_control,active,
+CAB-07-F05,CAB-07,behavior,"Пока остаются компоненты, сумма фиксирована; другой индекс не может забрать эти требования",derived_from_visible_control,active,
+CAB-08-B01,CAB-08,visual,"Historical price [индекс], Choice index",source_jpg,active,
+CAB-08-B02,CAB-08,visual,"Period 2: November 01, 2018 – December 24, 2018; Previous period / Next period",source_jpg,active,
+CAB-08-B03,CAB-08,visual,"Две таблицы рядом: Start price и End price, значение индекса и изменение",source_jpg,active,
+CAB-08-B04,CAB-08,visual,Столбцы Currency / Price of share / Value of share / Percent,source_jpg,active,
+CAB-08-B05,CAB-08,visual,Изменившиеся строки подсвечены розовым; пример замены Stellar на IOTA,source_jpg,active,
+CAB-08-F01,CAB-08,behavior,Previous / Next переключают снимки состава и интервал,derived_from_visible_control,active,
+CAB-08-F02,CAB-08,behavior,Границы доступных периодов отключают соответствующую кнопку,derived_from_visible_control,active,
+CAB-08-F03,CAB-08,behavior,Контекст выбранного индекса сохраняется,derived_from_visible_control,active,
+CAB-09-B01,CAB-09,visual,"Holders [индекс], Choice index, общая строка",source_jpg,active,
+CAB-09-B02,CAB-09,visual,"Information: описание и две справочные таблицы предложения, цены, держателей, контракта, рынка и выпуска",source_jpg,active,
+CAB-09-B03,CAB-09,visual,List of all holders: Rank / Address / Quantity / Percentage / Equivalent,source_jpg,active,
+CAB-09-B04,CAB-09,visual,Next 100 / View All,source_jpg,active,
+CAB-09-F01,CAB-09,behavior,Адрес можно скопировать; сообщение об успехе или недоступности clipboard,derived_from_visible_control,active,
+CAB-09-F02,CAB-09,behavior,Next 100 показывает следующую страницу; View All раскрывает демонстрационный набор,derived_from_visible_control,active,
+CAB-09-F03,CAB-09,behavior,Общие поля зависят от выбранного индекса; в прототипе адреса явно демонстрационные,derived_from_visible_control,active,
+ENH-01,EXT-2018,extension,"Панорамирование, масштаб, перекрестие и клавиатура",explicit_user_request_after_v2.0,active,
+ENH-02,EXT-2018,extension,Независимые ряды семи индексов 2018,explicit_user_request_after_v2.0,active,
+ENH-03,EXT-2018,extension,"Интервалы, типы, сравнения, индикаторы",explicit_user_request_after_v2.0,active,
+ENH-04,EXT-2018,extension,"Таблица данных, PNG/CSV, датировки UTC",explicit_user_request_after_v2.0,active,
+ENH-05,EXT-2018,extension,32 статьи более 350 слов за 2018,explicit_user_request_after_v2.0,active,
+ENH-06,EXT-2018,extension,"Фильтры, оглавление, сохранение, связанные статьи",explicit_user_request_after_v2.0,active,
+ENH-07,EXT-2018,extension,48 архивных ICO и происхождение фактов,explicit_user_request_after_v2.0,active,
+ENH-08,EXT-2018,extension,Месяцы/дни/статусы/избранное ICO,explicit_user_request_after_v2.0,active,
+ENH-09,EXT-2018,extension,"21 локальный SVG, CC0 и SHA-256",explicit_user_request_after_v2.0,active,
+ENH-10,EXT-2018,extension,Устойчивая сетка сумм и селектора 320–1920,explicit_user_request_after_v2.0,active,
+ENH-11,EXT-2018,extension,Согласованные моковые показатели и активность,explicit_user_request_after_v2.0,active,
+ENH-12,EXT-2018,extension,Заполненные профили и отдельные вкладки монет,explicit_user_request_after_v2.0,active,
+WAL-KYC-01,EXT-ACCOUNT,behavior,Графики остаются в границах ряда при всех способах навигации,user_requested_extension_v2_2,active,
+WAL-KYC-02,EXT-ACCOUNT,behavior,Сегменты состава и легенда синхронно выбираются с мыши и клавиатуры,user_requested_extension_v2_2,active,
+WAL-KYC-03,EXT-ACCOUNT,behavior,Sparklines и история переводов позволяют исследовать значения,user_requested_extension_v2_2,active,
+WAL-KYC-04,EXT-ACCOUNT,behavior,Пошаговый Deposit с настоящим локальным QR и чеком,user_requested_extension_v2_2,active,
+WAL-KYC-05,EXT-ACCOUNT,behavior,Пошаговый Withdraw с сетью и комиссией родного актива,user_requested_extension_v2_2,active,
+WAL-KYC-06,EXT-ACCOUNT,behavior,Идемпотентность переводов и продолжение после reload,user_requested_extension_v2_2,active,
+WAL-KYC-07,EXT-ACCOUNT,behavior,Сбой возвращает резерв и комиссию ровно один раз,user_requested_extension_v2_2,active,
+WAL-KYC-08,EXT-ACCOUNT,behavior,Локальная TOTP и одноразовые recovery codes,user_requested_extension_v2_2,active,
+WAL-KYC-09,EXT-ACCOUNT,behavior,Whitelist по активу сети адресу и memo,user_requested_extension_v2_2,active,
+WAL-KYC-10,EXT-ACCOUNT,behavior,История и журнал фильтруются и экспортируются без секретов,user_requested_extension_v2_2,active,
+WAL-KYC-11,EXT-ACCOUNT,behavior,Настройки профиля предпочтений и демонстрационных устройств,user_requested_extension_v2_2,active,
+WAL-KYC-12,EXT-ACCOUNT,behavior,Level 2 по умолчанию и три покупательских уровня,user_requested_extension_v2_2,active,
+WAL-KYC-13,EXT-ACCOUNT,behavior,Накопительный лимит Buy и Compile включая комиссию,user_requested_extension_v2_2,active,
+WAL-KYC-14,EXT-ACCOUNT,behavior,Basic и Full KYC с образцами документов и приватностью,user_requested_extension_v2_2,active,
+WAL-KYC-15,EXT-ACCOUNT,behavior,Рассмотрение KYC с тремя исходами и повторной подачей,user_requested_extension_v2_2,active,
+WAL-KYC-16,EXT-ACCOUNT,behavior,Десять FAQ с ответами по 3–4 предложения и поиском,user_requested_extension_v2_2,active,
+WAL-KYC-17,EXT-ACCOUNT,behavior,Общая проверка верстки 320–2560 и SVG иконок,user_requested_extension_v2_2,active,
+MW-01,EXT-PORTFOLIO,behavior,My Wallet показывает все купленные индексные позиции,user_requested_extension_v2_3,active,
+MW-02,EXT-PORTFOLIO,behavior,Buy/Sell встроены в My Wallet и принимают явный indexId/requestId,user_requested_extension_v2_3,active,
+MW-03,EXT-PORTFOLIO,behavior,Отдельные торговые страницы выведены из меню; старые URL переводят в диалог,user_requested_extension_v2_3,active,
+MW-04,EXT-PORTFOLIO,behavior,Balance Composition агрегирует и фильтрует все купленные индексы,user_requested_extension_v2_3,active,
+MW-05,EXT-PORTFOLIO,behavior,"Общий фильтр обновляет кольцо, модельную историю, столбцы и treemap",user_requested_extension_v2_3,active,
+MW-06,EXT-PORTFOLIO,behavior,Wallet показывает весь каталог активов с остатками и действиями,user_requested_extension_v2_3,active,
+MW-07,EXT-PORTFOLIO,behavior,"Поиск, категории, сортировка и скрытие нулевых остатков",user_requested_extension_v2_3,active,
+MW-08,EXT-PORTFOLIO,behavior,Общий баланс учитывает резервы и Claims без двойного TBCi,user_requested_extension_v2_3,active,
+MW-09,EXT-PORTFOLIO,behavior,"Детали актива и прежние Deposit/Withdraw, QR и проверки безопасности",user_requested_extension_v2_3,active,
+MW-10,EXT-PORTFOLIO,behavior,Внутренняя конвертация активов с комиссией и идемпотентностью,user_requested_extension_v2_3,active,
+MW-11,EXT-PORTFOLIO,behavior,"Сокрытие сумм, эквивалент и экспорт текущего списка",user_requested_extension_v2_3,active,
+MW-12,EXT-PORTFOLIO,behavior,Адаптивные карточки активов и сетка устройств/сессий,user_requested_extension_v2_3,active,
+MW-13,EXT-PORTFOLIO,behavior,Миграция сохраняет позиции и ограничения KYC/2FA,user_requested_extension_v2_3,active,

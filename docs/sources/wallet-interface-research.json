@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-31 Europe/Moscow",
+  "method": "Public primary source code and repository documentation; no authenticated accounts or copied UI assets",
+  "sources": [
+    {
+      "id": "trezor",
+      "url": "https://raw.githubusercontent.com/trezor/trezor-suite/develop/README.md",
+      "bytes": 4246,
+      "sha256": "f9703732f622e023d3af397d412980b152adcb43ddf6a836bb84a94979161a1d"
+    },
+    {
+      "id": "metamask",
+      "url": "https://raw.githubusercontent.com/MetaMask/metamask-extension/main/README.md",
+      "bytes": 30247,
+      "sha256": "16c67b7d90d3cb3143ed4528f2303ade64339e2b2670b5361833f7dcf8a14ea8"
+    },
+    {
+      "id": "safe-wallet",
+      "url": "https://raw.githubusercontent.com/safe-global/safe-wallet-monorepo/dev/README.md",
+      "bytes": 7456,
+      "sha256": "e289d484ea5586e2e8c214eec5911d873bbb061546253369ddf7bfefbcaa86c4"
+    },
+    {
+      "id": "trezor-wallet-tree",
+      "url": "https://github.com/trezor/trezor-suite/tree/develop/packages/suite/src/views/wallet",
+      "bytes": 212944,
+      "sha256": "ab9a5038ae45e49423036ae6357a43319ae7328d5e20632f7e8aaeb20df76443"
+    },
+    {
+      "id": "safe-assets",
+      "url": "https://raw.githubusercontent.com/safe-global/safe-wallet-monorepo/dev/apps/web/src/components/balances/AssetsTable/index.tsx",
+      "bytes": 11115,
+      "sha256": "e3dd77ab740a387fa9fe63d2aeb4fba47ab8fa481f5b41fabd3aba8322c59b86"
+    },
+    {
+      "id": "safe-header",
+      "url": "https://raw.githubusercontent.com/safe-global/safe-wallet-monorepo/dev/apps/web/src/components/balances/AssetsHeader/index.tsx",
+      "bytes": 973,
+      "sha256": "2157a89dcf2abf460c0eca3193576ea0ae2c4a8ae1f2aa951fc8f2f9072f66b1"
+    },
+    {
+      "id": "metamask-home",
+      "url": "https://raw.githubusercontent.com/MetaMask/metamask-extension/main/ui/pages/home/home.tsx",
+      "bytes": 11593,
+      "sha256": "601c75705c0632073749db967e1fd107d48661f74b466911f9461ae838afae0c"
+    },
+    {
+      "id": "trezor-tokens",
+      "url": "https://raw.githubusercontent.com/trezor/trezor-suite/develop/packages/suite/src/views/wallet/tokens/index.tsx",
+      "bytes": 4978,
+      "sha256": "29ee8c964faa1d905acc2a3e8a2991822d5d67f0e121891a0a5535ef51a37644"
+    }
+  ]
+}

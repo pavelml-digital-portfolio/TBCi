@@ -1,7 +1,8 @@
+import { indexBasket } from "../data/portfolio";
 import InteractiveDonut from "./InteractiveDonut";
 import WalletTransfer from "./WalletTransfer";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { basket, assets, coin, findIndex, money, number } from "../data/demo";
+import { assets, coin, findIndex, money, number } from "../data/demo";
 import TradingChart from "./TradingChart";
 import { seriesFor } from "../data/market";
 export function Wordmark() {
@@ -252,7 +253,7 @@ export function Composition({
             weight:
               (((balances[a.symbol] || 0) * a.price) / (total || 1)) * 100,
           }))
-      : basket;
+      : indexBasket(indexId);
   const shown = wallet && !expanded ? components.slice(0, 10) : components;
   const active = hover || selected;
   return (
