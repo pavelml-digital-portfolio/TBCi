@@ -245,9 +245,14 @@ export default function InternalWallet() {
               Overview.
             </p>
           </div>
-          <button className="button small" onClick={exportBalances}>
+          <button
+            className="button small wallet-export-balances"
+            aria-label="Export balances"
+            title="Export balances"
+            onClick={exportBalances}
+          >
             <UiIcon name="download" />
-            Export balances
+            <span>Export balances</span>
           </button>
         </div>
         <div className="wallet-asset-toolbar">
@@ -264,23 +269,27 @@ export default function InternalWallet() {
           <label className="wallet-zero-toggle">
             <input
               type="checkbox"
+              aria-label="Hide zero balances"
               checked={hideZero}
               onChange={(e) =>
                 setPreferences({ hideZeroBalances: e.target.checked })
               }
             />
-            Hide zero balances
+            <span className="wallet-zero-full-label">Hide zero balances</span>
+            <span className="wallet-zero-short-label" aria-hidden="true">
+              Hide zero
+            </span>
           </label>
           <label className="wallet-sort-label">
-            Sort
+            <span>Sort</span>
             <select
               aria-label="Sort wallet assets"
               value={sort}
               onChange={(e) => setSort(e.target.value)}
             >
-              <option value="value">Value: high to low</option>
+              <option value="value">Highest value</option>
               <option value="name">Asset name</option>
-              <option value="balance">Balance: high to low</option>
+              <option value="balance">Largest balance</option>
             </select>
           </label>
         </div>

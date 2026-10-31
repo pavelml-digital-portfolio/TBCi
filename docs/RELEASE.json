@@ -1,7 +1,7 @@
 {
-  "release": "frontend-0.5.1_spec-2.3_mobile-overview",
+  "release": "frontend-0.5.2_spec-2.3_mobile-asset-filters",
   "date": "2026-10-31",
-  "frontend_version": "0.5.1",
+  "frontend_version": "0.5.2",
   "technical_spec_version": "2.3",
   "visual_authority": "21 original TBCI.rar JPG plus user-authorized multi-index Overview, asset Wallet and inline Buy/Sell",
   "source_archive_sha256": "a2456a9e9d4a7473095c0930e8274653fc648f1b1fb90efdd07d9223f395ce2f",
@@ -27,11 +27,12 @@
     "sources/ico-2018-source.json": "c0e929b3d188ee972cc8938f1940669aca01ad9dd96b49000b162503282f00b1",
     "sources/ico-2018-selected.csv": "04ea12aac0602e7d7762fd1a2729ef54373f576c69dde27349803783e29c00d5",
     "sources/crypto-icons.json": "d2abb94f5318f3f126ccd6a5ddcb2c517952f49c1a47dabce7dcdef0c359d1a5",
-    "frontend/PORTFOLIO_WALLET.md": "1cc22bf4840f2c5c1fca83ce84e5f9e519b2fa7a9fad534c6a4ac9c1d9a2ee2a",
+    "frontend/PORTFOLIO_WALLET.md": "cba9975a15310b8e45be72d9f346c4d56c354d739306d6255d186ba81222ce78",
     "frontend/WALLET_KYC.md": "5b57bde9cc25030e3426b1bee19c1ca469b0b10f285ed79ef076d7e36f84cab6",
     "frontend/LAYOUT_REVIEW.json": "8e83bcaaf73112016ed98bb2d2290735811aac7867f1f8fdfae225f270134e2e",
     "sources/wallet-interface-research.json": "ddc7e615f8506bb00c7b05009b86791796e06480c57b91643eff93c8937ffd05",
-    "specification/DOCUMENT_VALIDATION.json": "0609aeef174c028b16bf10c563f7f7a27899b7acca3e43a3844a38dd35b1f3ec"
+    "specification/DOCUMENT_VALIDATION.json": "4e0a8ef0cd655ee4b9ccc48c4d03fb2f3d01dbf60b042ad6e6fa276a33bbbf9a",
+    "frontend/WALLET_FILTER_REVIEW.json": "1490bf04afb527822918aa6f13b2ce3494554d497e4ddaafa2c1c786c76900c6"
   },
   "source_routes": 19,
   "legacy_trade_aliases": 2

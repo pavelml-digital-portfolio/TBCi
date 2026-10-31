@@ -1,8 +1,8 @@
 {
   "version": "2.3",
-  "frontend": "0.5.1",
+  "frontend": "0.5.2",
   "canonical_screens": 21,
-  "additional_review_screens": 49,
+  "additional_review_screens": 52,
   "requirements": 226,
   "acceptance_criteria": 92,
   "pdf_pages": 55,
@@ -33,5 +33,15 @@
   "review_date": "2026-10-31 Europe/Moscow",
   "active_source_routes": 19,
   "legacy_trade_aliases": 2,
-  "mobile_carousel_states": 8
+  "mobile_carousel_states": 8,
+  "wallet_filter_viewports": [
+    320,
+    375,
+    430,
+    600,
+    677,
+    767,
+    1496,
+    2560
+  ]
 }
