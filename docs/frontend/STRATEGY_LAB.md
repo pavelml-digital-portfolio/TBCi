@@ -1,6 +1,8 @@
-# Index Strategy Lab (frontend 0.6.0)
+# Index Strategy Lab (frontend 0.6.1)
 
-`/app/strategy-lab/?index=<catalog id>` opens an index-specific strategy and risk workspace. Explore indices, Overview menus and Wallet index details link to it. Choice index updates the URL and selected index without changing holdings.
+`/app/strategy-lab/?index=<catalog id>` opens an index-specific strategy and risk workspace. Explore indices, Overview menus and Wallet index details link to it. The canonical CAB-03/CAB-08 header places the selected index name and a `‹ Choice index` catalog link beside the page title. Choosing another index opens its lab without changing holdings.
+
+Both strategy value and drawdown charts use Lightweight Charts in the shared `TradingChart.tsx` module, with the existing bounded pan/zoom behavior, area/line modes, crosshair values and PNG/CSV exports.
 
 The research engine uses the existing deterministic generated 2018 component OHLCV series from `market.ts`, not a downloaded exchange backtest. Current basket weights are normalized by `indexBasket`; the active 50 index currently maps to the supported 20-asset catalog, and the lab displays that actual calculation count. The page labels the results research estimates, describes current-weight assumptions and excludes slippage, taxes and constituent changes. No new payment, custody or KYC integration is introduced.
 

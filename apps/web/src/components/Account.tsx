@@ -859,7 +859,13 @@ function Content({ section }: { section: Section }) {
 function Shell({ section }: { section: Section }) {
   const { state, message, dismiss } = useDemo();
   const [menu, setMenu] = useState(false);
-  const indexed = ["compile", "unmake", "history", "holders"].includes(section);
+  const indexed = [
+    "compile",
+    "unmake",
+    "history",
+    "holders",
+    "strategy-lab",
+  ].includes(section);
   const title =
     pages[section] + (indexed ? " " + findIndex(state.selectedIndex).name : "");
   const active =

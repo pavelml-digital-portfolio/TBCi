@@ -61,15 +61,43 @@ test("lab links, index choice, parameters and mobile layout work", async ({
     .getByRole("button", { name: "Index Strategy Lab", exact: true })
     .click();
   await expect(page).toHaveURL(/strategy-lab\/\?index=tbci-10-stable/);
-  await expect(page.getByLabel("Choice index", { exact: true })).toHaveValue(
-    "tbci-10-stable",
+  await expect(page.locator("h1")).toHaveText(
+    "Index Strategy Lab TBCi-10 Stable",
   );
+  await expect(page.getByRole("link", { name: "Choice index" })).toBeVisible();
+  await expect(page.locator(".lab-intro select")).toHaveCount(0);
   const before = await page.getByTestId("Final value").innerText();
+  await page.getByRole("link", { name: "Choice index" }).click();
   await page
-    .getByLabel("Choice index", { exact: true })
-    .selectOption("tbci-20-utility");
+    .locator(".choice-card")
+    .filter({ hasText: "TBCi-20 Utility" })
+    .getByRole("button", { name: "Index Strategy Lab", exact: true })
+    .click();
   await expect(page.getByTestId("Final value")).not.toHaveText(before);
-  await expect(page.locator(".lab-intro h2")).toHaveText("TBCi-20 Utility");
+  await expect(page.locator("h1")).toHaveText(
+    "Index Strategy Lab TBCi-20 Utility",
+  );
+  await expect(page.locator(".lab-index-name")).toHaveText("TBCi-20 Utility");
+  const chart = page.getByRole("region", {
+    name: "Strategy vs BTC interactive chart",
+  });
+  await expect(chart).toHaveAttribute("data-ready", "true");
+  await expect(chart.locator("canvas")).not.toHaveCount(0);
+  const count = Number(await chart.getAttribute("data-bar-count"));
+  await chart.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await expect
+    .poll(
+      async () =>
+        Number(await chart.getAttribute("data-range-to")) -
+        Number(await chart.getAttribute("data-range-from")),
+    )
+    .toBeLessThan(count - 1);
+  await chart.getByRole("button", { name: "Reset", exact: true }).click();
+  await chart.getByLabel("Chart type").selectOption("Line");
+  await expect(chart).toHaveAttribute("data-ready", "true");
+  await chart.getByRole("button", { name: "Data", exact: true }).click();
+  await expect(chart.locator("tbody tr")).toHaveCount(30);
+  await chart.getByRole("button", { name: "Data", exact: true }).click();
   await page.getByLabel("Rebalance rule").selectOption("0");
   await expect(
     page.getByText("No rebalances under Buy and hold."),
@@ -89,8 +117,8 @@ test("lab links, index choice, parameters and mobile layout work", async ({
       .toBe(true);
   }
   await page.reload();
-  await expect(page.getByLabel("Choice index", { exact: true })).toHaveValue(
-    "tbci-20-utility",
+  await expect(page.locator("h1")).toHaveText(
+    "Index Strategy Lab TBCi-20 Utility",
   );
   await page.goto("/app/");
   // Overview menu retains index-specific destinations.
@@ -105,7 +133,7 @@ test("lab links, index choice, parameters and mobile layout work", async ({
   await page
     .getByRole("link", { name: "Index Strategy Lab", exact: true })
     .click();
-  await expect(page.locator("h1")).toHaveText("Index Strategy Lab");
+  await expect(page.locator("h1")).toHaveText(/^Index Strategy Lab TBCi/);
 });
 test("desktop wallet sorts within index and currency groups", async ({
   page,

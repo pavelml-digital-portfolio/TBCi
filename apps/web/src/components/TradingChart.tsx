@@ -1012,3 +1012,238 @@ export function ExchangeVolumeChart({
     </div>
   );
 }
+
+/** Strategy snapshots use the same chart engine, bounds and controls as market charts. */
+export function ComparisonChart({
+  points,
+  label,
+  drawdown = false,
+}: {
+  points: {
+    date: string;
+    value: number;
+    btc: number;
+    drawdown: number;
+    btcDrawdown: number;
+  }[];
+  label: string;
+  drawdown?: boolean;
+}) {
+  const plot = useRef<HTMLDivElement>(null);
+  const api = useRef<IChartApi | null>(null);
+  const bound = useRef<ReturnType<typeof bindChartBounds> | null>(null);
+  const [mode, setMode] = useState<"Area" | "Line">("Area");
+  const [ready, setReady] = useState(false);
+  const [at, setAt] = useState<number | null>(null);
+  const [logical, setLogical] = useState({ from: 0, to: 0 });
+  const [showData, setShowData] = useState(false);
+  const selected = points[Math.min(at ?? points.length - 1, points.length - 1)];
+  const value = (p: typeof selected, btc = false) =>
+    drawdown ? (btc ? p.btcDrawdown : p.drawdown) : btc ? p.btc : p.value;
+  const format = (n: number) => number(n, 2) + (drawdown ? "%" : " USD");
+  useEffect(() => {
+    if (!plot.current || !points.length) return;
+    setReady(false);
+    setAt(null);
+    const chart = createChart(plot.current, {
+      autoSize: true,
+      height: innerWidth < 768 ? 280 : 380,
+      layout: {
+        background: { type: ColorType.Solid, color: "#ffffff" },
+        textColor: "#858b9b",
+        fontFamily: "Open Sans, sans-serif",
+        fontSize: 11,
+        attributionLogo: true,
+      },
+      grid: {
+        vertLines: { color: "#f3f4f7" },
+        horzLines: { color: "#e9edf2" },
+      },
+      rightPriceScale: {
+        borderColor: "#e9edf2",
+        scaleMargins: { top: 0.12, bottom: 0.08 },
+      },
+      timeScale: {
+        borderColor: "#e9edf2",
+        rightOffset: 0,
+        fixLeftEdge: true,
+        fixRightEdge: true,
+        lockVisibleTimeRangeOnResize: true,
+      },
+      crosshair: { mode: CrosshairMode.Normal },
+      handleScroll: {
+        mouseWheel: true,
+        pressedMouseMove: true,
+        horzTouchDrag: true,
+        vertTouchDrag: false,
+      },
+      handleScale: {
+        mouseWheel: true,
+        pinch: true,
+        axisPressedMouseMove: true,
+      },
+    });
+    api.current = chart;
+    const priceFormat = {
+      type: "custom" as const,
+      minMove: 0.01,
+      formatter: format,
+    };
+    for (const btc of [false, true]) {
+      const color = btc ? "#d9b468" : "#6cb1e8";
+      const options = {
+        title: btc ? "BTC" : label,
+        priceLineVisible: false,
+        lastValueVisible: false,
+        priceFormat,
+      };
+      const series =
+        mode === "Area"
+          ? chart.addSeries(AreaSeries, {
+              ...options,
+              lineColor: color,
+              topColor: btc ? "#f6d49b85" : "#c3e4faac",
+              bottomColor: btc ? "#fff5e740" : "#eef7fd40",
+              lineWidth: 2,
+            })
+          : chart.addSeries(LineSeries, { ...options, color, lineWidth: 2 });
+      series.setData(
+        points.map((p) => ({
+          time: (Date.parse(p.date) / 1000) as UTCTimestamp,
+          value: value(p, btc),
+        })),
+      );
+    }
+    chart.subscribeCrosshairMove((p) => {
+      const index = points.findIndex(
+        (row) => Date.parse(row.date) / 1000 === p.time,
+      );
+      setAt(index < 0 ? null : index);
+    });
+    const limits = bindChartBounds(chart, points.length, setLogical);
+    bound.current = limits;
+    limits.reset();
+    setReady(true);
+    return () => {
+      limits.destroy();
+      chart.remove();
+      api.current = null;
+      bound.current = null;
+    };
+  }, [points, label, drawdown, mode]);
+  const download = (csv = false) => {
+    const link = document.createElement("a");
+    if (csv) {
+      const data =
+        "Date,Strategy,BTC\n" +
+        points
+          .map((p) => [p.date, value(p), value(p, true)].join(","))
+          .join("\n");
+      link.href = URL.createObjectURL(new Blob([data], { type: "text/csv" }));
+    } else {
+      if (!api.current) return;
+      link.href = api.current.takeScreenshot().toDataURL("image/png");
+    }
+    link.download =
+      (drawdown ? "drawdown" : "strategy") + (csv ? ".csv" : ".png");
+    link.click();
+    if (csv) setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  };
+  return (
+    <section
+      className="trading-widget lab-comparison-chart"
+      aria-label={
+        (drawdown ? "Drawdown" : "Strategy vs BTC") + " interactive chart"
+      }
+      data-ready={ready}
+      data-bar-count={points.length}
+      data-range-from={logical.from}
+      data-range-to={logical.to}
+    >
+      <div className="trading-toolbar">
+        <div className="trading-main-controls">
+          <span className="portfolio-series-label">● {label}</span>
+          <span className="compare-chip color-0">● BTC</span>
+          <select
+            aria-label="Chart type"
+            value={mode}
+            onChange={(e) => setMode(e.target.value as "Area" | "Line")}
+          >
+            <option>Area</option>
+            <option>Line</option>
+          </select>
+        </div>
+        <div className="trading-periods">
+          <button aria-label="Zoom in" onClick={() => bound.current?.zoom(0.7)}>
+            +
+          </button>
+          <button
+            aria-label="Zoom out"
+            onClick={() => bound.current?.zoom(1.4)}
+          >
+            −
+          </button>
+          <button onClick={() => bound.current?.reset()}>Reset</button>
+          <button onClick={() => download()}>PNG</button>
+          <button onClick={() => download(true)}>CSV</button>
+          <button
+            aria-pressed={showData}
+            onClick={() => setShowData(!showData)}
+          >
+            Data
+          </button>
+        </div>
+      </div>
+      <div className="lab-chart-legend" aria-live="polite">
+        <time>{selected.date} UTC</time>
+        <span>
+          {label}: <strong>{format(value(selected))}</strong>
+        </span>
+        <span>
+          BTC: <strong>{format(value(selected, true))}</strong>
+        </span>
+      </div>
+      <div
+        ref={plot}
+        className="lab-chart-canvas"
+        tabIndex={0}
+        aria-label="Chart: use plus or minus to zoom, Home to reset"
+        onKeyDown={(e) => {
+          if (["+", "=", "-", "Home"].includes(e.key)) {
+            e.preventDefault();
+            if (e.key === "Home") bound.current?.reset();
+            else bound.current?.zoom(e.key === "-" ? 1.4 : 0.7);
+          }
+        }}
+      />
+      <p className="trading-caption">
+        Drag to pan · scroll or pinch to zoom.{" "}
+        <a href="https://www.tradingview.com/" target="_blank" rel="noreferrer">
+          Charts by TradingView
+        </a>
+      </p>
+      {showData && (
+        <div className="table-scroll trading-data">
+          <table>
+            <thead>
+              <tr>
+                <th>UTC date</th>
+                <th>{label}</th>
+                <th>BTC</th>
+              </tr>
+            </thead>
+            <tbody>
+              {points.slice(-30).map((p) => (
+                <tr key={p.date}>
+                  <td>{p.date}</td>
+                  <td>{format(value(p))}</td>
+                  <td>{format(value(p, true))}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}

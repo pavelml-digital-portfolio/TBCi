@@ -326,7 +326,7 @@ test("wallet deposit, withdrawal, complete asset list and multi-index portfolio"
     .nth(1)
     .getByRole("button", { name: "Index Strategy Lab", exact: true })
     .click();
-  await expect(page.locator("h1")).toHaveText("Index Strategy Lab");
+  await expect(page.locator("h1")).toHaveText(/^Index Strategy Lab TBCi/);
   await open(page, "/app/");
   await expect(page.locator(".owned-index-card")).toHaveCount(5);
   await page.reload();

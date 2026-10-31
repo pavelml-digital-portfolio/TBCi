@@ -3,119 +3,9 @@ import { allIndices } from "../data/portfolio";
 import { profiles } from "../data/market";
 import { money, number } from "../data/demo";
 import { backtest, stressLoss, mean } from "../data/strategy-lab";
+import { ComparisonChart } from "./TradingChart";
 import { useDemo } from "./DemoContext";
 
-function Plot({
-  points,
-  drawdown = false,
-}: {
-  points: ReturnType<typeof backtest>["points"];
-  drawdown?: boolean;
-}) {
-  const [hover, setHover] = useState<number | null>(null);
-  const [width, setWidth] = useState(800);
-  useEffect(() => {
-    const update = () => setWidth(innerWidth < 768 ? 400 : 800);
-    update();
-    addEventListener("resize", update);
-    return () => removeEventListener("resize", update);
-  }, []);
-  const start = 48,
-    span = width - 68;
-  const values = points.flatMap((p) =>
-    drawdown ? [p.drawdown, p.btcDrawdown] : [p.value, p.btc],
-  );
-  const lo = Math.min(...values),
-    hi = Math.max(...values),
-    range = hi - lo || 1;
-  const y = (v: number) => 185 - ((v - lo) / range) * 160;
-  const path = (btc: boolean) =>
-    points
-      .map(
-        (p, i) =>
-          `${i ? "L" : "M"}${start + (i / (points.length - 1)) * span},${y(drawdown ? (btc ? p.btcDrawdown : p.drawdown) : btc ? p.btc : p.value)}`,
-      )
-      .join(" ");
-  const selected =
-    points[Math.min(hover ?? points.length - 1, points.length - 1)];
-  return (
-    <div className="lab-plot">
-      <div className="lab-legend">
-        <span>● Strategy</span>
-        <span>● BTC</span>
-        <small>
-          {selected.date} ·{" "}
-          {drawdown
-            ? `${number(selected.drawdown, 2)}% / ${number(selected.btcDrawdown, 2)}%`
-            : `${money(selected.value)} / ${money(selected.btc)}`}
-        </small>
-      </div>
-      <svg
-        viewBox={`0 0 ${width} 225`}
-        role="img"
-        aria-label={
-          drawdown
-            ? "Strategy and BTC drawdowns"
-            : "Strategy value compared with BTC"
-        }
-        onPointerMove={(e) => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          setHover(
-            Math.max(
-              0,
-              Math.min(
-                points.length - 1,
-                Math.round(
-                  ((((e.clientX - rect.left) / rect.width) * width - start) /
-                    span) *
-                    (points.length - 1),
-                ),
-              ),
-            ),
-          );
-        }}
-        onMouseLeave={() => setHover(null)}
-      >
-        {[0, 0.5, 1].map((t) => (
-          <g key={t}>
-            <line
-              x1={start}
-              x2={width - 20}
-              y1={25 + t * 160}
-              y2={25 + t * 160}
-              stroke="#e5eaf1"
-            />
-            <text x="0" y={29 + t * 160}>
-              {drawdown
-                ? `${hi - t * range >= 1000 ? number((hi - t * range) / 1000, 1) + "k" : number(hi - t * range, 0)}%`
-                : hi - t * range >= 1000
-                  ? number((hi - t * range) / 1000, 1) + "k"
-                  : number(hi - t * range, 0)}
-            </text>
-          </g>
-        ))}
-        <path d={path(true)} fill="none" stroke="#25a888" strokeWidth="2" />
-        <path d={path(false)} fill="none" stroke="#218dff" strokeWidth="2.5" />
-        {hover !== null && (
-          <line
-            x1={start + (hover / (points.length - 1)) * span}
-            x2={start + (hover / (points.length - 1)) * span}
-            y1="25"
-            y2="185"
-            stroke="#8998ae"
-            strokeDasharray="4 4"
-          />
-        )}
-        <text x={start} y="215">
-          {points[0].date}
-        </text>
-        <text x={width - 20} y="215" textAnchor="end">
-          {points.at(-1)!.date}
-        </text>
-      </svg>
-    </div>
-  );
-}
 export default function StrategyLab() {
   const { state, selectIndex } = useDemo();
   const [id, setId] = useState(state.selectedIndex),
@@ -150,27 +40,9 @@ export default function StrategyLab() {
   return (
     <div className="strategy-lab">
       <section className="lab-intro">
-        <label>
-          Choice index
-          <select
-            aria-label="Choice index"
-            value={id}
-            onChange={(e) => {
-              setId(e.target.value);
-              selectIndex(e.target.value);
-              setTarget("all");
-              history.replaceState(null, "", "?index=" + e.target.value);
-            }}
-          >
-            {allIndices.map((i) => (
-              <option key={i.id} value={i.id}>
-                {i.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <span className="mini-donut" aria-hidden="true" />
         <div>
-          <h2>{index.name}</h2>
+          <strong className="lab-index-name">{index.name}</strong>
           <p>{profiles[id]?.description}</p>
           <span>
             {money(index.price, 3)} per token · {result.components.length}{" "}
@@ -265,11 +137,11 @@ export default function StrategyLab() {
         <p>
           Equal starting capital · BTC includes the same entry and exit fee.
         </p>
-        <Plot points={result.points} />
+        <ComparisonChart points={result.points} label={index.name} />
       </section>
       <section className="lab-panel">
         <h2>Drawdown from peak</h2>
-        <Plot points={result.points} drawdown />
+        <ComparisonChart points={result.points} label={index.name} drawdown />
       </section>
       <section className="lab-panel">
         <h2>Rebalance journal</h2>

@@ -14,7 +14,8 @@ for (const width of [1440, 375]) {
   await page.goto(
     "http://127.0.0.1:4322/app/strategy-lab/?index=tbci-20-utility",
   );
-  await page.getByLabel("Choice index", { exact: true }).waitFor();
+  await page.locator(".lab-index-name").waitFor();
+  await page.locator('.lab-comparison-chart[data-ready="true"]').first().waitFor();
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({
     path: `docs/frontend/screens/flows/strategy-lab-${width}.png`,
