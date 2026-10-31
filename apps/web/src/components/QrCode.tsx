@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 export default function QrCode({
   value,
-  label = "Demo QR code",
+  label = "QR code",
 }: {
   value: string;
   label?: string;

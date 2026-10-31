@@ -237,7 +237,7 @@ test("Wallet contains every asset, zero filter, categories, details, export and 
   ).toBeVisible();
   await page.getByRole("button", { name: "Details Iota", exact: true }).click();
   await expect(page.getByRole("dialog")).toContainText(
-    "Supported demo networks",
+    "Supported networks",
   );
   await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   const dl = page.waitForEvent("download");

@@ -69,7 +69,7 @@ export default function IndexTrade({
     >
       <div className="wallet-demo-banner">
         <UiIcon name="shield" />
-        Local demo trade · fixed 31 Dec 2018 prices · no real payment
+        Account trade · fixed 31 Dec 2018 prices · no real payment
       </div>
       {step === 2 ? (
         <div className="index-trade-receipt">

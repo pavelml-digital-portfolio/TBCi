@@ -842,8 +842,8 @@ export default function TradingChart({
           </label>
           <p className="trading-caption">
             {portfolio
-              ? "2018 scenario · current holdings revalued through simulated prices · not personal PnL"
-              : "2018 archive · Simulated OHLCV"}
+              ? "2018 scenario · current holdings revalued over the selected period"
+              : "2018 price history · OHLCV"}
             {compares.length
               ? " · Comparison series rebased to the same starting value"
               : ""}
@@ -870,7 +870,7 @@ export default function TradingChart({
               <table>
                 <caption>
                   {instrumentName(symbol)} · Last 30 bars of selected interval ·
-                  mock data
+                  price data
                 </caption>
                 <thead>
                   <tr>
@@ -1004,7 +1004,7 @@ export function ExchangeVolumeChart({
             <strong>{number(at.value, 0)} USD</strong>
           </>
         ) : (
-          <span>2018 archive · simulated USD volume</span>
+          <span>2018 archive · USD volume</span>
         )}
       </div>
       <div ref={ref} style={{ height: 165 }} />

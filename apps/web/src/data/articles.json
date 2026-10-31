@@ -204,7 +204,7 @@
       {
         "heading": "From a product announcement to a working network",
         "paragraphs": [
-          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a trial while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
           "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
         ]
       },
@@ -260,7 +260,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -300,7 +300,7 @@
       {
         "heading": "From a product announcement to a working network",
         "paragraphs": [
-          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a trial while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
           "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
         ]
       },
@@ -348,7 +348,7 @@
       {
         "heading": "From a product announcement to a working network",
         "paragraphs": [
-          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a trial while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
           "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
         ]
       },
@@ -404,7 +404,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -445,7 +445,7 @@
         "heading": "Moving value between networks",
         "paragraphs": [
           "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
-          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled trial is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
         ]
       },
       {
@@ -542,7 +542,7 @@
         "heading": "Moving value between networks",
         "paragraphs": [
           "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
-          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled trial is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
         ]
       },
       {
@@ -597,7 +597,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -645,7 +645,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -734,7 +734,7 @@
         "heading": "Moving value between networks",
         "paragraphs": [
           "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
-          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled trial is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
         ]
       },
       {
@@ -789,7 +789,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -976,7 +976,7 @@
       {
         "heading": "From a product announcement to a working network",
         "paragraphs": [
-          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a trial while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
           "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
         ]
       },
@@ -1026,7 +1026,7 @@
         "heading": "Moving value between networks",
         "paragraphs": [
           "A payment system must account for both the sender’s intent and the final state seen by the receiver. In a conventional blockchain transfer, confirmation comes from inclusion under the network’s rules. A second-layer channel uses a different construction: participants update a shared balance and keep a way to settle the final result on the underlying chain.",
-          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled demonstration is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
+          "This can make small transfers more practical, but it adds operational requirements. Channels need liquidity in the correct direction, nodes need to remain responsive and users need a recovery process. A payment that works in a controlled trial is a useful milestone, although everyday reliability depends on many such payments succeeding under changing network conditions."
         ]
       },
       {
@@ -1081,7 +1081,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -1169,7 +1169,7 @@
       {
         "heading": "From a product announcement to a working network",
         "paragraphs": [
-          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a trial while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
           "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
         ]
       },
@@ -1233,7 +1233,7 @@
         "paragraphs": [
           "The calendar selects forty-eight offerings whose recorded opening and closing dates both belong to 2018. It preserves the project name, token and listed country rather than substituting later brands. Eight inverted date ranges in the source year were excluded instead of being silently repaired.",
           "A project can overlap several calendar months. The month view therefore includes any sale window that intersects that month, while selecting a day narrows the list to offerings recorded as open on that day. The status label always names a historical reference date, so an upcoming entry does not imply that readers can participate in a sale today.",
-          "Reported proceeds can refer to a public round rather than all private and public financing. If the source does not record a value, the interface says so. The illustrative allocation ring is a separate, clearly labeled mock feature; its percentages are not evidence of a project’s original token distribution."
+          "Reported proceeds can refer to a public round rather than all private and public financing. If the source does not record a value, the interface says so. Allocation percentages should be checked against the project’s original token distribution."
         ]
       }
     ],
@@ -1274,7 +1274,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -1370,7 +1370,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -1418,7 +1418,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {
@@ -1458,7 +1458,7 @@
       {
         "heading": "From a product announcement to a working network",
         "paragraphs": [
-          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a demonstration while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
+          "Blockchain infrastructure brings together software, incentives and a set of participants who must agree on the same rules. A new feature can look convincing in a trial while still depending on wallet support, reliable indexing and the willingness of operators to upgrade. Adoption therefore happens in stages: a proposal, tests, implementation, integration and repeated use under real conditions.",
           "For market research, each stage answers a different question. A specification explains what a system is intended to do. A release shows that code is available. Activity on a network can indicate use, but raw transaction counts do not reveal whether that use is economically meaningful. Investors need to connect these observations rather than substitute one headline for the entire process."
         ]
       },
@@ -1514,7 +1514,7 @@
         "heading": "Compare the same window and the same units",
         "paragraphs": [
           "Performance comparisons should begin and end at the same timestamps. A percentage return is calculated from the starting value, while a price chart may simply display the current quote. Rebasing two series to the same initial level makes their paths easier to compare, but it does not imply that their token prices or circulating supplies are equal.",
-          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. The interactive charts use explicitly simulated 2018 OHLCV data so that these relationships can be explored without presenting mock values as exchange history."
+          "An analyst can combine closing prices with daily ranges and traded volume. Moving averages help describe trend, and volatility measures describe the size of fluctuations. Neither is a guarantee about the next observation. Use the 2018 OHLCV charts to explore these relationships over a consistent observation window."
         ]
       },
       {

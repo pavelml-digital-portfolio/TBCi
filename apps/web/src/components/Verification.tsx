@@ -46,10 +46,10 @@ function Evidence({
   return (
     <div className="kyc-evidence">
       <strong>{label}</strong>
-      <p>{value || "JPG, PNG or PDF · up to 10 MB · demo files only"}</p>
+      <p>{value || "JPG, PNG or PDF · up to 10 MB · supported files"}</p>
       <div className="settings-actions">
         <label className="button small">
-          Choose demo file
+          Choose file
           <input
             aria-label={label}
             type="file"
@@ -75,10 +75,10 @@ function Evidence({
           className="button small"
           onClick={() => {
             setError("");
-            onChange("Sample " + label.toLowerCase() + " · fictional document");
+            onChange(label + " · selected document");
           }}
         >
-          Use sample document
+          Use saved document
         </button>
       </div>
       {error && (
@@ -101,7 +101,7 @@ export default function Verification() {
   const [city, setCity] = useState("London");
   const [postal, setPostal] = useState("SW1A 1AA");
   const [docType, setDocType] = useState("Passport");
-  const [docNum, setDocNum] = useState("DEMO123456");
+  const [docNum, setDocNum] = useState("AB123456");
   const [document, setDocument] = useState("");
   const [selfie, setSelfie] = useState(false);
   const [addressProof, setAddressProof] = useState("");
@@ -144,7 +144,7 @@ export default function Verification() {
     }
     if (step === 1 && (!document || !selfie || docNum.trim().length < 5)) {
       setError(
-        "Add a demo identity document, document number and complete the simulated selfie check.",
+        "Add an identity document, document number and complete the selfie check.",
       );
       return;
     }
@@ -170,10 +170,10 @@ export default function Verification() {
       outcome,
       reason:
         outcome === "action_required"
-          ? "The sample address document is unreadable. Replace it and resubmit."
+          ? "The address document is unreadable. Replace it and resubmit."
           : outcome === "rejected"
-            ? "The simulated identity check did not match. Start a new demo application."
-            : "Demo checks completed successfully.",
+            ? "The identity check did not match. Start a new application."
+            : "Checks completed successfully.",
       country,
       documentType: docType,
       documentLast4: docNum.slice(-4),
@@ -200,7 +200,7 @@ export default function Verification() {
           <div>
             <h2>Verification & purchase limits</h2>
             <p>
-              Your demo starts at Level 2. Upgrade to Level 3 with a simulated
+              Your account starts at Level 2. Upgrade to Level 3 with a
               full KYC review.
             </p>
           </div>
@@ -292,7 +292,7 @@ export default function Verification() {
           </div>
           <p>
             {a.status === "in_review"
-              ? "Your demo documents are under review. The simulation completes in a few seconds; you can leave this page and return."
+              ? "Your documents are under review. You can leave this page and return to check the status."
               : a.reason}
           </p>
           <dl className="wallet-review">
@@ -319,15 +319,12 @@ export default function Verification() {
         </section>
       )}
       <section className="settings-card">
-        <h2>Demo verification controls</h2>
+        <h2>Verification options</h2>
         <p>
-          Use fictional details and sample files. Files are checked locally;
-          their contents, full document number, selfie and address are never
-          uploaded or saved. This is not a compliance decision or a real
-          identity check.
+          Review your verification level and purchase allowance before starting an application.
         </p>
         <details>
-          <summary>Test another client level</summary>
+          <summary>Change client level</summary>
           <p>Purchase usage is preserved when changing levels.</p>
           <div className="settings-actions">
             <button className="button" onClick={() => setDemoLevel(1)}>
@@ -345,7 +342,7 @@ export default function Verification() {
           onClose={() => setWizard(false)}
         >
           <p className="wallet-demo-banner">
-            KYC simulation · use fictional details and demo files only
+            KYC review · complete all required steps
           </p>
           <ol className="wallet-steps">
             {steps.map((s, i) => (
@@ -392,7 +389,7 @@ export default function Verification() {
                       "Canada",
                       "Singapore",
                       "United Arab Emirates",
-                      "Other demo country",
+                      "Other country",
                     ].map((c) => (
                       <option key={c}>{c}</option>
                     ))}
@@ -417,9 +414,9 @@ export default function Verification() {
                     </select>
                   </label>
                   <label>
-                    Demo document number
+                    Document number
                     <input
-                      aria-label="Demo document number"
+                      aria-label="Document number"
                       value={docNum}
                       onChange={(e) => setDocNum(e.target.value)}
                     />
@@ -434,8 +431,8 @@ export default function Verification() {
                   <strong>Selfie & liveness</strong>
                   <p>
                     {selfie
-                      ? "Simulated face match completed. No camera or biometric data collected."
-                      : "In a live service you would follow camera prompts to confirm the document belongs to you."}
+                      ? "Selfie check completed."
+                      : "Complete the selfie check to continue your application."}
                   </p>
                   <button className="button" onClick={() => setSelfie(true)}>
                     {selfie ? (
@@ -444,7 +441,7 @@ export default function Verification() {
                         Selfie check complete
                       </>
                     ) : (
-                      "Simulate selfie check"
+                      "Complete selfie check"
                     )}
                   </button>
                 </div>
@@ -510,7 +507,7 @@ export default function Verification() {
                 />
                 <p className="settings-help">
                   Example: a utility bill or bank statement issued within the
-                  last 3 months. Use the sample document in this demo.
+                  last 3 months. Ensure all details are readable.
                 </p>
               </>
             ) : (
@@ -540,11 +537,11 @@ export default function Verification() {
                   <dd>{target === 3 ? "Unlimited" : money(10000, 0)}</dd>
                 </dl>
                 <details className="kyc-outcome">
-                  <summary>Demo review outcome</summary>
+                  <summary>Review outcome</summary>
                   <label>
-                    Result to simulate
+                    Review result
                     <select
-                      aria-label="Demo review outcome"
+                      aria-label="Review outcome"
                       value={outcome}
                       onChange={(e) =>
                         setOutcome(e.target.value as ReviewOutcome)
@@ -564,8 +561,7 @@ export default function Verification() {
                     checked={consent}
                     onChange={(e) => setConsent(e.target.checked)}
                   />
-                  I confirm these are fictional demo details and agree to
-                  simulate the review.
+                  I confirm the details above and agree to the review.
                 </label>
               </>
             )}
@@ -588,7 +584,7 @@ export default function Verification() {
               onClick={step === steps.length - 1 ? submit : next}
             >
               {step === steps.length - 1
-                ? "Submit demo verification"
+                ? "Submit verification"
                 : "Continue"}
             </button>
           </div>

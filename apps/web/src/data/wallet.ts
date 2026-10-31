@@ -104,7 +104,7 @@ export function networksFor(symbol: string): Network[] {
     USD: [
       {
         id: "demo-bank",
-        name: "Demo USD account",
+        name: "USD account",
         feeAsset: "USD",
         fee: 0,
         minimum: 1,
@@ -134,7 +134,7 @@ export function networksFor(symbol: string): Network[] {
     return [
       {
         id,
-        name: name + " · demo",
+        name,
         feeAsset: symbol,
         fee,
         minimum,
@@ -247,7 +247,7 @@ export const defaultSessions: DemoSession[] = [
   {
     id: "current-browser",
     device: "This browser",
-    location: "Local demo session",
+    location: "Account session",
     lastActive: "",
     current: true,
     revoked: false,
@@ -339,7 +339,7 @@ export async function totp(secret: string, now = Date.now()) {
   const bytes: number[] = [];
   for (const c of secret.toUpperCase().replaceAll(" ", "")) {
     const index = alphabet.indexOf(c);
-    if (index < 0) throw new Error("Invalid demo secret");
+    if (index < 0) throw new Error("Invalid secret");
     value = (value << 5) | index;
     bits += 5;
     if (bits >= 8) {

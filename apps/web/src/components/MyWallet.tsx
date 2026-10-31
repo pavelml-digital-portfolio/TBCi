@@ -77,7 +77,7 @@ export function PortfolioActivity() {
         </ul>
       ) : (
         <div className="portfolio-empty">
-          No local index trades yet. Buy an index to start your activity
+          No index trades yet. Buy an index to start your activity
           history.
         </div>
       )}
@@ -255,6 +255,7 @@ export default function MyWallet() {
                         •••
                       </summary>
                       <div className="dropdown">
+                        <a href={"/app/strategy-lab/?index=" + i.id}>Index Strategy Lab</a>
                         <a href={"/index/" + i.id + "/"}>Index information</a>
                         <a
                           href="/app/compile/"
@@ -347,8 +348,7 @@ export default function MyWallet() {
           <div>
             <h2>Selected portfolio value</h2>
             <p>
-              Current quantities revalued through simulated 2018 prices. This is
-              a model, not personal trading profit.
+              Current quantities revalued through 2018 prices to compare portfolio exposure over time.
             </p>
           </div>
           <span className="settings-badge">Area / line / candles</span>
@@ -390,8 +390,7 @@ export default function MyWallet() {
         ]}
       />
       <p className="portfolio-footnote">
-        Demo balances · static prices as of 31 Dec 2018 · no real funds,
-        execution or investment return.
+        Portfolio valuation uses prices as of 31 Dec 2018.
       </p>
       {intent && <IndexTrade {...intent} onClose={() => setIntent(null)} />}
     </div>

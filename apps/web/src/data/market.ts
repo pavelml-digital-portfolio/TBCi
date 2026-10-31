@@ -70,7 +70,7 @@ export const profiles: Record<
   },
   "tbci-20-security": {
     description:
-      "A thematic demonstration of tokenized securities and settlement infrastructure.",
+      "A thematic basket of tokenized securities and settlement infrastructure.",
     risk: "High",
     volatility: 0.037,
     drift: -0.002,

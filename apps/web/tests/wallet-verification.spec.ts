@@ -141,7 +141,7 @@ test("deposit QR decodes to the selected network, pending transfers resume and h
   await page.getByLabel("Amount, USDT", { exact: true }).fill("12");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "Simulate deposit", exact: true })
+    .getByRole("button", { name: "Confirm deposit", exact: true })
     .click();
   await expect
     .poll(async () => (await stored(page)).transfers[0].status)
@@ -171,23 +171,23 @@ async function fullKyc(page: Page, outcome = "approved") {
   const modal = page.getByRole("dialog");
   await modal.getByRole("button", { name: "Continue", exact: true }).click();
   await modal
-    .getByRole("button", { name: "Use sample document", exact: true })
+    .getByRole("button", { name: "Use saved document", exact: true })
     .click();
   await modal
-    .getByRole("button", { name: "Simulate selfie check", exact: true })
-    .click();
-  await modal.getByRole("button", { name: "Continue", exact: true }).click();
-  await modal
-    .getByRole("button", { name: "Use sample document", exact: true })
+    .getByRole("button", { name: "Complete selfie check", exact: true })
     .click();
   await modal.getByRole("button", { name: "Continue", exact: true }).click();
-  await modal.getByText("Demo review outcome", { exact: true }).click();
   await modal
-    .getByLabel("Demo review outcome", { exact: true })
+    .getByRole("button", { name: "Use saved document", exact: true })
+    .click();
+  await modal.getByRole("button", { name: "Continue", exact: true }).click();
+  await modal.getByText("Review outcome", { exact: true }).click();
+  await modal
+    .getByLabel("Review outcome", { exact: true })
     .selectOption(outcome);
   await modal.getByRole("checkbox").check();
   await modal
-    .getByRole("button", { name: "Submit demo verification", exact: true })
+    .getByRole("button", { name: "Submit verification", exact: true })
     .click();
 }
 test("default Level 2 upgrades through full KYC, correction and reload without saving documents", async ({
@@ -215,7 +215,7 @@ test("default Level 2 upgrades through full KYC, correction and reload without s
     .toBe(3);
   await expect(page.locator(".sidebar-level")).toContainText("Full KYC");
   const data = (await stored(page)).kyc;
-  expect(JSON.stringify(data)).not.toContain("DEMO123456");
+  expect(JSON.stringify(data)).not.toContain("AB123456");
   expect(JSON.stringify(data)).not.toContain("10 Example Street");
   expect(data.history).toHaveLength(2);
   await page.getByRole("tab", { name: "Activity log", exact: true }).click();
@@ -235,7 +235,7 @@ test("2FA and trusted addresses enforce a withdrawal and consume a recovery code
     .click();
   await expect(page.getByRole("alert")).toContainText("not valid");
   await page
-    .getByRole("button", { name: "Show demo verification code", exact: true })
+    .getByRole("button", { name: "Show verification code", exact: true })
     .click();
   await expect(page.locator(".demo-code strong")).toHaveText(/^\d{6}$/);
   const code = await page.locator(".demo-code strong").innerText();
@@ -258,7 +258,7 @@ test("2FA and trusted addresses enforce a withdrawal and consume a recovery code
   await page.getByRole("button", { name: "Add address", exact: true }).click();
   await page.getByLabel("Address label", { exact: true }).fill("Test BTC");
   await page
-    .getByRole("button", { name: "Use a sample address", exact: true })
+    .getByRole("button", { name: "Fill address", exact: true })
     .click();
   await page.getByRole("button", { name: "Save address", exact: true }).click();
   const address = (await stored(page)).trustedAddresses[0].address;
@@ -277,7 +277,7 @@ test("2FA and trusted addresses enforce a withdrawal and consume a recovery code
   await page
     .getByRole("dialog")
     .getByRole("checkbox", {
-      name: "I checked the demo address and test network.",
+      name: "I checked the address and selected network.",
     })
     .check();
   await page
@@ -300,7 +300,7 @@ test("2FA and trusted addresses enforce a withdrawal and consume a recovery code
   await page
     .getByRole("dialog")
     .getByRole("checkbox", {
-      name: "I checked the demo address and test network.",
+      name: "I checked the address and selected network.",
     })
     .check();
   await page
@@ -347,7 +347,7 @@ test("purchase UI enforces Level 1 and Level 2 budgets across successive trades"
   page,
 }) => {
   await open(page, "/app/settings/#verification");
-  await page.getByText("Test another client level", { exact: true }).click();
+  await page.getByText("Change client level", { exact: true }).click();
   await page
     .getByRole("button", { name: "Switch to Level 1", exact: true })
     .click();
@@ -373,7 +373,7 @@ test("purchase UI enforces Level 1 and Level 2 budgets across successive trades"
   await expect(page.getByRole("alert")).toContainText("purchase limit");
   expect((await stored(page)).operations).toHaveLength(1);
   await open(page, "/app/settings/#verification");
-  await page.getByText("Test another client level", { exact: true }).click();
+  await page.getByText("Change client level", { exact: true }).click();
   await page
     .getByRole("button", { name: "Restore default Level 2", exact: true })
     .click();

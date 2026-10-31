@@ -73,7 +73,7 @@ export default function ActivityChart() {
         </div>
       </div>
       <p className="infographic-help">
-        {year === "2018" ? "Archive demo transfers" : "Local demo transfers"} ·
+        {year === "2018" ? "Archive transfers" : "Account transfers"} ·
         select a month for details
       </p>
       <svg

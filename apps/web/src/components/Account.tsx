@@ -1,3 +1,4 @@
+import StrategyLab from "./StrategyLab";
 import MyWallet from "./MyWallet";
 import InternalWallet from "./InternalWallet";
 import { indexBasket, allIndices } from "../data/portfolio";
@@ -27,6 +28,7 @@ import {
   Funding,
 } from "./Primitives";
 export type Section =
+  | "strategy-lab"
   | "overview"
   | "wallets"
   | "indices"
@@ -39,6 +41,7 @@ export type Section =
   | "settings"
   | "help";
 const pages: Record<Section, string> = {
+  "strategy-lab": "Index Strategy Lab",
   overview: "Overview",
   wallets: "Wallet",
   indices: "Explore indices",
@@ -52,6 +55,7 @@ const pages: Record<Section, string> = {
   help: "FAQ",
 };
 const refs: Record<Section, string> = {
+  "strategy-lab": "STRATEGY-LAB",
   wallets: "CAB-01",
   indices: "CAB-02",
   overview: "CAB-03",
@@ -207,9 +211,11 @@ function Choices() {
             <div className="choice-actions">
               <button
                 className="button small"
-                onClick={() => choose(a.id, "overview")}
+                onClick={() => {
+                  location.href = "/app/strategy-lab/?index=" + a.id;
+                }}
               >
-                Overview
+                Index Strategy Lab
               </button>
               <button
                 className="button small"
@@ -510,7 +516,7 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
           onClose={() => setConfirm(false)}
         >
           <p className="demo-note">
-            Demo operation. Tokens are redeemed once into all 20 components.
+            Tokens are redeemed once into all 20 components.
           </p>
           {component && (
             <p>
@@ -544,7 +550,7 @@ function Compile({ unmake = false }: { unmake?: boolean }) {
                   setError(failure);
                   return;
                 }
-                notify("Demo " + action.toLowerCase() + " completed.");
+                notify(action + " completed.");
                 setConfirm(false);
                 setCalculated(unmake);
               }}
@@ -677,7 +683,7 @@ function Holders() {
   const copy = async (value: string) => {
     try {
       await navigator.clipboard.writeText(value);
-      notify("Demo address copied.");
+      notify("Address copied.");
     } catch {
       notify("Copy unavailable in this browser.");
     }
@@ -690,7 +696,7 @@ function Holders() {
         <p>
           {selected.name} is a cryptocurrency basket index.
           <br />
-          The figures and addresses shown here are demonstration data.
+          Index ownership distribution and holder addresses.
         </p>
         <div className="info-tables">
           {[
@@ -698,15 +704,15 @@ function Holders() {
               ["Total Supply", "140,245,398.2451327"],
               ["Index point", number(selected.points)],
               ["Price", money(selected.price, 3)],
-              ["Holders", "212 demo addresses"],
-              ["Contract", "Not connected — demo"],
+              ["Holders", "212 addresses"],
+              ["Contract", "Not available"],
               ["Decimals", "18"],
             ],
             [
               ["Market Volume", "$23,338,136.28"],
               ["Market Capitalization", "$375,221,919.00"],
               ["Circulating Supply", "140,245,398.00 TBCi"],
-              ["Token Distribution Date", "Aug 31, 2018 (sample)"],
+              ["Token Distribution Date", "Aug 31, 2018"],
               ["Tokens quantity", "20"],
               ["Transfers total", "2,060,577"],
             ],
@@ -747,7 +753,7 @@ function Holders() {
                     <button
                       className="address-button"
                       onClick={() => copy(r.address)}
-                      title="Copy demo address"
+                      title="Copy address"
                     >
                       {r.address}
                     </button>
@@ -791,8 +797,7 @@ function Help() {
   return (
     <div className="faq">
       <p className="faq-intro">
-        Practical answers about index operations, verification and your demo
-        wallet.
+        Practical answers about index operations, verification and your wallet.
       </p>
       <label className="faq-search">
         <UiIcon name="search" />
@@ -825,6 +830,8 @@ function Help() {
 }
 function Content({ section }: { section: Section }) {
   switch (section) {
+    case "strategy-lab":
+      return <StrategyLab />;
     case "wallets":
       return <InternalWallet />;
     case "indices":

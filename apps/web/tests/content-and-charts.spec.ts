@@ -178,7 +178,7 @@ test("ICO calendar is confined to 2018 and supports months, days, sources and wa
   await page.getByRole("link", { name: /Pundi X/ }).click();
   await expect(page.locator(".ico-facts")).toContainText("21 Jan 2018");
   await expect(page.locator(".ico-allocation")).toContainText(
-    "Mock allocation",
+    "Token allocation",
   );
   await expect(
     page.getByRole("link", { name: /Archived ICObench CSV/ }),

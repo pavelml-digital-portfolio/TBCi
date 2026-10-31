@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
-import UiIcon from "./UiIcon";
 
 type Slide = { key: string; label: string; content: ReactNode };
 
@@ -123,14 +122,6 @@ export default function MobileCarousel({
       </div>
       {items.length > 1 && (
         <div className="mobile-carousel-controls">
-          <button
-            aria-label={"Previous slide: " + label}
-            aria-controls={id}
-            disabled={active === 0}
-            onClick={() => go(active - 1)}
-          >
-            <UiIcon name="chevron-left" />
-          </button>
           <div className="mobile-carousel-dots">
             {items.map((item, i) => (
               <button
@@ -144,21 +135,7 @@ export default function MobileCarousel({
               </button>
             ))}
           </div>
-          <span
-            className="mobile-carousel-count"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {active + 1} / {items.length}
-          </span>
-          <button
-            aria-label={"Next slide: " + label}
-            aria-controls={id}
-            disabled={active >= items.length - 1}
-            onClick={() => go(active + 1)}
-          >
-            <UiIcon name="chevron-right" />
-          </button>
+
         </div>
       )}
     </div>

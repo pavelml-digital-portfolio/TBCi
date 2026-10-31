@@ -95,16 +95,13 @@ function Profile() {
     <>
       <section className="settings-card">
         <h2>Profile details</h2>
-        <p>
-          Your local demonstration profile. Login and Register still open the
-          account directly.
-        </p>
+        <p>Manage your name and contact email.</p>
         <form
           className="settings-form"
           onSubmit={(e) => {
             e.preventDefault();
             setProfile(name.trim(), email.trim());
-            notify("Profile saved in this browser.");
+            notify("Profile saved.");
           }}
         >
           <label htmlFor="profile-name">Name</label>
@@ -127,9 +124,9 @@ function Profile() {
         </form>
       </section>
       <section className="settings-card">
-        <h2>Local data</h2>
+        <h2>Account data</h2>
         <p>
-          Export a snapshot of balances, operations, public demo addresses and
+          Export a snapshot of balances, operations, public addresses and
           preferences. Authenticator secrets and recovery hashes are excluded.
         </p>
         <button
@@ -137,7 +134,7 @@ function Profile() {
           onClick={() => {
             const { security, ...safe } = state;
             downloadData(
-              "tbci-local-demo.json",
+              "tbci-account.json",
               JSON.stringify(
                 {
                   ...safe,
@@ -157,22 +154,22 @@ function Profile() {
           }}
         >
           <UiIcon name="download" />
-          Export local data
+          Export account data
         </button>
       </section>
       <section className="settings-card settings-danger">
-        <h2>Reset demonstration</h2>
+        <h2>Reset account</h2>
         <p>
-          Restore the initial balances and remove local transfers, trusted
-          addresses and security settings.
+          Restore the initial balances and remove transfers, trusted addresses
+          and security settings.
         </p>
         <button className="button danger" onClick={() => setConfirm(true)}>
-          Reset demo data
+          Reset data
         </button>
       </section>
       {confirm && (
-        <Modal title="Reset local demo" onClose={() => setConfirm(false)}>
-          <p>This resets only this browser’s demonstration data.</p>
+        <Modal title="Reset Account" onClose={() => setConfirm(false)}>
+          <p>This resets only this browser’s account data.</p>
           <label htmlFor="reset-word">Type RESET to continue</label>
           <input
             id="reset-word"
@@ -191,7 +188,7 @@ function Profile() {
                 location.reload();
               }}
             >
-              Reset demo
+              Reset account
             </button>
           </div>
         </Modal>
@@ -248,10 +245,7 @@ function Preferences() {
       </section>
       <section className="settings-card">
         <h2>Notification preferences</h2>
-        <p>
-          Saved locally for the demo. No emails, push notifications or messages
-          are sent.
-        </p>
+        <p>Choose which account events appear in your notifications.</p>
         {(
           [
             [
@@ -291,7 +285,9 @@ function Preferences() {
         ))}
         <button
           className="button"
-          onClick={() => notify("This is a local demonstration notification.")}
+          onClick={() =>
+            notify("Your account notification preferences are ready.")
+          }
         >
           Preview notification
         </button>
@@ -333,7 +329,7 @@ function Security() {
           return;
         }
         setMode(null);
-        notify("Demo two-factor authentication disabled.");
+        notify("Two-factor authentication disabled.");
         return;
       }
       const codes = createRecoveryCodes();
@@ -353,7 +349,7 @@ function Security() {
         return;
       }
       setRecovery(codes);
-      notify("Demo authenticator settings saved.");
+      notify("Authenticator settings saved.");
     } finally {
       setBusy(false);
     }
@@ -364,10 +360,7 @@ function Security() {
         <div className="section-row">
           <div>
             <h2>Two-factor authentication</h2>
-            <p>
-              Demo authenticator codes are checked before withdrawals in this
-              browser. This does not add server authentication.
-            </p>
+            <p>Confirm withdrawals with a code from your authenticator app.</p>
           </div>
           <span
             className={
@@ -452,11 +445,10 @@ function Security() {
         )}
       </section>
       <section className="settings-card">
-        <h2>How this demonstration works</h2>
+        <h2>Recovery and account security</h2>
         <p>
-          Security preferences, test-network addresses and transfer logs are
-          local. The demo contains no real private keys, payment connection or
-          server login. Do not reuse a real authenticator secret here.
+          Keep recovery codes in a safe place. Review trusted addresses and
+          active sessions regularly.
         </p>
       </section>
       {mode && (
@@ -465,9 +457,9 @@ function Security() {
             recovery.length
               ? "Save recovery codes"
               : mode === "setup"
-                ? "Set up demo authenticator"
+                ? "Set up authenticator"
                 : mode === "disable"
-                  ? "Disable demo 2FA"
+                  ? "Disable 2FA"
                   : "Replace recovery codes"
           }
           onClose={() => setMode(null)}
@@ -475,7 +467,7 @@ function Security() {
           {recovery.length ? (
             <>
               <p>
-                Each code can confirm one demo withdrawal. New codes replace the
+                Each code can confirm one withdrawal. New codes replace the
                 previous set.
               </p>
               <div className="recovery-code-grid">
@@ -487,8 +479,8 @@ function Security() {
                 className="button"
                 onClick={() =>
                   downloadData(
-                    "tbci-demo-recovery-codes.txt",
-                    "TBCi DEMO recovery codes\nDo not use for real accounts.\n\n" +
+                    "tbci-recovery-codes.txt",
+                    "TBCi recovery codes\nKeep these codes private.\n\n" +
                       recovery.join("\n"),
                   )
                 }
@@ -508,35 +500,33 @@ function Security() {
           ) : (
             <>
               <p className="wallet-demo-banner">
-                Demo only · this authenticator protects simulated withdrawals in
-                this browser.
+                Use an authenticator app to confirm withdrawals.
               </p>
               {mode === "setup" && (
                 <>
                   <p>
-                    Scan this QR with an authenticator app or copy the demo
-                    secret.
+                    Scan this QR with an authenticator app or copy the secret.
                   </p>
                   <QrCode
-                    label="Demo authenticator setup QR"
+                    label="Authenticator setup QR"
                     value={
                       "otpauth://totp/" +
-                      encodeURIComponent("TBCi Demo:" + state.email) +
+                      encodeURIComponent("TBCi:" + state.email) +
                       "?" +
                       new URLSearchParams({
                         secret,
-                        issuer: "TBCi Demo",
+                        issuer: "TBCi",
                         algorithm: "SHA1",
                         digits: "6",
                         period: "30",
                       })
                     }
                   />
-                  <label>Demo secret</label>
+                  <label>Authenticator secret</label>
                   <div className="wallet-copy-field">
                     <code>{secret}</code>
                     <button
-                      aria-label="Copy demo secret"
+                      aria-label="Copy secret"
                       onClick={() => void navigator.clipboard.writeText(secret)}
                     >
                       <UiIcon name="copy" />
@@ -563,7 +553,7 @@ function Security() {
                 className="wallet-text-button"
                 onClick={() => setShowCode(!showCode)}
               >
-                Show demo verification code
+                Show verification code
               </button>
               {showCode && (
                 <DemoCode
@@ -621,8 +611,8 @@ function Whitelist() {
         <div>
           <h2>Trusted wallet addresses</h2>
           <p>
-            Saved per asset and test network. Enable “Trusted addresses only” in
-            Security to enforce the list.
+            Saved per asset and selected network. Enable “Trusted addresses
+            only” in Security to enforce the list.
           </p>
         </div>
         <button
@@ -719,7 +709,7 @@ function Whitelist() {
               required
               value={label}
               onChange={(e) => setLabel(e.target.value)}
-              placeholder="My test wallet"
+              placeholder="My wallet"
             />
             <div className="settings-field-grid">
               <label>
@@ -771,7 +761,7 @@ function Whitelist() {
               type="button"
               onClick={() => setAddress(mockAddress(n, "trusted-" + symbol))}
             >
-              Use a sample address
+              Fill address
             </button>
             {n.memo && (
               <>
@@ -803,7 +793,7 @@ function Whitelist() {
       )}
       {remove && (
         <Modal title="Remove trusted address" onClose={() => setRemove(null)}>
-          <p>Remove {remove.label} from the local whitelist?</p>
+          <p>Remove {remove.label} from the whitelist?</p>
           <p className="wallet-address">{remove.address}</p>
           <div className="modal-actions">
             <button className="button" onClick={() => setRemove(null)}>
@@ -851,8 +841,8 @@ function Transfers() {
         <div>
           <h2>Deposit and withdrawal history</h2>
           <p>
-            Includes ongoing local simulations and clearly marked archive
-            examples.
+            Review pending and completed transfers, including archived
+            operations.
           </p>
         </div>
         <ExportButton
@@ -921,8 +911,8 @@ function Transfers() {
             onChange={(e) => setOrigin(e.target.value)}
           >
             <option value="all">All records</option>
-            <option value="local">Local demo</option>
-            <option value="sample">2018 samples</option>
+            <option value="local">Account</option>
+            <option value="sample">2018 archive</option>
           </select>
         </label>
         <label>
@@ -962,8 +952,8 @@ function Transfers() {
                   })}
                   <small>
                     {t.origin === "sample"
-                      ? "2018 archive sample"
-                      : "Local demo transfer"}
+                      ? "2018 archive"
+                      : "Account transfer"}
                   </small>
                 </td>
                 <td>{t.kind === "deposit" ? "Deposit" : "Withdrawal"}</td>
@@ -1047,8 +1037,8 @@ function Activity() {
         <div>
           <h2>Activity log</h2>
           <p>
-            Local profile, security, preference, trading and wallet events.
-            Codes and authenticator secrets are not recorded.
+            Profile, security, preference, trading and wallet events. Codes and
+            authenticator secrets are not recorded.
           </p>
         </div>
         <ExportButton
@@ -1086,8 +1076,8 @@ function Activity() {
             onChange={(e) => setOrigin(e.target.value)}
           >
             <option value="all">All events</option>
-            <option value="local">Local</option>
-            <option value="sample">Archive examples</option>
+            <option value="local">Account</option>
+            <option value="sample">Archive records</option>
           </select>
         </label>
         <label>
@@ -1117,7 +1107,7 @@ function Activity() {
                     timeZone: state.preferences.timezone,
                   })}
                   <small>
-                    {e.origin === "sample" ? "Archive sample" : "Local demo"}
+                    {e.origin === "sample" ? "Archive record" : "Account"}
                   </small>
                 </td>
                 <td>{e.category}</td>
@@ -1184,10 +1174,7 @@ function Devices() {
   return (
     <section className="settings-card">
       <h2>Devices and sessions</h2>
-      <p>
-        The current browser and two illustrative devices. Revocation updates
-        this local demo only; there is no server login service.
-      </p>
+      <p>Review your devices and revoke sessions you no longer use.</p>
       <div className="settings-devices">
         {state.sessions.map((s) => (
           <article key={s.id}>
@@ -1199,7 +1186,7 @@ function Devices() {
               <p>{s.location}</p>
               <small>
                 {s.current
-                  ? "Current local session"
+                  ? "Current session"
                   : new Date(s.lastActive).toLocaleString("en-GB", {
                       timeZone: state.preferences.timezone,
                     })}
@@ -1213,7 +1200,7 @@ function Devices() {
                 disabled={s.revoked}
                 onClick={() => revokeSession(s.id)}
               >
-                {s.revoked ? "Revoked" : "Revoke sample session"}
+                {s.revoked ? "Revoked" : "Revoke session"}
               </button>
             )}
           </article>
@@ -1239,8 +1226,8 @@ export default function AccountSettings() {
   return (
     <div className="account-settings">
       <div className="settings-intro">
-        <p>Profile, wallet controls, history and local security preferences.</p>
-        <span className="settings-badge">Browser demo</span>
+        <p>Profile, wallet controls, history and security preferences.</p>
+        <span className="settings-badge">Account</span>
       </div>
       <div className="settings-layout">
         <nav

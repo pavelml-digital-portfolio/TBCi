@@ -81,12 +81,14 @@ export default function InternalWallet() {
         (!state.preferences.hideSmallBalances || a.value >= 1) &&
         (a.name + " " + a.symbol).toLowerCase().includes(query.toLowerCase()),
     )
-    .sort((a, b) =>
-      sort === "name"
-        ? a.name.localeCompare(b.name)
-        : sort === "balance"
-          ? b.quantity - a.quantity
-          : b.value - a.value,
+    .sort(
+      (a, b) =>
+        Number(b.kind === "index") - Number(a.kind === "index") ||
+        (sort === "name"
+          ? a.name.localeCompare(b.name)
+          : sort === "balance"
+            ? b.quantity - a.quantity
+            : b.value - a.value),
     );
   const transfers = state.transfers
     .filter((t) => status === "all" || t.status === status)
@@ -428,7 +430,7 @@ export default function InternalWallet() {
                         {a.kind === "index"
                           ? "Index"
                           : a.kind === "cash"
-                            ? "Demo cash account"
+                            ? "Cash account"
                             : "Crypto asset"}
                       </small>
                     </span>
@@ -585,7 +587,7 @@ export default function InternalWallet() {
                     ?.name ?? t.network}{" "}
                   ·{" "}
                   {t.origin === "sample"
-                    ? "Archive demo example"
+                    ? "Archive record"
                     : new Date(t.createdAt).toLocaleString("en-GB", {
                         timeZone: state.preferences.timezone,
                       })}
@@ -627,8 +629,7 @@ export default function InternalWallet() {
         </p>
       )}
       <p className="portfolio-footnote">
-        Wallet demonstration · no real funds, private keys or blockchain
-        broadcasts.
+        Available balances exclude funds reserved for pending withdrawals.
       </p>
       {state.operations.some((o) => o.type === "convert") && (
         <section className="portfolio-panel">
@@ -752,6 +753,12 @@ export default function InternalWallet() {
               </p>
               <div className="modal-actions">
                 <a
+                  className="button"
+                  href={"/app/strategy-lab/?index=" + currentDetail.id}
+                >
+                  Index Strategy Lab
+                </a>
+                <a
                   className="button primary"
                   href={"/app/?trade=buy&index=" + currentDetail.id}
                 >
@@ -767,7 +774,7 @@ export default function InternalWallet() {
             </>
           ) : (
             <>
-              <h3>Supported demo networks</h3>
+              <h3>Supported networks</h3>
               <ul className="wallet-network-list">
                 {networksFor(currentDetail.symbol).map((n) => (
                   <li key={n.id}>

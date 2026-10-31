@@ -36,7 +36,7 @@ export function DemoCode({ secret }: { secret: string }) {
   return (
     <span className="demo-code">
       <strong>{code}</strong>
-      <small>Demo authenticator · refreshes in {seconds}s</small>
+      <small>Authenticator · refreshes in {seconds}s</small>
     </span>
   );
 }
@@ -76,10 +76,10 @@ export function TransferProgress({
       </h3>
       <p>
         {finished
-          ? "The local demo balance and history have been updated."
+          ? "The account balance and history have been updated."
           : t.status === "failed"
             ? t.failure
-            : "Simulating network confirmations. You can close this window and return to the history."}
+            : "Waiting for network confirmations. You can close this window and return to the history."}
       </p>
       <strong className="transfer-receipt-amount">
         {number(t.amount, 8)} {t.symbol}
@@ -115,7 +115,7 @@ export function TransferProgress({
           {new Date(t.createdAt).toLocaleString("en-GB", { timeZone: "UTC" })}{" "}
           UTC
         </dd>
-        <dt>Transaction ID (demo)</dt>
+        <dt>Transaction ID</dt>
         <dd className="wallet-address">{t.txHash}</dd>
       </dl>
       <div className="wallet-receipt-actions">
@@ -147,12 +147,12 @@ export function TransferProgress({
       </div>
       {t.status === "confirming" && (
         <details className="wallet-simulation-controls">
-          <summary>Demo controls</summary>
+          <summary>Transfer actions</summary>
           <button
             className="button danger small"
             onClick={() => failPendingTransfer(t.id)}
           >
-            Simulate network failure
+            Cancel pending transfer
           </button>
         </details>
       )}
@@ -267,7 +267,7 @@ export default function WalletTransfer({
     >
       <div className="wallet-demo-banner">
         <UiIcon name="shield" />
-        <span>Testnet demonstration · no real funds or network broadcast</span>
+        <span>Selected network · review the address and minimum amount</span>
       </div>
       <ol className="wallet-stepper" aria-label="Transfer steps">
         {steps.map((s, i) => (
@@ -338,11 +338,11 @@ export default function WalletTransfer({
           )}
           {step === 1 && !withdraw && (
             <section className="wallet-flow-step">
-              <h3>Your demo deposit address</h3>
+              <h3>Your deposit address</h3>
               <div className="wallet-deposit-code">
                 <QrCode
                   value={qrPayload(symbol, networkId, demoAddress, depositMemo)}
-                  label={symbol + " deposit QR code (demo)"}
+                  label={symbol + " deposit QR code"}
                 />
                 <div>
                   <span className="wallet-network-badge">{network.name}</span>
@@ -372,7 +372,7 @@ export default function WalletTransfer({
                     </>
                   )}
                   <small>
-                    The QR uses a tbci-demo URI for this simulation.
+                    The QR includes the selected asset, network and destination.
                   </small>
                 </div>
               </div>
@@ -390,8 +390,7 @@ export default function WalletTransfer({
                 placeholder={"Minimum " + network.minimum}
               />
               <p className="wallet-flow-note">
-                Continue to simulate an incoming payment and watch
-                confirmations. No external payment is required.
+                Continue to review the deposit amount and confirmation progress.
               </p>
             </section>
           )}
@@ -447,7 +446,7 @@ export default function WalletTransfer({
                   setError("");
                 }}
               >
-                Use a sample recipient
+                Fill recipient
               </button>
               {network.memo && (
                 <>
@@ -516,7 +515,7 @@ export default function WalletTransfer({
           {step === 2 && (
             <section className="wallet-flow-step">
               <h3>
-                {withdraw ? "Review withdrawal" : "Simulate incoming deposit"}
+                {withdraw ? "Review withdrawal" : "Review incoming deposit"}
               </h3>
               <dl className="wallet-review">
                 <dt>Amount</dt>
@@ -562,7 +561,7 @@ export default function WalletTransfer({
                       checked={ack}
                       onChange={(e) => setAck(e.target.checked)}
                     />
-                    <span>I checked the demo address and test network.</span>
+                    <span>I checked the address and selected network.</span>
                   </label>
                   {state.security.twoFactorEnabled && (
                     <div className="wallet-security-check">
@@ -583,7 +582,7 @@ export default function WalletTransfer({
                         className="wallet-text-button"
                         onClick={() => setShowCode(!showCode)}
                       >
-                        Show demo verification code
+                        Show verification code
                       </button>
                       {showCode && (
                         <DemoCode secret={state.security.totpSecret} />
@@ -628,7 +627,7 @@ export default function WalletTransfer({
                   ? "Processing…"
                   : withdraw
                     ? "Confirm withdrawal"
-                    : "Simulate deposit"}
+                    : "Confirm deposit"}
               </button>
             )}
           </div>

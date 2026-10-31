@@ -10,21 +10,25 @@ test("mobile Overview carousels navigate, preserve trading and reveal advanced c
     name: "Your indices",
     exact: true,
   });
-  await expect(indices.locator(".mobile-carousel-count")).toHaveText("1 / 5");
-  await indices
-    .getByRole("button", { name: "Next slide: Your indices", exact: true })
-    .click();
-  await expect(indices.locator(".mobile-carousel-count")).toHaveText("2 / 5");
+  await expect(
+    indices.locator(".mobile-carousel-dots button").nth(0),
+  ).toHaveAttribute("aria-current", "true");
+  await indices.locator(".mobile-carousel-dots button").nth(1).click();
+  await expect(
+    indices.locator(".mobile-carousel-dots button").nth(1),
+  ).toHaveAttribute("aria-current", "true");
   const track = indices.locator(".mobile-carousel-track");
   await track.focus();
   await page.keyboard.press("End");
-  await expect(indices.locator(".mobile-carousel-count")).toHaveText("5 / 5");
+  await expect(
+    indices.locator(".mobile-carousel-dots button").nth(4),
+  ).toHaveAttribute("aria-current", "true");
   await expect(
     indices.getByRole("button", {
       name: "Next slide: Your indices",
       exact: true,
     }),
-  ).toBeDisabled();
+  ).toHaveCount(0);
   await indices
     .getByRole("button", { name: "Sell TBCi-20 Utility", exact: true })
     .click();
@@ -59,26 +63,20 @@ test("mobile Overview carousels navigate, preserve trading and reveal advanced c
     name: "Portfolio insights",
     exact: true,
   });
-  await insights
-    .getByRole("button", {
-      name: "Next slide: Portfolio insights",
-      exact: true,
-    })
-    .click();
-  await expect(insights.locator(".mobile-carousel-count")).toHaveText("2 / 3");
+  await insights.locator(".mobile-carousel-dots button").nth(1).click();
+  await expect(
+    insights.locator(".mobile-carousel-dots button").nth(1),
+  ).toHaveAttribute("aria-current", "true");
   await insights.locator('.exposure-map [role="button"]').first().click();
   await expect(
     insights.locator(".exposure-map .portfolio-chart-detail"),
   ).toContainText("exposure");
-  await insights
-    .getByRole("button", {
-      name: "Next slide: Portfolio insights",
-      exact: true,
-    })
-    .click();
-  await expect(insights.locator(".mobile-carousel-count")).toHaveText("3 / 3");
+  await insights.locator(".mobile-carousel-dots button").nth(2).click();
+  await expect(
+    insights.locator(".mobile-carousel-dots button").nth(2),
+  ).toHaveAttribute("aria-current", "true");
   await expect(insights.locator(".portfolio-activity")).toContainText(
-    "No local index trades yet",
+    "No index trades yet",
   );
   // The viewport follows the selected slide rather than reserving the height of all panels.
   expect(
@@ -117,10 +115,10 @@ test("mobile Wallet separates index slides from currency rows and keeps funding 
     .getByRole("checkbox", { name: "Hide zero balances", exact: true })
     .check();
   await expect(indices.locator(".wallet-index-card")).toHaveCount(5);
-  await indices
-    .getByRole("button", { name: "Next slide: Wallet indices", exact: true })
-    .click();
-  await expect(indices.locator(".mobile-carousel-count")).toHaveText("2 / 5");
+  await indices.locator(".mobile-carousel-dots button").nth(1).click();
+  await expect(
+    indices.locator(".mobile-carousel-dots button").nth(1),
+  ).toHaveAttribute("aria-current", "true");
   for (const width of [320, 375, 430, 600, 677, 767]) {
     await page.setViewportSize({ width, height: 850 });
     await expect

@@ -334,7 +334,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
         log(
           "security",
           "Withdrawal verification failed",
-          "Invalid demo authenticator/recovery code",
+          "Invalid authenticator/recovery code",
         );
         return {
           error: "Enter a valid authenticator code or an unused recovery code.",
@@ -465,7 +465,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
                   a.target +
                   " · " +
                   a.documentType +
-                  " · demo metadata only",
+                  " · metadata only",
               ),
               ...s.audit,
             ].slice(0, 1000),
@@ -497,7 +497,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
             audit: [
               auditEvent(
                 "verification",
-                "Demo client level changed",
+                "client level changed",
                 "Level " + level + " · purchase usage retained",
               ),
               ...s.audit,

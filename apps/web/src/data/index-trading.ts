@@ -144,7 +144,7 @@ export function executeAssetConversion(
   if (received <= 0)
     return {
       state: s,
-      error: "The converted amount is below the demo precision.",
+      error: "The converted amount is below the precision.",
     };
   const operation: Operation = {
     id: crypto.randomUUID(),

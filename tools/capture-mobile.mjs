@@ -24,15 +24,15 @@ const insights = page.getByRole("region", {
   exact: true,
 });
 await shot("insights-monthly", insights);
-await insights
-  .getByRole("button", { name: "Next slide: Portfolio insights", exact: true })
-  .click();
-await expect(insights.locator(".mobile-carousel-count")).toHaveText("2 / 3");
+await insights.locator(".mobile-carousel-dots button").nth(1).click();
+await expect(
+  insights.locator(".mobile-carousel-dots button").nth(1),
+).toHaveAttribute("aria-current", "true");
 await shot("insights-exposure", insights);
-await insights
-  .getByRole("button", { name: "Next slide: Portfolio insights", exact: true })
-  .click();
-await expect(insights.locator(".mobile-carousel-count")).toHaveText("3 / 3");
+await insights.locator(".mobile-carousel-dots button").nth(2).click();
+await expect(
+  insights.locator(".mobile-carousel-dots button").nth(2),
+).toHaveAttribute("aria-current", "true");
 await shot("insights-activity", insights);
 await page.goto(base + "/app/wallets/");
 await expect(page.locator("h1")).toHaveText("Wallet");

@@ -62,7 +62,7 @@ test("source landing sections, composition expansion, direct login and demo news
   await expect(page.locator(".intro-grid tbody tr")).toHaveCount(20);
   await page.getByLabel("Your email", { exact: true }).fill("demo@example.com");
   await page.getByRole("button", { name: "Subscribe", exact: true }).click();
-  await expect(page.getByRole("status")).toContainText("not sent or saved");
+  await expect(page.getByRole("status")).toContainText("Subscription preferences updated");
   await page.getByRole("link", { name: "Login", exact: true }).click();
   await expect(page).toHaveURL(/\/app\/$/);
   await expect(
@@ -288,7 +288,7 @@ test("wallet deposit, withdrawal, complete asset list and multi-index portfolio"
   await page.getByLabel("Amount, BTC", { exact: true }).fill(".1");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "Simulate deposit", exact: true })
+    .getByRole("button", { name: "Confirm deposit", exact: true })
     .click();
   await expect
     .poll(async () => (await stored(page)).balances.BTC)
@@ -298,12 +298,12 @@ test("wallet deposit, withdrawal, complete asset list and multi-index portfolio"
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByLabel("Amount, BTC", { exact: true }).fill(".01");
   await page
-    .getByRole("button", { name: "Use a sample recipient", exact: true })
+    .getByRole("button", { name: "Fill recipient", exact: true })
     .click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
     .getByRole("checkbox", {
-      name: "I checked the demo address and test network.",
+      name: "I checked the address and selected network.",
     })
     .check();
   await page
@@ -324,9 +324,10 @@ test("wallet deposit, withdrawal, complete asset list and multi-index portfolio"
   await page
     .locator(".choice-card")
     .nth(1)
-    .getByRole("button", { name: "Overview", exact: true })
+    .getByRole("button", { name: "Index Strategy Lab", exact: true })
     .click();
-  await expect(page.locator("h1")).toHaveText("Overview");
+  await expect(page.locator("h1")).toHaveText("Index Strategy Lab");
+  await open(page, "/app/");
   await expect(page.locator(".owned-index-card")).toHaveCount(5);
   await page.reload();
   await expect(page.locator("h1")).toHaveText("Overview");

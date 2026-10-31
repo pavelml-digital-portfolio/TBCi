@@ -241,7 +241,7 @@ export function failTransfer(
             ...x,
             status: "failed",
             applied: false,
-            failure: "Simulated network interruption. Reserved funds returned.",
+            failure: "Network interruption. Reserved funds returned.",
             updatedAt: new Date(now).toISOString(),
           }
         : x,

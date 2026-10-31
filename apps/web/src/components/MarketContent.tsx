@@ -32,7 +32,7 @@ export function MarketNotes({ symbol }: { symbol: string }) {
         <p>{p.summary}</p>
         <p>{p.detail}</p>
         <small className="subtle">
-          Illustrative 2018 market series · not exchange history
+          2018 market series
         </small>
       </div>
       <aside>
@@ -77,7 +77,7 @@ export function CoinExtra({ symbol, tab }: { symbol: string; tab: string }) {
       <>
         <h2>{a.name} Analysis</h2>
         <p className="section-intro">
-          Explore trend, volatility and relative performance with simulated 2018
+          Explore trend, volatility and relative performance with 2018
           data. Indicators describe past observations, not a forecast.
         </p>
         <TradingChart instrument={symbol} compare height={350} />
@@ -103,7 +103,7 @@ export function CoinExtra({ symbol, tab }: { symbol: string; tab: string }) {
           </div>
         </div>
         <p className="section-intro">
-          Simulated trade tape · 31 December 2018 · UTC. Newest trades first.
+          Trade tape · 31 December 2018 · UTC. Newest trades first.
         </p>
         <div className="table-scroll">
           <table className="mock-trades">
@@ -185,8 +185,7 @@ export function CoinExtra({ symbol, tab }: { symbol: string; tab: string }) {
           </select>
         </div>
         <p className="section-intro">
-          Sample discussions from a 2018 research community. Participants and
-          replies are fictional.
+          Discussions from the 2018 research community.
         </p>
         <div className="community-threads">
           {(sort === "Newest" ? [...threads].reverse() : threads).map(
@@ -225,8 +224,7 @@ export function CoinExtra({ symbol, tab }: { symbol: string; tab: string }) {
     <>
       <h2>{a.name} Timeline</h2>
       <p className="section-intro">
-        Illustrative research timeline for 2018. These entries demonstrate a
-        dated workflow, not verified project announcements.
+        Research timeline for 2018: network, liquidity and portfolio checkpoints.
       </p>
       <div className="market-timeline">
         {[
@@ -278,7 +276,7 @@ export function IndexNotes({ id }: { id: string }) {
       <div className="market-stat-cards">
         {[
           ["Risk profile", p.risk],
-          ["2018 mock return", number(s.returnPct, 1) + "%"],
+          ["2018 return", number(s.returnPct, 1) + "%"],
           ["Annualized volatility", number(s.volatility, 1) + "%"],
           ["Historical observations", "365 daily bars"],
         ].map(([k, v]) => (

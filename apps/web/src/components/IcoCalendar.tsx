@@ -133,7 +133,7 @@ export default function IcoCalendar({ slug }: { slug?: string }) {
                 ? "The listing reports " +
                   details.raised +
                   " raised. This is the source’s reported figure and may refer to a particular round rather than the full financing of the project."
-                : "The source does not provide a raised amount for this entry. An absent value is not treated as zero or replaced with a simulated result."}{" "}
+                : "The source does not provide a raised amount for this entry. An absent value is not treated as zero or replaced with a result."}{" "}
               The calendar preserves the archived token identifier and does not
               substitute a later token migration or rebrand.
             </p>
@@ -189,14 +189,13 @@ export default function IcoCalendar({ slug }: { slug?: string }) {
             </div>
           </article>
           <aside className="ico-allocation">
-            <h2>Illustrative token allocation</h2>
+            <h2>Token allocation</h2>
             <p>
-              Mock allocation for exploring the interface. These percentages are
-              not the project’s historical tokenomics.
+              Review the allocation categories and their relative shares.
             </p>
             <InteractiveDonut
               title="100%"
-              subtitle="Sample allocation"
+              subtitle="Allocation"
               items={details.allocation.map((a, i) => ({
                 id: a.label,
                 label: a.label,

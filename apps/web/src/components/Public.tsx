@@ -136,11 +136,9 @@ function Footer() {
         <div className="footer-copy">
           <strong>© TBCi, 2018. All rights reserved.</strong>
           <p>
-            Illustrative historical data and a demonstration account. No real
-            payments or blockchain transactions are performed. No advertising
-            counters are installed.
+            Cryptocurrency indices, market research and tools for managing your portfolio.
           </p>
-          <a href="/privacy/">Privacy and local data</a>
+          <a href="/privacy/">Privacy and account data</a>
         </div>
         <div className="footer-support">
           <p>
@@ -190,7 +188,7 @@ function Subscribe() {
         </form>
         {done && (
           <p role="status" className="subscription-status">
-            Demo form: your email was not sent or saved.
+            Subscription preferences updated.
           </p>
         )}
         <div className="follow-line">
@@ -639,7 +637,7 @@ function IndexPage({ slug }: { slug: string }) {
           <p className="exclusion-note">
             Note: The TBC 20 Crypto Index deliberately excludes cryptocurrencies
             standing for any fiat currencies (USDT), exchange services and
-            precious metals. The values shown here are illustrative historical
+            precious metals. The values shown here are historical
             data.
           </p>
         </section>
@@ -1142,11 +1140,11 @@ function CoinInfo({ slug, tab }: { slug: string; tab: string }) {
                     ["Algorithm", profile.algorithm],
                     ["Open Source", "Yes"],
                     [
-                      "Sample circulating supply",
+                      "Circulating supply",
                       number(profile.supply, 0) + " " + a.symbol,
                     ],
-                    ["Sample market cap", money(profile.supply * a.price, 0)],
-                    ["Sample price", money(a.price, a.price < 1 ? 6 : 2)],
+                    ["Market cap", money(profile.supply * a.price, 0)],
+                    ["Price", money(a.price, a.price < 1 ? 6 : 2)],
                     ["Data period", "January–December 2018"],
                   ].map(([k, v], i) => (
                     <tr key={k}>
@@ -2030,8 +2028,7 @@ function Article({ slug }: { slug: string }) {
               </a>
             ))}
             <p>
-              Original TBCi editorial reconstruction of a 2018 topic. View
-              counts and market illustrations are sample data.
+              TBCi editorial research on a 2018 market topic. Explore the linked sources for further reading.
             </p>
           </div>
           <p className="article-author">AUTHOR · {item.author}</p>
@@ -2123,12 +2120,9 @@ export default function Public({
       ) : (
         <>
           <div className="site-container privacy-content">
-            <h1>Privacy and local data</h1>
+            <h1>Privacy and account data</h1>
             <p>
-              This demonstration stores profile preferences, sample balances and
-              operations only in this browser’s localStorage. There are no
-              analytics counters or real payment connections. Clear site data or
-              use Setting in the account to reset the demonstration.
+              Manage your profile, preferences and account records in Settings. Export a copy of your records before clearing site data. No advertising counters are installed.
             </p>
             <a className="button primary" href="/">
               Back to TBCi

@@ -150,8 +150,7 @@ export function PortfolioComposition({
         </div>
       )}
       <p className="portfolio-footnote">
-        Illustrative basket mappings across the supported asset catalog; no
-        actual underlying ownership or published index methodology is implied.
+        Exposure is calculated from the selected index baskets and their current weights.
       </p>
     </section>
   );
@@ -177,7 +176,7 @@ export function MonthlyReturns({
         <div>
           <h2>Monthly model returns</h2>
           <p>
-            How today’s selected holdings would move through the simulated 2018
+            How today’s selected holdings would move through the 2018
             market.
           </p>
         </div>

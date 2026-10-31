@@ -34,7 +34,7 @@ export default function AssetConversion({
     >
       <div className="wallet-demo-banner">
         <UiIcon name="refresh" />
-        Internal demo conversion · fixed prices · 0.5% fee
+        Internal conversion · fixed prices · 0.5% fee
       </div>
       {step === 2 ? (
         <>
@@ -134,7 +134,7 @@ export default function AssetConversion({
               {number(received, 8)} {to}
             </dd>
             <dt>Network fee</dt>
-            <dd>None · internal demo conversion</dd>
+            <dd>None · internal conversion</dd>
           </dl>
           {error && (
             <p className="error" role="alert">
