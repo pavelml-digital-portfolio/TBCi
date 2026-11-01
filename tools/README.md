@@ -7,3 +7,5 @@
 `node tools/audit-layout.mjs` checks 32 routes/settings tabs at nine widths from 320 to 2560px (288 cases), portfolio/card/device/dialog geometry and Search icon centering; writes LAYOUT_REVIEW.json and control screenshots. `node tools/capture-flows.mjs` captures twelve wallet/KYC steps and checks native dialog geometry. Both accept TEST_BASE_URL and PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH; default server is 4335.
 
 `node tools/capture-mobile.mjs` captures eight 375px carousel, chart options and currency table states. Uses the same browser/base URL variables; default server is 4336.
+
+`node tools/audit-mobile.mjs` checks every page/settings template in portrait and landscape, then sweeps each integer width on six key screens. It checks intersections of actual controls, offscreen menus, chart parent/child heights and page/panel overflow. Outputs `MOBILE_REVIEW.json` and representative touch/DPR 2 screenshots. Default server: 4338. Mobile dialog and time-stability regressions run through `npm run test:e2e`.

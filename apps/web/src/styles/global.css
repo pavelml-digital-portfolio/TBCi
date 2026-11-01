@@ -11562,3 +11562,105 @@ summary > .ui-icon,
  .lab-chart-legend { gap:6px 12px; }
  .lab-chart-legend time { width:100%; }
 }
+
+/* An auto-sized canvas must have an independently sized parent. Otherwise the
+   chart's own table feeds height back into ResizeObserver on every frame. */
+.lab-chart-canvas { height: 380px; }
+
+@media (max-width: 800px) {
+  .public-header { position: relative; z-index: 30; height: 72px; }
+  .public-header .header-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) 44px;
+    gap: 12px;
+    min-width: 0;
+  }
+  .public-header .public-brand { grid-column: 1; grid-row: 1; }
+  .public-header .header-search {
+    display: flex;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+  }
+  .public-header .header-search input { min-width: 0; font-size: 16px; }
+  .public-header .public-nav, .public-header .login-links { display: none; }
+  .public-header .mobile-public-menu {
+    display: block;
+    grid-column: 3;
+    grid-row: 1;
+    position: static;
+    margin: 0;
+  }
+  .mobile-public-menu > summary {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    list-style: none;
+    cursor: pointer;
+  }
+  .mobile-public-menu > summary::-webkit-details-marker { display: none; }
+  .public-header .mobile-public-menu nav {
+    position: absolute;
+    inset: 100% 16px auto;
+    width: auto;
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+    z-index: 40;
+    border: 1px solid #343d58;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  .mobile-public-menu nav > a { min-height: 44px; display: flex; align-items: center; padding: 10px 16px; }
+}
+@media (max-width: 1100px) {
+  .home-hero { height: auto; }
+  .home-hero-copy { padding-top: 28px; padding-bottom: 12px; }
+  .home-hero > .trading-widget { position: relative; inset: auto; }
+  .home-hero .trading-hero-controls {
+    position: static;
+    inset: auto !important;
+    justify-content: flex-end;
+    padding: 8px 20px 12px;
+    flex-wrap: wrap;
+  }
+  .home-hero .trading-hero-controls button { min-width: 44px; min-height: 36px; font-size: 12px; }
+  .home-hero .trading-canvas { height: clamp(260px, 45vw, 340px) !important; }
+  .hero-index-buttons { flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .hero-index-buttons > button { font-size: 12px; padding: 10px 12px; min-height: 40px; }
+  .hero-index-buttons > details { margin-left: 0; padding: 0; font-size: 12px; }
+  .hero-index-buttons summary { min-height: 40px; padding: 10px 12px; }
+  .hero-index-buttons .dropdown { left: auto; right: 0; width: 250px; max-width: calc(100vw - 40px); }
+}
+@media (max-width: 767px) {
+  .lab-chart-canvas { height: 280px; }
+  .token-summary { align-items: start; gap: 18px 14px; }
+  .token-summary-name strong { font-size: 19px; }
+  .token-summary .summary-value { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .token-summary .summary-value > span { flex-basis: auto; letter-spacing: .03em; }
+  .token-summary .summary-value > strong { font-size: 18px; line-height: 1.4; }
+  .token-summary .summary-value select { width: 74px; flex-basis: auto; height: 36px; min-height: 36px; font-size: 14px; }
+  .token-summary .summary-change { display: block; width: 100%; padding: 0; }
+  .token-summary .summary-change small { display: block; font-size: 11px; line-height: 1.5; margin-bottom: 6px; }
+  .token-summary .summary-change > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+  .token-summary .summary-change strong { font-size: 22px; }
+  .token-summary .summary-change .positive,.token-summary .summary-change .negative { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .hero-index-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-index-buttons > button { padding: 10px 6px; font-size: 11px; }
+}
+
+/* Keep dismiss controls reachable while long forms scroll inside the dialog. */
+.modal[open] { display: flex; flex-direction: column; overflow: hidden; }
+.modal > header { flex-shrink: 0; }
+.modal > header h2 { min-width: 0; overflow-wrap: anywhere; }
+.modal > header .close-button { flex-shrink: 0; width: 44px; min-height: 44px; }
+.modal > .modal-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+@media (max-width: 800px), (max-height: 500px) {
+  .modal { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+  .modal > header { padding: 10px 16px; gap: 12px; }
+  .modal > header h2 { font-size: 20px; }
+}

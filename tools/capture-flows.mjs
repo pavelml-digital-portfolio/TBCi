@@ -48,7 +48,7 @@ for (const width of [375, 1496]) {
   await page.getByRole("button", { name: "Withdraw BTC", exact: true }).click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "Use a sample recipient", exact: true })
+    .getByRole("button", { name: "Fill recipient", exact: true })
     .click();
   await page.getByLabel("Amount, BTC", { exact: true }).fill(".01");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
@@ -59,15 +59,15 @@ for (const width of [375, 1496]) {
   await shot("kyc-personal");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "Use sample document", exact: true })
+    .getByRole("button", { name: "Use saved document", exact: true })
     .click();
   await page
-    .getByRole("button", { name: "Simulate selfie check", exact: true })
+    .getByRole("button", { name: "Complete selfie check", exact: true })
     .click();
   await shot("kyc-identity");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page
-    .getByRole("button", { name: "Use sample document", exact: true })
+    .getByRole("button", { name: "Use saved document", exact: true })
     .click();
   await shot("kyc-address");
   await page.getByRole("button", { name: "Continue", exact: true }).click();

@@ -1047,7 +1047,6 @@ export function ComparisonChart({
     setAt(null);
     const chart = createChart(plot.current, {
       autoSize: true,
-      height: innerWidth < 768 ? 280 : 380,
       layout: {
         background: { type: ColorType.Solid, color: "#ffffff" },
         textColor: "#858b9b",
@@ -1087,12 +1086,12 @@ export function ComparisonChart({
     const priceFormat = {
       type: "custom" as const,
       minMove: 0.01,
-      formatter: format,
+      formatter: (n: number) => (drawdown ? number(n, 2) + "%" : number(n, 2)),
     };
     for (const btc of [false, true]) {
       const color = btc ? "#d9b468" : "#6cb1e8";
       const options = {
-        title: btc ? "BTC" : label,
+        title: "",
         priceLineVisible: false,
         lastValueVisible: false,
         priceFormat,

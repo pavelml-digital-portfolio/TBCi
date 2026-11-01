@@ -5,7 +5,7 @@ import IcoCalendar from "./IcoCalendar";
 import { coinProfiles } from "../data/coin-profiles";
 import { MarketNotes, CoinExtra, IndexNotes } from "./MarketContent";
 import { seriesFor, marketStats, hash } from "../data/market";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { recentNews } from "../data/content";
 import {
   basket,
@@ -43,6 +43,25 @@ type Page =
   | "ico";
 const allIndices = [defaultIndex, ...indexChoices];
 function Header() {
+  const menu = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const dismiss = (event: PointerEvent) => {
+      if (menu.current?.open && !menu.current.contains(event.target as Node))
+        menu.current.open = false;
+    };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && menu.current?.open) {
+        menu.current.open = false;
+        menu.current.querySelector("summary")?.focus();
+      }
+    };
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("keydown", escape);
+    };
+  }, []);
   return (
     <header className="public-header">
       <div className="site-container header-inner">
@@ -50,11 +69,11 @@ function Header() {
           <Wordmark />
           <span>Cryptocurrency index</span>
         </a>
-        <details className="mobile-public-menu">
+        <details ref={menu} className="mobile-public-menu">
           <summary aria-label="Open navigation">
             <UiIcon name="menu" />
           </summary>
-          <nav>
+          <nav aria-label="Mobile navigation">
             <a href="/index/tbci-20-balance/">Index</a>
             <a href="/coins/">Coins</a>
             <a href="/exchanges/">Exchanges</a>
@@ -136,7 +155,8 @@ function Footer() {
         <div className="footer-copy">
           <strong>© TBCi, 2018. All rights reserved.</strong>
           <p>
-            Cryptocurrency indices, market research and tools for managing your portfolio.
+            Cryptocurrency indices, market research and tools for managing your
+            portfolio.
           </p>
           <a href="/privacy/">Privacy and account data</a>
         </div>
@@ -637,8 +657,7 @@ function IndexPage({ slug }: { slug: string }) {
           <p className="exclusion-note">
             Note: The TBC 20 Crypto Index deliberately excludes cryptocurrencies
             standing for any fiat currencies (USDT), exchange services and
-            precious metals. The values shown here are historical
-            data.
+            precious metals. The values shown here are historical data.
           </p>
         </section>
         <section className="index-calculator">
@@ -2028,7 +2047,8 @@ function Article({ slug }: { slug: string }) {
               </a>
             ))}
             <p>
-              TBCi editorial research on a 2018 market topic. Explore the linked sources for further reading.
+              TBCi editorial research on a 2018 market topic. Explore the linked
+              sources for further reading.
             </p>
           </div>
           <p className="article-author">AUTHOR · {item.author}</p>
@@ -2122,7 +2142,9 @@ export default function Public({
           <div className="site-container privacy-content">
             <h1>Privacy and account data</h1>
             <p>
-              Manage your profile, preferences and account records in Settings. Export a copy of your records before clearing site data. No advertising counters are installed.
+              Manage your profile, preferences and account records in Settings.
+              Export a copy of your records before clearing site data. No
+              advertising counters are installed.
             </p>
             <a className="button primary" href="/">
               Back to TBCi

@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-11-01T00:41:49.710Z",
+  "browser": "Chromium, touch emulation, DPR 2",
+  "routes": [
+    "/",
+    "/index/tbci-20-balance/",
+    "/coins/",
+    "/coins/bitcoin/",
+    "/coins/bitcoin/charts/",
+    "/coins/bitcoin/historical-price/",
+    "/coins/bitcoin/markets/",
+    "/coins/bitcoin/analysis/",
+    "/coins/bitcoin/news/",
+    "/coins/bitcoin/forum/",
+    "/coins/bitcoin/timeline/",
+    "/coins/bitcoin/trades/",
+    "/exchanges/",
+    "/exchanges/huobi/",
+    "/news/",
+    "/news/bitcoin-core-017/",
+    "/ico/",
+    "/ico/quarkchain/",
+    "/privacy/",
+    "/app/",
+    "/app/wallets/",
+    "/app/indices/",
+    "/app/strategy-lab/",
+    "/app/compile/",
+    "/app/unmake/",
+    "/app/history/",
+    "/app/holders/",
+    "/app/help/",
+    "/app/settings/#profile",
+    "/app/settings/#verification",
+    "/app/settings/#preferences",
+    "/app/settings/#security",
+    "/app/settings/#whitelist",
+    "/app/settings/#transfers",
+    "/app/settings/#activity",
+    "/app/settings/#devices"
+  ],
+  "widths": [
+    320,
+    344,
+    360,
+    375,
+    390,
+    393,
+    412,
+    430,
+    480,
+    540,
+    600,
+    677,
+    767,
+    768,
+    800
+  ],
+  "landscapes": [
+    {
+      "width": 568,
+      "height": 320
+    },
+    {
+      "width": 667,
+      "height": 375
+    },
+    {
+      "width": 740,
+      "height": 360
+    },
+    {
+      "width": 812,
+      "height": 375
+    },
+    {
+      "width": 844,
+      "height": 390
+    },
+    {
+      "width": 932,
+      "height": 430
+    },
+    {
+      "width": 1024,
+      "height": 600
+    }
+  ],
+  "continuousWidthRange": [
+    320,
+    800
+  ],
+  "homeWidthRange": [
+    320,
+    1280
+  ],
+  "cases": 4158,
+  "pixelCases": 3366,
+  "issues": [],
+  "runtimeErrors": [],
+  "snapshots": [
+    "docs/frontend/screens/mobile-audit/home-320.png",
+    "docs/frontend/screens/mobile-audit/menu-320.png",
+    "docs/frontend/screens/mobile-audit/holders-320.png",
+    "docs/frontend/screens/mobile-audit/lab-320.png",
+    "docs/frontend/screens/mobile-audit/home-393.png",
+    "docs/frontend/screens/mobile-audit/menu-393.png",
+    "docs/frontend/screens/mobile-audit/holders-393.png",
+    "docs/frontend/screens/mobile-audit/lab-393.png",
+    "docs/frontend/screens/mobile-audit/home-767.png",
+    "docs/frontend/screens/mobile-audit/menu-767.png",
+    "docs/frontend/screens/mobile-audit/holders-767.png",
+    "docs/frontend/screens/mobile-audit/lab-767.png"
+  ]
+}
